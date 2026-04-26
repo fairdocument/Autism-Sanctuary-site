@@ -136,15 +136,16 @@ p { margin: 0 0 1em; color: var(--muted-ink); }
   color: var(--forest-deep);
 }
 .brand-logo {
-  height: 44px;
+  height: 48px;
   width: auto;
-  max-width: min(220px, 38vw);
+  max-width: min(260px, 52vw);
   object-fit: contain;
+  object-position: left center;
   flex-shrink: 0;
 }
 .site-footer .brand-logo {
-  height: 40px;
-  max-width: 200px;
+  height: 44px;
+  max-width: 220px;
 }
 .brand small {
   display: block;
