@@ -1,5 +1,5 @@
 /* =========================================================
-   Autism Sanctuary Clinical Fellowship
+   Autism Sanctuary — site stylesheet
    Brand-inspired stylesheet
    Palette draws from Autism Sanctuary's nature-forward identity:
      - Sanctuary Green   #2F5D43  (primary)
@@ -29,6 +29,38 @@
 * { box-sizing: border-box; }
 
 html { scroll-behavior: smooth; }
+
+/* ---------- Accessibility: skip link & focus ---------- */
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0.75rem;
+  z-index: 100;
+  padding: 0.65rem 1.1rem;
+  background: var(--forest-deep);
+  color: var(--stone-cream);
+  font-weight: 600;
+  font-size: 0.9rem;
+  border-radius: 8px;
+  box-shadow: var(--shadow-deep);
+}
+.skip-link:focus {
+  left: 0.75rem;
+  outline: 3px solid var(--edgefield-gold);
+  outline-offset: 2px;
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+summary:focus-visible {
+  outline: 3px solid var(--sanctuary-green);
+  outline-offset: 2px;
+}
+
+main#main-content:focus { outline: none; }
 
 body {
   margin: 0;
@@ -226,6 +258,10 @@ section { padding: 5rem 0; }
   border: 1px solid var(--soft-rule);
 }
 .card h3 { margin-top: 0; }
+.card h2.h-card {
+  font-size: clamp(1.35rem, 2.2vw, 1.7rem);
+  margin-top: 0;
+}
 .card .icon {
   width: 48px; height: 48px;
   border-radius: 12px;
@@ -572,4 +608,33 @@ tr:last-child td { border-bottom: 0; }
     justify-content: flex-end;
     row-gap: 0.6rem;
   }
+}
+
+/* ---------- Dense / clinical prose ---------- */
+.prose {
+  max-width: 65ch;
+}
+.prose-wide {
+  max-width: 72ch;
+}
+.prose p:last-child { margin-bottom: 0; }
+
+dl.def-list {
+  margin: 0 0 1.5rem;
+}
+dl.def-list dt {
+  font-weight: 700;
+  color: var(--forest-deep);
+  margin-top: 1rem;
+  font-size: 0.95rem;
+}
+dl.def-list dt:first-child { margin-top: 0; }
+dl.def-list dd {
+  margin: 0.35rem 0 0;
+  padding-left: 0;
+  color: var(--muted-ink);
+}
+
+.section-muted {
+  background: linear-gradient(180deg, #f0f4ec 0%, var(--stone-cream) 100%);
 }
