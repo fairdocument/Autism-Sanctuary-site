@@ -1,0 +1,3 @@
+# Railpack / Railway: serve static HTML from site/ (repo root has no index.html)
+root: site
+index_fallback: false
