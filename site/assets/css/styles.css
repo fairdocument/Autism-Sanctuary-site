@@ -500,6 +500,53 @@ section { padding: 5rem 0; }
 @media (max-width: 880px) { .footer-grid { grid-template-columns: 1fr 1fr; } }
 .site-footer a { color: rgba(245,241,232,0.85); }
 .site-footer a:hover { color: var(--edgefield-gold); }
+
+/* Light panel: logo + tagline legibility on dark footer */
+.footer-about {
+  background: #fff;
+  border-radius: 14px;
+  padding: 1.25rem 1.35rem;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2);
+  align-self: start;
+}
+.footer-about .brand {
+  margin: 0;
+}
+.site-footer .footer-about .brand-logo {
+  height: 46px;
+  max-width: 260px;
+}
+.footer-about p {
+  color: var(--muted-ink);
+  margin: 0.85rem 0 0;
+  max-width: 40ch;
+}
+.footer-about p:first-of-type {
+  margin-top: 1rem;
+}
+.footer-about p:last-child {
+  margin-bottom: 0;
+}
+.footer-about .legal-inline {
+  color: var(--muted-ink);
+  opacity: 1;
+  margin-top: 0.85rem;
+}
+
+/* Address / phone: match footer nav link color (not global paragraph gray) */
+.site-footer p.footer-address {
+  margin-top: 1rem;
+  margin-bottom: 0;
+  line-height: 1.7;
+  color: rgba(245, 241, 232, 0.85);
+  max-width: none;
+}
+.site-footer p.footer-address a {
+  color: rgba(245, 241, 232, 0.85);
+}
+.site-footer p.footer-address a:hover {
+  color: var(--edgefield-gold);
+}
 .footer-bottom {
   margin-top: 3rem;
   padding-top: 1.5rem;
