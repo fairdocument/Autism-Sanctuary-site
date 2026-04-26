@@ -78,12 +78,14 @@ export default function CommunityInterestPage() {
 
   return (
     <main>
-      <h1>Bring a Sanctuary to Your Community</h1>
+      <h1>Future locations — community interest</h1>
       <p style={{ maxWidth: "65ch", marginBottom: "1.5rem" }}>
-        Share how your region can sustain <strong>person-centered support</strong>,{" "}
-        <strong>care farming</strong>, and <strong>evidence-based practice</strong> for
-        individuals with autism and IDD. This form is for civic and philanthropic
-        partners; service referrals belong on the main Admissions pathway.
+        Autism Sanctuary is strengthening its Western Albemarle campus for the next year
+        or more. This form is for civic, university, or philanthropic partners exploring{" "}
+        <em>possible</em> future sites after those systems mature. We combine{" "}
+        <strong>evidence-based methods</strong> with <strong>promising practices</strong>{" "}
+        developed on our farm. <strong>Service referrals</strong> still belong with
+        Admissions—not here.
       </p>
       <form onSubmit={submit}>
         <input required placeholder="First Name" value={form.firstName} onChange={(e) => setForm({ ...form, firstName: e.target.value })} />
