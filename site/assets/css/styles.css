@@ -133,14 +133,16 @@ p { margin: 0 0 1em; color: var(--muted-ink); }
   font-size: 1.15rem;
   color: var(--forest-deep);
 }
-.brand-mark {
-  width: 40px; height: 40px;
-  border-radius: 50%;
-  background: var(--sanctuary-green);
-  color: var(--stone-cream);
-  display: grid; place-items: center;
-  font-family: var(--font-serif);
-  font-weight: 700;
+.brand-logo {
+  height: 44px;
+  width: auto;
+  max-width: min(220px, 38vw);
+  object-fit: contain;
+  flex-shrink: 0;
+}
+.site-footer .brand-logo {
+  height: 40px;
+  max-width: 200px;
 }
 .brand small {
   display: block;
@@ -211,7 +213,7 @@ p { margin: 0 0 1em; color: var(--muted-ink); }
   color: var(--stone-cream);
   background:
     linear-gradient(120deg, rgba(30,61,44,0.85), rgba(30,61,44,0.55)),
-    url("../images/hero-forest.jpg") center/cover no-repeat,
+    url("../images/hero-enchanted-forest.jpg") center/cover no-repeat,
     var(--forest-deep);
 }
 .hero .container { padding-top: 4rem; padding-bottom: 4rem; }
@@ -272,7 +274,24 @@ section { padding: 5rem 0; }
   margin-bottom: 1rem;
 }
 
-/* Placeholder media block — use to drop in Autism Sanctuary photography */
+/* Inline photography (split sections) */
+.media-photo-wrap {
+  margin: 0;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: var(--shadow-soft);
+  min-height: 280px;
+  align-self: stretch;
+  display: flex;
+}
+.media-photo {
+  width: 100%;
+  flex: 1;
+  min-height: 280px;
+  object-fit: cover;
+}
+
+/* Decorative placeholder when no photo is available */
 .media-placeholder {
   background: linear-gradient(135deg, var(--meadow-light), var(--sanctuary-green));
   color: var(--stone-cream);
@@ -484,7 +503,10 @@ section { padding: 5rem 0; }
 
 /* ---------- Page banner (subpage hero) ---------- */
 .page-banner {
-  background: var(--forest-deep);
+  background:
+    linear-gradient(120deg, rgba(30, 61, 44, 0.92), rgba(30, 61, 44, 0.88)),
+    url("../images/hero-enchanted-forest.jpg") center/cover no-repeat,
+    var(--forest-deep);
   color: var(--stone-cream);
   padding: 5rem 0 4rem;
   position: relative;
