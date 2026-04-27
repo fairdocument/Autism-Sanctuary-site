@@ -153,8 +153,8 @@ p { margin: 0 0 1em; color: var(--muted-ink); }
   display: block;
 }
 .site-header .brand-logo {
-  height: 62px;
-  max-width: min(320px, 58vw);
+  height: 110px;
+  max-width: min(560px, 70vw);
   transition: height 0.28s ease, max-width 0.28s ease;
 }
 .site-header.is-scrolled .brand-logo {
