@@ -80,7 +80,7 @@ export default function CommunityInterestPage() {
     <main>
       <h1>Future locations — community interest</h1>
       <p style={{ maxWidth: "65ch", marginBottom: "1.5rem" }}>
-        Autism Sanctuary is strengthening its Western Albemarle campus for the next year
+        Autism Sanctuary is strengthening its Western Albemarle farm for the next year
         or more. This form is for civic, university, or philanthropic partners exploring{" "}
         <em>possible</em> future sites after those systems mature. We combine{" "}
         <strong>evidence-based methods</strong> with <strong>promising practices</strong>{" "}
@@ -129,3 +129,4 @@ export default function CommunityInterestPage() {
     </main>
   );
 }
+
