@@ -524,6 +524,10 @@ section { padding: 5rem 0; }
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 2rem;
+  max-width: 980px;
+  margin: 0 auto;
+  justify-items: center;
+  text-align: center;
 }
 @media (max-width: 880px) { .footer-grid { grid-template-columns: 1fr 1fr; } }
 .site-footer a { color: rgba(245,241,232,0.85); }

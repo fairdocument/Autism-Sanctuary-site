@@ -38,4 +38,3 @@ python -m http.server --directory site 8080
 ## Editorial note
 
 Replace placeholder media blocks with approved photography from [autismsanctuary.org](https://www.autismsanctuary.org). Verify respite, waiver, and transit statements with program leadership before publication.
-
