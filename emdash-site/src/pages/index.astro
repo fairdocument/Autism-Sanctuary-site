@@ -10,12 +10,23 @@ import CtaBand from "../components/CtaBand.astro";
 >
 	<section class="hero" aria-label="Autism Sanctuary introduction">
 		<div class="hero-media" aria-hidden="true">
+			<video
+				class="hero-video"
+				autoplay
+				muted
+				loop
+				playsinline
+				preload="metadata"
+				poster="/media/edgefield-aerial.jpg"
+			>
+				<source src="/media/hero-farm.mp4" type="video/mp4" />
+			</video>
 			<img
+				class="hero-poster"
 				src="/media/edgefield-aerial.jpg"
 				alt=""
 				width="2560"
 				height="1440"
-				fetchpriority="high"
 				decoding="async"
 			/>
 			<div class="hero-overlay"></div>

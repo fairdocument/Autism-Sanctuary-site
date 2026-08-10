@@ -539,7 +539,13 @@ textarea:focus-visible {
 	html {
 		scroll-behavior: auto;
 	}
-	.hero-media img,
+	.hero-video {
+		display: none;
+	}
+	.hero-poster {
+		display: block;
+		animation: none;
+	}
 	.hero-content,
 	.page-banner,
 	.reveal {
