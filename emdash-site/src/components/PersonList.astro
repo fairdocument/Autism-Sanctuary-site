@@ -1,0 +1,26 @@
+---
+import type { Person } from "../content/siteCopy";
+
+interface Props {
+	people: readonly Person[];
+}
+
+const { people } = Astro.props;
+---
+
+<ul class="person-list">
+	{
+		people.map((person) => (
+			<li class="person-item">
+				<div class="person-photo" aria-hidden="true">
+					<span class="person-initials">{person.initials}</span>
+				</div>
+				<div class="person-copy">
+					<h3 class="person-name">{person.name}</h3>
+					<p class="person-role">{person.role}</p>
+					<p class="person-bio">{person.bio}</p>
+				</div>
+			</li>
+		))
+	}
+</ul>

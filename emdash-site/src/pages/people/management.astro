@@ -1,0 +1,50 @@
+---
+import Base from "../../layouts/Base.astro";
+import PersonList from "../../components/PersonList.astro";
+import CtaBand from "../../components/CtaBand.astro";
+import { managementTeam } from "../../content/siteCopy";
+---
+
+<Base
+	title="Management"
+	description="Autism Sanctuary management: Olivia Bruno, Executive Director, and Isabelle (Izzy) Kueser, Director of Adult Services."
+>
+	<section class="page-banner">
+		<div class="container">
+			<span class="eyebrow">People · Management</span>
+			<h1>Management</h1>
+			<p class="lede">
+				Staff leaders who guide programs, adult services, and the daily rhythms of our Western Albemarle care
+				farm.
+			</p>
+			<div class="people-subnav" aria-label="People sections">
+				<a href="/people">Overview</a>
+				<a href="/people/board">Board</a>
+				<a href="/people/management" aria-current="page">Management</a>
+			</div>
+		</div>
+	</section>
+
+	<section class="section section-cream">
+		<div class="container">
+			<div class="section-head">
+				<span class="eyebrow">Leadership</span>
+				<h2>Names, roles, and biographies</h2>
+				<p class="lede" style="margin:0;">
+					Portraits and full biographies are placeholders for now and will be updated as materials are
+					ready.
+				</p>
+			</div>
+			<PersonList people={managementTeam} />
+		</div>
+	</section>
+
+	<CtaBand
+		title="Meet our board of directors"
+		text="Volunteer leaders providing governance and oversight."
+		primaryHref="/people/board"
+		primaryLabel="Board of directors"
+		secondaryHref="/contact"
+		secondaryLabel="Contact us"
+	/>
+</Base>

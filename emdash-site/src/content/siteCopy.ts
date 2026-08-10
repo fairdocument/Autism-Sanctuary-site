@@ -10,19 +10,36 @@ export const brand = {
 	facebook: "https://www.facebook.com/autismsanctuary",
 };
 
-export const navItems = [
+export type NavChild = { label: string; href: string };
+export type NavItem = {
+	label: string;
+	href: string;
+	cta?: boolean;
+	children?: readonly NavChild[];
+};
+
+export const navItems: readonly NavItem[] = [
 	{ label: "About", href: "/about" },
+	{
+		label: "People",
+		href: "/people",
+		children: [
+			{ label: "Board", href: "/people/board" },
+			{ label: "Management", href: "/people/management" },
+		],
+	},
 	{ label: "Programs", href: "/programs" },
 	{ label: "Our farm", href: "/our-farm" },
 	{ label: "Admissions", href: "/admissions" },
 	{ label: "Careers", href: "/careers" },
 	{ label: "Contact", href: "/contact" },
 	{ label: "Donate", href: "/donate", cta: true },
-] as const;
+];
 
 export const footerLinks = {
 	explore: [
 		{ label: "About", href: "/about" },
+		{ label: "People", href: "/people" },
 		{ label: "Programs", href: "/programs" },
 		{ label: "Our farm", href: "/our-farm" },
 		{ label: "Resources", href: "/resources" },
@@ -40,6 +57,56 @@ export const footerLinks = {
 		{ label: "Terms", href: "/terms" },
 	],
 } as const;
+
+export type Person = {
+	name: string;
+	role: string;
+	/** Initials shown in the photo placeholder until a portrait is added */
+	initials: string;
+	bio: string;
+};
+
+export const boardMembers: readonly Person[] = [
+	{
+		name: "Jason Brewster",
+		role: "President",
+		initials: "JB",
+		bio: "Biography coming soon.",
+	},
+	{
+		name: "Robert Kreps",
+		role: "Treasurer",
+		initials: "RK",
+		bio: "Biography coming soon.",
+	},
+	{
+		name: "Matthew Osborne",
+		role: "Secretary",
+		initials: "MO",
+		bio: "Biography coming soon.",
+	},
+	{
+		name: "Rose Neville",
+		role: "Board member",
+		initials: "RN",
+		bio: "Biography coming soon.",
+	},
+];
+
+export const managementTeam: readonly Person[] = [
+	{
+		name: "Olivia Bruno",
+		role: "Executive Director",
+		initials: "OB",
+		bio: "Biography coming soon.",
+	},
+	{
+		name: "Isabelle (Izzy) Kueser",
+		role: "Director of Adult Services",
+		initials: "IK",
+		bio: "Biography coming soon.",
+	},
+];
 
 export const inquiryIntents = [
 	{ value: "general", label: "General information" },

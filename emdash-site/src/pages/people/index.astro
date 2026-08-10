@@ -1,0 +1,61 @@
+---
+import Base from "../../layouts/Base.astro";
+import PersonList from "../../components/PersonList.astro";
+import CtaBand from "../../components/CtaBand.astro";
+import { boardMembers, managementTeam } from "../../content/siteCopy";
+---
+
+<Base
+	title="People"
+	description="Meet Autism Sanctuary’s board of directors and management team—leaders stewarding our Western Albemarle care farm."
+>
+	<section class="page-banner">
+		<div class="container">
+			<span class="eyebrow">People</span>
+			<h1>The board and team who steward Autism Sanctuary.</h1>
+			<p class="lede">
+				Governance and day-to-day leadership for our nonprofit care farm—supporting people with significant
+				needs through licensed services on Pea Ridge Road.
+			</p>
+			<div class="people-subnav" aria-label="People sections">
+				<a href="/people/board">Board of directors</a>
+				<a href="/people/management">Management</a>
+			</div>
+		</div>
+	</section>
+
+	<section class="section section-cream" id="board">
+		<div class="container">
+			<div class="section-head">
+				<span class="eyebrow">Board of directors</span>
+				<h2>Volunteer leaders guiding mission and oversight.</h2>
+				<p>
+					<a href="/people/board">View the full board page</a>
+				</p>
+			</div>
+			<PersonList people={boardMembers} />
+		</div>
+	</section>
+
+	<section class="section" id="management">
+		<div class="container">
+			<div class="section-head">
+				<span class="eyebrow">Management</span>
+				<h2>Staff leadership for programs and daily operations.</h2>
+				<p>
+					<a href="/people/management">View the full management page</a>
+				</p>
+			</div>
+			<PersonList people={managementTeam} />
+		</div>
+	</section>
+
+	<CtaBand
+		title="Want to join the work?"
+		text="Explore careers, volunteering, or reach out with a question."
+		primaryHref="/careers"
+		primaryLabel="Careers &amp; volunteers"
+		secondaryHref="/contact"
+		secondaryLabel="Contact us"
+	/>
+</Base>
