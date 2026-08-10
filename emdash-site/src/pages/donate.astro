@@ -32,7 +32,13 @@ const canceled = Astro.url.searchParams.get("canceled") === "1";
 			<div class="stack">
 				<span class="eyebrow">Give now</span>
 				<h2>Secure checkout with Stripe</h2>
-				<p class="lede">One-time or monthly gifts. Choose an amount and how you would like it used.</p>
+				<p class="lede">
+					One-time or monthly gifts. Choose an amount, how you would like it used, and whether this gift is
+					in honor of someone—matching the options on our
+					<a href="https://www.autismsanctuary.org/donate/" target="_blank" rel="noopener noreferrer"
+						>current donate form</a
+					>.
+				</p>
 				<DonateCheckout />
 			</div>
 			<div class="stack">

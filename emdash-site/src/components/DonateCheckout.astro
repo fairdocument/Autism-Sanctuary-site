@@ -1,5 +1,14 @@
 ---
 import { donateFunds, donatePresets } from "../content/siteCopy";
+
+const noticeOptions = [
+	{ value: "donor_email", label: "My email address" },
+	{ value: "donor_mail", label: "My mailing address" },
+	{ value: "honoree_mail", label: "Honoree's address" },
+	{ value: "other_mail", label: "Another address" },
+] as const;
+
+const prefixes = ["", "Mr.", "Mrs.", "Miss", "Ms.", "Dr.", "Prof.", "Rev."] as const;
 ---
 
 <div class="form-panel donate-checkout" data-donate>
@@ -35,13 +44,129 @@ import { donateFunds, donatePresets } from "../content/siteCopy";
 		</select>
 	</div>
 
+	<div class="form-row">
+		<div class="form-field">
+			<label for="donor-name">Your name</label>
+			<input id="donor-name" type="text" autocomplete="name" required data-donor-name />
+		</div>
+		<div class="form-field">
+			<label for="donor-email">Your email</label>
+			<input id="donor-email" type="email" autocomplete="email" required data-donor-email />
+		</div>
+	</div>
+
+	<fieldset class="honor-fieldset">
+		<legend>Is this donation in honor of someone?</legend>
+		<div class="honor-toggle" role="group" aria-label="In honor of someone">
+			<label class="honor-choice">
+				<input type="radio" name="in-honor" value="no" checked data-in-honor />
+				<span>No</span>
+			</label>
+			<label class="honor-choice">
+				<input type="radio" name="in-honor" value="yes" data-in-honor />
+				<span>Yes</span>
+			</label>
+		</div>
+
+		<div class="honor-details" data-honor-details hidden>
+			<div class="form-row">
+				<div class="form-field">
+					<label for="honoree-prefix">Prefix</label>
+					<select id="honoree-prefix" data-honoree-prefix>
+						{prefixes.map((p) => (
+							<option value={p}>{p || "—"}</option>
+						))}
+					</select>
+				</div>
+				<div class="form-field">
+					<label for="honoree-name">Honoree name</label>
+					<input id="honoree-name" type="text" autocomplete="name" data-honoree-name />
+				</div>
+			</div>
+
+			<div class="form-field">
+				<label for="notice-to">Please send notice of this donation to</label>
+				<select id="notice-to" data-notice-to>
+					{noticeOptions.map((opt) => (
+						<option value={opt.value}>{opt.label}</option>
+					))}
+				</select>
+			</div>
+
+			<div class="form-field" data-notice-email-wrap hidden>
+				<label for="notice-email">Email for acknowledgment</label>
+				<input id="notice-email" type="email" autocomplete="email" data-notice-email />
+			</div>
+
+			<div data-notice-mail-wrap hidden>
+				<div class="form-field">
+					<label for="notice-recipient">Recipient name</label>
+					<input id="notice-recipient" type="text" autocomplete="name" data-notice-recipient />
+				</div>
+				<div class="form-field">
+					<label for="notice-street">Street address</label>
+					<input id="notice-street" type="text" autocomplete="street-address" data-notice-street />
+				</div>
+				<div class="form-row">
+					<div class="form-field">
+						<label for="notice-city">City</label>
+						<input id="notice-city" type="text" autocomplete="address-level2" data-notice-city />
+					</div>
+					<div class="form-field">
+						<label for="notice-state">State</label>
+						<input id="notice-state" type="text" autocomplete="address-level1" data-notice-state maxlength="2" placeholder="VA" />
+					</div>
+				</div>
+				<div class="form-field">
+					<label for="notice-zip">ZIP code</label>
+					<input id="notice-zip" type="text" autocomplete="postal-code" data-notice-zip />
+				</div>
+			</div>
+		</div>
+	</fieldset>
+
 	<button type="button" class="btn btn-primary" data-checkout>Continue to secure checkout</button>
 	<p class="form-status" data-donate-status hidden></p>
 	<p class="privacy-note">
 		Payments are processed securely by Stripe. Autism Sanctuary is a 501(c)(3) nonprofit; you will receive a
-		receipt for tax substantiation from Stripe.
+		receipt for tax substantiation from Stripe. Honor acknowledgments are handled by our team using the details
+		you provide here.
 	</p>
 </div>
+
+<style>
+	.honor-fieldset {
+		border: 1px solid var(--soft-rule);
+		border-radius: calc(var(--radius) + 2px);
+		padding: 1rem 1rem 0.25rem;
+		margin: 0 0 1.25rem;
+	}
+
+	.honor-fieldset legend {
+		font-size: 0.88rem;
+		font-weight: 600;
+		color: var(--forest-deep);
+		padding: 0 0.35rem;
+	}
+
+	.honor-toggle {
+		display: flex;
+		gap: 1rem;
+		margin-bottom: 1rem;
+	}
+
+	.honor-choice {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.4rem;
+		font-weight: 500;
+		cursor: pointer;
+	}
+
+	.honor-details {
+		padding-bottom: 0.5rem;
+	}
+</style>
 
 <script>
 	const root = document.querySelector("[data-donate]");
@@ -53,6 +178,48 @@ import { donateFunds, donatePresets } from "../content/siteCopy";
 		const custom = root.querySelector<HTMLInputElement>("[data-custom-amount]");
 		const fund = root.querySelector<HTMLSelectElement>("[data-fund]");
 		const checkoutBtn = root.querySelector<HTMLButtonElement>("[data-checkout]");
+		const donorName = root.querySelector<HTMLInputElement>("[data-donor-name]");
+		const donorEmail = root.querySelector<HTMLInputElement>("[data-donor-email]");
+		const honorDetails = root.querySelector<HTMLElement>("[data-honor-details]");
+		const honoreePrefix = root.querySelector<HTMLSelectElement>("[data-honoree-prefix]");
+		const honoreeName = root.querySelector<HTMLInputElement>("[data-honoree-name]");
+		const noticeTo = root.querySelector<HTMLSelectElement>("[data-notice-to]");
+		const noticeEmailWrap = root.querySelector<HTMLElement>("[data-notice-email-wrap]");
+		const noticeMailWrap = root.querySelector<HTMLElement>("[data-notice-mail-wrap]");
+		const noticeEmail = root.querySelector<HTMLInputElement>("[data-notice-email]");
+		const noticeRecipient = root.querySelector<HTMLInputElement>("[data-notice-recipient]");
+		const noticeStreet = root.querySelector<HTMLInputElement>("[data-notice-street]");
+		const noticeCity = root.querySelector<HTMLInputElement>("[data-notice-city]");
+		const noticeState = root.querySelector<HTMLInputElement>("[data-notice-state]");
+		const noticeZip = root.querySelector<HTMLInputElement>("[data-notice-zip]");
+
+		function inHonorYes() {
+			return root.querySelector<HTMLInputElement>('input[name="in-honor"]:checked')?.value === "yes";
+		}
+
+		function syncHonorVisibility() {
+			const yes = inHonorYes();
+			if (honorDetails) honorDetails.hidden = !yes;
+			if (!yes) return;
+			syncNoticeVisibility();
+		}
+
+		function syncNoticeVisibility() {
+			const target = noticeTo?.value || "donor_email";
+			const needsEmail = target === "donor_email";
+			const needsMail = target === "donor_mail" || target === "honoree_mail" || target === "other_mail";
+			if (noticeEmailWrap) noticeEmailWrap.hidden = !needsEmail;
+			if (noticeMailWrap) noticeMailWrap.hidden = !needsMail;
+			if (needsEmail && noticeEmail && donorEmail && !noticeEmail.value) {
+				noticeEmail.value = donorEmail.value;
+			}
+		}
+
+		root.querySelectorAll<HTMLInputElement>("[data-in-honor]").forEach((input) => {
+			input.addEventListener("change", syncHonorVisibility);
+		});
+		noticeTo?.addEventListener("change", syncNoticeVisibility);
+		syncHonorVisibility();
 
 		root.querySelectorAll<HTMLButtonElement>("[data-freq]").forEach((btn) => {
 			btn.addEventListener("click", () => {
@@ -85,8 +252,61 @@ import { donateFunds, donatePresets } from "../content/siteCopy";
 			if (!giftAmount || giftAmount < 1) {
 				status.hidden = false;
 				status.classList.add("is-error");
+				status.classList.remove("is-success");
 				status.textContent = "Please choose or enter a gift amount of at least $1.";
 				return;
+			}
+
+			const name = donorName?.value.trim() || "";
+			const email = donorEmail?.value.trim() || "";
+			if (!name || !email) {
+				status.hidden = false;
+				status.classList.add("is-error");
+				status.textContent = "Please enter your name and email.";
+				return;
+			}
+
+			const honor: Record<string, string> = { in_honor: "no" };
+			if (inHonorYes()) {
+				const honoree = [honoreePrefix?.value, honoreeName?.value.trim()].filter(Boolean).join(" ").trim();
+				if (!honoree) {
+					status.hidden = false;
+					status.classList.add("is-error");
+					status.textContent = "Please enter the honoree’s name.";
+					return;
+				}
+				const target = noticeTo?.value || "donor_email";
+				honor.in_honor = "yes";
+				honor.honoree_name = honoree;
+				honor.notice_to = target;
+
+				if (target === "donor_email") {
+					const ackEmail = noticeEmail?.value.trim() || email;
+					if (!ackEmail) {
+						status.hidden = false;
+						status.classList.add("is-error");
+						status.textContent = "Please enter an email for the acknowledgment notice.";
+						return;
+					}
+					honor.notice_email = ackEmail;
+				} else {
+					const recipient = noticeRecipient?.value.trim() || "";
+					const street = noticeStreet?.value.trim() || "";
+					const city = noticeCity?.value.trim() || "";
+					const state = noticeState?.value.trim() || "";
+					const zip = noticeZip?.value.trim() || "";
+					if (!street || !city || !state || !zip) {
+						status.hidden = false;
+						status.classList.add("is-error");
+						status.textContent = "Please complete the mailing address for the acknowledgment notice.";
+						return;
+					}
+					honor.notice_recipient = recipient || name;
+					honor.notice_street = street;
+					honor.notice_city = city;
+					honor.notice_state = state;
+					honor.notice_zip = zip;
+				}
 			}
 
 			status.hidden = true;
@@ -101,6 +321,9 @@ import { donateFunds, donatePresets } from "../content/siteCopy";
 						amount: giftAmount,
 						frequency,
 						fund: fund?.value || "where-needed",
+						donor_name: name,
+						donor_email: email,
+						...honor,
 					}),
 				});
 				const data = (await res.json()) as { ok?: boolean; url?: string; message?: string };
