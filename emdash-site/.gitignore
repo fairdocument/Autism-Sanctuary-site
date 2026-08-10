@@ -21,3 +21,4 @@ npm-debug.log*
 
 # macOS
 .DS_Store
+emdash-site/dist/
