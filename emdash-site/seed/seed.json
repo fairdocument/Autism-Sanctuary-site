@@ -1,0 +1,110 @@
+{
+	"$schema": "https://emdashcms.com/seed.schema.json",
+	"version": "1",
+	"meta": {
+		"name": "Autism Sanctuary",
+		"description": "Care farm and licensed IDD supports in Western Albemarle, Virginia",
+		"author": "Autism Sanctuary"
+	},
+	"settings": {
+		"title": "Autism Sanctuary",
+		"tagline": "Nature's haven for autism: where growth knows no limits."
+	},
+	"collections": [
+		{
+			"slug": "pages",
+			"label": "Pages",
+			"labelSingular": "Page",
+			"supports": ["drafts", "revisions", "search", "seo"],
+			"fields": [
+				{
+					"slug": "title",
+					"label": "Title",
+					"type": "string",
+					"required": true,
+					"searchable": true
+				},
+				{
+					"slug": "content",
+					"label": "Content",
+					"type": "portableText",
+					"searchable": true
+				}
+			]
+		},
+		{
+			"slug": "posts",
+			"label": "News",
+			"labelSingular": "Post",
+			"urlPattern": "/news/{slug}",
+			"supports": ["drafts", "revisions", "search", "seo"],
+			"fields": [
+				{
+					"slug": "title",
+					"label": "Title",
+					"type": "string",
+					"required": true,
+					"searchable": true
+				},
+				{
+					"slug": "excerpt",
+					"label": "Excerpt",
+					"type": "text",
+					"searchable": true
+				},
+				{
+					"slug": "content",
+					"label": "Content",
+					"type": "portableText",
+					"searchable": true
+				},
+				{
+					"slug": "featured_image",
+					"label": "Featured Image",
+					"type": "image"
+				}
+			]
+		}
+	],
+	"menus": [
+		{
+			"name": "primary",
+			"label": "Primary",
+			"items": [
+				{ "label": "Home", "url": "/" },
+				{ "label": "About", "url": "/about" },
+				{ "label": "Programs", "url": "/programs" },
+				{ "label": "Our farm", "url": "/our-farm" },
+				{ "label": "Admissions", "url": "/admissions" },
+				{ "label": "Careers", "url": "/careers" },
+				{ "label": "Contact", "url": "/contact" },
+				{ "label": "Donate", "url": "/donate" }
+			]
+		}
+	],
+	"content": {
+		"pages": [
+			{
+				"slug": "about",
+				"data": {
+					"title": "About",
+					"content": [
+						{
+							"_type": "block",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"text": "Autism Sanctuary is a Virginia DBHDS-licensed care farm in Western Albemarle.",
+									"_key": "a1"
+								}
+							],
+							"_key": "b1"
+						}
+					]
+				}
+			}
+		],
+		"posts": []
+	}
+}

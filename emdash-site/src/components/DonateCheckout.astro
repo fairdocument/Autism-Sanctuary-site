@@ -1,0 +1,123 @@
+---
+import { donateFunds, donatePresets } from "../content/siteCopy";
+---
+
+<div class="form-panel donate-checkout" data-donate>
+	<div class="freq-toggle" role="group" aria-label="Gift frequency">
+		<button type="button" class="is-active" data-freq="one_time">One-time</button>
+		<button type="button" data-freq="monthly">Monthly</button>
+	</div>
+
+	<p class="eyebrow" style="margin-bottom:0.5rem;">Select amount</p>
+	<div class="amount-grid">
+		{
+			donatePresets.map((amount, index) => (
+				<button
+					type="button"
+					class:list={["amount-btn", { "is-active": index === 1 }]}
+					data-amount={amount}
+				>
+					${amount}
+				</button>
+			))
+		}
+	</div>
+
+	<div class="form-field">
+		<label for="custom-amount">Other amount (USD)</label>
+		<input id="custom-amount" type="number" min="1" step="1" placeholder="Enter amount" data-custom-amount />
+	</div>
+
+	<div class="form-field">
+		<label for="fund">Please use my donation towards</label>
+		<select id="fund" data-fund>
+			{donateFunds.map((fund) => <option value={fund.value}>{fund.label}</option>)}
+		</select>
+	</div>
+
+	<button type="button" class="btn btn-primary" data-checkout>Continue to secure checkout</button>
+	<p class="form-status" data-donate-status hidden></p>
+	<p class="privacy-note">
+		Payments are processed securely by Stripe. Autism Sanctuary is a 501(c)(3) nonprofit; you will receive a
+		receipt for tax substantiation from Stripe.
+	</p>
+</div>
+
+<script>
+	const root = document.querySelector("[data-donate]");
+	if (root) {
+		let frequency: "one_time" | "monthly" = "one_time";
+		let amount = 50;
+
+		const status = root.querySelector<HTMLElement>("[data-donate-status]");
+		const custom = root.querySelector<HTMLInputElement>("[data-custom-amount]");
+		const fund = root.querySelector<HTMLSelectElement>("[data-fund]");
+		const checkoutBtn = root.querySelector<HTMLButtonElement>("[data-checkout]");
+
+		root.querySelectorAll<HTMLButtonElement>("[data-freq]").forEach((btn) => {
+			btn.addEventListener("click", () => {
+				root.querySelectorAll("[data-freq]").forEach((el) => el.classList.remove("is-active"));
+				btn.classList.add("is-active");
+				frequency = btn.dataset.freq === "monthly" ? "monthly" : "one_time";
+			});
+		});
+
+		root.querySelectorAll<HTMLButtonElement>("[data-amount]").forEach((btn) => {
+			btn.addEventListener("click", () => {
+				root.querySelectorAll("[data-amount]").forEach((el) => el.classList.remove("is-active"));
+				btn.classList.add("is-active");
+				amount = Number(btn.dataset.amount || 50);
+				if (custom) custom.value = "";
+			});
+		});
+
+		custom?.addEventListener("input", () => {
+			const value = Number(custom.value);
+			if (value > 0) {
+				amount = value;
+				root.querySelectorAll("[data-amount]").forEach((el) => el.classList.remove("is-active"));
+			}
+		});
+
+		checkoutBtn?.addEventListener("click", async () => {
+			if (!status || !checkoutBtn) return;
+			const giftAmount = Number(custom?.value || amount);
+			if (!giftAmount || giftAmount < 1) {
+				status.hidden = false;
+				status.classList.add("is-error");
+				status.textContent = "Please choose or enter a gift amount of at least $1.";
+				return;
+			}
+
+			status.hidden = true;
+			checkoutBtn.disabled = true;
+			checkoutBtn.textContent = "Redirecting…";
+
+			try {
+				const res = await fetch("/api/donate/checkout", {
+					method: "POST",
+					headers: { "Content-Type": "application/json", Accept: "application/json" },
+					body: JSON.stringify({
+						amount: giftAmount,
+						frequency,
+						fund: fund?.value || "where-needed",
+					}),
+				});
+				const data = (await res.json()) as { ok?: boolean; url?: string; message?: string };
+				if (!res.ok || !data.ok || !data.url) {
+					throw new Error(data.message || "Checkout is not available yet.");
+				}
+				window.location.href = data.url;
+			} catch (err) {
+				status.hidden = false;
+				status.classList.add("is-error");
+				status.textContent =
+					err instanceof Error
+						? err.message
+						: "Unable to start checkout. Please email info@autismsanctuary.org.";
+				checkoutBtn.disabled = false;
+				checkoutBtn.textContent = "Continue to secure checkout";
+			}
+		});
+	}
+</script>

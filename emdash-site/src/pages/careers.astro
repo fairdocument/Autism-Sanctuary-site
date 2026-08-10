@@ -1,0 +1,94 @@
+---
+import Base from "../layouts/Base.astro";
+import InquiryForm from "../components/InquiryForm.astro";
+import CtaBand from "../components/CtaBand.astro";
+---
+
+<Base
+	title="Careers &amp; volunteers"
+	description="Work or volunteer at Autism Sanctuary in Western Albemarle: DSPs and volunteers who love trails, animals, and people with significant support needs."
+>
+	<section class="page-banner">
+		<div class="container">
+			<span class="eyebrow">Join our community</span>
+			<h1>Careers &amp; volunteers: show up for people who love the outdoors.</h1>
+			<p class="lede">
+				We hire Direct Support Professionals who are steady, kind, and skilled with significant support needs,
+				and we welcome volunteers who keep trails and gardens safe.
+			</p>
+		</div>
+	</section>
+
+	<section class="section section-cream">
+		<div class="container split">
+			<div class="stack prose-wide">
+				<span class="eyebrow">Direct Support Professionals</span>
+				<h2>Be the teammate who makes farm days possible.</h2>
+				<p>
+					DSPs provide hands-on support across day, residential, and vocational settings—coaching people
+					through therapeutic horticulture, pre-vocational routines, and community outings.
+				</p>
+				<ul class="checklist">
+					<li>Training in evidence-based approaches plus Sanctuary-developed practices</li>
+					<li>Mentorship alongside program leadership</li>
+					<li>Pathways aligned with nursing, OT, social work, education, and related fields</li>
+				</ul>
+				<a class="btn btn-primary" href="/fellowship">Siemers Fellowship</a>
+			</div>
+			<figure class="media-frame">
+				<img
+					src="/media/sanctuary-gardens.jpg"
+					alt="Garden environment where DSPs support outdoor programming."
+					width="2560"
+					height="1920"
+					loading="lazy"
+					decoding="async"
+				/>
+			</figure>
+		</div>
+	</section>
+
+	<section class="section">
+		<div class="container split reverse">
+			<figure class="media-frame">
+				<img
+					src="/media/hero-enchanted-forest.jpg"
+					alt="Forest trail illustrating volunteer stewardship roles."
+					width="1976"
+					height="2560"
+					loading="lazy"
+					decoding="async"
+				/>
+			</figure>
+			<div class="stack prose-wide">
+				<span class="eyebrow">Volunteers</span>
+				<h2>Trail, garden, and day-program support</h2>
+				<p>
+					Help with trail maintenance, agriculture in the high tunnel and gardens, or—with training—assist
+					staff in the adult day program. Roles are informal and complement paid staffing.
+				</p>
+				<a class="btn btn-secondary" href="/our-farm">Learn about the farm</a>
+			</div>
+		</div>
+	</section>
+
+	<section class="section section-cream">
+		<div class="container" style="max-width:48rem;">
+			<InquiryForm defaultIntent="jobs" heading="Inquire about jobs or volunteering" />
+			<p class="privacy-note">
+				Select <strong>Job opportunities</strong> or <strong>Volunteering</strong> in the intent field so we can
+				route your note.
+			</p>
+		</div>
+	</section>
+
+	<CtaBand
+		title="Prefer email?"
+		text="Reach info@autismsanctuary.org with a short introduction and the role you have in mind."
+		primaryHref="/contact"
+		primaryLabel="Contact"
+		secondaryHref="/donate"
+		secondaryLabel="Donate"
+		variant="meadow"
+	/>
+</Base>

@@ -1,6 +1,8 @@
 # Autism Sanctuary — Public Website
 
-Static **HTML/CSS** site (no build step) for **Autism Sanctuary**, a Virginia **501(c)(3)** and **DBHDS-licensed** **care farm** in **Western Albemarle**. Copy highlights joyful **outdoor programming** (trails, animals, gardens), **licensed supports** for people with **significant needs**, and a blend of **evidence-based** and **Sanctuary-developed promising practices**—without implying multi-site expansion is imminent.
+**Primary build:** EmDash (Astro) theme in [`emdash-site/`](emdash-site/), staged on WPMU Unlimited at https://autismsanctuary-new-nimbusserver.tempurl.host/ — see [`emdash-site/README.md`](emdash-site/README.md) and [`emdash-site/GO_LIVE.md`](emdash-site/GO_LIVE.md).
+
+**Reference static prototype:** `site/` remains a static **HTML/CSS** draft for **Autism Sanctuary**, a Virginia **501(c)(3)** and **DBHDS-licensed** **care farm** in **Western Albemarle**.
 
 Open `site/index.html` locally, or serve `site/` from any static host (GitHub Pages, Netlify, S3, etc.).
 

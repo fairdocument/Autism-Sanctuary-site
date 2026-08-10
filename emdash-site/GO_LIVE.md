@@ -1,0 +1,24 @@
+# Autism Sanctuary EmDash — go-live checklist
+
+## Done by Cursor
+
+- [x] Theme, hybrid IA pages, farm storytelling, branding, media
+- [x] Multi-intent inquiry form (`/api/inquiry` → EmDash contact-form plugin)
+- [x] Stripe Checkout UI + `/api/donate/checkout` (requires `STRIPE_SECRET_KEY`)
+- [x] Synced to `/home/sites/autismsanctuary-new/public_html` only
+
+## Required from you (Hub)
+
+1. Open the **autismsanctuary-new** EmDash site on `nimbusserver`
+2. Add `STRIPE_SECRET_KEY` (restricted or secret key from the nonprofit Stripe account) to site/hosting env
+3. Click **Restart** (or **Rebuild** if deps/config changed)
+4. Hard-refresh https://autismsanctuary-new-nimbusserver.tempurl.host/
+
+## Then verify
+
+- [ ] Home shows Autism Sanctuary hero (not “My Blog”)
+- [ ] `/programs` `/our-farm` `/donate` `/contact` work
+- [ ] Inquiry form submits; check Form Submissions / email
+- [ ] Donate checkout redirects to Stripe when key is set
+- [ ] Mobile + desktop hero looks correct
+- [ ] Domain cutover for autismsanctuary.org only after sign-off

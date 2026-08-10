@@ -1,0 +1,106 @@
+---
+import Base from "../layouts/Base.astro";
+import InquiryForm from "../components/InquiryForm.astro";
+import CtaBand from "../components/CtaBand.astro";
+---
+
+<Base
+	title="Admissions"
+	description="Admissions and intake for Autism Sanctuary’s Western Albemarle care farm—licensed supports with outdoor programming."
+>
+	<section class="page-banner">
+		<div class="container">
+			<span class="eyebrow">Admissions</span>
+			<h1>Begin with a conversation rooted in respect and clarity.</h1>
+			<p class="lede">
+				Our admissions team partners with families, guardians, and case managers—and people when it fits—to
+				explore supports that blend licensed services with trails, animals, and farm routines.
+			</p>
+		</div>
+	</section>
+
+	<section class="section section-cream">
+		<div class="container">
+			<div class="section-head">
+				<span class="eyebrow">At a glance</span>
+				<h2>How we partner with you</h2>
+			</div>
+			<div class="grid-2">
+				<article class="feature-block">
+					<h3>Step 1: Intake materials</h3>
+					<p>Share information so we can understand strengths, goals, and supports.</p>
+				</article>
+				<article class="feature-block">
+					<h3>Step 2: Collaborative review</h3>
+					<p>Program leaders evaluate fit, safety, and service alignment.</p>
+				</article>
+				<article class="feature-block">
+					<h3>Step 3: Person-centered meeting</h3>
+					<p>We meet with people (when appropriate) and supporters to co-design next steps.</p>
+				</article>
+				<article class="feature-block">
+					<h3>Step 4: Authorized start</h3>
+					<p>With ISP approval as applicable, we schedule onboarding into the right mix of supports.</p>
+				</article>
+			</div>
+		</div>
+	</section>
+
+	<section class="section">
+		<div class="container">
+			<div class="section-head">
+				<span class="eyebrow">FAQ</span>
+				<h2>Questions families often ask</h2>
+			</div>
+			<div class="faq-list">
+				<details>
+					<summary>Who can begin the admissions process?</summary>
+					<p>
+						Family members, guardians, case managers, and authorized professionals seeking lifespan support
+						for individuals with autism or IDD may start the conversation.
+					</p>
+				</details>
+				<details>
+					<summary>Do you maintain waitlists?</summary>
+					<p>
+						Some programs may have wait times depending on staffing ratios and licensure capacity. We
+						communicate transparently about anticipated starts.
+					</p>
+				</details>
+				<details>
+					<summary>Are you a nonprofit and licensed provider?</summary>
+					<p>Yes. Autism Sanctuary is a 501(c)(3) nonprofit and a Virginia DBHDS-licensed provider.</p>
+				</details>
+				<details>
+					<summary>What documents help us plan?</summary>
+					<p>
+						When applicable, current ISP, positive behavior support plans, and educational or psychological
+						evaluations from the past two years assist our team.
+					</p>
+				</details>
+			</div>
+		</div>
+	</section>
+
+	<section class="section section-cream">
+		<div class="container" style="max-width:48rem;">
+			<InquiryForm defaultIntent="program-fit" heading="Explore a program fit" />
+			<p class="privacy-note">
+				For the full multi-step intake used in production, you may also use
+				<a href="https://www.autismsanctuary.org/intake-form/" target="_blank" rel="noopener noreferrer"
+					>the current intake form</a
+				>
+				while this EmDash site is staging.
+			</p>
+		</div>
+	</section>
+
+	<CtaBand
+		title="Need waiver context first?"
+		primaryHref="/resources"
+		primaryLabel="Resources"
+		secondaryHref="/programs"
+		secondaryLabel="Programs"
+		variant="meadow"
+	/>
+</Base>

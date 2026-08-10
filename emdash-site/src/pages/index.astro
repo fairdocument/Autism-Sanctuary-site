@@ -1,0 +1,181 @@
+---
+import Base from "../layouts/Base.astro";
+import CtaBand from "../components/CtaBand.astro";
+---
+
+<Base
+	title="Care Farm in Western Albemarle"
+	description="Autism Sanctuary is a Virginia DBHDS-licensed working farm in Western Albemarle: meaningful days outdoors with trails, animals, gardens, and person-centered supports."
+	image="/media/farm-landscape.jpg"
+>
+	<section class="hero" aria-label="Autism Sanctuary introduction">
+		<div class="hero-media" aria-hidden="true">
+			<img
+				src="/media/farm-landscape.jpg"
+				alt=""
+				width="2560"
+				height="1707"
+				fetchpriority="high"
+				decoding="async"
+			/>
+			<div class="hero-overlay"></div>
+		</div>
+		<div class="hero-content">
+			<p class="eyebrow">501(c)(3) · Virginia DBHDS-licensed · Western Albemarle</p>
+			<p class="hero-brand">Autism Sanctuary</p>
+			<h1>Meaningful days outdoors—with trails, animals, and a community that shows up.</h1>
+			<p class="lede">
+				A rural working farm on Pea Ridge Road where people with significant support needs spend real
+				time in nature—alongside licensed services grounded in evidence-based and promising practices.
+			</p>
+			<div class="cta-row">
+				<a class="btn btn-gold" href="/programs">See programs</a>
+				<a class="btn btn-light" href="/our-farm">Visit our farm story</a>
+			</div>
+		</div>
+	</section>
+
+	<section class="section section-cream reveal">
+		<div class="container">
+			<div class="section-head">
+				<span class="eyebrow">Our model</span>
+				<h2>One sanctuary today—deep roots in Western Albemarle.</h2>
+			</div>
+			<div class="split">
+				<div class="stack prose-wide">
+					<p>
+						We operate a single licensed location where people spend real time with
+						<strong>trails, animals, gardens, and people who care</strong>. Days are designed for joy,
+						regulation, and connection—not a clinical waiting room.
+					</p>
+					<ul class="checklist">
+						<li>
+							<strong>High support needs welcome:</strong> most people we serve rely on consistent,
+							skilled staffing.
+						</li>
+						<li>
+							<strong>Evidence + practice here:</strong> research-backed methods where they fit, and
+							promising practices refined on this farm.
+						</li>
+						<li>
+							<strong>Local first:</strong> Crozet, White Hall, and the wider Albemarle community help
+							make the farm feel like more than a program.
+						</li>
+					</ul>
+					<div class="cta-row">
+						<a class="btn btn-primary" href="/about">About Autism Sanctuary</a>
+						<a class="btn btn-secondary" href="/contact?intent=program-fit">Ask about a fit</a>
+					</div>
+				</div>
+				<figure class="media-frame">
+					<img
+						src="/media/sanctuary-gardens.jpg"
+						alt="Garden paths and plantings at Autism Sanctuary’s Virginia farm."
+						width="2560"
+						height="1920"
+						loading="lazy"
+						decoding="async"
+					/>
+				</figure>
+			</div>
+		</div>
+	</section>
+
+	<section class="section section-meadow reveal">
+		<div class="container">
+			<div class="section-head">
+				<span class="eyebrow">Programs</span>
+				<h2>Licensed supports that still feel like a day on the farm.</h2>
+			</div>
+			<div class="grid-3">
+				<article class="feature-block">
+					<h3>Group Day &amp; Community Coaching</h3>
+					<p>
+						Weekday person-centered support in a natural learning environment—therapeutic horticulture,
+						animal care, and guided community participation.
+					</p>
+				</article>
+				<article class="feature-block">
+					<h3>Residential &amp; Home-Based</h3>
+					<p>
+						Individualized residential pathways where authorized—designed for stability, dignity, and
+						collaborative planning with families and guardians.
+					</p>
+				</article>
+				<article class="feature-block">
+					<h3>Workplace Assistance</h3>
+					<p>
+						Coaching that connects pre-vocational routines on the farm to community roles when that
+						matches a person’s goals.
+					</p>
+				</article>
+			</div>
+			<div class="cta-row">
+				<a class="btn btn-primary" href="/programs">Full program details</a>
+			</div>
+		</div>
+	</section>
+
+	<section class="section reveal">
+		<div class="container split reverse">
+			<figure class="media-frame">
+				<img
+					src="/media/edgefield-house.jpg"
+					alt="Historic Edgefield farmhouse at Autism Sanctuary."
+					width="2560"
+					height="1707"
+					loading="lazy"
+					decoding="async"
+				/>
+			</figure>
+			<div class="stack prose-wide">
+				<span class="eyebrow">Our farm</span>
+				<h2>Edgefield, trails, animals, and the Enchanted Forest.</h2>
+				<p>
+					From cattle and chickens to high-tunnel gardens and two walking trails, the land is the
+					program. Neighbors and volunteers help keep trails open and days generous.
+				</p>
+				<div class="cta-row">
+					<a class="btn btn-primary" href="/our-farm">Explore the property</a>
+					<a class="btn btn-secondary" href="/contact?intent=volunteer">Volunteer with us</a>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="section section-cream reveal">
+		<div class="container split">
+			<div class="stack prose-wide">
+				<span class="eyebrow">Support the sanctuary</span>
+				<h2>Your gift keeps farm days joyful and safe.</h2>
+				<p>
+					Philanthropy fills gaps Medicaid and grants can miss: trails, barns, gardens, sensory play,
+					and staff development for people with significant support needs.
+				</p>
+				<div class="cta-row">
+					<a class="btn btn-primary" href="/donate">Donate</a>
+					<a class="btn btn-secondary" href="/contact?intent=donate">Ask about giving</a>
+				</div>
+			</div>
+			<figure class="media-frame">
+				<img
+					src="/media/hero-enchanted-forest.jpg"
+					alt="Forest canopy along the Enchanted Forest trail."
+					width="1976"
+					height="2560"
+					loading="lazy"
+					decoding="async"
+				/>
+			</figure>
+		</div>
+	</section>
+
+	<CtaBand
+		title="Ready to talk?"
+		text="Whether you are exploring programs, volunteering, careers, or a gift—we are glad you reached out."
+		primaryHref="/contact"
+		primaryLabel="Send an inquiry"
+		secondaryHref="/admissions"
+		secondaryLabel="Admissions"
+	/>
+</Base>

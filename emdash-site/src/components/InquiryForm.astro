@@ -1,0 +1,113 @@
+---
+import { inquiryIntents, type InquiryIntent } from "../content/siteCopy";
+
+interface Props {
+	defaultIntent?: InquiryIntent;
+	heading?: string;
+}
+
+const { defaultIntent = "general", heading = "Send an inquiry" } = Astro.props;
+---
+
+<div class="form-panel inquiry-form" data-inquiry-form>
+	<h2 class="inquiry-heading">{heading}</h2>
+	<form method="post" action="/api/inquiry" data-inquiry>
+		<input type="hidden" name="_hp" value="" tabindex="-1" autocomplete="off" aria-hidden="true" />
+		<div class="form-row">
+			<div class="form-field">
+				<label for="inquiry-name">Name</label>
+				<input id="inquiry-name" name="name" type="text" autocomplete="name" required />
+			</div>
+			<div class="form-field">
+				<label for="inquiry-email">Email</label>
+				<input id="inquiry-email" name="email" type="email" autocomplete="email" required />
+			</div>
+		</div>
+		<div class="form-row">
+			<div class="form-field">
+				<label for="inquiry-phone">Phone <span class="optional">(optional)</span></label>
+				<input id="inquiry-phone" name="phone" type="tel" autocomplete="tel" />
+			</div>
+			<div class="form-field">
+				<label for="inquiry-intent">I am inquiring about</label>
+				<select id="inquiry-intent" name="intent" required>
+					{
+						inquiryIntents.map((intent) => (
+							<option value={intent.value} selected={intent.value === defaultIntent}>
+								{intent.label}
+							</option>
+						))
+					}
+				</select>
+			</div>
+		</div>
+		<div class="form-field">
+			<label for="inquiry-message">Message</label>
+			<textarea
+				id="inquiry-message"
+				name="message"
+				required
+				placeholder="Share a short note. Please do not include protected health information or client-identifying details."
+			></textarea>
+		</div>
+		<button type="submit" class="btn btn-primary" data-submit>Send inquiry</button>
+		<p class="form-status" data-status hidden></p>
+		<p class="privacy-note">
+			By submitting, you agree we may contact you about Autism Sanctuary. Do not include PHI or
+			client-identifying details in your message.
+		</p>
+	</form>
+</div>
+
+<style>
+	.inquiry-heading {
+		margin: 0 0 1.25rem;
+		font-size: 1.5rem;
+	}
+
+	.optional {
+		font-weight: 400;
+		color: var(--muted-ink);
+	}
+</style>
+
+<script>
+	const root = document.querySelector("[data-inquiry-form]");
+	const form = root?.querySelector<HTMLFormElement>("[data-inquiry]");
+	const status = root?.querySelector<HTMLElement>("[data-status]");
+	const submitBtn = root?.querySelector<HTMLButtonElement>("[data-submit]");
+
+	form?.addEventListener("submit", async (event) => {
+		event.preventDefault();
+		if (!status || !submitBtn) return;
+
+		status.hidden = true;
+		status.classList.remove("is-error", "is-success");
+		submitBtn.disabled = true;
+		submitBtn.textContent = "Sending…";
+
+		try {
+			const body = new FormData(form);
+			const res = await fetch("/api/inquiry", {
+				method: "POST",
+				headers: { Accept: "application/json" },
+				body,
+			});
+			const data = (await res.json()) as { ok?: boolean; message?: string };
+			if (!res.ok || !data.ok) {
+				throw new Error(data.message || "Something went wrong. Please try again or email us.");
+			}
+			status.textContent = data.message || "Thank you. We received your inquiry.";
+			status.classList.add("is-success");
+			status.hidden = false;
+			form.reset();
+		} catch (err) {
+			status.textContent = err instanceof Error ? err.message : "Unable to send right now.";
+			status.classList.add("is-error");
+			status.hidden = false;
+		} finally {
+			submitBtn.disabled = false;
+			submitBtn.textContent = "Send inquiry";
+		}
+	});
+</script>

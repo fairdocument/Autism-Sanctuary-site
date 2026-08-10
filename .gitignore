@@ -1,0 +1,15 @@
+# Dependencies
+emdash-site/node_modules/
+
+# Local EmDash runtime
+emdash-site/data.db
+emdash-site/data.db-*
+emdash-site/uploads/
+emdash-site/.astro/
+emdash-site/.env
+emdash-site/.env.*
+
+# OS / editor
+.DS_Store
+**/.DS_Store
+emdash-site/.claude/

@@ -1,0 +1,79 @@
+---
+import Base from "../layouts/Base.astro";
+import DonateCheckout from "../components/DonateCheckout.astro";
+import InquiryForm from "../components/InquiryForm.astro";
+
+const canceled = Astro.url.searchParams.get("canceled") === "1";
+---
+
+<Base
+	title="Donate"
+	description="Support Autism Sanctuary care farming, therapeutic horticulture, and person-centered IDD services through philanthropy."
+>
+	<section class="page-banner">
+		<div class="container">
+			<span class="eyebrow">Philanthropy</span>
+			<h1>Help us keep farm days generous and joyful.</h1>
+			<p class="lede">
+				Philanthropy fills gaps Medicaid and grants can miss: trails, barns, gardens, sensory play, and staff
+				development that keep outdoor programming safe and fun.
+			</p>
+			{canceled && (
+				<p class="note" style="margin-top:1.25rem;">
+					Checkout was canceled. You can adjust your gift below, or
+					<a href="/contact?intent=donate">ask us about other ways to give</a>.
+				</p>
+			)}
+		</div>
+	</section>
+
+	<section class="section section-cream">
+		<div class="container split">
+			<div class="stack">
+				<span class="eyebrow">Give now</span>
+				<h2>Secure checkout with Stripe</h2>
+				<p class="lede">One-time or monthly gifts. Choose an amount and how you would like it used.</p>
+				<DonateCheckout />
+			</div>
+			<div class="stack">
+				<span class="eyebrow">Where gifts go</span>
+				<article class="feature-block">
+					<h3>Care farming infrastructure</h3>
+					<p>Trails, high tunnels, tools, and safety systems that make pre-vocational training possible.</p>
+				</article>
+				<article class="feature-block">
+					<h3>Participant access</h3>
+					<p>Supports that reduce barriers to community engagement and inclusive programming.</p>
+				</article>
+				<article class="feature-block">
+					<h3>Workforce strength</h3>
+					<p>
+						Training stipends, wellness resources, and the
+						<a href="/fellowship">Siemers Fellowship</a>.
+					</p>
+				</article>
+				<figure class="media-frame">
+					<img
+						src="/media/farm-landscape.jpg"
+						alt="Landscape view of Autism Sanctuary’s farm."
+						width="2560"
+						height="1707"
+						loading="lazy"
+						decoding="async"
+					/>
+				</figure>
+			</div>
+		</div>
+	</section>
+
+	<section class="section">
+		<div class="container" style="max-width:48rem;">
+			<div class="note" style="margin-bottom:1.5rem;">
+				<strong>501(c)(3) acknowledgment:</strong> Autism Sanctuary is a nonprofit organization; consult the
+				development team for gift acknowledgment letters and tax substantiation. Prefer to talk before giving?
+				Use the form below or email info@autismsanctuary.org about donating supplies, goods, or services.
+			</div>
+			<InquiryForm defaultIntent="donate" heading="Questions about donating?" />
+		</div>
+	</section>
+</Base>

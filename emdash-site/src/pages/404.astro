@@ -1,0 +1,17 @@
+---
+import Base from "../layouts/Base.astro";
+---
+
+<Base title="Page not found" description="The page you requested could not be found." noIndex={true}>
+	<section class="page-banner">
+		<div class="container">
+			<span class="eyebrow">404</span>
+			<h1>We could not find that page.</h1>
+			<p class="lede">Try the home page, or send us a note if you need help finding something.</p>
+			<div class="cta-row">
+				<a class="btn btn-primary" href="/">Home</a>
+				<a class="btn btn-secondary" href="/contact">Contact</a>
+			</div>
+		</div>
+	</section>
+</Base>

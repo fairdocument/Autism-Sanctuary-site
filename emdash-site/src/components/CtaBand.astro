@@ -1,0 +1,40 @@
+---
+interface Props {
+	title: string;
+	text?: string;
+	primaryHref: string;
+	primaryLabel: string;
+	secondaryHref?: string;
+	secondaryLabel?: string;
+	variant?: "forest" | "meadow";
+}
+
+const {
+	title,
+	text,
+	primaryHref,
+	primaryLabel,
+	secondaryHref,
+	secondaryLabel,
+	variant = "forest",
+} = Astro.props;
+---
+
+<section class:list={["section", variant === "forest" ? "section-forest" : "section-meadow"]}>
+	<div class="container" style="text-align:center;">
+		<h2>{title}</h2>
+		{text && <p class="lede" style="margin:0.75rem auto 0;">{text}</p>}
+		<div class="cta-row" style="justify-content:center;">
+			<a class={variant === "forest" ? "btn btn-gold" : "btn btn-primary"} href={primaryHref}>
+				{primaryLabel}
+			</a>
+			{
+				secondaryHref && secondaryLabel && (
+					<a class={variant === "forest" ? "btn btn-light" : "btn btn-secondary"} href={secondaryHref}>
+						{secondaryLabel}
+					</a>
+				)
+			}
+		</div>
+	</div>
+</section>

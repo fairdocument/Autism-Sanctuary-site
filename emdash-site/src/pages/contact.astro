@@ -1,0 +1,61 @@
+---
+import Base from "../layouts/Base.astro";
+import InquiryForm from "../components/InquiryForm.astro";
+import { brand, inquiryIntents, type InquiryIntent } from "../content/siteCopy";
+
+const intentParam = Astro.url.searchParams.get("intent") || "general";
+const defaultIntent = inquiryIntents.some((i) => i.value === intentParam)
+	? (intentParam as InquiryIntent)
+	: "general";
+---
+
+<Base
+	title="Contact"
+	description="Contact Autism Sanctuary for admissions, volunteering, donations, careers, and general questions."
+>
+	<section class="page-banner">
+		<div class="container">
+			<span class="eyebrow">Contact</span>
+			<h1>We are glad you reached out.</h1>
+			<p class="lede">
+				Ask about programs, exploring a fit for a disabled individual, volunteering, jobs, donating, or general
+				information about the organization.
+			</p>
+		</div>
+	</section>
+
+	<section class="section section-cream">
+		<div class="container split">
+			<aside class="stack">
+				<h2>Visit &amp; phone</h2>
+				<p>
+					<strong>Address:</strong><br />
+					{brand.address}
+				</p>
+				<p>
+					<strong>Phone:</strong>
+					<a href={brand.phoneHref}>{brand.phone}</a><br />
+					<strong>Email:</strong>
+					<a href={`mailto:${brand.email}`}>{brand.email}</a>
+				</p>
+				<p>
+					<strong>Social:</strong>
+					<a href={brand.instagram} target="_blank" rel="noopener noreferrer">Instagram</a>
+					·
+					<a href={brand.facebook} target="_blank" rel="noopener noreferrer">Facebook</a>
+				</p>
+				<figure class="media-frame">
+					<img
+						src="/media/edgefield-house.jpg"
+						alt="Edgefield house at Autism Sanctuary."
+						width="2560"
+						height="1707"
+						loading="lazy"
+						decoding="async"
+					/>
+				</figure>
+			</aside>
+			<InquiryForm defaultIntent={defaultIntent} heading="Send an inquiry" />
+		</div>
+	</section>
+</Base>
