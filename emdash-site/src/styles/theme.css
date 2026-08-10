@@ -235,7 +235,7 @@ textarea:focus-visible {
 
 .section-forest {
 	background: linear-gradient(145deg, var(--forest-deep), var(--sanctuary-green));
-	color: var(--stone-cream);
+	color: rgba(247, 244, 236, 0.94);
 }
 
 .section-forest h2,
@@ -243,8 +243,22 @@ textarea:focus-visible {
 	color: #fff;
 }
 
-.section-forest a {
+.section-forest .lede,
+.section-forest p {
+	color: rgba(247, 244, 236, 0.92);
+}
+
+.section-forest a:not(.btn) {
 	color: var(--edgefield-gold);
+}
+
+.section-forest .btn-gold {
+	color: var(--forest-deep);
+}
+
+.section-forest .btn-light {
+	color: var(--forest-deep);
+	background: var(--stone-cream);
 }
 
 .eyebrow {
