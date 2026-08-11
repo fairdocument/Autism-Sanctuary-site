@@ -4,8 +4,6 @@ const paths = [
 	"/",
 	"/about",
 	"/people",
-	"/people/board",
-	"/people/management",
 	"/programs",
 	"/our-farm",
 	"/admissions",

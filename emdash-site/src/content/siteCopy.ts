@@ -10,32 +10,16 @@ export const brand = {
 	facebook: "https://www.facebook.com/autismsanctuary",
 };
 
-export type NavChild = { label: string; href: string };
-export type NavItem = {
-	label: string;
-	href: string;
-	cta?: boolean;
-	children?: readonly NavChild[];
-};
-
-export const navItems: readonly NavItem[] = [
+export const navItems = [
 	{ label: "About", href: "/about" },
-	{
-		label: "People",
-		href: "/people",
-		children: [
-			{ label: "Overview", href: "/people" },
-			{ label: "Board", href: "/people/board" },
-			{ label: "Management", href: "/people/management" },
-		],
-	},
+	{ label: "People", href: "/people" },
 	{ label: "Programs", href: "/programs" },
 	{ label: "Our farm", href: "/our-farm" },
 	{ label: "Admissions", href: "/admissions" },
 	{ label: "Careers", href: "/careers" },
 	{ label: "Contact", href: "/contact" },
 	{ label: "Donate", href: "/donate", cta: true },
-];
+] as const;
 
 export const footerLinks = {
 	explore: [

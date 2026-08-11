@@ -74,8 +74,6 @@
 				{ "label": "Home", "url": "/" },
 				{ "label": "About", "url": "/about" },
 				{ "label": "People", "url": "/people" },
-				{ "label": "Board", "url": "/people/board" },
-				{ "label": "Management", "url": "/people/management" },
 				{ "label": "Programs", "url": "/programs" },
 				{ "label": "Our farm", "url": "/our-farm" },
 				{ "label": "Admissions", "url": "/admissions" },
