@@ -175,10 +175,27 @@ textarea:focus-visible {
 	position: relative;
 }
 
-.nav-item .nav-link {
+.nav-item .nav-link,
+.nav-parent {
 	display: inline-flex;
 	align-items: center;
 	gap: 0.35rem;
+}
+
+.nav-parent {
+	appearance: none;
+	background: transparent;
+	border: none;
+	font: inherit;
+	cursor: pointer;
+	color: var(--muted-ink);
+	padding: 0.35rem 0;
+}
+
+.nav-parent:hover,
+.nav-parent.active,
+.nav-item.is-open .nav-parent {
+	color: var(--forest-deep);
 }
 
 .nav-caret {
@@ -189,20 +206,30 @@ textarea:focus-visible {
 	border-bottom: 1.5px solid currentColor;
 	transform: rotate(45deg) translateY(-1px);
 	opacity: 0.7;
+	transition: transform 0.2s var(--ease);
+}
+
+.nav-item.is-open .nav-caret {
+	transform: rotate(225deg) translateY(-1px);
 }
 
 .nav-dropdown {
 	display: none;
 	position: absolute;
-	top: calc(100% + 0.35rem);
+	top: 100%;
 	left: 0;
 	min-width: 11rem;
 	padding: 0.5rem;
+	margin-top: 0.15rem;
 	background: rgba(251, 250, 246, 0.98);
 	border: 1px solid var(--soft-rule);
 	border-radius: var(--radius);
 	box-shadow: var(--shadow-soft);
 	z-index: 30;
+}
+
+.nav-item.is-open .nav-dropdown {
+	display: block;
 }
 
 .nav-dropdown-link {
@@ -215,11 +242,6 @@ textarea:focus-visible {
 .nav-dropdown-link:hover,
 .nav-dropdown-link.active {
 	background: rgba(47, 93, 67, 0.08);
-}
-
-.nav-item:hover .nav-dropdown,
-.nav-item:focus-within .nav-dropdown {
-	display: block;
 }
 
 .nav-cta {
@@ -917,29 +939,20 @@ textarea:focus-visible {
 		align-items: stretch;
 	}
 
+	.nav-parent {
+		justify-content: space-between;
+		width: 100%;
+		text-align: left;
+	}
+
 	.nav-dropdown {
 		position: static;
-		display: none;
 		min-width: 0;
 		margin: 0.25rem 0 0.35rem 0.75rem;
 		padding: 0;
 		border: none;
 		box-shadow: none;
 		background: transparent;
-	}
-
-	.nav-item.is-open .nav-dropdown {
-		display: block;
-	}
-
-	.nav-item:hover .nav-dropdown,
-	.nav-item:focus-within .nav-dropdown {
-		display: none;
-	}
-
-	.nav-item.is-open:hover .nav-dropdown,
-	.nav-item.is-open:focus-within .nav-dropdown {
-		display: block;
 	}
 
 	.nav-cta {

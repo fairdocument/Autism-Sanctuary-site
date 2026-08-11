@@ -86,29 +86,39 @@ const pageCtx = createPublicPageContext({
 									false);
 
 							if (item.children?.length) {
+								const submenuId = `nav-submenu-${item.label.toLowerCase().replace(/\s+/g, "-")}`;
 								return (
-									<div class:list={["nav-item", "has-children", { active: isActive }]}>
-										<a
-											href={item.href}
-											class:list={["nav-link", { active: isActive }]}
+									<div class:list={["nav-item", "has-children", { active: isActive }]} data-nav-item>
+										<button
+											type="button"
+											class:list={["nav-link", "nav-parent", { active: isActive }]}
 											aria-haspopup="true"
 											aria-expanded="false"
+											aria-controls={submenuId}
 											data-nav-parent
 										>
 											{item.label}
 											<span class="nav-caret" aria-hidden="true" />
-										</a>
-										<div class="nav-dropdown" role="group" aria-label={`${item.label} submenu`}>
+										</button>
+										<div
+											id={submenuId}
+											class="nav-dropdown"
+											role="menu"
+											aria-label={`${item.label} submenu`}
+											hidden
+										>
 											{item.children.map((child) => (
 												<a
 													href={child.href}
+													role="menuitem"
 													class:list={[
 														"nav-link",
 														"nav-dropdown-link",
 														{
 															active:
 																path === child.href ||
-																path.startsWith(`${child.href}/`),
+																(child.href !== item.href &&
+																	path.startsWith(`${child.href}/`)),
 														},
 													]}
 												>
@@ -195,7 +205,18 @@ const pageCtx = createPublicPageContext({
 			const header = document.querySelector("[data-header]");
 			const toggle = document.querySelector("[data-nav-toggle]");
 			const panel = document.querySelector("[data-nav-panel]");
-			const parents = document.querySelectorAll<HTMLElement>("[data-nav-parent]");
+			const parents = document.querySelectorAll<HTMLButtonElement>("[data-nav-parent]");
+
+			const closeSubmenus = (except?: Element | null) => {
+				document.querySelectorAll("[data-nav-item].is-open").forEach((el) => {
+					if (except && el === except) return;
+					el.classList.remove("is-open");
+					const btn = el.querySelector<HTMLButtonElement>("[data-nav-parent]");
+					const menu = el.querySelector<HTMLElement>(".nav-dropdown");
+					btn?.setAttribute("aria-expanded", "false");
+					if (menu) menu.hidden = true;
+				});
+			};
 
 			const onScroll = () => {
 				header?.classList.toggle("is-scrolled", window.scrollY > 24);
@@ -207,24 +228,31 @@ const pageCtx = createPublicPageContext({
 				const open = toggle.getAttribute("aria-expanded") === "true";
 				toggle.setAttribute("aria-expanded", String(!open));
 				panel?.classList.toggle("is-open", !open);
+				if (open) closeSubmenus();
 			});
 
 			parents.forEach((parent) => {
 				parent.addEventListener("click", (event) => {
-					if (window.matchMedia("(max-width: 900px)").matches) {
-						const item = parent.closest(".nav-item");
-						const alreadyOpen = item?.classList.contains("is-open");
-						if (!alreadyOpen) {
-							event.preventDefault();
-							document.querySelectorAll(".nav-item.is-open").forEach((el) => {
-								el.classList.remove("is-open");
-								el.querySelector("[data-nav-parent]")?.setAttribute("aria-expanded", "false");
-							});
-							item?.classList.add("is-open");
-							parent.setAttribute("aria-expanded", "true");
-						}
-					}
+					event.preventDefault();
+					event.stopPropagation();
+					const item = parent.closest("[data-nav-item]");
+					const menu = item?.querySelector<HTMLElement>(".nav-dropdown");
+					const willOpen = !item?.classList.contains("is-open");
+					closeSubmenus(willOpen ? item : null);
+					item?.classList.toggle("is-open", willOpen);
+					parent.setAttribute("aria-expanded", String(willOpen));
+					if (menu) menu.hidden = !willOpen;
 				});
+			});
+
+			document.addEventListener("click", (event) => {
+				const target = event.target as Node | null;
+				if (!target || (target instanceof Element && target.closest("[data-nav-item]"))) return;
+				closeSubmenus();
+			});
+
+			document.addEventListener("keydown", (event) => {
+				if (event.key === "Escape") closeSubmenus();
 			});
 		</script>
 	</body>

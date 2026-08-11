@@ -24,6 +24,7 @@ export const navItems: readonly NavItem[] = [
 		label: "People",
 		href: "/people",
 		children: [
+			{ label: "Overview", href: "/people" },
 			{ label: "Board", href: "/people/board" },
 			{ label: "Management", href: "/people/management" },
 		],
