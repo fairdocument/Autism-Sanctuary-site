@@ -25,6 +25,12 @@
 					"searchable": true
 				},
 				{
+					"slug": "excerpt",
+					"label": "Lede",
+					"type": "text",
+					"searchable": true
+				},
+				{
 					"slug": "content",
 					"label": "Content",
 					"type": "portableText",

@@ -1,163 +1,28 @@
 ---
 import Base from "../layouts/Base.astro";
+import CmsBanner from "../components/CmsBanner.astro";
+import CmsBody from "../components/CmsBody.astro";
 import CtaBand from "../components/CtaBand.astro";
+import { getCmsPage, pageEyebrows } from "../lib/cms";
+
+const { page, cacheHint } = await getCmsPage("our-farm");
+if (cacheHint) Astro.cache.set(cacheHint);
+if (!page) return Astro.redirect("/404");
 ---
 
 <Base
 	title="Our farm"
-	description="Autism Sanctuary’s home on Pea Ridge Road: Edgefield, animals, gardens, Enchanted Forest and Spring Creek trails, and volunteer stewardship."
+	description={page.data.excerpt || page.data.title}
 	image="/media/edgefield-aerial.jpg"
 >
-	<section class="page-banner">
-		<div class="container">
-			<span class="eyebrow">Pea Ridge Road · Western Albemarle</span>
-			<h1>Our home—where the farm is the program.</h1>
-			<p class="lede">
-				Roughly 85 acres of trails, animals, gardens, and gathering spaces woven into Crozet, White Hall, and
-				the wider Albemarle community. Licensed supports happen alongside mud, sunshine, and neighbors who know
-				people by name.
-			</p>
-		</div>
-	</section>
-
-	<section class="section section-cream">
-		<div class="container split">
-			<div class="stack prose-wide">
-				<h2>Why this place matters</h2>
-				<p>
-					The farm shows how a working landscape can still meet every DBHDS expectation: structured trails for
-					movement and pre-vocational routines, gardens for therapeutic horticulture, barns and fields for
-					animal care, and porches for rest and regulation—all staffed by DSPs who like being outside.
-				</p>
-				<ul class="checklist">
-					<li>Days built for people with significant support needs</li>
-					<li>Training that blends regulations with dirt, weather, and livestock</li>
-					<li>Accessibility within a real working farm</li>
-				</ul>
-			</div>
-			<figure class="media-frame">
-				<img
-					src="/media/edgefield-aerial.jpg"
-					alt="Aerial view of Edgefield gardens and surrounding land."
-					width="2560"
-					height="1707"
-					loading="lazy"
-					decoding="async"
-				/>
-			</figure>
-		</div>
-	</section>
-
-	<section class="section">
-		<div class="container">
-			<div class="section-head">
-				<span class="eyebrow">Animals &amp; agriculture</span>
-				<h2>Cattle, chickens, gardens, and the high tunnel.</h2>
-			</div>
-			<div class="grid-3">
-				<article class="feature-block">
-					<h3>Cattle</h3>
-					<p>
-						Our cattle move regularly between pastures. Visitors often say hello through the fence; after a
-						long, happy life, grass-fed cattle are processed into beef available through local partners and
-						market tables when offered.
-					</p>
-				</article>
-				<article class="feature-block">
-					<h3>Chickens</h3>
-					<p>
-						Chickens roam fields in warmer weather and stay in the fenced garden in winter. Caring for them
-						helps teach empathy—and their eggs appear at farmers market visits.
-					</p>
-				</article>
-				<article class="feature-block">
-					<h3>High tunnel &amp; gardens</h3>
-					<p>
-						Our 30&apos;×72&apos; high tunnel extends the growing season and anchors garden work, composting,
-						and hands-on horticulture that people can return to week after week.
-					</p>
-				</article>
-			</div>
-			<figure class="media-frame" style="margin-top:2rem;">
-				<img
-					src="/media/farm-animals.jpg"
-					alt="Animals and outdoor life on the Autism Sanctuary farm."
-					width="1280"
-					height="960"
-					loading="lazy"
-					decoding="async"
-				/>
-			</figure>
-		</div>
-	</section>
-
-	<section class="section section-meadow">
-		<div class="container split reverse">
-			<figure class="media-frame">
-				<img
-					src="/media/hero-enchanted-forest.jpg"
-					alt="Trees along the Enchanted Forest trail."
-					width="1976"
-					height="2560"
-					loading="lazy"
-					decoding="async"
-				/>
-			</figure>
-			<div class="stack prose-wide">
-				<span class="eyebrow">Trails</span>
-				<h2>Enchanted Forest &amp; Spring Creek</h2>
-				<p>
-					Immersing people in nature supports education, regulation, and development. We currently offer two
-					walking trails on the property.
-				</p>
-				<article class="feature-block">
-					<h3>Enchanted Forest Trail</h3>
-					<p>
-						A ¾-mile loop through forested land—more groomed and less sloped, with learning stations that
-						promote skill building and creativity. Realized with support from CACF’s Enriching Communities
-						Grant and volunteer partners.
-					</p>
-				</article>
-				<article class="feature-block">
-					<h3>Spring Creek Trail</h3>
-					<p>
-						A longer route that diverges downhill along Spring Creek. Steeper and more challenging, with a
-						peaceful, engaging walk beside the water.
-					</p>
-				</article>
-			</div>
-		</div>
-	</section>
-
-	<section class="section section-cream">
-		<div class="container split">
-			<div class="stack prose-wide">
-				<span class="eyebrow">Volunteer with us</span>
-				<h2>Help keep the land ready for good days.</h2>
-				<p>
-					Volunteers support trail maintenance (raking, clearing debris, marking invasive species),
-					agriculture in the high tunnel and gardens, and—with training and a weekly commitment—assistance
-					alongside staff in the adult day program.
-				</p>
-				<p>
-					Volunteer roles complement, never replace, paid DSP staffing. We match tasks to season, capacity,
-					and safety.
-				</p>
-				<a class="btn btn-primary" href="/contact?intent=volunteer">Inquire about volunteering</a>
-			</div>
-			<figure class="media-frame">
-				<img
-					src="/media/sanctuary-gardens.jpg"
-					alt="Garden beds and paths at Autism Sanctuary."
-					width="2560"
-					height="1920"
-					loading="lazy"
-					decoding="async"
-				/>
-			</figure>
-		</div>
-	</section>
-
+	<CmsBanner
+		eyebrow={pageEyebrows["our-farm"]}
+		title={page.data.title}
+		lede={page.data.excerpt}
+		titleEdit={page.edit.title}
+		ledeEdit={page.edit.excerpt}
+	/>
+	<CmsBody content={page.data.content} contentEdit={page.edit.content} class="section-cream" />
 	<CtaBand
 		title="Come see how the land shapes the day"
 		primaryHref="/contact"

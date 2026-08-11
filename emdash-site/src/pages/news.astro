@@ -1,5 +1,9 @@
 ---
 import Base from "../layouts/Base.astro";
+import { getPublishedPosts, formatPostDate } from "../lib/cms";
+
+const { posts, cacheHint } = await getPublishedPosts();
+if (cacheHint) Astro.cache.set(cacheHint);
 ---
 
 <Base title="News" description="News and updates from Autism Sanctuary.">
@@ -7,16 +11,39 @@ import Base from "../layouts/Base.astro";
 		<div class="container">
 			<span class="eyebrow">Newsroom</span>
 			<h1>News &amp; updates</h1>
-			<p class="lede">
-				Farm stories, program updates, and community notes will live here. For now, follow us on social or
-				reach out directly.
-			</p>
-			<div class="cta-row">
-				<a class="btn btn-primary" href="https://www.instagram.com/autismsanctuary" target="_blank" rel="noopener noreferrer"
-					>Instagram</a
-				>
-				<a class="btn btn-secondary" href="/contact">Contact</a>
-			</div>
+			<p class="lede">Farm stories, program updates, and community notes from Autism Sanctuary.</p>
+		</div>
+	</section>
+
+	<section class="section section-cream">
+		<div class="container" style="max-width:44rem;">
+			{
+				posts.length === 0 ? (
+					<p class="lede">
+						No published posts yet. Follow us on{" "}
+						<a href="https://www.instagram.com/autismsanctuary" target="_blank" rel="noopener noreferrer">
+							Instagram
+						</a>{" "}
+						or <a href="/contact">contact us</a>.
+					</p>
+				) : (
+					<ul class="news-list">
+						{posts.map((post) => (
+							<li class="news-item">
+								<a href={`/news/${post.id}`}>
+									<p class="news-meta">{formatPostDate(post.data.publishedAt)}</p>
+									<h2 {...post.edit.title}>{post.data.title}</h2>
+									{post.data.excerpt && (
+										<p class="news-excerpt" {...post.edit.excerpt}>
+											{post.data.excerpt}
+										</p>
+									)}
+								</a>
+							</li>
+						))}
+					</ul>
+				)
+			}
 		</div>
 	</section>
 </Base>

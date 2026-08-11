@@ -1,118 +1,24 @@
 ---
 import Base from "../layouts/Base.astro";
+import CmsBanner from "../components/CmsBanner.astro";
+import CmsBody from "../components/CmsBody.astro";
 import CtaBand from "../components/CtaBand.astro";
+import { getCmsPage, pageEyebrows } from "../lib/cms";
+
+const { page, cacheHint } = await getCmsPage("about");
+if (cacheHint) Astro.cache.set(cacheHint);
+if (!page) return Astro.redirect("/404");
 ---
 
-<Base
-	title="About"
-	description="Autism Sanctuary is a Western Albemarle care farm offering joyful, nature-rich days and licensed supports—especially for people with significant disabilities."
->
-	<section class="page-banner">
-		<div class="container">
-			<span class="eyebrow">About Autism Sanctuary</span>
-			<h1>A rural care farm where people with significant support needs are seen, celebrated, and busy outdoors.</h1>
-			<p class="lede">
-				Founded in 2020, Autism Sanctuary is a 501(c)(3) nonprofit and Virginia DBHDS-licensed provider on
-				Pea Ridge Road. We pair licensed help with trails, animals, gardens, and Western Albemarle neighbors.
-			</p>
-		</div>
-	</section>
-
-	<section class="section section-cream">
-		<div class="container split">
-			<div class="stack prose-wide">
-				<span class="eyebrow">Our mission</span>
-				<h2>Nature-connected supports that honor dignity and capacity.</h2>
-				<p>
-					We serve individuals with autism and people with intellectual and developmental disabilities who
-					benefit from structured, compassionate services—especially when support needs are high. Our
-					mission is to foster belonging, joy, and meaningful participation through care farming and steady,
-					honest practice.
-				</p>
-				<div class="note">
-					<strong>Commitment:</strong> We partner with families, guardians, payers, and community
-					organizations using plain language, transparent planning, and respectful identity choices.
-				</div>
-			</div>
-			<figure class="media-frame">
-				<img
-					src="/media/edgefield-house.jpg"
-					alt="Edgefield historic home and grounds in Albemarle County, Virginia."
-					width="2560"
-					height="1707"
-					loading="lazy"
-					decoding="async"
-				/>
-			</figure>
-		</div>
-	</section>
-
-	<section class="section" id="care-farm-philosophy">
-		<div class="container">
-			<div class="section-head">
-				<span class="eyebrow">Care farm model &amp; philosophy</span>
-				<h2>Social-ecological care: land health and human flourishing together.</h2>
-			</div>
-			<div class="split">
-				<div class="stack prose-wide">
-					<p>
-						Autism Sanctuary operates on a social-ecological model: the well-being of our trails, gardens,
-						and animals is intertwined with the psychosocial well-being of people. Care farming and
-						therapeutic horticulture are structured modalities that create predictable, multisensory
-						environments for learning, regulation, and meaningful contribution.
-					</p>
-					<p>
-						Nature-connected routines—planned with occupational and program guidance—offer movement, sound,
-						scent, and texture that can help some people regulate and engage. Individual responses vary; we
-						do not promise uniform medical outcomes.
-					</p>
-				</div>
-				<div class="stack">
-					<article class="feature-block">
-						<h3>Shared work, shared joy</h3>
-						<p>People contribute to stewardship—caring for land, animals, and one another.</p>
-					</article>
-					<article class="feature-block">
-						<h3>From labels to real life</h3>
-						<p>We highlight strengths and valued roles alongside the hands-on supports people need.</p>
-					</article>
-					<article class="feature-block">
-						<h3>Evidence-based &amp; promising practices</h3>
-						<p>
-							Training and documentation meet regulatory expectations and blend research-backed methods
-							with approaches tested on this farm.
-						</p>
-					</article>
-				</div>
-			</div>
-		</div>
-	</section>
-
-	<section class="section section-meadow">
-		<div class="container split">
-			<figure class="media-frame">
-				<img
-					src="/media/edgefield-aerial.jpg"
-					alt="Aerial view of the Edgefield property and surrounding land."
-					width="2560"
-					height="1707"
-					loading="lazy"
-					decoding="async"
-				/>
-			</figure>
-			<div class="stack prose-wide">
-				<span class="eyebrow">Our home</span>
-				<h2>Edgefield in White Hall, Virginia</h2>
-				<p>
-					Autism Sanctuary operates from Edgefield—an extraordinary property and house stewarded by Frances
-					Lee-Vandell. A 1780 home built by William Watkins was dismantled board by board and rebuilt onsite.
-					Today it hosts events and informal gatherings amid animals, gardens, fruit trees, and maturing pine.
-				</p>
-				<a class="btn btn-primary" href="/our-farm">See the farm &amp; trails</a>
-			</div>
-		</div>
-	</section>
-
+<Base title="About" description={page.data.excerpt || page.data.title}>
+	<CmsBanner
+		eyebrow={pageEyebrows.about}
+		title={page.data.title}
+		lede={page.data.excerpt}
+		titleEdit={page.edit.title}
+		ledeEdit={page.edit.excerpt}
+	/>
+	<CmsBody content={page.data.content} contentEdit={page.edit.content} class="section-cream" />
 	<CtaBand
 		title="Learn how programs work day to day"
 		primaryHref="/programs"

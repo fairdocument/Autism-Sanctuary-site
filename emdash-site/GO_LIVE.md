@@ -11,8 +11,19 @@
 
 1. Open the **autismsanctuary-new** EmDash site on `nimbusserver`
 2. Add `STRIPE_SECRET_KEY` (restricted or secret key from the nonprofit Stripe account) to site/hosting env
-3. Click **Restart** (or **Rebuild** if deps/config changed)
+3. After code deploy (rsync), click **Restart** (or **Rebuild** if deps/config changed)
 4. Hard-refresh https://autismsanctuary-new-nimbusserver.tempurl.host/
+
+## CMS content restore (news + editable pages)
+
+After deploy, restore WordPress news bodies and key page copy into EmDash:
+
+```bash
+ssh -i ~/.ssh/cursor_wpmudev_ed25519 -o IdentitiesOnly=yes cursor@nimbusserver.tempurl.host \
+  'cd /home/sites/autismsanctuary-new/public_html && node scripts/restore-cms-content.mjs'
+```
+
+Then **Restart** in Hub. Edit Pages / News in `/_emdash/admin`.
 
 ## Then verify
 

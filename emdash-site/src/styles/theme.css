@@ -576,6 +576,96 @@ textarea:focus-visible {
 	max-width: 36rem;
 }
 
+/* CMS Portable Text */
+.cms-prose {
+	max-width: 44rem;
+}
+
+.cms-prose h2 {
+	margin: 2rem 0 0.75rem;
+	font-size: clamp(1.5rem, 2.5vw, 2rem);
+}
+
+.cms-prose h3 {
+	margin: 1.5rem 0 0.5rem;
+	font-size: 1.25rem;
+}
+
+.cms-prose p {
+	margin: 0 0 1rem;
+	color: var(--muted-ink);
+}
+
+.cms-prose ul,
+.cms-prose ol {
+	margin: 0 0 1.25rem;
+	padding-left: 1.2rem;
+	color: var(--muted-ink);
+}
+
+.cms-prose li {
+	margin-bottom: 0.4rem;
+}
+
+.cms-prose a {
+	color: var(--sanctuary-green);
+	font-weight: 600;
+}
+
+.cms-prose img {
+	display: block;
+	width: 100%;
+	max-width: 100%;
+	height: auto;
+	border-radius: calc(var(--radius) + 2px);
+	margin: 1.25rem 0;
+}
+
+.cms-prose figure {
+	margin: 1.5rem 0;
+}
+
+.news-list {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.news-item {
+	padding: 1.5rem 0;
+	border-top: 1px solid var(--soft-rule);
+}
+
+.news-item:last-child {
+	border-bottom: 1px solid var(--soft-rule);
+}
+
+.news-item a {
+	text-decoration: none;
+	color: inherit;
+}
+
+.news-item h2 {
+	margin: 0.25rem 0 0.5rem;
+	font-size: 1.5rem;
+}
+
+.news-item a:hover h2 {
+	color: var(--sanctuary-green);
+}
+
+.news-meta {
+	font-size: 0.9rem;
+	color: var(--muted-ink);
+	margin: 0;
+}
+
+.news-excerpt {
+	margin: 0.5rem 0 0;
+	color: var(--muted-ink);
+	max-width: 40rem;
+}
+
 /* Reveal motion */
 .reveal {
 	animation: rise-in 0.8s var(--ease) both;

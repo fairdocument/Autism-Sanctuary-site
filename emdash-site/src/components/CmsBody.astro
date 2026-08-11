@@ -1,0 +1,22 @@
+---
+import { PortableText } from "emdash/ui";
+import type { PortableTextBlock } from "emdash";
+
+interface Props {
+	content?: PortableTextBlock[] | null;
+	contentEdit?: Record<string, unknown>;
+	class?: string;
+}
+
+const { content, contentEdit, class: className } = Astro.props;
+---
+
+{
+	content && content.length > 0 && (
+		<section class:list={["section", "cms-body", className]}>
+			<div class="container cms-prose" {...contentEdit}>
+				<PortableText value={content} />
+			</div>
+		</section>
+	)
+}

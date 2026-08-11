@@ -1,94 +1,24 @@
 ---
 import Base from "../layouts/Base.astro";
+import CmsBanner from "../components/CmsBanner.astro";
+import CmsBody from "../components/CmsBody.astro";
 import CtaBand from "../components/CtaBand.astro";
-import { brand } from "../content/siteCopy";
+import { getCmsPage, pageEyebrows } from "../lib/cms";
+
+const { page, cacheHint } = await getCmsPage("resources");
+if (cacheHint) Astro.cache.set(cacheHint);
+if (!page) return Astro.redirect("/404");
 ---
 
-<Base
-	title="Resources"
-	description="Guidance on Virginia Medicaid waivers (FIS, BI, CL), referrals, accessibility, and transportation for Autism Sanctuary."
->
-	<section class="page-banner">
-		<div class="container">
-			<span class="eyebrow">Resources &amp; guidance</span>
-			<h1>Funding, referrals, and getting here—without the jargon storm.</h1>
-			<p class="lede">
-				This page summarizes common pathways families and case managers use when exploring supports. It is
-				informational, not legal advice.
-			</p>
-		</div>
-	</section>
-
-	<section class="section section-cream">
-		<div class="container prose-wide" style="margin:0 auto;">
-			<h2>Referral &amp; application pathway</h2>
-			<ol class="checklist" style="list-style:decimal;">
-				<li><strong>Review programs:</strong> Read <a href="/programs">Programs</a>.</li>
-				<li>
-					<strong>Contact admissions:</strong> Email
-					<a href={`mailto:${brand.email}`}>{brand.email}</a> or call
-					<a href={brand.phoneHref}>{brand.phone}</a>.
-				</li>
-				<li><strong>Complete intake:</strong> Start via <a href="/admissions">Admissions</a>.</li>
-				<li>
-					<strong>Plan authorization:</strong> We coordinate with case managers and CSBs to confirm funding
-					alignment.
-				</li>
-			</ol>
-		</div>
-	</section>
-
-	<section class="section">
-		<div class="container" style="max-width:44rem;">
-			<span class="eyebrow">Funding frameworks (Virginia)</span>
-			<h2>Waivers and individualized authorization</h2>
-			<article class="feature-block">
-				<h3>Medicaid waivers (overview)</h3>
-				<p>
-					Many people access services through Virginia’s Medicaid waiver programs—commonly Family &amp;
-					Individual Supports (FIS), Building Independence (BI), and Community Living (CL). Each has distinct
-					eligibility rules, budgets, and service definitions.
-				</p>
-				<p>
-					<strong>Your case manager</strong> determines whether a specific Autism Sanctuary service can be
-					authorized on an ISP.
-				</p>
-				<div class="note">
-					<strong>Heads-up:</strong> Autism Sanctuary does not coordinate Children’s Services Act (CSA)
-					funding. If CSA is part of your conversation, your case manager can help identify appropriate
-					providers.
-				</div>
-			</article>
-		</div>
-	</section>
-
-	<section class="section section-meadow">
-		<div class="container split">
-			<div class="stack prose-wide">
-				<span class="eyebrow">Accessibility &amp; transportation</span>
-				<h2>Inclusive access within a working farm.</h2>
-				<p>
-					Trails, gardens, and program buildings are checked for safe use; individualized plans may include
-					adaptive equipment, pacing, or alternative activities when weather or terrain shifts.
-				</p>
-				<p>
-					Transportation arrangements vary; talk with admissions about how people typically arrive and what
-					supports are realistic for your situation.
-				</p>
-			</div>
-			<figure class="media-frame">
-				<img
-					src="/media/farm-detail.jpg"
-					alt="Detail of outdoor farm environment at Autism Sanctuary."
-					width="1200"
-					height="900"
-					loading="lazy"
-					decoding="async"
-				/>
-			</figure>
-		</div>
-	</section>
-
+<Base title="Resources" description={page.data.excerpt || page.data.title}>
+	<CmsBanner
+		eyebrow={pageEyebrows.resources}
+		title={page.data.title}
+		lede={page.data.excerpt}
+		titleEdit={page.edit.title}
+		ledeEdit={page.edit.excerpt}
+	/>
+	<CmsBody content={page.data.content} contentEdit={page.edit.content} class="section-cream" />
 	<CtaBand
 		title="Questions about funding or access?"
 		primaryHref="/contact?intent=program-fit"

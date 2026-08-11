@@ -1,0 +1,35 @@
+---
+import Base from "../../layouts/Base.astro";
+import CmsBody from "../../components/CmsBody.astro";
+import { getCmsPost, formatPostDate } from "../../lib/cms";
+
+const slug = Astro.params.slug;
+if (!slug) return Astro.redirect("/news");
+
+const { post, cacheHint } = await getCmsPost(slug);
+if (cacheHint) Astro.cache.set(cacheHint);
+if (!post || post.data.status !== "published") return Astro.redirect("/news");
+---
+
+<Base title={post.data.title} description={post.data.excerpt || post.data.title} type="article">
+	<section class="page-banner">
+		<div class="container" style="max-width:44rem;">
+			<span class="eyebrow">News</span>
+			<p class="news-meta">{formatPostDate(post.data.publishedAt)}</p>
+			<h1 {...post.edit.title}>{post.data.title}</h1>
+			{post.data.excerpt && (
+				<p class="lede" {...post.edit.excerpt}>
+					{post.data.excerpt}
+				</p>
+			)}
+		</div>
+	</section>
+
+	<CmsBody content={post.data.content} contentEdit={post.edit.content} />
+
+	<section class="section-tight">
+		<div class="container" style="max-width:44rem;">
+			<a class="btn btn-secondary" href="/news">Back to news</a>
+		</div>
+	</section>
+</Base>
