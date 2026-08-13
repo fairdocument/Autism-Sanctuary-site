@@ -11,13 +11,16 @@ const description =
 	page?.data?.excerpt ||
 	"Autism Sanctuary is a Virginia DBHDS-licensed working farm in Western Albemarle: meaningful days outdoors with trails, animals, gardens, and person-centered supports.";
 const content = page?.data?.content ?? [];
-const contentEdit = page?.edit?.content;
+
+// Do not spread page.edit.content here. Visual editing replaces custom layout
+// blocks with placeholders ("Plugin block: asHero…") and breaks the homepage.
+// Edit sections in Admin → Pages → home (click each layout block to open its form).
 ---
 
 <Base title={title} description={description} image="/media/edgefield-aerial.jpg">
 	{
 		content.length > 0 ? (
-			<div class="home-blocks" {...contentEdit}>
+			<div class="home-blocks">
 				<PortableText value={content} />
 			</div>
 		) : (
