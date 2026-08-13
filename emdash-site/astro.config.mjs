@@ -14,6 +14,11 @@ export default defineConfig({
 	adapter: node({
 		mode: "standalone",
 	}),
+	session: {
+		driver: {
+			entrypoint: new URL("./src/session-driver.ts", import.meta.url),
+		},
+	},
 	image: {
 		layout: "constrained",
 		responsiveStyles: true,

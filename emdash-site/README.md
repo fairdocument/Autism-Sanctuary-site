@@ -33,7 +33,9 @@ rsync -avz --delete \
   ./ cursor@nimbusserver.tempurl.host:/home/sites/autismsanctuary-new/public_html/
 ```
 
-Then **Restart** (or **Rebuild**) the EmDash site in WPMU Hub.
+Then **Restart** the EmDash site in WPMU Hub (usually enough after rsync). Use **Rebuild** only if native deps failed (e.g. `better-sqlite3`) or Hub asks for it.
+
+Sessions are stored under `.astro/sessions` on the server at runtime, so a local build + rsync should not break admin login.
 
 ## Stripe
 

@@ -11,7 +11,7 @@
 
 1. Open the **autismsanctuary-new** EmDash site on `nimbusserver`
 2. Add `STRIPE_SECRET_KEY` (restricted or secret key from the nonprofit Stripe account) to site/hosting env
-3. After code deploy (rsync), click **Restart** (or **Rebuild** if deps/config changed)
+3. After code deploy (rsync), click **Restart** in Hub. Use **Rebuild** only if deps are broken or Hub requires it — login should work after Restart once session paths are runtime-resolved.
 4. Hard-refresh https://autismsanctuary-new-nimbusserver.tempurl.host/
 
 ## CMS content restore (news + editable pages)
