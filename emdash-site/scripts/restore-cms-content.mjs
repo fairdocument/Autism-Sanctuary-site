@@ -206,7 +206,7 @@ function restorePages(db) {
 	const pages = loadPageDefs();
 	console.log(`Loaded ${pages.length} CMS page definitions`);
 	for (const page of pages) {
-		const content = htmlToPt(page.html);
+		const content = Array.isArray(page.content) ? page.content : htmlToPt(page.html);
 		upsertContent(db, "ec_pages", {
 			slug: page.slug,
 			title: page.title,
@@ -219,13 +219,83 @@ function restorePages(db) {
 	}
 }
 
+function restoreMenus(db) {
+	const seedPath = join(root, "seed/seed.json");
+	if (!existsSync(seedPath)) return;
+	const seed = JSON.parse(readFileSync(seedPath, "utf8"));
+	const menus = Array.isArray(seed.menus) ? seed.menus : [];
+	const now = new Date().toISOString().replace("T", " ").replace(/\.\d+Z$/, "");
+	const hasLocale = db
+		.prepare(`PRAGMA table_info(_emdash_menus)`)
+		.all()
+		.some((col) => col.name === "locale");
+
+	for (const menu of menus) {
+		const existing = hasLocale
+			? db.prepare(`SELECT id FROM _emdash_menus WHERE name = ? AND locale = 'en'`).get(menu.name)
+			: db.prepare(`SELECT id FROM _emdash_menus WHERE name = ?`).get(menu.name);
+
+		let menuId = existing?.id;
+		if (!menuId) {
+			menuId = ulidLike();
+			if (dryRun) {
+				console.log(`insert menu ${menu.name}`);
+			} else if (hasLocale) {
+				db.prepare(
+					`INSERT INTO _emdash_menus (id, name, label, created_at, updated_at, locale, translation_group)
+           VALUES (?, ?, ?, ?, ?, 'en', ?)`,
+				).run(menuId, menu.name, menu.label || menu.name, now, now, menuId);
+			} else {
+				db.prepare(
+					`INSERT INTO _emdash_menus (id, name, label, created_at, updated_at)
+           VALUES (?, ?, ?, ?, ?)`,
+				).run(menuId, menu.name, menu.label || menu.name, now, now);
+			}
+			console.log(`menu ${menu.name}: created`);
+		} else if (!dryRun) {
+			db.prepare(`UPDATE _emdash_menus SET label = ?, updated_at = ? WHERE id = ?`).run(
+				menu.label || menu.name,
+				now,
+				menuId,
+			);
+			console.log(`menu ${menu.name}: updated`);
+		}
+
+		if (dryRun) continue;
+
+		db.prepare(`DELETE FROM _emdash_menu_items WHERE menu_id = ?`).run(menuId);
+		const items = Array.isArray(menu.items) ? menu.items : [];
+		const insert = db.prepare(
+			hasLocale
+				? `INSERT INTO _emdash_menu_items
+            (id, menu_id, parent_id, sort_order, type, custom_url, label, created_at, locale, translation_group)
+           VALUES (?, ?, NULL, ?, 'custom', ?, ?, ?, 'en', ?)`
+				: `INSERT INTO _emdash_menu_items
+            (id, menu_id, parent_id, sort_order, type, custom_url, label, created_at)
+           VALUES (?, ?, NULL, ?, 'custom', ?, ?, ?)`,
+		);
+		items.forEach((item, index) => {
+			const itemId = ulidLike();
+			if (hasLocale) {
+				insert.run(itemId, menuId, index, item.url, item.label, now, itemId);
+			} else {
+				insert.run(itemId, menuId, index, item.url, item.label, now);
+			}
+		});
+		console.log(`menu ${menu.name}: ${items.length} items`);
+	}
+}
+
 function main() {
 	if (!existsSync(DB_PATH)) throw new Error(`Database not found: ${DB_PATH}`);
 	const db = new Database(DB_PATH);
 	db.pragma("journal_mode = WAL");
 	try {
 		if (!pagesOnly) restorePosts(db);
-		if (!postsOnly) restorePages(db);
+		if (!postsOnly) {
+			restorePages(db);
+			restoreMenus(db);
+		}
 		console.log(dryRun ? "Dry run complete." : "CMS content restore complete.");
 	} finally {
 		db.close();

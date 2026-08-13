@@ -1,0 +1,136 @@
+---
+import type { ChecklistItem } from "./parse";
+import { asBool, parseChecklist } from "./parse";
+
+const node = Astro.props.node ?? {};
+const eyebrow = String(node.eyebrow ?? "");
+const heading = String(node.heading ?? "");
+const body = String(node.body ?? "");
+const imageSrc = String(node.imageSrc ?? "");
+const imageAlt = String(node.imageAlt ?? "");
+const reverse = asBool(node.reverse);
+const headingInStack = asBool(node.headingInStack);
+const sectionClass = String(node.sectionClass ?? "").trim();
+const primaryLabel = String(node.primaryLabel ?? "");
+const primaryHref = String(node.primaryHref ?? "");
+const secondaryLabel = String(node.secondaryLabel ?? "");
+const secondaryHref = String(node.secondaryHref ?? "");
+const checklist: ChecklistItem[] = parseChecklist(node.checklist);
+const bodyParts = body ? body.split(/\*\*(.+?)\*\*/g) : [];
+---
+
+<section class:list={["section", "reveal", sectionClass || undefined]}>
+	{
+		headingInStack ? (
+			<div class:list={["container", "split", { reverse }]}>
+				{reverse && imageSrc && (
+					<figure class="media-frame">
+						<img
+							src={imageSrc}
+							alt={imageAlt}
+							width="2560"
+							height="1920"
+							loading="lazy"
+							decoding="async"
+						/>
+					</figure>
+				)}
+				<div class="stack prose-wide">
+					{eyebrow && <span class="eyebrow">{eyebrow}</span>}
+					{heading && <h2>{heading}</h2>}
+					{body && (
+						<p>
+							{bodyParts.map((part, i) => (i % 2 === 1 ? <strong>{part}</strong> : part))}
+						</p>
+					)}
+					{(primaryHref && primaryLabel) || (secondaryHref && secondaryLabel) ? (
+						<div class="cta-row">
+							{primaryHref && primaryLabel && (
+								<a class="btn btn-primary" href={primaryHref}>
+									{primaryLabel}
+								</a>
+							)}
+							{secondaryHref && secondaryLabel && (
+								<a class="btn btn-secondary" href={secondaryHref}>
+									{secondaryLabel}
+								</a>
+							)}
+						</div>
+					) : null}
+				</div>
+				{!reverse && imageSrc && (
+					<figure class="media-frame">
+						<img
+							src={imageSrc}
+							alt={imageAlt}
+							width="2560"
+							height="1920"
+							loading="lazy"
+							decoding="async"
+						/>
+					</figure>
+				)}
+			</div>
+		) : (
+			<div class="container">
+				{(eyebrow || heading) && (
+					<div class="section-head">
+						{eyebrow && <span class="eyebrow">{eyebrow}</span>}
+						{heading && <h2>{heading}</h2>}
+					</div>
+				)}
+				<div class:list={["split", { reverse }]}>
+					<div class="stack prose-wide">
+						{body && (
+							<p>
+								{bodyParts.map((part, i) => (i % 2 === 1 ? <strong>{part}</strong> : part))}
+							</p>
+						)}
+						{checklist.length > 0 && (
+							<ul class="checklist">
+								{checklist.map((item) => (
+									<li>
+										{item.title ? (
+											<>
+												<strong>{item.title}</strong>
+												{item.text ? `: ${item.text}` : null}
+											</>
+										) : (
+											item.text
+										)}
+									</li>
+								))}
+							</ul>
+						)}
+						{(primaryHref && primaryLabel) || (secondaryHref && secondaryLabel) ? (
+							<div class="cta-row">
+								{primaryHref && primaryLabel && (
+									<a class="btn btn-primary" href={primaryHref}>
+										{primaryLabel}
+									</a>
+								)}
+								{secondaryHref && secondaryLabel && (
+									<a class="btn btn-secondary" href={secondaryHref}>
+										{secondaryLabel}
+									</a>
+								)}
+							</div>
+						) : null}
+					</div>
+					{imageSrc && (
+						<figure class="media-frame">
+							<img
+								src={imageSrc}
+								alt={imageAlt}
+								width="2560"
+								height="1920"
+								loading="lazy"
+								decoding="async"
+							/>
+						</figure>
+					)}
+				</div>
+			</div>
+		)
+	}
+</section>

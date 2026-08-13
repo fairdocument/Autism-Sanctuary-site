@@ -1,0 +1,68 @@
+---
+import { getMenu, getSiteSettings } from "emdash";
+import { brand, navItems } from "../../content/siteCopy";
+
+const settings = await getSiteSettings();
+const primaryMenu = await getMenu("primary");
+const path = Astro.url.pathname;
+
+const siteName = settings?.title || brand.name;
+const logoUrl = settings?.logo?.url || "/branding/autism-sanctuary-logo.png";
+
+type NavLink = { label: string; href: string; cta?: boolean };
+
+const links: NavLink[] =
+	primaryMenu?.items?.length
+		? primaryMenu.items
+				.filter((item) => item.url && item.url !== "/")
+				.map((item) => ({
+					label: item.label,
+					href: item.url,
+					cta: item.label.trim().toLowerCase() === "donate",
+				}))
+		: navItems.map((item) => ({
+				label: item.label,
+				href: item.href,
+				cta: "cta" in item && Boolean(item.cta),
+			}));
+---
+
+<header class="site-header" data-header>
+	<nav class="nav" aria-label="Primary">
+		<a href="/" class="brand" aria-label={`${siteName} home`}>
+			<img
+				src={logoUrl}
+				alt=""
+				width="48"
+				height="48"
+				class="brand-logo"
+				decoding="async"
+			/>
+			<span class="brand-name">{siteName}</span>
+		</a>
+		<button type="button" class="nav-toggle" aria-expanded="false" aria-controls="primary-nav" data-nav-toggle>
+			<span class="sr-only">Menu</span>
+			<span></span><span></span>
+		</button>
+		<div class="nav-links" id="primary-nav" data-nav-panel>
+			{
+				links.map((item) => (
+					<a
+						href={item.href}
+						class:list={[
+							"nav-link",
+							{ "nav-cta": item.cta },
+							{
+								active:
+									path === item.href ||
+									(item.href !== "/" && path.startsWith(`${item.href}/`)),
+							},
+						]}
+					>
+						{item.label}
+					</a>
+				))
+			}
+		</div>
+	</nav>
+</header>

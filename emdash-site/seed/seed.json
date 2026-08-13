@@ -8,7 +8,11 @@
 	},
 	"settings": {
 		"title": "Autism Sanctuary",
-		"tagline": "Nature's haven for autism: where growth knows no limits."
+		"tagline": "Nature's haven for autism: where growth knows no limits.",
+		"social": {
+			"instagram": "https://www.instagram.com/autismsanctuary",
+			"facebook": "https://www.facebook.com/autismsanctuary"
+		}
 	},
 	"collections": [
 		{
@@ -77,7 +81,6 @@
 			"name": "primary",
 			"label": "Primary",
 			"items": [
-				{ "label": "Home", "url": "/" },
 				{ "label": "About", "url": "/about" },
 				{ "label": "People", "url": "/people" },
 				{ "label": "Programs", "url": "/programs" },
@@ -86,6 +89,37 @@
 				{ "label": "Careers", "url": "/careers" },
 				{ "label": "Contact", "url": "/contact" },
 				{ "label": "Donate", "url": "/donate" }
+			]
+		},
+		{
+			"name": "footer-explore",
+			"label": "Footer Explore",
+			"items": [
+				{ "label": "About", "url": "/about" },
+				{ "label": "People", "url": "/people" },
+				{ "label": "Programs", "url": "/programs" },
+				{ "label": "Our farm", "url": "/our-farm" },
+				{ "label": "Resources", "url": "/resources" },
+				{ "label": "News", "url": "/news" }
+			]
+		},
+		{
+			"name": "footer-engage",
+			"label": "Footer Engage",
+			"items": [
+				{ "label": "Admissions", "url": "/admissions" },
+				{ "label": "Careers & volunteers", "url": "/careers" },
+				{ "label": "Fellowship", "url": "/fellowship" },
+				{ "label": "Donate", "url": "/donate" },
+				{ "label": "Contact", "url": "/contact" }
+			]
+		},
+		{
+			"name": "footer-legal",
+			"label": "Footer Legal",
+			"items": [
+				{ "label": "Privacy", "url": "/privacy" },
+				{ "label": "Terms", "url": "/terms" }
 			]
 		}
 	],

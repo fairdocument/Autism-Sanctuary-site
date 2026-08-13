@@ -3,7 +3,9 @@ import { getSiteSettings } from "emdash";
 import { EmDashHead } from "emdash/ui";
 import { createPublicPageContext } from "emdash/page";
 import { Font } from "astro:assets";
-import { brand, footerLinks, navItems } from "../content/siteCopy";
+import { brand } from "../content/siteCopy";
+import SiteHeader from "../components/chrome/SiteHeader.astro";
+import SiteFooter from "../components/chrome/SiteFooter.astro";
 import "../styles/theme.css";
 
 interface Props {
@@ -19,7 +21,6 @@ const settings = await getSiteSettings();
 const siteTitle = settings?.title || brand.name;
 const fullTitle = title ? `${title} — ${siteTitle}` : siteTitle;
 const siteDescription = description || settings?.tagline || brand.tagline;
-const path = Astro.url.pathname;
 const ogImage = image || "/media/edgefield-aerial.jpg";
 
 const pageCtx = createPublicPageContext({
@@ -57,98 +58,13 @@ const pageCtx = createPublicPageContext({
 	</head>
 	<body>
 		<a class="skip-link" href="#main">Skip to content</a>
-		<header class="site-header" data-header>
-			<nav class="nav" aria-label="Primary">
-				<a href="/" class="brand" aria-label={`${brand.name} home`}>
-					<img
-						src="/branding/autism-sanctuary-logo.png"
-						alt=""
-						width="48"
-						height="48"
-						class="brand-logo"
-						decoding="async"
-					/>
-					<span class="brand-name">{brand.name}</span>
-				</a>
-				<button type="button" class="nav-toggle" aria-expanded="false" aria-controls="primary-nav" data-nav-toggle>
-					<span class="sr-only">Menu</span>
-					<span></span><span></span>
-				</button>
-				<div class="nav-links" id="primary-nav" data-nav-panel>
-					{
-						navItems.map((item) => (
-							<a
-								href={item.href}
-								class:list={[
-									"nav-link",
-									{ "nav-cta": "cta" in item && item.cta },
-									{
-										active:
-											path === item.href ||
-											(item.href !== "/" && path.startsWith(`${item.href}/`)),
-									},
-								]}
-							>
-								{item.label}
-							</a>
-						))
-					}
-				</div>
-			</nav>
-		</header>
+		<SiteHeader />
 
 		<main id="main">
 			<slot />
 		</main>
 
-		<footer class="site-footer">
-			<div class="footer-inner">
-				<div class="footer-brand">
-					<img
-						src="/branding/autism-sanctuary-logo.png"
-						alt=""
-						width="56"
-						height="56"
-						class="footer-logo"
-						decoding="async"
-					/>
-					<p class="footer-name">{brand.name}</p>
-					<p class="footer-tagline">{brand.tagline}</p>
-					<p class="footer-address">{brand.address}</p>
-					<p class="footer-contact">
-						<a href={brand.phoneHref}>{brand.phone}</a>
-						·
-						<a href={`mailto:${brand.email}`}>{brand.email}</a>
-					</p>
-					<p class="footer-social">
-						<a href={brand.instagram} target="_blank" rel="noopener noreferrer">Instagram</a>
-						·
-						<a href={brand.facebook} target="_blank" rel="noopener noreferrer">Facebook</a>
-					</p>
-				</div>
-				<nav class="footer-col" aria-label="Explore">
-					<h2>Explore</h2>
-					{footerLinks.explore.map((item) => (
-						<a href={item.href}>{item.label}</a>
-					))}
-				</nav>
-				<nav class="footer-col" aria-label="Engage">
-					<h2>Engage</h2>
-					{footerLinks.engage.map((item) => (
-						<a href={item.href}>{item.label}</a>
-					))}
-				</nav>
-				<nav class="footer-col" aria-label="Legal">
-					<h2>Legal</h2>
-					{footerLinks.legal.map((item) => (
-						<a href={item.href}>{item.label}</a>
-					))}
-				</nav>
-			</div>
-			<div class="footer-bottom">
-				<span>© {new Date().getFullYear()} Autism Sanctuary. {brand.legal}</span>
-			</div>
-		</footer>
+		<SiteFooter />
 
 		<script>
 			const header = document.querySelector("[data-header]");

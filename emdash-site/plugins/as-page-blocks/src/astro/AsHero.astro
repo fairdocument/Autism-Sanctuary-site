@@ -1,0 +1,69 @@
+---
+const node = Astro.props.node ?? {};
+const eyebrow = String(node.eyebrow ?? "");
+const brand = String(node.brand ?? "Autism Sanctuary");
+const heading = String(node.heading ?? "");
+const lede = String(node.lede ?? "");
+const videoSrc = String(node.videoSrc ?? "/media/hero-farm.mp4");
+const posterSrc = String(node.posterSrc ?? "/media/edgefield-aerial.jpg");
+const primaryLabel = String(node.primaryLabel ?? "");
+const primaryHref = String(node.primaryHref ?? "");
+const secondaryLabel = String(node.secondaryLabel ?? "");
+const secondaryHref = String(node.secondaryHref ?? "");
+const ariaLabel = String(node.ariaLabel ?? "Autism Sanctuary introduction");
+---
+
+<section class="hero" aria-label={ariaLabel}>
+	<div class="hero-media" aria-hidden="true">
+		{
+			videoSrc && (
+				<video
+					class="hero-video"
+					autoplay
+					muted
+					loop
+					playsinline
+					preload="metadata"
+					poster={posterSrc}
+				>
+					<source src={videoSrc} type="video/mp4" />
+				</video>
+			)
+		}
+		{
+			posterSrc && (
+				<img
+					class="hero-poster"
+					src={posterSrc}
+					alt=""
+					width="2560"
+					height="1440"
+					decoding="async"
+				/>
+			)
+		}
+		<div class="hero-overlay"></div>
+	</div>
+	<div class="hero-content">
+		{eyebrow && <p class="eyebrow">{eyebrow}</p>}
+		{brand && <p class="hero-brand">{brand}</p>}
+		{heading && <h1>{heading}</h1>}
+		{lede && <p class="lede">{lede}</p>}
+		{
+			(primaryHref && primaryLabel) || (secondaryHref && secondaryLabel) ? (
+				<div class="cta-row">
+					{primaryHref && primaryLabel && (
+						<a class="btn btn-gold" href={primaryHref}>
+							{primaryLabel}
+						</a>
+					)}
+					{secondaryHref && secondaryLabel && (
+						<a class="btn btn-light" href={secondaryHref}>
+							{secondaryLabel}
+						</a>
+					)}
+				</div>
+			) : null
+		}
+	</div>
+</section>

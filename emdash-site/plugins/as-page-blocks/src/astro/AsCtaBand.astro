@@ -1,0 +1,36 @@
+---
+const node = Astro.props.node ?? {};
+const title = String(node.title ?? "");
+const text = String(node.text ?? "");
+const primaryLabel = String(node.primaryLabel ?? "");
+const primaryHref = String(node.primaryHref ?? "");
+const secondaryLabel = String(node.secondaryLabel ?? "");
+const secondaryHref = String(node.secondaryHref ?? "");
+const variant = String(node.variant ?? "forest") === "meadow" ? "meadow" : "forest";
+---
+
+<section class:list={["section", variant === "forest" ? "section-forest" : "section-meadow"]}>
+	<div class="container" style="text-align:center;">
+		{title && <h2>{title}</h2>}
+		{text && <p class="lede" style="margin:0.75rem auto 0;">{text}</p>}
+		{
+			(primaryHref && primaryLabel) || (secondaryHref && secondaryLabel) ? (
+				<div class="cta-row" style="justify-content:center;">
+					{primaryHref && primaryLabel && (
+						<a class={variant === "forest" ? "btn btn-gold" : "btn btn-primary"} href={primaryHref}>
+							{primaryLabel}
+						</a>
+					)}
+					{secondaryHref && secondaryLabel && (
+						<a
+							class={variant === "forest" ? "btn btn-light" : "btn btn-secondary"}
+							href={secondaryHref}
+						>
+							{secondaryLabel}
+						</a>
+					)}
+				</div>
+			) : null
+		}
+	</div>
+</section>

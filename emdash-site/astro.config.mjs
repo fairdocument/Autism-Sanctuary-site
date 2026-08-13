@@ -6,6 +6,7 @@ import { sqlite } from "emdash/db";
 
 import { contactFormPlugin } from "@incsub/emdash-contact-form";
 import { sendmailPlugin } from "@incsub/emdash-sendmail";
+import { asPageBlocksPlugin } from "@autism-sanctuary/as-page-blocks";
 
 export default defineConfig({
 	site: "https://autismsanctuary-new-nimbusserver.tempurl.host",
@@ -20,7 +21,7 @@ export default defineConfig({
 	integrations: [
 		react(),
 		emdash({
-			plugins: [contactFormPlugin(), sendmailPlugin()],
+			plugins: [contactFormPlugin(), sendmailPlugin(), asPageBlocksPlugin()],
 			database: sqlite({ url: "file:./data.db" }),
 			storage: local({
 				directory: "./uploads",

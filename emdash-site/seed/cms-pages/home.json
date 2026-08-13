@@ -1,0 +1,117 @@
+{
+	"slug": "home",
+	"title": "Care Farm in Western Albemarle",
+	"excerpt": "Autism Sanctuary is a Virginia DBHDS-licensed working farm in Western Albemarle: meaningful days outdoors with trails, animals, gardens, and person-centered supports.",
+	"content": [
+		{
+			"_type": "asHero",
+			"_key": "homeHero",
+			"eyebrow": "501(c)(3) · Virginia DBHDS-licensed · Western Albemarle",
+			"brand": "Autism Sanctuary",
+			"heading": "Meaningful days outdoors—with trails, animals, and a community that shows up.",
+			"lede": "A rural working farm on Pea Ridge Road where people with significant support needs spend real time in nature—alongside licensed services grounded in evidence-based and promising practices.",
+			"videoSrc": "/media/hero-farm.mp4",
+			"posterSrc": "/media/edgefield-aerial.jpg",
+			"primaryLabel": "See programs",
+			"primaryHref": "/programs",
+			"secondaryLabel": "Visit our farm story",
+			"secondaryHref": "/our-farm"
+		},
+		{
+			"_type": "asSplitFeature",
+			"_key": "homeModel",
+			"eyebrow": "Our model",
+			"heading": "One sanctuary today—deep roots in Western Albemarle.",
+			"body": "We operate a single licensed location where people spend real time with **trails, animals, gardens, and people who care**. Days are designed for joy, regulation, and connection—not a clinical waiting room.",
+			"checklist": [
+				{
+					"title": "High support needs welcome",
+					"text": "most people we serve rely on consistent, skilled staffing."
+				},
+				{
+					"title": "Evidence + practice here",
+					"text": "research-backed methods where they fit, and promising practices refined on this farm."
+				},
+				{
+					"title": "Local first",
+					"text": "Crozet, White Hall, and the wider Albemarle community help make the farm feel like more than a program."
+				}
+			],
+			"imageSrc": "/media/sanctuary-gardens.jpg",
+			"imageAlt": "Garden paths and plantings at Autism Sanctuary’s Virginia farm.",
+			"sectionClass": "section-cream",
+			"headingInStack": false,
+			"reverse": false,
+			"primaryLabel": "About Autism Sanctuary",
+			"primaryHref": "/about",
+			"secondaryLabel": "Ask about a fit",
+			"secondaryHref": "/contact?intent=program-fit"
+		},
+		{
+			"_type": "asFeatureGrid",
+			"_key": "homePrograms",
+			"eyebrow": "Programs",
+			"heading": "Licensed supports that still feel like a day on the farm.",
+			"sectionClass": "section-meadow",
+			"items": [
+				{
+					"title": "Group Day & Community Coaching",
+					"text": "Weekday person-centered support in a natural learning environment—therapeutic horticulture, animal care, and guided community participation."
+				},
+				{
+					"title": "Residential & Home-Based",
+					"text": "Individualized residential pathways where authorized—designed for stability, dignity, and collaborative planning with families and guardians."
+				},
+				{
+					"title": "Workplace Assistance",
+					"text": "Coaching that connects pre-vocational routines on the farm to community roles when that matches a person’s goals."
+				}
+			],
+			"primaryLabel": "Full program details",
+			"primaryHref": "/programs"
+		},
+		{
+			"_type": "asSplitFeature",
+			"_key": "homeFarm",
+			"eyebrow": "Our farm",
+			"heading": "Edgefield, trails, animals, and the Enchanted Forest.",
+			"body": "From cattle and chickens to high-tunnel gardens and two walking trails, the land is the program. Neighbors and volunteers help keep trails open and days generous.",
+			"imageSrc": "/media/edgefield-house.jpg",
+			"imageAlt": "Historic Edgefield farmhouse at Autism Sanctuary.",
+			"sectionClass": "",
+			"headingInStack": true,
+			"reverse": true,
+			"primaryLabel": "Explore the property",
+			"primaryHref": "/our-farm",
+			"secondaryLabel": "Volunteer with us",
+			"secondaryHref": "/contact?intent=volunteer"
+		},
+		{
+			"_type": "asSplitFeature",
+			"_key": "homeDonate",
+			"eyebrow": "Support the sanctuary",
+			"heading": "Your gift keeps farm days joyful and safe.",
+			"body": "Philanthropy fills gaps Medicaid and grants can miss: trails, barns, gardens, sensory play, and staff development for people with significant support needs.",
+			"imageSrc": "/media/hero-enchanted-forest.jpg",
+			"imageAlt": "Forest canopy along the Enchanted Forest trail.",
+			"sectionClass": "section-cream",
+			"headingInStack": true,
+			"reverse": false,
+			"primaryLabel": "Donate",
+			"primaryHref": "/donate",
+			"secondaryLabel": "Ask about giving",
+			"secondaryHref": "/contact?intent=donate"
+		},
+		{
+			"_type": "asCtaBand",
+			"_key": "homeCta",
+			"title": "Ready to talk?",
+			"text": "Whether you are exploring programs, volunteering, careers, or a gift—we are glad you reached out.",
+			"primaryLabel": "Send an inquiry",
+			"primaryHref": "/contact",
+			"secondaryLabel": "Admissions",
+			"secondaryHref": "/admissions",
+			"variant": "forest"
+		}
+	]
+}

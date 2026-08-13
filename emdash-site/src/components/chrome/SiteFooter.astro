@@ -1,0 +1,74 @@
+---
+import { getMenu, getSiteSettings } from "emdash";
+import { brand, footerLinks } from "../../content/siteCopy";
+
+const settings = await getSiteSettings();
+const exploreMenu = await getMenu("footer-explore");
+const engageMenu = await getMenu("footer-engage");
+const legalMenu = await getMenu("footer-legal");
+
+const siteName = settings?.title || brand.name;
+const tagline = settings?.tagline || brand.tagline;
+const logoUrl = settings?.logo?.url || "/branding/autism-sanctuary-logo.png";
+const instagram = settings?.social?.instagram || brand.instagram;
+const facebook = settings?.social?.facebook || brand.facebook;
+
+type Link = { label: string; href: string };
+
+function menuToLinks(
+	menu: Awaited<ReturnType<typeof getMenu>> | null | undefined,
+	fallback: readonly { label: string; href: string }[],
+): Link[] {
+	if (menu?.items?.length) {
+		return menu.items.map((item) => ({ label: item.label, href: item.url }));
+	}
+	return fallback.map((item) => ({ label: item.label, href: item.href }));
+}
+
+const explore = menuToLinks(exploreMenu, footerLinks.explore);
+const engage = menuToLinks(engageMenu, footerLinks.engage);
+const legal = menuToLinks(legalMenu, footerLinks.legal);
+---
+
+<footer class="site-footer">
+	<div class="footer-inner">
+		<div class="footer-brand">
+			<img
+				src={logoUrl}
+				alt=""
+				width="56"
+				height="56"
+				class="footer-logo"
+				decoding="async"
+			/>
+			<p class="footer-name">{siteName}</p>
+			<p class="footer-tagline">{tagline}</p>
+			<p class="footer-address">{brand.address}</p>
+			<p class="footer-contact">
+				<a href={brand.phoneHref}>{brand.phone}</a>
+				·
+				<a href={`mailto:${brand.email}`}>{brand.email}</a>
+			</p>
+			<p class="footer-social">
+				<a href={instagram} target="_blank" rel="noopener noreferrer">Instagram</a>
+				·
+				<a href={facebook} target="_blank" rel="noopener noreferrer">Facebook</a>
+			</p>
+		</div>
+		<nav class="footer-col" aria-label="Explore">
+			<h2>Explore</h2>
+			{explore.map((item) => <a href={item.href}>{item.label}</a>)}
+		</nav>
+		<nav class="footer-col" aria-label="Engage">
+			<h2>Engage</h2>
+			{engage.map((item) => <a href={item.href}>{item.label}</a>)}
+		</nav>
+		<nav class="footer-col" aria-label="Legal">
+			<h2>Legal</h2>
+			{legal.map((item) => <a href={item.href}>{item.label}</a>)}
+		</nav>
+	</div>
+	<div class="footer-bottom">
+		<span>© {new Date().getFullYear()} {siteName}. {brand.legal}</span>
+	</div>
+</footer>

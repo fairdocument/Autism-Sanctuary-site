@@ -1,0 +1,15 @@
+{
+	"name": "@autism-sanctuary/as-page-blocks",
+	"version": "0.1.0",
+	"private": true,
+	"type": "module",
+	"exports": {
+		".": "./src/index.ts",
+		"./sandbox": "./src/sandbox-entry.ts",
+		"./astro": "./src/astro/index.ts"
+	},
+	"peerDependencies": {
+		"emdash": ">=0.24.0"
+	},
+	"keywords": ["emdash", "emdash-plugin"]
+}

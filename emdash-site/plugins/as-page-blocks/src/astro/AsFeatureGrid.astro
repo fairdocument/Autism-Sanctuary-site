@@ -1,0 +1,46 @@
+---
+import type { FeatureItem } from "./parse";
+import { parseFeatures } from "./parse";
+
+const node = Astro.props.node ?? {};
+const eyebrow = String(node.eyebrow ?? "");
+const heading = String(node.heading ?? "");
+const sectionClass = String(node.sectionClass ?? "section-meadow").trim();
+const primaryLabel = String(node.primaryLabel ?? "");
+const primaryHref = String(node.primaryHref ?? "");
+const items: FeatureItem[] = parseFeatures(node.items);
+---
+
+<section class:list={["section", "reveal", sectionClass || undefined]}>
+	<div class="container">
+		{
+			(eyebrow || heading) && (
+				<div class="section-head">
+					{eyebrow && <span class="eyebrow">{eyebrow}</span>}
+					{heading && <h2>{heading}</h2>}
+				</div>
+			)
+		}
+		{
+			items.length > 0 && (
+				<div class="grid-3">
+					{items.map((item) => (
+						<article class="feature-block">
+							<h3>{item.title}</h3>
+							{item.text && <p>{item.text}</p>}
+						</article>
+					))}
+				</div>
+			)
+		}
+		{
+			primaryHref && primaryLabel && (
+				<div class="cta-row">
+					<a class="btn btn-primary" href={primaryHref}>
+						{primaryLabel}
+					</a>
+				</div>
+			)
+		}
+	</div>
+</section>

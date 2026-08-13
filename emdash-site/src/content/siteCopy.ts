@@ -10,6 +10,10 @@ export const brand = {
 	facebook: "https://www.facebook.com/autismsanctuary",
 };
 
+/**
+ * Fallback nav when EmDash `primary` menu is empty.
+ * Live header reads Menus → Primary in /_emdash/admin.
+ */
 export const navItems = [
 	{ label: "About", href: "/about" },
 	{ label: "People", href: "/people" },
@@ -21,6 +25,10 @@ export const navItems = [
 	{ label: "Donate", href: "/donate", cta: true },
 ] as const;
 
+/**
+ * Fallback footer columns when EmDash footer-* menus are empty.
+ * Live footer reads Menus → Footer Explore / Engage / Legal in admin.
+ */
 export const footerLinks = {
 	explore: [
 		{ label: "About", href: "/about" },

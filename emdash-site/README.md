@@ -15,6 +15,14 @@ npm install
 npm run build
 ```
 
+### Editable homepage, header, and footer
+
+- **Homepage blocks:** edit the `home` page in `/_emdash/admin` (slash-menu blocks: Homepage Hero, Split Feature, Feature Grid, CTA Band). Seed source: `seed/cms-pages/home.json`.
+- **Header nav:** Menus → **Primary**
+- **Footer link columns:** Menus → **Footer Explore**, **Footer Engage**, **Footer Legal**
+- **Site name / tagline / social:** Settings
+- After deploying seed/menu changes, run `node scripts/restore-cms-content.mjs --pages-only` on the host (restores pages + menus).
+
 ## Deploy
 
 ```bash

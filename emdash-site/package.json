@@ -16,6 +16,7 @@
   "dependencies": {
     "@astrojs/node": "^11.0.0",
     "@astrojs/react": "^6.0.0",
+    "@autism-sanctuary/as-page-blocks": "file:plugins/as-page-blocks",
     "@incsub/emdash-contact-form": "github:wpmudev/emdash-contact-form#v0.2.0",
     "@incsub/emdash-sendmail": "github:wpmudev/emdash-sendmail#v1.0.2",
     "astro": "^7.0.0",
