@@ -17,7 +17,7 @@ npm run build
 
 ### Editable homepage, header, and footer
 
-- **Homepage blocks:** edit the `home` page in `/_emdash/admin` — click a layout block (Hero, Split Feature, etc.) to open its form. Checklist/feature cards use repeaters. Do not use frontend visual editing for the homepage (it would show placeholders instead of the real layout).
+- **Homepage blocks:** edit in `/_emdash/admin` → **Pages** → **home**. Click a layout block (Hero, Split Feature, etc.) to open its form. Checklist/feature cards use repeaters. The public homepage always shows the designed layout (even when logged in); do not expect frontend visual-edit outlines on those custom blocks.
 - **Header nav:** Menus → **Primary**
 - **Footer link columns:** Menus → **Footer Explore**, **Footer Engage**, **Footer Legal**
 - **Site name / tagline / social:** Settings

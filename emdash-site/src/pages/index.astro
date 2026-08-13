@@ -10,11 +10,13 @@ const title = page?.data?.title || "Care Farm in Western Albemarle";
 const description =
 	page?.data?.excerpt ||
 	"Autism Sanctuary is a Virginia DBHDS-licensed working farm in Western Albemarle: meaningful days outdoors with trails, animals, gardens, and person-centered supports.";
-const content = page?.data?.content ?? [];
 
-// Do not spread page.edit.content here. Visual editing replaces custom layout
-// blocks with placeholders ("Plugin block: asHero…") and breaks the homepage.
-// Edit sections in Admin → Pages → home (click each layout block to open its form).
+// EmDash tags PT arrays with a Symbol when an admin session is active, which
+// makes <PortableText> switch to the inline editor. That editor only shows
+// placeholders for custom layout blocks ("Plugin block: asHero…"). Clone the
+// array so the Symbol is dropped and the real Astro block components render.
+const rawContent = page?.data?.content ?? [];
+const content = Array.isArray(rawContent) ? [...rawContent] : [];
 ---
 
 <Base title={title} description={description} image="/media/edgefield-aerial.jpg">
