@@ -1,4 +1,4 @@
-/* Autism Sanctuary — Divi brand layer */
+/* Autism Sanctuary — Divi brand layer (aligned to EmDash theme.css) */
 @import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Source+Sans+3:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap");
 
 :root {
@@ -10,8 +10,21 @@
   --charcoal-ink: #1b1b1b;
   --muted-ink: #4a534c;
   --soft-rule: #d9d2c4;
+  --surface: #ffffff;
+  --max-w: 72rem;
+  --wide-w: 80rem;
+  --radius: 0.35rem;
+  --shadow-soft: 0 10px 40px rgba(30, 61, 44, 0.12);
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
   --font-serif: "Cormorant Garamond", Georgia, serif;
-  --font-sans: "Source Sans 3", "Segoe UI", sans-serif;
+  --font-sans: "Source Sans 3", system-ui, sans-serif;
+  color-scheme: light;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
 html {
@@ -22,66 +35,106 @@ body,
 .et-db #et-boc .et_pb_module,
 .et_pb_text,
 .et_pb_text_inner,
-#main-content {
+#main-content,
+#page-container {
   font-family: var(--font-sans) !important;
   color: var(--charcoal-ink);
-  background-color: var(--stone-cream);
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
 }
 
-h1, h2, h3, h4, h5, h6,
-.et_pb_module_header,
-.et_pb_text h1,
-.et_pb_text h2,
-.et_pb_text h3,
-#main-header .logo_container,
-.as-brand,
-.as-display {
-  font-family: var(--font-serif) !important;
-  color: var(--forest-deep);
-  font-weight: 600;
-  letter-spacing: -0.02em;
+body {
+  margin: 0;
+  background:
+    radial-gradient(ellipse 120% 80% at 10% -10%, rgba(167, 196, 160, 0.28), transparent 55%),
+    radial-gradient(ellipse 90% 60% at 100% 0%, rgba(201, 166, 70, 0.12), transparent 50%),
+    linear-gradient(180deg, #fbfaf6 0%, var(--stone-cream) 40%, #f3efe4 100%) !important;
+}
+
+#main-content,
+#et-main-area,
+.et_pb_section {
+  background: transparent !important;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
 }
 
 a {
   color: var(--sanctuary-green);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.18em;
 }
 
-a:hover,
-a:focus-visible {
+a:hover {
   color: var(--forest-deep);
 }
 
-:focus-visible {
-  outline: 2px solid var(--edgefield-gold);
-  outline-offset: 3px;
+h1, h2, h3, h4, h5, h6,
+.et_pb_module_header,
+.as-brand {
+  font-family: var(--font-serif) !important;
+  font-weight: 600;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  color: var(--forest-deep);
 }
 
-/* Divi header */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid var(--edgefield-gold);
+  outline-offset: 2px;
+}
+
+/* Divi header → EmDash sticky glass */
 #main-header,
 .et-l--header,
 #main-header.et-fixed-header {
-  background: rgba(247, 244, 236, 0.92) !important;
+  background: rgba(251, 250, 246, 0.86) !important;
   box-shadow: none !important;
-  border-bottom: 1px solid var(--soft-rule);
-  backdrop-filter: blur(10px);
+  border-bottom: 1px solid transparent;
+  backdrop-filter: blur(12px);
 }
 
-#main-header .et_menu_container,
+#main-header.et-fixed-header {
+  border-bottom-color: var(--soft-rule);
+  box-shadow: 0 8px 24px rgba(30, 61, 44, 0.06) !important;
+}
+
+#main-header .logo_container img,
+#logo {
+  max-height: 2.75rem !important;
+  width: auto !important;
+}
+
 #et-top-navigation nav > ul > li > a,
 #top-menu a {
   font-family: var(--font-sans) !important;
-  color: var(--forest-deep) !important;
-  font-weight: 500;
+  color: var(--muted-ink) !important;
+  font-weight: 550;
   font-size: 0.95rem;
+  text-decoration: none !important;
+  padding: 0.35rem 0 !important;
+}
+
+#top-menu a:hover,
+#top-menu .current-menu-item > a {
+  color: var(--forest-deep) !important;
 }
 
 #top-menu > li.as-donate-nav > a,
 #top-menu > li.cta-donate > a {
   background: var(--sanctuary-green) !important;
   color: #fff !important;
-  padding: 0.55rem 1.1rem !important;
-  border-radius: 2px;
-  margin-left: 0.5rem;
+  padding: 0.5rem 1rem !important;
+  border-radius: var(--radius);
+  margin-left: 0.35rem;
 }
 
 #top-menu > li.as-donate-nav > a:hover,
@@ -89,40 +142,67 @@ a:focus-visible {
   background: var(--forest-deep) !important;
 }
 
+#et_top_search,
+.et_search_outer {
+  display: none !important;
+}
+
 #main-footer,
-#main-footer .footer-widget,
 #footer-bottom {
   background: var(--forest-deep) !important;
-  color: #e8efe6 !important;
+  color: rgba(247, 244, 236, 0.85) !important;
 }
 
 #main-footer a,
 #footer-bottom a {
+  color: rgba(247, 244, 236, 0.9) !important;
+  text-decoration: none !important;
+}
+
+#main-footer a:hover,
+#footer-bottom a:hover {
   color: var(--edgefield-gold) !important;
 }
 
-#main-footer a:hover {
-  color: #fff !important;
-}
-
 #footer-bottom {
-  border-top: 1px solid rgba(201, 166, 70, 0.25);
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
 }
 
-/* Page canvas */
-.as-page {
-  max-width: 1120px;
+/* Hide default Divi page titles — banners carry the H1 */
+body.page article > .entry-title,
+body.home article > .entry-title,
+.et_pb_title_container {
+  display: none !important;
+}
+
+#main-content .container {
+  width: 100%;
+  max-width: none;
+  padding: 0;
+}
+
+/* ---------- Page primitives (match EmDash) ---------- */
+
+.as-page,
+.as-section__inner {
+  width: min(var(--max-w), 100%);
   margin: 0 auto;
-  padding: 2.5rem 1.25rem 4rem;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+}
+
+.as-section__inner {
+  width: min(var(--wide-w), 100%);
 }
 
 .as-eyebrow {
+  display: inline-block;
   font-family: var(--font-sans);
   font-size: 0.75rem;
-  font-weight: 600;
-  letter-spacing: 0.14em;
+  font-weight: 700;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--edgefield-gold);
+  color: var(--sanctuary-green);
   margin: 0 0 0.75rem;
 }
 
@@ -130,30 +210,33 @@ a:focus-visible {
   font-size: 1.15rem;
   line-height: 1.55;
   color: var(--muted-ink);
-  max-width: 40rem;
+  max-width: 42rem;
+  margin: 0;
 }
 
 .as-banner {
-  padding: 3.5rem 0 2rem;
-  background:
-    radial-gradient(ellipse 80% 60% at 10% 0%, rgba(167, 196, 160, 0.35), transparent 55%),
-    radial-gradient(ellipse 60% 50% at 90% 20%, rgba(201, 166, 70, 0.18), transparent 50%),
-    var(--stone-cream);
+  padding: 4rem 0 2.5rem;
+  background: transparent;
+}
+
+.as-banner .as-page {
+  padding-top: 0;
+  padding-bottom: 0;
 }
 
 .as-banner h1 {
   font-size: clamp(2rem, 4vw, 3rem);
-  line-height: 1.15;
-  margin: 0 0 1rem;
   max-width: 18ch;
+  margin: 0 0 1rem;
+  line-height: 1.15;
 }
 
 /* Hero */
 .as-hero {
   position: relative;
-  min-height: min(92vh, 820px);
-  display: flex;
-  align-items: flex-end;
+  min-height: min(92vh, 52rem);
+  display: grid;
+  align-items: end;
   color: #fff;
   overflow: hidden;
   background: var(--forest-deep);
@@ -169,46 +252,49 @@ a:focus-visible {
   object-fit: cover;
 }
 
+.as-hero video {
+  animation: as-hero-ken 18s var(--ease) both;
+}
+
 .as-hero__shade {
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    180deg,
-    rgba(30, 61, 44, 0.35) 0%,
-    rgba(30, 61, 44, 0.55) 45%,
-    rgba(30, 61, 44, 0.92) 100%
-  );
+  background:
+    linear-gradient(180deg, rgba(30, 61, 44, 0.25) 0%, rgba(30, 61, 44, 0.55) 45%, rgba(20, 40, 28, 0.88) 100%),
+    linear-gradient(90deg, rgba(20, 40, 28, 0.55), transparent 55%);
 }
 
 .as-hero__inner {
   position: relative;
   z-index: 1;
-  width: min(1120px, 100%);
+  width: min(var(--wide-w), 100%);
   margin: 0 auto;
-  padding: 4rem 1.25rem 3.5rem;
+  padding: 7rem 1.25rem 3.5rem;
+}
+
+.as-hero .as-eyebrow {
+  color: var(--edgefield-gold);
 }
 
 .as-hero .as-brand {
   color: #fff;
-  font-size: clamp(2.6rem, 7vw, 4.5rem);
+  font-size: clamp(2.5rem, 6vw, 4.25rem);
   line-height: 1.05;
   margin: 0 0 0.75rem;
+  text-shadow: 0 2px 24px rgba(0, 0, 0, 0.25);
 }
 
 .as-hero h1 {
   color: #fff;
-  font-size: clamp(1.35rem, 2.6vw, 1.85rem);
+  font-size: clamp(1.55rem, 3.2vw, 2.15rem);
   font-weight: 500;
   max-width: 28ch;
   margin: 0 0 1rem;
 }
 
 .as-hero .as-lede {
-  color: rgba(255, 255, 255, 0.88);
-}
-
-.as-hero .as-eyebrow {
-  color: var(--edgefield-gold);
+  color: rgba(247, 244, 236, 0.92);
+  max-width: 36rem;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -219,20 +305,21 @@ a:focus-visible {
 
 /* Sections */
 .as-section {
-  padding: 4rem 0;
+  padding: 4.5rem 0;
 }
 
 .as-section--cream {
-  background: var(--stone-cream);
+  background: rgba(255, 255, 255, 0.45);
 }
 
 .as-section--meadow {
-  background: linear-gradient(180deg, rgba(167, 196, 160, 0.35), rgba(247, 244, 236, 0.9));
+  background: linear-gradient(135deg, rgba(167, 196, 160, 0.35), rgba(245, 241, 232, 0.9));
 }
 
 .as-section--forest {
-  background: var(--forest-deep);
-  color: #eef4ee;
+  background: linear-gradient(145deg, var(--forest-deep), var(--sanctuary-green));
+  color: rgba(247, 244, 236, 0.94);
+  text-align: center;
 }
 
 .as-section--forest h2,
@@ -242,31 +329,38 @@ a:focus-visible {
 
 .as-section--forest .as-lede,
 .as-section--forest p {
-  color: rgba(238, 244, 238, 0.88);
-}
-
-.as-section__inner {
-  width: min(1120px, 100%);
-  margin: 0 auto;
-  padding: 0 1.25rem;
+  color: rgba(247, 244, 236, 0.92);
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .as-section h2 {
-  font-size: clamp(1.75rem, 3.2vw, 2.4rem);
-  margin: 0 0 1rem;
+  font-size: clamp(1.75rem, 3vw, 2.35rem);
+  margin: 0 0 0.75rem;
   max-width: 20ch;
+}
+
+.as-section--forest h2 {
+  max-width: none;
+}
+
+.as-section--forest .as-actions {
+  justify-content: center;
 }
 
 .as-split {
   display: grid;
-  gap: 2rem;
+  gap: 2.5rem;
   align-items: center;
 }
 
 @media (min-width: 900px) {
   .as-split {
     grid-template-columns: 1.05fr 0.95fr;
-    gap: 3rem;
+  }
+
+  .as-split--reverse {
+    grid-template-columns: 0.95fr 1.05fr;
   }
 
   .as-split--reverse .as-split__media {
@@ -274,57 +368,71 @@ a:focus-visible {
   }
 }
 
-.as-split__media img {
-  width: 100%;
-  height: auto;
-  display: block;
-  border-radius: 2px;
+.as-split__media {
+  overflow: hidden;
+  border-radius: calc(var(--radius) + 4px);
+  box-shadow: var(--shadow-soft);
+  background: var(--forest-deep);
 }
 
+.as-split__media img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  display: block;
+  border-radius: 0;
+}
+
+/* Checklist — EmDash uses native disc bullets, not custom markers */
 .as-checklist {
-  list-style: none;
-  padding: 0;
-  margin: 1.5rem 0 0;
+  margin: 1rem 0 0;
+  padding-left: 1.15rem;
+  list-style: disc;
+  list-style-position: outside;
+  color: var(--muted-ink);
 }
 
 .as-checklist li {
-  position: relative;
-  padding: 0.85rem 0 0.85rem 1.6rem;
-  border-top: 1px solid var(--soft-rule);
+  margin: 0 0 0.45rem;
+  padding: 0;
+  border: none;
+  position: static;
+  line-height: 1.55;
 }
 
 .as-checklist li::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 1.2rem;
-  width: 0.55rem;
-  height: 0.55rem;
-  background: var(--sanctuary-green);
-  border-radius: 1px;
+  content: none !important;
+  display: none !important;
 }
 
 .as-checklist strong {
-  display: block;
   color: var(--forest-deep);
   font-weight: 600;
 }
 
+/* Feature grid — EmDash feature-block hairline rules */
 .as-grid {
   display: grid;
-  gap: 1.5rem;
+  gap: 1.25rem;
   margin-top: 2rem;
 }
 
 @media (min-width: 768px) {
   .as-grid--3 {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
+}
+
+.as-feature {
+  padding: 1.25rem 0;
+  border-top: 1px solid var(--soft-rule);
+  background: none;
+  box-shadow: none;
 }
 
 .as-feature h3 {
   font-size: 1.35rem;
-  margin: 0 0 0.5rem;
+  margin: 0 0 0.4rem;
 }
 
 .as-feature p {
@@ -345,14 +453,20 @@ a:focus-visible {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  gap: 0.4rem;
   font-family: var(--font-sans);
   font-weight: 600;
   font-size: 0.95rem;
   text-decoration: none !important;
   padding: 0.75rem 1.25rem;
-  border-radius: 2px;
+  border-radius: var(--radius);
   border: 1px solid transparent;
-  transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+  transition: transform 0.2s var(--ease), background 0.2s var(--ease), color 0.2s var(--ease);
+  cursor: pointer;
+}
+
+.as-btn:hover {
+  transform: translateY(-1px);
 }
 
 .as-btn--primary {
@@ -367,23 +481,25 @@ a:focus-visible {
 
 .as-btn--ghost {
   background: transparent;
-  color: var(--forest-deep) !important;
+  color: var(--sanctuary-green) !important;
   border-color: var(--sanctuary-green);
 }
 
 .as-btn--ghost:hover {
   background: rgba(47, 93, 67, 0.08);
+  color: var(--forest-deep) !important;
 }
 
 .as-hero .as-btn--primary {
   background: var(--edgefield-gold);
   color: var(--forest-deep) !important;
+  border-color: transparent;
 }
 
-.as-hero .as-btn--ghost,
-.as-section--forest .as-btn--ghost {
-  color: #fff !important;
-  border-color: rgba(255, 255, 255, 0.55);
+.as-hero .as-btn--ghost {
+  background: var(--stone-cream);
+  color: var(--forest-deep) !important;
+  border-color: transparent;
 }
 
 .as-section--forest .as-btn--primary {
@@ -391,76 +507,164 @@ a:focus-visible {
   color: var(--forest-deep) !important;
 }
 
-/* Prose pages */
+.as-section--forest .as-btn--ghost {
+  background: var(--stone-cream);
+  color: var(--forest-deep) !important;
+  border-color: transparent;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .as-btn:hover {
+    transform: none;
+  }
+}
+
+/* Interior prose — match .cms-prose */
 .as-prose {
-  max-width: 42rem;
+  max-width: 44rem;
+  padding-bottom: 4rem;
 }
 
 .as-prose h2 {
-  margin-top: 2.5rem;
-  font-size: 1.85rem;
+  margin: 2rem 0 0.75rem;
+  font-size: clamp(1.5rem, 2.5vw, 2rem);
 }
 
 .as-prose h3 {
-  margin-top: 1.75rem;
+  margin: 1.5rem 0 0.5rem;
   font-size: 1.25rem;
 }
 
-.as-prose p,
-.as-prose li {
-  line-height: 1.65;
+.as-prose p {
+  margin: 0 0 1rem;
   color: var(--muted-ink);
+  line-height: 1.65;
 }
 
 .as-prose ul,
 .as-prose ol {
+  margin: 0 0 1.25rem;
   padding-left: 1.2rem;
+  color: var(--muted-ink);
+  list-style-position: outside;
+}
+
+.as-prose ul {
+  list-style-type: disc;
+}
+
+.as-prose ol {
+  list-style-type: decimal;
+}
+
+.as-prose li {
+  margin: 0 0 0.4rem;
+  padding: 0;
+  line-height: 1.55;
+}
+
+.as-prose li::before,
+.as-prose li::marker {
+  color: var(--sanctuary-green);
+}
+
+.as-prose a {
+  color: var(--sanctuary-green);
+  font-weight: 600;
 }
 
 .as-prose figure {
-  margin: 1.75rem 0;
+  margin: 1.5rem 0;
+  overflow: hidden;
+  border-radius: calc(var(--radius) + 2px);
+  box-shadow: var(--shadow-soft);
 }
 
 .as-prose img {
   width: 100%;
   height: auto;
   display: block;
-  border-radius: 2px;
+  border-radius: calc(var(--radius) + 2px);
+  margin: 1.25rem 0;
 }
 
+.as-prose figure img {
+  margin: 0;
+  border-radius: 0;
+}
+
+/* People */
 .as-people {
   display: grid;
-  gap: 1.25rem;
-  margin-top: 2rem;
-}
-
-@media (min-width: 700px) {
-  .as-people {
-    grid-template-columns: repeat(2, 1fr);
-  }
+  gap: 0;
+  margin: 1.5rem 0 0;
+  padding: 0;
+  list-style: none;
 }
 
 .as-person {
-  padding: 1.25rem 0;
+  display: grid;
+  grid-template-columns: 7.5rem minmax(0, 1fr);
+  gap: 1.25rem 1.5rem;
+  align-items: start;
+  padding: 1.5rem 0;
   border-top: 1px solid var(--soft-rule);
+}
+
+.as-person:last-child {
+  border-bottom: 1px solid var(--soft-rule);
+}
+
+.as-person__photo {
+  aspect-ratio: 1;
+  width: 100%;
+  border-radius: calc(var(--radius) + 2px);
+  background: linear-gradient(145deg, rgba(47, 93, 67, 0.18), rgba(196, 162, 88, 0.22));
+  display: grid;
+  place-items: center;
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--forest-deep);
+  letter-spacing: 0.04em;
+}
+
+.as-person h3 {
+  margin: 0 0 0.25rem;
+  font-size: 1.45rem;
 }
 
 .as-person__role {
   color: var(--sanctuary-green);
-  font-size: 0.9rem;
+  font-size: 0.95rem;
   font-weight: 600;
-  margin: 0.15rem 0 0.5rem;
+  margin: 0 0 0.65rem;
 }
 
 .as-person p {
   margin: 0;
   color: var(--muted-ink);
+  max-width: 36rem;
+}
+
+@media (max-width: 900px) {
+  .as-person {
+    grid-template-columns: 5.5rem minmax(0, 1fr);
+  }
+
+  .as-grid--3 {
+    grid-template-columns: 1fr;
+  }
+
+  .as-hero {
+    min-height: min(88vh, 40rem);
+  }
 }
 
 .as-contact-grid {
   display: grid;
   gap: 2rem;
-  margin-top: 2rem;
+  margin-top: 1rem;
 }
 
 @media (min-width: 800px) {
@@ -469,18 +673,19 @@ a:focus-visible {
   }
 }
 
-.as-aside {
-  padding: 1.5rem 0;
-}
-
 .as-aside p {
   margin: 0.35rem 0;
   color: var(--muted-ink);
 }
 
+/* Gravity Forms */
 .gform_wrapper,
 .gform-theme--framework {
   margin-top: 1rem;
+  background: rgba(255, 255, 255, 0.72);
+  border: 1px solid var(--soft-rule);
+  border-radius: calc(var(--radius) + 4px);
+  padding: 1.5rem;
 }
 
 .gform_wrapper .gform_button,
@@ -491,35 +696,81 @@ a:focus-visible {
   font-family: var(--font-sans) !important;
   font-weight: 600 !important;
   padding: 0.75rem 1.35rem !important;
-  border-radius: 2px !important;
+  border-radius: var(--radius) !important;
 }
 
-#main-content .container {
-  width: 100%;
-  max-width: none;
-  padding: 0;
+@keyframes as-hero-ken {
+  from { transform: scale(1.06); }
+  to { transform: scale(1); }
 }
 
-.et_pb_gutters3 .et_pb_column,
-.container {
-  max-width: none;
+/* Beat Divi’s global `ul { list-style: none }` reset */
+#left-area ul.as-checklist,
+.entry-content ul.as-checklist,
+#main-content ul.as-checklist,
+ul.as-checklist {
+  list-style-type: disc !important;
+  list-style: disc outside !important;
+  padding: 0 0 0 1.15rem !important;
+  margin: 1rem 0 0 !important;
+  line-height: 1.55 !important;
 }
 
-body.page .entry-content > *:not(.as-hero):not(.as-section):not(.as-banner) {
-  width: min(1120px, 100%);
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: 1.25rem;
-  padding-right: 1.25rem;
+#left-area ul.as-checklist li,
+.entry-content ul.as-checklist li,
+ul.as-checklist li {
+  list-style: inherit !important;
+  margin: 0 0 0.45rem !important;
+  padding: 0 !important;
+  line-height: 1.55 !important;
 }
 
-body.home .entry-title,
-body.page-template-default .entry-title,
-.et_pb_post .entry-title {
-  /* Titles live inside banners/heroes */
+#left-area ul.as-checklist li::before,
+.entry-content ul.as-checklist li::before,
+ul.as-checklist li::before {
+  content: none !important;
+  display: none !important;
 }
 
-body.home article > .entry-title,
-body.page article > .entry-title {
-  display: none;
+#left-area .as-prose ul,
+.entry-content .as-prose ul,
+.as-prose ul {
+  list-style-type: disc !important;
+  list-style: disc outside !important;
+  padding: 0 0 1.25rem 1.2rem !important;
+  margin: 0 0 1.25rem !important;
+  line-height: 1.55 !important;
+  color: var(--muted-ink);
+}
+
+#left-area .as-prose ol,
+.entry-content .as-prose ol,
+.as-prose ol {
+  list-style-type: decimal !important;
+  list-style: decimal outside !important;
+  padding: 0 0 1.25rem 1.2rem !important;
+  margin: 0 0 1.25rem !important;
+}
+
+#left-area .as-prose li,
+.entry-content .as-prose li,
+.as-prose li {
+  margin: 0 0 0.4rem !important;
+  padding: 0 !important;
+  line-height: 1.55 !important;
+}
+
+#main-content {
+  background-color: transparent !important;
+}
+
+#left-area p,
+.entry-content p {
+  padding-bottom: 0;
+}
+
+.as-prose p,
+.as-lede,
+.as-section p {
+  padding-bottom: 0 !important;
 }
