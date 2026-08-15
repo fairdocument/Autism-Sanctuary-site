@@ -1,6 +1,8 @@
 # Autism Sanctuary — Public Website
 
-**Primary build:** EmDash (Astro) theme in [`emdash-site/`](emdash-site/), staged on WPMU Unlimited at https://autismsanctuary-new-nimbusserver.tempurl.host/ — see [`emdash-site/README.md`](emdash-site/README.md) and [`emdash-site/GO_LIVE.md`](emdash-site/GO_LIVE.md).
+**Primary build (WordPress / Divi):** staging at https://autismsanctuary2-nimbusserver.tempurl.host/ — migration package in [`wordpress-migration/`](wordpress-migration/).
+
+**Prior EmDash (Astro) theme:** [`emdash-site/`](emdash-site/), staged at https://autismsanctuary-new-nimbusserver.tempurl.host/ — see [`emdash-site/README.md`](emdash-site/README.md).
 
 **Reference static prototype:** `site/` remains a static **HTML/CSS** draft for **Autism Sanctuary**, a Virginia **501(c)(3)** and **DBHDS-licensed** **care farm** in **Western Albemarle**.
 
