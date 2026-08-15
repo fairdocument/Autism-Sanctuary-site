@@ -43,11 +43,17 @@ Brand CSS is also loaded by mu-plugin `wp-content/mu-plugins/as-brand-css.php`.
 
 ## Still needed before domain cutover
 
-1. **Stripe** — install Gravity Forms Stripe add-on (or Stripe Payment Links) and replace the Donate Inquiry handoff with live checkout
+1. **Stripe** — GF Stripe is installed; donate form (#2) has one-time + monthly feeds. Confirm test/live mode and run a $1 test gift on `/donate/`
 2. **Intake form** — keep linking to live `/intake-form/` until a secure GF rebuild is approved
 3. **Divi Theme Builder** (optional polish) — Global Header/Footer layouts in Visual Builder; content already uses brand HTML sections
 4. **People bios / portraits** when ready
 5. Point `autismsanctuary.org` only after QA sign-off
+
+### Re-run Stripe donate wiring
+
+```bash
+wp eval-file wordpress-migration/setup-stripe-donate.php
+```
 
 ## Isolation
 
