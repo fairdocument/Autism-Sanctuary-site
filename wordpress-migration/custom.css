@@ -764,6 +764,31 @@ ul.as-checklist li::before {
   background-color: transparent !important;
 }
 
+/* Classic Divi page template shows a duplicate page title when builder is off */
+body.page .entry-title.main_title,
+body.page h1.main_title,
+body.home .entry-title.main_title {
+  display: none !important;
+}
+
+body.page #left-area,
+body.home #left-area {
+  padding-top: 0 !important;
+  width: 100% !important;
+}
+
+body.page .container,
+body.home .container {
+  max-width: none !important;
+  width: 100% !important;
+  padding: 0 !important;
+}
+
+body.page #main-content .container:before,
+body.home #main-content .container:before {
+  display: none !important;
+}
+
 #left-area .as-prose p,
 .entry-content p {
   padding-bottom: 0;

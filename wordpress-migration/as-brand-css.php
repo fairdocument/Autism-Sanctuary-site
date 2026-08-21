@@ -36,3 +36,37 @@ add_filter('the_content', function ($content) {
 	}
 	return wpautop($content);
 }, 12);
+
+/**
+ * Hide classic theme page titles — banners/heroes already provide the H1.
+ */
+add_filter('et_post_meta_fields_to_remove', function ($fields) {
+	$fields[] = 'title';
+	return $fields;
+});
+
+add_action('wp', function () {
+	if (is_page() || is_front_page()) {
+		remove_action('et_before_post', 'et_add_post_meta_wrapper', 5);
+	}
+});
+
+add_filter('body_class', function ($classes) {
+	if (is_page() || is_front_page()) {
+		$classes[] = 'as-hide-page-title';
+	}
+	return $classes;
+});
+
+/**
+ * Blank the classic theme H1 inside the loop (menus/nav still keep titles).
+ */
+add_filter('the_title', function ($title, $post_id = 0) {
+	if (is_admin() || !in_the_loop() || !is_main_query()) {
+		return $title;
+	}
+	if (is_page() || is_front_page()) {
+		return '';
+	}
+	return $title;
+}, 10, 2);
