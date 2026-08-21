@@ -948,3 +948,45 @@ body.single-post #left-area,
 body.blog #left-area {
   width: 100% !important;
 }
+
+/* Divi 5 wrappers around preserved brand HTML */
+.et_builder_inner_content > .et_pb_section.as-divi-chunk,
+.et_builder_inner_content > .et_pb_section.as-hero,
+.et_builder_inner_content > .et_pb_section.as-section,
+.et_builder_inner_content > .et_pb_section.as-banner {
+  padding: 0 !important;
+  margin: 0 !important;
+  background: transparent !important;
+}
+
+.et_pb_section.as-divi-chunk > .et_pb_row,
+.et_pb_section.as-hero > .et_pb_row,
+.et_pb_section.as-section > .et_pb_row,
+.et_pb_section.as-banner > .et_pb_row,
+.et_pb_section.as-divi-chunk .et_pb_row,
+.et_pb_section.as-hero .et_pb_row {
+  width: 100% !important;
+  max-width: 100% !important;
+  padding: 0 !important;
+  margin: 0 auto !important;
+}
+
+.et_pb_section.as-divi-chunk .et_pb_column,
+.et_pb_section.as-hero .et_pb_column {
+  padding: 0 !important;
+}
+
+.et_pb_text.as-preserve,
+.et_pb_text.as-preserve .et_pb_text_inner {
+  padding: 0 !important;
+  margin: 0 !important;
+  width: 100% !important;
+  max-width: none !important;
+}
+
+.et_pb_text.as-preserve .et_pb_text_inner > .as-hero,
+.et_pb_text.as-preserve .et_pb_text_inner > .as-section,
+.et_pb_text.as-preserve .et_pb_text_inner > .as-banner,
+.et_pb_text.as-preserve .et_pb_text_inner > .as-page {
+  /* brand blocks keep their own spacing */
+}

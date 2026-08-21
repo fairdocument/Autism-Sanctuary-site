@@ -48,6 +48,7 @@ Useful eval-files:
 - `migrate.php` — initial page/media/menu seed
 - `setup-stripe-donate.php` — Donate form + Stripe feeds
 - `setup-news.php` — Divi News page + Theme Builder posts
+- `convert-pages-to-divi5.php` — wrap marketing HTML as Divi 5 section layouts
 - `fill-excerpts.php` — rebuild post excerpts from Divi content
 - `polish-design.php` — checklist/people markup tweaks
 
