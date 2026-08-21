@@ -1,6 +1,6 @@
 <?php
 /**
- * Remove literal "n t" artifacts left when \n\t escapes were stripped.
+ * Remove literal newline/tab artifacts BETWEEN tags only — never strip "n t" inside words.
  * Run: wp eval-file wordpress-migration/fix-newline-artifacts.php
  */
 
@@ -19,13 +19,10 @@ $q = new WP_Query([
 	'posts_per_page' => -1,
 ]);
 
-echo "=== Fix newline/tab artifacts ===\n";
+echo "=== Fix newline/tab artifacts (tag-bounded only) ===\n";
 
 foreach ($q->posts as $post) {
 	$c = $post->post_content;
-	if (strpos($c, 'n t') === false && !preg_match('/(?<=>)n+(?=<)/', $c)) {
-		continue;
-	}
 	$fixed = as_fix_newline_artifacts($c);
 	if ($fixed === $c) {
 		continue;
@@ -45,10 +42,15 @@ if (function_exists('wp_cache_flush')) {
 echo "=== Done ===\n";
 
 function as_fix_newline_artifacts($content) {
-	// Stripped \n\t → literal "n t" (common before <li>)
-	$content = str_replace('n t', '', $content);
-	// Stripped \n → literal n between tags
+	// ONLY between tags — do not globally delete "n t" (breaks "in the", "on the", "return to").
+	$content = preg_replace('/(?<=>)n t(?=<)/', "\n", $content);
 	$content = preg_replace('/(?<=>)n+(?=<)/', "\n", $content);
+	$content = preg_replace('/(?<=>)n(?=[A-Z])/', "\n", $content);
+	$content = preg_replace('/n+(?=<\/)/', '', $content);
+	$content = preg_replace('/(\\\\u003e|u003e)n t(\\\\u003c|u003c)/', '$1\\n$2', $content);
 	$content = preg_replace('/(\\\\u003e|u003e)n+(\\\\u003c|u003c)/', '$1\\n$2', $content);
+	$content = preg_replace('/(\\\\u003e|u003e)n(?=[A-Z])/', '$1\\n', $content);
+	$content = preg_replace('/n+(?=\\\\u003c\/)/', '', $content);
+	$content = preg_replace('/n+(?=u003c\/)/', '', $content);
 	return $content;
 }
