@@ -41,7 +41,19 @@ wp eval-file wordpress-migration/import-news.php
 
 Brand CSS is also loaded by mu-plugin `wp-content/mu-plugins/as-brand-css.php`.
 
-## Still needed before domain cutover
+## News (Divi-managed)
+
+- **Index:** Pages → **News & updates** → Edit with Divi (Blog module + banner)
+- **Single posts:** Divi → Theme Builder → **AS All Posts** (title, content, back link)
+- **Stories:** Posts → Add New / Edit (excerpts show on the News list)
+
+Re-run:
+
+```bash
+wp eval-file wordpress-migration/setup-news.php
+wp eval-file wordpress-migration/fill-excerpts.php
+```
+
 
 1. **Stripe** — GF Stripe is installed; donate form (#2) has one-time + monthly feeds. Confirm test/live mode and run a $1 test gift on `/donate/`
 2. **Intake form** — keep linking to live `/intake-form/` until a secure GF rebuild is approved
