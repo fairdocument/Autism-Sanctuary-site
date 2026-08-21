@@ -71,7 +71,7 @@ foreach ($pages as $page) {
 
 	wp_update_post([
 		'ID'           => $page->ID,
-		'post_content' => $converted,
+		'post_content' => wp_slash($converted),
 	]);
 	update_post_meta($page->ID, '_et_pb_use_builder', 'on');
 	update_post_meta($page->ID, '_et_pb_page_layout', 'et_no_sidebar');
@@ -148,10 +148,10 @@ function as_html_to_divi4_sections($html) {
 		$row_max = $is_hero ? '100%' : '100%';
 
 		// Escape closing shortcode sequences inside HTML.
-		$body = str_replace('[/et_pb_text]', '&#91;/et_pb_text&#93;', $chunk);
+		$body = str_replace(['[/et_pb_code]', '[et_pb_code'], ['&#91;/et_pb_code&#93;', '&#91;et_pb_code'], $chunk);
 
 		$out .= sprintf(
-			'[et_pb_section fb_built="1" _builder_version="4.27.4" module_class="%s" custom_padding="0px|0px|0px|0px|false|false" custom_margin="0px|0px|0px|0px|false|false" background_color="RGBA(255,255,255,0)"][et_pb_row _builder_version="4.27.4" custom_padding="0px|0px|0px|0px|false|false" custom_margin="0px|0px|0px|0px|false|false" width="%s" max_width="%s"][et_pb_column type="4_4" _builder_version="4.27.4"][et_pb_text _builder_version="4.27.4" module_class="as-preserve"]%s[/et_pb_text][/et_pb_column][/et_pb_row][/et_pb_section]',
+			'[et_pb_section fb_built="1" _builder_version="4.27.4" module_class="%s" custom_padding="0px|0px|0px|0px|false|false" custom_margin="0px|0px|0px|0px|false|false" background_color="RGBA(255,255,255,0)"][et_pb_row _builder_version="4.27.4" custom_padding="0px|0px|0px|0px|false|false" custom_margin="0px|0px|0px|0px|false|false" width="%s" max_width="%s"][et_pb_column type="4_4" _builder_version="4.27.4"][et_pb_code _builder_version="4.27.4" module_class="as-preserve"]%s[/et_pb_code][/et_pb_column][/et_pb_row][/et_pb_section]',
 			esc_attr($class),
 			$row_width,
 			$row_max,
