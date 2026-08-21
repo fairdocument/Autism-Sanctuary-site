@@ -172,7 +172,35 @@ HTML;
 	}
 }
 
+// Convert any remaining Divi 4 shortcodes to Divi 5 blocks (avoids back-compat notice).
+if (class_exists('\\ET\\Builder\\Packages\\Conversion\\Conversion')) {
+	$admins = get_users(['role' => 'administrator', 'number' => 1]);
+	if ($admins) {
+		wp_set_current_user((int) $admins[0]->ID);
+	}
+	\ET\Builder\Packages\Conversion\Conversion::initialize_shortcode_framework();
+	foreach (array_filter([$news->ID, (int) get_option('as_tb_single_post_body_id')]) as $convert_id) {
+		$post = get_post($convert_id);
+		if (!$post || strpos($post->post_content, '[et_pb') === false) {
+			continue;
+		}
+		$converted = \ET\Builder\Packages\Conversion\Conversion::maybeConvertContent(
+			$post->post_content,
+			true,
+			(int) $convert_id,
+			true
+		);
+		if ($converted && $converted !== $post->post_content) {
+			wp_update_post([
+				'ID'           => $convert_id,
+				'post_content' => $converted,
+			]);
+			echo "Converted #{$convert_id} to Divi 5 blocks\n";
+		}
+	}
+}
+
 echo "=== Done ===\n";
-echo "Edit News layout: Pages → News → Edit with Divi\n";
+echo "Edit News layout: Pages → News & updates → Edit with Divi\n";
 echo "Edit single-post chrome: Divi → Theme Builder → AS All Posts\n";
 echo "Add/edit stories: Posts → Add New (content fills the Theme Builder body)\n";
