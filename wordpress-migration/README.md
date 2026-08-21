@@ -1,7 +1,8 @@
-# WordPress migration (autismsanctuary2)
+# WordPress site (autismsanctuary2)
 
-Migrates the EmDash redesign onto the Divi WordPress site
-`https://autismsanctuary2-nimbusserver.tempurl.host/`.
+Active Autism Sanctuary website: Divi + Gravity Forms on WPMU Unlimited.
+
+**Staging:** https://autismsanctuary2-nimbusserver.tempurl.host/
 
 ## Server paths
 
@@ -9,20 +10,29 @@ Migrates the EmDash redesign onto the Divi WordPress site
 |------|------|
 | WP root | `/home/sites/autismsanctuary2/public_html` |
 | SSH | `cursor@nimbusserver.tempurl.host` (`~/.ssh/cursor_wpmudev_ed25519`) |
-| Live WP (news source) | `/home/sites/autismsanctuary/public_html` — do not overwrite |
-| EmDash staging | `/home/sites/autismsanctuary-new/public_html` — media source |
+| Live production (current) | `/home/sites/autismsanctuary/public_html` — do not overwrite |
 
-## What the migration creates
+## What’s on the site
 
-- Site title, tagline, permalinks, front page = Home, posts page = News
 - Brand CSS (cream/forest/gold + Cormorant Garamond / Source Sans 3)
-- Media library assets (farm photos + hero video + logo)
-- Pages: Home, About, People, Programs, Our farm, Admissions, Resources, Careers, Fellowship, Donate, Donate/Thanks, Contact, Privacy, Terms, News
-- Gravity Forms: **Inquiry** (intent prepopulate via `?intent=`), **Donate Inquiry**
+- Pages: Home, About, People, Programs, Our farm, Admissions, Resources, Careers, Fellowship, Donate, Thanks, Contact, Privacy, Terms, News
+- Gravity Forms: **Inquiry** (`?intent=` prepopulate), **Donate** (Stripe one-time + monthly)
 - Primary + Footer menus
-- News posts imported from live `autismsanctuary.org`
+- News via Divi Blog module + Theme Builder single-post template
 
-## Re-run
+Brand CSS is loaded by mu-plugin `wp-content/mu-plugins/as-brand-css.php` from `wordpress-migration/custom.css`.
+
+## Day-to-day editing
+
+| Task | Where |
+|------|--------|
+| Page layouts | Pages → Edit with Divi |
+| News index | Pages → News & updates → Edit with Divi |
+| Single post chrome | Divi → Theme Builder → AS All Posts |
+| Articles | Posts → Add New / Edit |
+| Forms | Forms (Gravity Forms) |
+
+## Scripts (optional re-run)
 
 ```bash
 rsync -avz -e "ssh -i ~/.ssh/cursor_wpmudev_ed25519 -o IdentitiesOnly=yes" \
@@ -30,43 +40,25 @@ rsync -avz -e "ssh -i ~/.ssh/cursor_wpmudev_ed25519 -o IdentitiesOnly=yes" \
   cursor@nimbusserver.tempurl.host:/home/sites/autismsanctuary2/public_html/wordpress-migration/
 
 ssh -i ~/.ssh/cursor_wpmudev_ed25519 -o IdentitiesOnly=yes cursor@nimbusserver.tempurl.host \
-  'cd /home/sites/autismsanctuary2/public_html && wp eval-file wordpress-migration/migrate.php'
+  'cd /home/sites/autismsanctuary2/public_html && wp eval-file wordpress-migration/setup-news.php'
 ```
 
-News import (after exporting JSON into `news-export/`):
+Useful eval-files:
 
-```bash
-wp eval-file wordpress-migration/import-news.php
-```
+- `migrate.php` — initial page/media/menu seed
+- `setup-stripe-donate.php` — Donate form + Stripe feeds
+- `setup-news.php` — Divi News page + Theme Builder posts
+- `fill-excerpts.php` — rebuild post excerpts from Divi content
+- `polish-design.php` — checklist/people markup tweaks
 
-Brand CSS is also loaded by mu-plugin `wp-content/mu-plugins/as-brand-css.php`.
+## Before domain cutover
 
-## News (Divi-managed)
-
-- **Index:** Pages → **News & updates** → Edit with Divi (Blog module + banner)
-- **Single posts:** Divi → Theme Builder → **AS All Posts** (title, content, back link)
-- **Stories:** Posts → Add New / Edit (excerpts show on the News list)
-
-Re-run:
-
-```bash
-wp eval-file wordpress-migration/setup-news.php
-wp eval-file wordpress-migration/fill-excerpts.php
-```
-
-
-1. **Stripe** — GF Stripe is installed; donate form (#2) has one-time + monthly feeds. Confirm test/live mode and run a $1 test gift on `/donate/`
-2. **Intake form** — keep linking to live `/intake-form/` until a secure GF rebuild is approved
-3. **Divi Theme Builder** (optional polish) — Global Header/Footer layouts in Visual Builder; content already uses brand HTML sections
-4. **People bios / portraits** when ready
+1. Confirm Stripe test/live mode with a small gift on `/donate/`
+2. Intake still links to live `/intake-form/` until rebuilt in GF
+3. Optional: Divi Theme Builder global header/footer
+4. People bios/portraits when ready
 5. Point `autismsanctuary.org` only after QA sign-off
-
-### Re-run Stripe donate wiring
-
-```bash
-wp eval-file wordpress-migration/setup-stripe-donate.php
-```
 
 ## Isolation
 
-Never write to `/home/sites/autismsanctuary` (production) from these scripts.
+Never write to `/home/sites/autismsanctuary` (live production) from these scripts. EmDash (`autismsanctuary-new`) is retired and should not receive deploys.

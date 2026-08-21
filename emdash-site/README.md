@@ -1,12 +1,13 @@
-# Autism Sanctuary — EmDash site
+# Autism Sanctuary — EmDash site (RETIRED)
 
-Astro + EmDash CMS theme for Autism Sanctuary, deployed to WPMU Unlimited Hosting.
+> **No longer in use.** The live redesign is WordPress/Divi at  
+> https://autismsanctuary2-nimbusserver.tempurl.host/  
+> See the repo root [`README.md`](../README.md) and [`wordpress-migration/`](../wordpress-migration/).  
+> Do not deploy this folder to `autismsanctuary-new` or point the public domain here.
 
-- **Staging:** https://autismsanctuary-new-nimbusserver.tempurl.host/
-- **Remote root (only):** `/home/sites/autismsanctuary-new/public_html`
-- **SSH:** `cursor@nimbusserver.tempurl.host` with `~/.ssh/cursor_wpmudev_ed25519`
+Astro + EmDash CMS theme (archive). Historical staging was https://autismsanctuary-new-nimbusserver.tempurl.host/.
 
-## Local development
+## Local development (archive only)
 
 ```bash
 cd emdash-site

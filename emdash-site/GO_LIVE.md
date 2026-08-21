@@ -1,4 +1,7 @@
-# Autism Sanctuary EmDash — go-live checklist
+# Autism Sanctuary EmDash — go-live checklist (RETIRED)
+
+> EmDash is **not** going live. Cutover target is WordPress/Divi (`autismsanctuary2`).  
+> Kept below for historical reference only.
 
 ## Done by Cursor
 

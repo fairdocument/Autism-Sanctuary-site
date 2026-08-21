@@ -1,44 +1,35 @@
 # Autism Sanctuary — Public Website
 
-**Primary build (WordPress / Divi):** staging at https://autismsanctuary2-nimbusserver.tempurl.host/ — migration package in [`wordpress-migration/`](wordpress-migration/).
+**Active site:** WordPress + Divi on WPMU Unlimited  
+**Staging:** https://autismsanctuary2-nimbusserver.tempurl.host/  
+**Ops / scripts:** [`wordpress-migration/`](wordpress-migration/)
 
-**Prior EmDash (Astro) theme:** [`emdash-site/`](emdash-site/), staged at https://autismsanctuary-new-nimbusserver.tempurl.host/ — see [`emdash-site/README.md`](emdash-site/README.md).
+Autism Sanctuary is a Virginia **501(c)(3)** and **DBHDS-licensed** care farm in Western Albemarle. Content and design are edited in the WordPress admin (Divi Visual Builder, Gravity Forms, Theme Builder).
 
-**Reference static prototype:** `site/` remains a static **HTML/CSS** draft for **Autism Sanctuary**, a Virginia **501(c)(3)** and **DBHDS-licensed** **care farm** in **Western Albemarle**.
+## Manage the site
 
-Open `site/index.html` locally, or serve `site/` from any static host (GitHub Pages, Netlify, S3, etc.).
+| Task | Where |
+|------|--------|
+| Pages & homepage | Pages → Edit with Divi |
+| News list layout | Pages → News & updates → Edit with Divi |
+| Single news posts | Divi → Theme Builder → AS All Posts |
+| Stories | Posts → Add New / Edit |
+| Inquiry / donate forms | Forms (Gravity Forms) |
+| Brand CSS | `wordpress-migration/custom.css` (mu-plugin loads it) |
 
-## Site map (primary pages)
+SSH: `cursor@nimbusserver.tempurl.host` · WP root: `/home/sites/autismsanctuary2/public_html`
 
-| File | Purpose |
-|------|---------|
-| `site/index.html` | Homepage — model overview, services snapshot, workforce pipeline |
-| `site/about.html` | Mission, values, history, **Care Farm Model & Philosophy** |
-| `site/services.html` | **Programs & licensed services** — day, residential, respite, trails/horticulture, community engagement |
-| `site/flagship.html` | **Our farm** (Pea Ridge Road / Western Albemarle) |
-| `site/expansion.html` | **Future locations** — community interest (not admissions) |
-| `site/fellowship.html` | Carol Lynn Siemers Fellowship |
-| `site/careers-volunteers.html` | DSP careers, volunteers, climate ambassadors, in-kind giving |
-| `site/resources.html` | Waivers (FIS/BI/CL), accessibility & transit notes (no CSA coordination) |
-| `site/admissions.html` | Admissions FAQ + intake summary |
-| `site/donate.html` | Philanthropy |
-| `site/contact.html` | Contact form |
-| `site/privacy.html` / `site/terms.html` | Legal |
-| `site/apply.html`, `site/life.html`, `site/alumni.html` | Redirects to current pathways |
+## Archive (not in use)
 
-## Assets
+| Path | Notes |
+|------|--------|
+| [`emdash-site/`](emdash-site/) | Retired EmDash/Astro experiment — do not deploy |
+| [`site/`](site/) | Early static HTML prototype — reference only |
 
-- Styles: `site/assets/css/styles.css` (skip link, focus-visible, prose utilities, components)
-- Images: `site/assets/images/` (referenced from CSS/HTML placeholders)
-- Optional React + Postgres reference: `site/react-expansion/`
+## Isolation
 
-## Local preview
+- Active staging: `/home/sites/autismsanctuary2/`
+- Live production today: `/home/sites/autismsanctuary/` — do not overwrite from migration scripts
+- Retired EmDash host: `/home/sites/autismsanctuary-new/` — no longer maintained
 
-```bash
-python -m http.server --directory site 8080
-# http://localhost:8080
-```
-
-## Editorial note
-
-Replace placeholder media blocks with approved photography from [autismsanctuary.org](https://www.autismsanctuary.org). Verify respite, waiver, and transit statements with program leadership before publication.
+Point `autismsanctuary.org` to the Divi site only after QA sign-off.
