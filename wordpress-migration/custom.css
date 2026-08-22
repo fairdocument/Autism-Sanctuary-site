@@ -113,61 +113,6 @@ textarea:focus-visible {
   width: auto !important;
 }
 
-/* Vertically center logo + primary nav / Donate */
-@media (min-width: 981px) {
-  #main-header {
-    display: flex !important;
-    align-items: center !important;
-  }
-
-  #main-header .et_menu_container,
-  #main-header > .container {
-    display: flex !important;
-    align-items: center !important;
-    justify-content: space-between !important;
-    width: 100% !important;
-    min-height: 4.5rem;
-  }
-
-  .et_header_style_left #main-header .logo_container {
-    position: relative !important;
-    height: auto !important;
-    width: auto !important;
-    display: flex !important;
-    align-items: center !important;
-    float: none !important;
-  }
-
-  .et_header_style_left #et-top-navigation {
-    padding-top: 0 !important;
-    padding-bottom: 0 !important;
-    display: flex !important;
-    align-items: center !important;
-    float: none !important;
-    margin-left: auto !important;
-  }
-
-  .et_header_style_left #et-top-navigation nav > ul > li > a,
-  .et_header_style_left #top-menu > li > a {
-    padding-top: 0 !important;
-    padding-bottom: 0 !important;
-  }
-
-  .et_header_style_left #top-menu {
-    display: flex !important;
-    align-items: center !important;
-    gap: 0.35rem 1rem;
-  }
-
-  .et_header_style_left .et-fixed-header #et-top-navigation {
-    padding-top: 0 !important;
-  }
-
-  .et_header_style_left .et-fixed-header #et-top-navigation nav > ul > li > a {
-    padding-bottom: 0 !important;
-  }
-}
-
 #et-top-navigation nav > ul > li > a,
 #top-menu a {
   font-family: var(--font-sans) !important;
@@ -192,8 +137,6 @@ textarea:focus-visible {
   margin-left: 0.35rem;
   margin-right: 0.25rem;
   line-height: 1.2 !important;
-  display: inline-flex !important;
-  align-items: center !important;
 }
 
 #top-menu > li.as-donate-nav > a:hover,
@@ -216,18 +159,50 @@ textarea:focus-visible {
 #top-menu > li.as-donate-nav,
 #top-menu > li.cta-donate {
   margin-right: 0.75rem !important;
-  display: flex !important;
-  align-items: center !important;
 }
 
+/* Compact Divi left-header: keep native width, only equalize vertical padding */
 @media (min-width: 981px) {
-  #et-top-navigation {
+  .et_header_style_left #et-top-navigation {
+    padding-top: 1.15rem !important;
+    padding-bottom: 1.15rem !important;
     padding-right: 1rem !important;
   }
 
-  #top-menu > li.as-donate-nav,
-  #top-menu > li.cta-donate {
+  .et_header_style_left #et-top-navigation nav > ul > li > a,
+  .et_header_style_left #top-menu > li > a {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    line-height: 2.75rem !important; /* match logo height for optical vertical center */
+  }
+
+  .et_header_style_left #top-menu > li.as-donate-nav > a,
+  .et_header_style_left #top-menu > li.cta-donate > a {
+    line-height: 1.2 !important;
+    padding: 0.5rem 1rem !important;
+    margin-top: 0 !important;
+    position: relative;
+    top: 0;
+  }
+
+  .et_header_style_left #top-menu > li.as-donate-nav,
+  .et_header_style_left #top-menu > li.cta-donate {
     margin-right: 1rem !important;
+  }
+
+  .et_header_style_left .logo_container #logo,
+  .et_header_style_left .logo_container img {
+    max-height: 2.75rem !important;
+  }
+
+  .et_header_style_left .et-fixed-header #et-top-navigation {
+    padding-top: 0.85rem !important;
+    padding-bottom: 0.85rem !important;
+  }
+
+  .et_header_style_left .et-fixed-header #et-top-navigation nav > ul > li > a {
+    padding-bottom: 0 !important;
+    line-height: 2.25rem !important;
   }
 }
 
