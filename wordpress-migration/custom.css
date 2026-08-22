@@ -311,62 +311,139 @@ body .gform_wrapper.gform_legacy_markup_wrapper {
   box-shadow: 0 0 0 3px rgba(47, 93, 67, 0.18) !important;
 }
 
-/* Frequency + amount choices as compact chips */
+/* Choice fields: chip buttons only (hide native radio/checkbox UI) */
 .gform_wrapper .gfield_radio,
 .gform_wrapper .gfield_checkbox,
 .gform_wrapper ul.gfield_radio,
-.gform_wrapper ul.gfield_checkbox {
+.gform_wrapper ul.gfield_checkbox,
+.gform_wrapper .ginput_container_radio,
+.gform_wrapper .ginput_container_checkbox {
   list-style: none !important;
   display: flex !important;
   flex-wrap: wrap !important;
   gap: 0.55rem !important;
   margin: 0.15rem 0 0 !important;
   padding: 0 !important;
+  position: relative;
 }
 
 .gform_wrapper .gfield_radio li,
 .gform_wrapper .gfield_checkbox li,
 .gform_wrapper ul.gfield_radio li,
-.gform_wrapper ul.gfield_checkbox li {
+.gform_wrapper ul.gfield_checkbox li,
+.gform_wrapper .gchoice {
   list-style: none !important;
   margin: 0 !important;
   padding: 0 !important;
+  position: relative;
+  display: inline-flex !important;
+}
+
+/* Hide native controls — labels act as the buttons via for= */
+.gform_wrapper .gfield_radio input[type="radio"],
+.gform_wrapper .gfield_checkbox input[type="checkbox"],
+.gform_wrapper .gchoice input[type="radio"],
+.gform_wrapper .gchoice input[type="checkbox"],
+.gform_wrapper .gfield-choice-input,
+.gform_wrapper input.gfield-choice-input {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+  opacity: 0 !important;
+  appearance: none !important;
+  -webkit-appearance: none !important;
+  pointer-events: none !important;
+}
+
+/* Kill Gravity Forms / theme faux checkbox/radio glyphs */
+.gform_wrapper .gchoice label::before,
+.gform_wrapper .gchoice label::after,
+.gform_wrapper .gfield_radio label::before,
+.gform_wrapper .gfield_radio label::after,
+.gform_wrapper .gfield_checkbox label::before,
+.gform_wrapper .gfield_checkbox label::after,
+.gform_wrapper .gform-field-label--type-inline::before,
+.gform_wrapper .gform-field-label--type-inline::after {
+  content: none !important;
+  display: none !important;
 }
 
 .gform_wrapper .gfield_radio label,
 .gform_wrapper .gfield_checkbox label,
-.gform_wrapper .gchoice label {
+.gform_wrapper .gchoice label,
+.gform_wrapper .gform-field-label--type-inline {
   display: inline-flex !important;
   align-items: center !important;
-  gap: 0.4rem;
+  justify-content: center !important;
+  gap: 0 !important;
   font-family: var(--font-sans) !important;
   font-size: 0.95rem !important;
   font-weight: 600 !important;
   color: var(--forest-deep) !important;
-  background: var(--stone-cream);
-  border: 1px solid var(--soft-rule);
-  border-radius: 999px;
-  padding: 0.45rem 0.9rem !important;
+  background: var(--stone-cream) !important;
+  border: 1px solid var(--soft-rule) !important;
+  border-radius: 999px !important;
+  padding: 0.55rem 1.05rem !important;
+  margin: 0 !important;
   cursor: pointer;
-  transition: background 0.15s var(--ease), border-color 0.15s var(--ease), color 0.15s var(--ease);
+  line-height: 1.25 !important;
+  transition: background 0.15s var(--ease), border-color 0.15s var(--ease),
+    color 0.15s var(--ease), box-shadow 0.15s var(--ease);
+  box-shadow: none !important;
 }
 
-.gform_wrapper .gfield_radio input,
-.gform_wrapper .gfield_checkbox input,
-.gform_wrapper .gchoice input {
-  accent-color: var(--sanctuary-green);
-  margin: 0 !important;
+.gform_wrapper .gfield_radio label:hover,
+.gform_wrapper .gfield_checkbox label:hover,
+.gform_wrapper .gchoice label:hover {
+  border-color: rgba(47, 93, 67, 0.45) !important;
 }
 
 .gform_wrapper .gfield_radio input:checked + label,
 .gform_wrapper .gfield_checkbox input:checked + label,
 .gform_wrapper .gchoice input:checked + label,
-.gform_wrapper .gfield_radio label:has(input:checked),
-.gform_wrapper .gfield_checkbox label:has(input:checked),
 .gform_wrapper .gchoice:has(input:checked) label {
-  background: rgba(47, 93, 67, 0.12);
-  border-color: var(--sanctuary-green);
+  background: rgba(47, 93, 67, 0.14) !important;
+  border-color: var(--sanctuary-green) !important;
   color: var(--forest-deep) !important;
+  box-shadow: inset 0 0 0 1px rgba(47, 93, 67, 0.2);
+}
+
+.gform_wrapper .gfield_radio input:focus-visible + label,
+.gform_wrapper .gfield_checkbox input:focus-visible + label,
+.gform_wrapper .gchoice input:focus-visible + label {
+  box-shadow: 0 0 0 3px rgba(47, 93, 67, 0.22) !important;
+}
+
+/* Single-option toggles: chip text is enough — hide redundant group titles */
+.gform_wrapper .gfield--type-checkbox .gfield_label_before_complex {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+/* Select fields (Inquiry “I am contacting about”, etc.) */
+.gform_wrapper select,
+.gform_wrapper .ginput_container_select select {
+  appearance: none !important;
+  -webkit-appearance: none !important;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%231E3D2C' d='M1 1l5 5 5-5'/%3E%3C/svg%3E") !important;
+  background-repeat: no-repeat !important;
+  background-position: right 0.9rem center !important;
+  background-size: 12px 8px !important;
+  padding-right: 2.4rem !important;
+  cursor: pointer;
 }
 
 .gform_wrapper .gfield_description,
