@@ -113,6 +113,61 @@ textarea:focus-visible {
   width: auto !important;
 }
 
+/* Vertically center logo + primary nav / Donate */
+@media (min-width: 981px) {
+  #main-header {
+    display: flex !important;
+    align-items: center !important;
+  }
+
+  #main-header .et_menu_container,
+  #main-header > .container {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    width: 100% !important;
+    min-height: 4.5rem;
+  }
+
+  .et_header_style_left #main-header .logo_container {
+    position: relative !important;
+    height: auto !important;
+    width: auto !important;
+    display: flex !important;
+    align-items: center !important;
+    float: none !important;
+  }
+
+  .et_header_style_left #et-top-navigation {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    float: none !important;
+    margin-left: auto !important;
+  }
+
+  .et_header_style_left #et-top-navigation nav > ul > li > a,
+  .et_header_style_left #top-menu > li > a {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+  }
+
+  .et_header_style_left #top-menu {
+    display: flex !important;
+    align-items: center !important;
+    gap: 0.35rem 1rem;
+  }
+
+  .et_header_style_left .et-fixed-header #et-top-navigation {
+    padding-top: 0 !important;
+  }
+
+  .et_header_style_left .et-fixed-header #et-top-navigation nav > ul > li > a {
+    padding-bottom: 0 !important;
+  }
+}
+
 #et-top-navigation nav > ul > li > a,
 #top-menu a {
   font-family: var(--font-sans) !important;
@@ -136,6 +191,9 @@ textarea:focus-visible {
   border-radius: var(--radius);
   margin-left: 0.35rem;
   margin-right: 0.25rem;
+  line-height: 1.2 !important;
+  display: inline-flex !important;
+  align-items: center !important;
 }
 
 #top-menu > li.as-donate-nav > a:hover,
@@ -158,6 +216,8 @@ textarea:focus-visible {
 #top-menu > li.as-donate-nav,
 #top-menu > li.cta-donate {
   margin-right: 0.75rem !important;
+  display: flex !important;
+  align-items: center !important;
 }
 
 @media (min-width: 981px) {
@@ -169,6 +229,22 @@ textarea:focus-visible {
   #top-menu > li.cta-donate {
     margin-right: 1rem !important;
   }
+}
+
+/* Gravity Forms: don't stay invisible if theme JS is delayed inside Divi */
+.gform_wrapper,
+.gform_wrapper_2,
+#gform_wrapper_1,
+#gform_wrapper_2 {
+  display: block !important;
+}
+
+.gform_wrapper {
+  max-width: 44rem;
+  margin: 0 auto 3rem !important;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+  box-sizing: border-box;
 }
 
 #et_top_search,
