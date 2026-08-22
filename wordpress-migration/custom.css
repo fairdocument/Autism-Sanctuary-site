@@ -135,11 +135,40 @@ textarea:focus-visible {
   padding: 0.5rem 1rem !important;
   border-radius: var(--radius);
   margin-left: 0.35rem;
+  margin-right: 0.25rem;
 }
 
 #top-menu > li.as-donate-nav > a:hover,
 #top-menu > li.cta-donate > a:hover {
   background: var(--forest-deep) !important;
+}
+
+/* Keep header nav / Donate button off the right edge */
+#main-header .container,
+#main-header .et_menu_container {
+  padding-left: 1.25rem !important;
+  padding-right: 1.25rem !important;
+  box-sizing: border-box;
+}
+
+#et-top-navigation {
+  padding-right: 0.5rem !important;
+}
+
+#top-menu > li.as-donate-nav,
+#top-menu > li.cta-donate {
+  margin-right: 0.75rem !important;
+}
+
+@media (min-width: 981px) {
+  #et-top-navigation {
+    padding-right: 1rem !important;
+  }
+
+  #top-menu > li.as-donate-nav,
+  #top-menu > li.cta-donate {
+    margin-right: 1rem !important;
+  }
 }
 
 #et_top_search,
@@ -166,6 +195,30 @@ textarea:focus-visible {
 
 #footer-bottom {
   border-top: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+/* Footer links — match content gutter */
+#main-footer .container,
+#et-footer-nav .container,
+#footer-bottom .container {
+  padding-left: 1.25rem !important;
+  padding-right: 1.25rem !important;
+  box-sizing: border-box;
+  max-width: var(--wide-w);
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+}
+
+#et-footer-nav .bottom-nav,
+#menu-footer {
+  padding-left: 0.25rem !important;
+  padding-right: 0.25rem !important;
+}
+
+#footer-info,
+#footer-bottom .container {
+  padding-left: 1.25rem !important;
 }
 
 /* Hide default Divi page titles — banners carry the H1 */
