@@ -214,12 +214,234 @@ textarea:focus-visible {
   display: block !important;
 }
 
-.gform_wrapper {
+/* Gravity Forms — brand card layout */
+.gform_wrapper,
+.gform-theme--framework,
+body .gform_wrapper.gform_legacy_markup_wrapper {
   max-width: 44rem;
-  margin: 0 auto 3rem !important;
-  padding-left: 1.25rem;
-  padding-right: 1.25rem;
+  margin: 0 auto 3.5rem !important;
+  padding: 1.75rem 1.5rem 2rem !important;
   box-sizing: border-box;
+  background: rgba(255, 255, 255, 0.82) !important;
+  border: 1px solid var(--soft-rule) !important;
+  border-radius: calc(var(--radius) + 6px) !important;
+  box-shadow: 0 12px 40px rgba(30, 61, 44, 0.06);
+}
+
+@media (min-width: 700px) {
+  .gform_wrapper,
+  .gform-theme--framework,
+  body .gform_wrapper.gform_legacy_markup_wrapper {
+    padding: 2rem 2.25rem 2.25rem !important;
+  }
+}
+
+.gform_wrapper .gform_heading,
+.gform_wrapper .gform_title {
+  font-family: var(--font-serif) !important;
+  color: var(--forest-deep) !important;
+  margin: 0 0 1rem !important;
+}
+
+.gform_wrapper .gform_fields,
+.gform_wrapper ul.gform_fields {
+  list-style: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  display: grid !important;
+  gap: 1.15rem !important;
+}
+
+.gform_wrapper .gfield {
+  margin: 0 !important;
+  padding: 0 !important;
+  list-style: none !important;
+}
+
+.gform_wrapper .gfield_label,
+.gform_wrapper .gform-field-label {
+  font-family: var(--font-sans) !important;
+  font-size: 0.92rem !important;
+  font-weight: 650 !important;
+  color: var(--forest-deep) !important;
+  letter-spacing: 0.01em;
+  margin: 0 0 0.45rem !important;
+  padding: 0 !important;
+}
+
+.gform_wrapper .gfield_required,
+.gform_wrapper .gfield_required_asterisk {
+  color: var(--sanctuary-green) !important;
+}
+
+.gform_wrapper input[type="text"],
+.gform_wrapper input[type="email"],
+.gform_wrapper input[type="tel"],
+.gform_wrapper input[type="number"],
+.gform_wrapper input[type="url"],
+.gform_wrapper textarea,
+.gform_wrapper select,
+.gform_wrapper .ginput_container input,
+.gform_wrapper .ginput_container textarea,
+.gform_wrapper .ginput_container select {
+  width: 100% !important;
+  max-width: 100% !important;
+  font-family: var(--font-sans) !important;
+  font-size: 1rem !important;
+  color: var(--charcoal-ink) !important;
+  background: #fff !important;
+  border: 1px solid var(--soft-rule) !important;
+  border-radius: var(--radius) !important;
+  padding: 0.7rem 0.85rem !important;
+  line-height: 1.4 !important;
+  box-shadow: none !important;
+  transition: border-color 0.15s var(--ease), box-shadow 0.15s var(--ease);
+}
+
+.gform_wrapper textarea {
+  min-height: 6.5rem;
+  resize: vertical;
+}
+
+.gform_wrapper input:focus,
+.gform_wrapper textarea:focus,
+.gform_wrapper select:focus {
+  outline: none !important;
+  border-color: var(--sanctuary-green) !important;
+  box-shadow: 0 0 0 3px rgba(47, 93, 67, 0.18) !important;
+}
+
+/* Frequency + amount choices as compact chips */
+.gform_wrapper .gfield_radio,
+.gform_wrapper .gfield_checkbox,
+.gform_wrapper ul.gfield_radio,
+.gform_wrapper ul.gfield_checkbox {
+  list-style: none !important;
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 0.55rem !important;
+  margin: 0.15rem 0 0 !important;
+  padding: 0 !important;
+}
+
+.gform_wrapper .gfield_radio li,
+.gform_wrapper .gfield_checkbox li,
+.gform_wrapper ul.gfield_radio li,
+.gform_wrapper ul.gfield_checkbox li {
+  list-style: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.gform_wrapper .gfield_radio label,
+.gform_wrapper .gfield_checkbox label,
+.gform_wrapper .gchoice label {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 0.4rem;
+  font-family: var(--font-sans) !important;
+  font-size: 0.95rem !important;
+  font-weight: 600 !important;
+  color: var(--forest-deep) !important;
+  background: var(--stone-cream);
+  border: 1px solid var(--soft-rule);
+  border-radius: 999px;
+  padding: 0.45rem 0.9rem !important;
+  cursor: pointer;
+  transition: background 0.15s var(--ease), border-color 0.15s var(--ease), color 0.15s var(--ease);
+}
+
+.gform_wrapper .gfield_radio input,
+.gform_wrapper .gfield_checkbox input,
+.gform_wrapper .gchoice input {
+  accent-color: var(--sanctuary-green);
+  margin: 0 !important;
+}
+
+.gform_wrapper .gfield_radio input:checked + label,
+.gform_wrapper .gfield_checkbox input:checked + label,
+.gform_wrapper .gchoice input:checked + label,
+.gform_wrapper .gfield_radio label:has(input:checked),
+.gform_wrapper .gfield_checkbox label:has(input:checked),
+.gform_wrapper .gchoice:has(input:checked) label {
+  background: rgba(47, 93, 67, 0.12);
+  border-color: var(--sanctuary-green);
+  color: var(--forest-deep) !important;
+}
+
+.gform_wrapper .gfield_description,
+.gform_wrapper .gfield_validation_message,
+.gform_wrapper .validation_message {
+  font-size: 0.88rem !important;
+  margin-top: 0.35rem !important;
+  color: var(--muted-ink) !important;
+}
+
+.gform_wrapper .gfield_error input,
+.gform_wrapper .gfield_error textarea,
+.gform_wrapper .gfield_error select {
+  border-color: #b42318 !important;
+}
+
+.gform_wrapper .ginput_product_price,
+.gform_wrapper .ginput_total,
+.gform_wrapper .gfield_price {
+  font-family: var(--font-serif) !important;
+  font-size: 1.35rem !important;
+  font-weight: 600 !important;
+  color: var(--forest-deep) !important;
+}
+
+.gform_wrapper .gform_footer,
+.gform_wrapper .gform_page_footer {
+  margin: 1.25rem 0 0 !important;
+  padding: 1.25rem 0 0 !important;
+  border-top: 1px solid var(--soft-rule);
+}
+
+.gform_wrapper .gform_button,
+.gform_wrapper input[type="submit"],
+.gform_wrapper .gform_next_button,
+.gform_wrapper .gform_previous_button {
+  background: var(--sanctuary-green) !important;
+  border: none !important;
+  color: #fff !important;
+  font-family: var(--font-sans) !important;
+  font-weight: 650 !important;
+  font-size: 1rem !important;
+  padding: 0.85rem 1.5rem !important;
+  border-radius: var(--radius) !important;
+  cursor: pointer;
+  box-shadow: none !important;
+  width: auto !important;
+}
+
+.gform_wrapper .gform_button:hover,
+.gform_wrapper input[type="submit"]:hover {
+  background: var(--forest-deep) !important;
+}
+
+/* Stripe card field */
+.gform_wrapper .ginput_container_creditcard,
+.gform_wrapper .gform_card_icon_container,
+.gform_wrapper iframe {
+  max-width: 100%;
+}
+
+.gform_wrapper .StripeElement,
+.gform_wrapper .gform_stripe_creditcard_element,
+.gform_wrapper .ginput_container_stripe_creditcard {
+  background: #fff;
+  border: 1px solid var(--soft-rule);
+  border-radius: var(--radius);
+  padding: 0.85rem 0.9rem;
+}
+
+.gform_validation_container,
+.gform_wrapper .gform_validation_container {
+  display: none !important;
+  position: absolute !important;
+  left: -9999px !important;
 }
 
 #et_top_search,
@@ -789,25 +1011,12 @@ body.home article > .entry-title,
   color: var(--muted-ink);
 }
 
-/* Gravity Forms */
-.gform_wrapper,
-.gform-theme--framework {
-  margin-top: 1rem;
-  background: rgba(255, 255, 255, 0.72);
-  border: 1px solid var(--soft-rule);
-  border-radius: calc(var(--radius) + 4px);
-  padding: 1.5rem;
-}
-
+/* Gravity Forms — shared submit styling (card styles above) */
 .gform_wrapper .gform_button,
 .gform_wrapper input[type="submit"] {
   background: var(--sanctuary-green) !important;
   border: none !important;
   color: #fff !important;
-  font-family: var(--font-sans) !important;
-  font-weight: 600 !important;
-  padding: 0.75rem 1.35rem !important;
-  border-radius: var(--radius) !important;
 }
 
 @keyframes as-hero-ken {
