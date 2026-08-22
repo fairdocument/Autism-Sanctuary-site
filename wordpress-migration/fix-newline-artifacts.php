@@ -46,11 +46,12 @@ function as_fix_newline_artifacts($content) {
 	$content = preg_replace('/(?<=>)n t(?=<)/', "\n", $content);
 	$content = preg_replace('/(?<=>)n+(?=<)/', "\n", $content);
 	$content = preg_replace('/(?<=>)n(?=[A-Z])/', "\n", $content);
-	$content = preg_replace('/n+(?=<\/)/', '', $content);
+	// Only strip orphan n before closing tags when not part of a word
+	$content = preg_replace('/(?<=[^A-Za-z])n+(?=<\/)/', '', $content);
 	$content = preg_replace('/(\\\\u003e|u003e)n t(\\\\u003c|u003c)/', '$1\\n$2', $content);
 	$content = preg_replace('/(\\\\u003e|u003e)n+(\\\\u003c|u003c)/', '$1\\n$2', $content);
 	$content = preg_replace('/(\\\\u003e|u003e)n(?=[A-Z])/', '$1\\n', $content);
-	$content = preg_replace('/n+(?=\\\\u003c\/)/', '', $content);
-	$content = preg_replace('/n+(?=u003c\/)/', '', $content);
+	$content = preg_replace('/(?<=[^A-Za-z])n+(?=\\\\u003c\/)/', '', $content);
+	$content = preg_replace('/(?<=[^A-Za-z])n+(?=u003c\/)/', '', $content);
 	return $content;
 }
