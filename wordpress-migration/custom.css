@@ -526,6 +526,141 @@ body .gform_wrapper.gform_legacy_markup_wrapper {
   display: none !important;
 }
 
+/* -------------------------------------------------------------------------
+   Site footer — classic multi-column layout (custom markup in as-brand-css.php)
+   ------------------------------------------------------------------------- */
+body.as-custom-footer #main-footer {
+  display: none !important;
+}
+
+.as-site-footer {
+  background: var(--forest-deep);
+  color: rgba(247, 244, 236, 0.88);
+  margin-top: 0;
+}
+
+.as-site-footer a {
+  color: rgba(247, 244, 236, 0.92);
+  text-decoration: none;
+}
+
+.as-site-footer a:hover {
+  color: var(--edgefield-gold);
+}
+
+.as-site-footer__inner {
+  max-width: var(--wide-w);
+  margin: 0 auto;
+  padding: 3.25rem 1.5rem 2.75rem;
+  display: grid;
+  gap: 2.25rem 2.5rem;
+  grid-template-columns: 1.4fr repeat(3, minmax(0, 1fr));
+  align-items: start;
+}
+
+.as-site-footer__name {
+  font-family: var(--font-serif);
+  font-size: 1.75rem;
+  font-weight: 600;
+  color: #fff;
+  margin: 0 0 0.65rem;
+  letter-spacing: 0.01em;
+}
+
+.as-site-footer__tagline {
+  margin: 0 0 0.85rem;
+  max-width: 22rem;
+  line-height: 1.55;
+  color: rgba(247, 244, 236, 0.78);
+  font-size: 0.98rem;
+}
+
+.as-site-footer__meta {
+  margin: 0;
+  font-size: 0.85rem;
+  color: rgba(247, 244, 236, 0.62);
+}
+
+.as-site-footer__heading {
+  margin: 0 0 0.85rem;
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--edgefield-gold);
+}
+
+.as-site-footer__col ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.as-site-footer__col li {
+  margin: 0 0 0.55rem;
+}
+
+.as-site-footer__col li a {
+  font-size: 0.98rem;
+}
+
+.as-site-footer__col--contact p {
+  margin: 0 0 0.85rem;
+  font-size: 0.95rem;
+  line-height: 1.55;
+  color: rgba(247, 244, 236, 0.82);
+}
+
+.as-site-footer__social {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem 0.65rem;
+  align-items: center;
+  margin-top: 0.25rem !important;
+}
+
+.as-site-footer__social a {
+  font-weight: 600;
+  font-size: 0.92rem;
+}
+
+.as-site-footer__bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(0, 0, 0, 0.18);
+}
+
+.as-site-footer__bottom-inner {
+  max-width: var(--wide-w);
+  margin: 0 auto;
+  padding: 1rem 1.5rem;
+}
+
+.as-site-footer__bottom p {
+  margin: 0;
+  font-size: 0.85rem;
+  color: rgba(247, 244, 236, 0.58);
+}
+
+@media (max-width: 960px) {
+  .as-site-footer__inner {
+    grid-template-columns: 1fr 1fr;
+    padding: 2.75rem 1.25rem 2.25rem;
+  }
+
+  .as-site-footer__brand {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 560px) {
+  .as-site-footer__inner {
+    grid-template-columns: 1fr;
+    gap: 1.75rem;
+  }
+}
+
+/* Legacy Divi footer rules kept as fallback when custom footer is off */
 #main-footer,
 #footer-bottom {
   background: var(--forest-deep) !important;
@@ -547,7 +682,6 @@ body .gform_wrapper.gform_legacy_markup_wrapper {
   border-top: 1px solid rgba(255, 255, 255, 0.12);
 }
 
-/* Footer links — match content gutter */
 #main-footer .container,
 #et-footer-nav .container,
 #footer-bottom .container {

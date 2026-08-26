@@ -55,6 +55,7 @@ add_filter('body_class', function ($classes) {
 	if (is_page() || is_front_page()) {
 		$classes[] = 'as-hide-page-title';
 	}
+	$classes[] = 'as-custom-footer';
 	return $classes;
 });
 
@@ -98,3 +99,81 @@ add_action('template_redirect', function () {
 		exit;
 	}
 });
+
+/**
+ * Classic multi-column site footer (replaces Divi’s flat link strip).
+ */
+add_action('et_after_main_content', function () {
+	if (is_admin()) {
+		return;
+	}
+	if (function_exists('et_theme_builder_overrides_layout')
+		&& defined('ET_THEME_BUILDER_FOOTER_LAYOUT_POST_TYPE')
+		&& et_theme_builder_overrides_layout(ET_THEME_BUILDER_FOOTER_LAYOUT_POST_TYPE)
+	) {
+		return;
+	}
+
+	$year = gmdate('Y');
+	$explore = [
+		['About', '/about/'],
+		['Programs', '/programs/'],
+		['Our farm', '/our-farm/'],
+		['Resources', '/resources/'],
+		['News', '/news/'],
+	];
+	$connect = [
+		['Careers', '/careers/'],
+		['Donate', '/donate/'],
+		['Contact', '/contact/'],
+		['Privacy', '/privacy/'],
+		['Terms', '/terms/'],
+	];
+	?>
+	<footer class="as-site-footer" role="contentinfo">
+		<div class="as-site-footer__inner">
+			<div class="as-site-footer__brand">
+				<p class="as-site-footer__name">Autism Sanctuary</p>
+				<p class="as-site-footer__tagline">A working farm in the Blue Ridge foothills where people with developmental disabilities grow in nature, purpose, and belonging.</p>
+				<p class="as-site-footer__meta">
+					501(c)(3) nonprofit · Virginia DBHDS-licensed provider
+				</p>
+			</div>
+			<div class="as-site-footer__col">
+				<p class="as-site-footer__heading">Explore</p>
+				<ul>
+					<?php foreach ($explore as $item) : ?>
+						<li><a href="<?php echo esc_url(home_url($item[1])); ?>"><?php echo esc_html($item[0]); ?></a></li>
+					<?php endforeach; ?>
+				</ul>
+			</div>
+			<div class="as-site-footer__col">
+				<p class="as-site-footer__heading">Connect</p>
+				<ul>
+					<?php foreach ($connect as $item) : ?>
+						<li><a href="<?php echo esc_url(home_url($item[1])); ?>"><?php echo esc_html($item[0]); ?></a></li>
+					<?php endforeach; ?>
+				</ul>
+			</div>
+			<div class="as-site-footer__col as-site-footer__col--contact">
+				<p class="as-site-footer__heading">Visit &amp; reach us</p>
+				<p>2860 Pea Ridge Road<br />Charlottesville, VA 22901</p>
+				<p>
+					<a href="tel:+14342072118">(434) 207-2118</a><br />
+					<a href="mailto:info@autismsanctuary.org">info@autismsanctuary.org</a>
+				</p>
+				<p class="as-site-footer__social">
+					<a href="https://www.instagram.com/autismsanctuary" rel="noopener noreferrer" target="_blank">Instagram</a>
+					<span aria-hidden="true">·</span>
+					<a href="https://www.facebook.com/autismsanctuary" rel="noopener noreferrer" target="_blank">Facebook</a>
+				</p>
+			</div>
+		</div>
+		<div class="as-site-footer__bottom">
+			<div class="as-site-footer__bottom-inner">
+				<p>&copy; <?php echo esc_html($year); ?> Autism Sanctuary. All rights reserved.</p>
+			</div>
+		</div>
+	</footer>
+	<?php
+}, 5);
