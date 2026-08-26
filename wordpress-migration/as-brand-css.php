@@ -70,3 +70,31 @@ add_filter('the_title', function ($title, $post_id = 0) {
 	}
 	return $title;
 }, 10, 2);
+
+/**
+ * Soft redirects for retired Admissions and Fellowship pages.
+ */
+add_action('template_redirect', function () {
+	if (is_admin()) {
+		return;
+	}
+	$redirects = get_option('as_path_redirects', []);
+	if (!is_array($redirects) || !$redirects) {
+		$redirects = [
+			'admissions' => home_url('/programs/#interest'),
+			'fellowship' => home_url('/careers/'),
+		];
+	}
+	$request = trim((string) parse_url($_SERVER['REQUEST_URI'] ?? '', PHP_URL_PATH), '/');
+	$home_path = trim((string) parse_url(home_url('/'), PHP_URL_PATH), '/');
+	if ($home_path && strpos($request, $home_path . '/') === 0) {
+		$request = substr($request, strlen($home_path) + 1);
+	} elseif ($home_path && $request === $home_path) {
+		$request = '';
+	}
+	$slug = strtolower(explode('/', $request)[0] ?? '');
+	if ($slug && isset($redirects[$slug])) {
+		wp_safe_redirect($redirects[$slug], 301);
+		exit;
+	}
+});

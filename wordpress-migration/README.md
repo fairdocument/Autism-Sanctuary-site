@@ -15,7 +15,8 @@ Active Autism Sanctuary website: Divi + Gravity Forms on WPMU Unlimited.
 ## What’s on the site
 
 - Brand CSS (cream/forest/gold + Cormorant Garamond / Source Sans 3)
-- Pages: Home, About, People, Programs, Our farm, Admissions, Resources, Careers, Fellowship, Donate, Thanks, Contact, Privacy, Terms, News
+- Pages: Home, About, People, Programs, Our farm, Resources, Careers, Donate, Thanks, Contact, Privacy, Terms, News
+- Retired (draft + 301): Admissions → `/programs/#interest`, Fellowship → `/careers/`
 - Gravity Forms: **Inquiry** (`?intent=` prepopulate), **Donate** (Stripe one-time + monthly)
 - Primary + Footer menus
 - News via Divi Blog module + Theme Builder single-post template
@@ -46,6 +47,7 @@ ssh -i ~/.ssh/cursor_wpmudev_ed25519 -o IdentitiesOnly=yes cursor@nimbusserver.t
 Useful eval-files:
 
 - `migrate.php` — initial page/media/menu seed
+- `apply-olivia-updates.php` — Olivia 8/24 copy + IA (Admissions/Fellowship off, Looking Ahead, People bios)
 - `setup-stripe-donate.php` — Donate form + Stripe feeds
 - `setup-news.php` — Divi News page + Theme Builder posts
 - `convert-pages-to-divi5.php` — wrap marketing HTML as Divi 5 section layouts
@@ -57,7 +59,7 @@ Useful eval-files:
 1. Confirm Stripe test/live mode with a small gift on `/donate/`
 2. Intake still links to live `/intake-form/` until rebuilt in GF
 3. Optional: Divi Theme Builder global header/footer
-4. People bios/portraits when ready
+4. Replace image placeholders with approved photography
 5. Point `autismsanctuary.org` only after QA sign-off
 
 ## Isolation

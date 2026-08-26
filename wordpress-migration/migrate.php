@@ -2,6 +2,10 @@
 /**
  * Autism Sanctuary → WordPress (autismsanctuary2) migration.
  * Run: wp eval-file wordpress-migration/migrate.php
+ *
+ * Note: For Olivia 8/24 copy + IA updates (Admissions/Fellowship off, Looking Ahead,
+ * People bios, BEE NICE, etc.), prefer:
+ *   wp eval-file wordpress-migration/apply-olivia-updates.php
  */
 
 if (!defined('ABSPATH')) {
@@ -787,7 +791,6 @@ as_menu_add($primary, 'About', home_url('/about/'));
 as_menu_add($primary, 'People', home_url('/people/'));
 as_menu_add($primary, 'Programs', home_url('/programs/'));
 as_menu_add($primary, 'Our farm', home_url('/our-farm/'));
-as_menu_add($primary, 'Admissions', home_url('/admissions/'));
 as_menu_add($primary, 'Careers', home_url('/careers/'));
 as_menu_add($primary, 'Contact', home_url('/contact/'));
 as_menu_add($primary, 'Donate', home_url('/donate/'), ['as-donate-nav', 'cta-donate']);
@@ -798,9 +801,7 @@ as_menu_add($footer, 'Programs', home_url('/programs/'));
 as_menu_add($footer, 'Our farm', home_url('/our-farm/'));
 as_menu_add($footer, 'Resources', home_url('/resources/'));
 as_menu_add($footer, 'News', home_url('/news/'));
-as_menu_add($footer, 'Admissions', home_url('/admissions/'));
 as_menu_add($footer, 'Careers', home_url('/careers/'));
-as_menu_add($footer, 'Fellowship', home_url('/fellowship/'));
 as_menu_add($footer, 'Donate', home_url('/donate/'));
 as_menu_add($footer, 'Contact', home_url('/contact/'));
 as_menu_add($footer, 'Privacy', home_url('/privacy/'));
