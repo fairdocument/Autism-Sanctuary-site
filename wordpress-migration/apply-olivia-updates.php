@@ -589,63 +589,62 @@ update_option('as_path_redirects', [
 as_olivia_log('Saved as_path_redirects option');
 
 // ---------------------------------------------------------------------------
-// Menus
+// Menus — keep existing Primary/Footer; only remove retired links
 // ---------------------------------------------------------------------------
-function as_olivia_menu_ensure($name) {
-	$menus = wp_get_nav_menus();
-	foreach ($menus as $m) {
+function as_olivia_menu_id_by_name($name) {
+	foreach (wp_get_nav_menus() as $m) {
 		if ($m->name === $name) {
-			$items = wp_get_nav_menu_items($m->term_id);
-			if ($items) {
-				foreach ($items as $item) {
-					wp_delete_post($item->ID, true);
-				}
-			}
 			return (int) $m->term_id;
 		}
 	}
-	return (int) wp_create_nav_menu($name);
+	return 0;
 }
 
-function as_olivia_menu_add($menu_id, $title, $url, $classes = []) {
-	wp_update_nav_menu_item($menu_id, 0, [
-		'menu-item-title'  => $title,
-		'menu-item-url'    => $url,
-		'menu-item-status' => 'publish',
-		'menu-item-type'   => 'custom',
-		'menu-item-classes' => implode(' ', $classes),
-	]);
+function as_olivia_prune_menu_items($menu_id, $retire_slugs) {
+	if (!$menu_id) {
+		return;
+	}
+	$items = wp_get_nav_menu_items($menu_id);
+	if (!$items) {
+		return;
+	}
+	foreach ($items as $item) {
+		$path = trim((string) parse_url($item->url, PHP_URL_PATH), '/');
+		$slug = strtolower(basename($path));
+		$title = strtolower(trim($item->title));
+		$hit = in_array($slug, $retire_slugs, true)
+			|| in_array($title, $retire_slugs, true)
+			|| ($item->object === 'page' && in_array($slug, $retire_slugs, true));
+		if ($hit) {
+			wp_delete_post($item->ID, true);
+			as_olivia_log("Removed menu item #{$item->ID} ({$item->title}) from menu {$menu_id}");
+		}
+	}
 }
 
-$primary = as_olivia_menu_ensure('Primary');
-as_olivia_menu_add($primary, 'About', home_url('/about/'));
-as_olivia_menu_add($primary, 'People', home_url('/people/'));
-as_olivia_menu_add($primary, 'Programs', home_url('/programs/'));
-as_olivia_menu_add($primary, 'Our farm', home_url('/our-farm/'));
-as_olivia_menu_add($primary, 'Careers', home_url('/careers/'));
-as_olivia_menu_add($primary, 'Contact', home_url('/contact/'));
-as_olivia_menu_add($primary, 'Donate', home_url('/donate/'), ['as-donate-nav', 'cta-donate']);
+$retire = ['admissions', 'fellowship', 'siemers fellowship'];
+$primary_id = as_olivia_menu_id_by_name('Primary');
+$footer_id = as_olivia_menu_id_by_name('Footer');
+as_olivia_prune_menu_items($primary_id, $retire);
+as_olivia_prune_menu_items($footer_id, $retire);
 
-$footer = as_olivia_menu_ensure('Footer');
-as_olivia_menu_add($footer, 'About', home_url('/about/'));
-as_olivia_menu_add($footer, 'Programs', home_url('/programs/'));
-as_olivia_menu_add($footer, 'Our farm', home_url('/our-farm/'));
-as_olivia_menu_add($footer, 'Resources', home_url('/resources/'));
-as_olivia_menu_add($footer, 'News', home_url('/news/'));
-as_olivia_menu_add($footer, 'Careers', home_url('/careers/'));
-as_olivia_menu_add($footer, 'Donate', home_url('/donate/'));
-as_olivia_menu_add($footer, 'Contact', home_url('/contact/'));
-as_olivia_menu_add($footer, 'Privacy', home_url('/privacy/'));
-as_olivia_menu_add($footer, 'Terms', home_url('/terms/'));
-
+// Preserve existing location assignments; never assign Footer to secondary-menu
+// (that duplicated the footer links in the header).
 $locations = get_theme_mod('nav_menu_locations', []);
 if (!is_array($locations)) {
 	$locations = [];
 }
-$locations['primary-menu'] = $primary;
-$locations['secondary-menu'] = $footer;
+if ($primary_id) {
+	$locations['primary-menu'] = $primary_id;
+}
+if ($footer_id) {
+	$locations['footer-menu'] = $footer_id;
+}
+if (!empty($locations['secondary-menu']) && !empty($footer_id) && (int) $locations['secondary-menu'] === (int) $footer_id) {
+	unset($locations['secondary-menu']);
+}
 set_theme_mod('nav_menu_locations', $locations);
-as_olivia_log('Menus rebuilt (Primary + Footer; Admissions & Fellowship removed)');
+as_olivia_log('Menus pruned (Admissions/Fellowship removed); locations left intact without secondary duplicate');
 
 // ---------------------------------------------------------------------------
 // News banner stray-n cleanup if present as plain HTML
