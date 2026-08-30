@@ -1209,6 +1209,50 @@ body.home article > .entry-title,
   margin: 0;
 }
 
+.as-lede--follow {
+  margin-top: 1.25rem;
+}
+
+.as-mvv-split {
+  display: grid;
+  gap: 2rem;
+  margin-bottom: 2.5rem;
+}
+
+@media (min-width: 900px) {
+  .as-mvv-split {
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+    align-items: start;
+  }
+}
+
+.as-mvv-split__media .as-img-placeholder {
+  min-height: 18rem;
+}
+
+.as-service-block {
+  margin: 2.5rem 0;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid var(--soft-rule);
+}
+
+.as-service-block:last-of-type {
+  border-bottom: 0;
+  padding-bottom: 0;
+}
+
+.as-service-block h3 {
+  margin: 0 0 1rem;
+}
+
+.as-service-photo {
+  margin: 0 0 1.25rem;
+}
+
+.as-service-photo .as-img-placeholder {
+  min-height: 12rem;
+}
+
 .as-grid--3 {
   grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
 }

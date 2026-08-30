@@ -1,6 +1,6 @@
 <?php
 /**
- * Apply Olivia 8/24 website feedback + locked decisions.
+ * Apply Olivia website feedback (Round 1 + Round 2).
  * Run: wp eval-file wordpress-migration/apply-olivia-updates.php
  */
 
@@ -68,6 +68,14 @@ function as_olivia_prose($inner) {
 
 function as_olivia_placeholder($label) {
 	return '<div class="as-img-placeholder" role="img" aria-label="' . esc_attr($label) . '"><span>' . esc_html($label) . '</span></div>';
+}
+
+function as_olivia_service_block($title, $body_html, $photo_label) {
+	return '<div class="as-service-block">'
+		. '<h3>' . esc_html($title) . '</h3>'
+		. '<figure class="as-service-photo">' . as_olivia_placeholder($photo_label) . '</figure>'
+		. $body_html
+		. '</div>';
 }
 
 function as_olivia_upsert($slug, $title, $content, $excerpt = '') {
@@ -161,7 +169,7 @@ $home_html = '
     <p class="as-brand">Autism Sanctuary</p>
     <h1>Redefining support through nature and purpose</h1>
     <p class="as-lede">A working farm in the foothills of the Blue Ridge where people with developmental disabilities are supported and empowered to grow in nature.</p>
-    ' . as_olivia_actions([['See our services', '/programs/'], ['Visit our farm story', '/our-farm/', 'ghost']]) . '
+    ' . as_olivia_actions([['Our Programs', '/programs/'], ['Our Farm', '/our-farm/', 'ghost']]) . '
   </div>
 </section>
 
@@ -171,7 +179,7 @@ $home_html = '
       <p class="as-eyebrow">Our approach</p>
       <h2>Purpose and belonging, rooted in nature.</h2>
       <p class="as-lede">People in our program engage with trails, animals, gardens, and staff who care. Days are designed around a sense of purpose and belonging, with an emphasis on growth and meaningful relationships.</p>
-      ' . as_olivia_actions([['About Autism Sanctuary', '/about/'], ['Ask about a fit', '/contact/?intent=program-fit', 'ghost']]) . '
+      ' . as_olivia_actions([['About Autism Sanctuary', '/about/']]) . '
     </div>
     <div class="as-split__media">' . ($gardens ? '<img src="' . esc_url($gardens) . '" alt="Garden paths and plantings at Autism Sanctuary’s Virginia farm.">' : as_olivia_placeholder('Photo placeholder: gardens and outdoor program')) . '</div>
   </div>
@@ -198,7 +206,7 @@ $home_html = '
       <p class="as-eyebrow">Our home</p>
       <h2>Edgefield in the Blue Ridge foothills.</h2>
       <p class="as-lede">' . esc_html($our_home_p1) . '</p>
-      <p class="as-lede">' . esc_html($our_home_p2) . '</p>
+      <p class="as-lede as-lede--follow">' . esc_html($our_home_p2) . '</p>
       ' . as_olivia_actions([['Explore the property', '/our-farm/'], ['Volunteer with us', '/contact/?intent=volunteer', 'ghost']]) . '
     </div>
     <div class="as-split__media">' . ($house ? '<img src="' . esc_url($house) . '" alt="Historic Edgefield farmhouse at Autism Sanctuary.">' : as_olivia_placeholder('Photo placeholder: Edgefield home')) . '</div>
@@ -225,9 +233,9 @@ $home_html = '
 <section class="as-section">
   <div class="as-section__inner as-split as-split--reverse">
     <div>
-      <p class="as-eyebrow">Support the sanctuary</p>
-      <h2>Your gift keeps farm days joyful and safe.</h2>
-      <p class="as-lede">Philanthropy strengthens trails, barns, gardens, sensory spaces, staff development, and the programs that make Autism Sanctuary possible—alongside authorized services and private-pay arrangements where families choose that path.</p>
+      <p class="as-eyebrow">Support our mission</p>
+      <h2>Your gift strengthens the people and programs we serve.</h2>
+      <p class="as-lede">Philanthropy strengthens trails, barns, gardens, activity stations, staff development, and the programs that make Autism Sanctuary possible—alongside authorized services and private-pay arrangements where families choose that path.</p>
       ' . as_olivia_actions([['Donate', '/donate/'], ['Ask about giving', '/contact/?intent=donate', 'ghost']]) . '
     </div>
     <div class="as-split__media">' . ($forest ? '<img src="' . esc_url($forest) . '" alt="Forest canopy along the Enchanted Forest trail.">' : as_olivia_placeholder('Photo placeholder: trails and nature')) . '</div>
@@ -236,7 +244,7 @@ $home_html = '
 
 <section class="as-section as-section--forest">
   <div class="as-section__inner">
-    <h2>Ready to talk?</h2>
+    <h2>Want to Learn More?</h2>
     <p class="as-lede">Whether you are exploring services, volunteering, careers, or a gift—we are glad you reached out.</p>
     ' . as_olivia_actions([['Send an inquiry', '/contact/'], ['Explore services', '/programs/', 'ghost']]) . '
   </div>
@@ -254,36 +262,39 @@ as_olivia_upsert(
 // About
 // ---------------------------------------------------------------------------
 $about_body = '
-<h2>Our mission</h2>
-<p>Provide a safe and therapeutic place in nature for individuals with autism and their families to recreate and connect.</p>
+<div class="as-mvv-split">
+  <div class="as-mvv-split__text">
+    <h2>Mission</h2>
+    <p>To enhance the lives of those with developmental disabilities through nature-based activities by fostering community connections and providing personalized support.</p>
 
-<h2>Our vision</h2>
-<p>Create a world where all neurodivergent people are recognized, celebrated, and supported.</p>
+    <h2>Vision</h2>
+    <p>A world where each person with developmental disabilities can find a sense of belonging and community while receiving the supports they need to live a meaningful life.</p>
 
-<h2>Our values — BEE NICE</h2>
-<ul class="as-checklist">
-  <li><strong>Belonging</strong> ensuring that every individual feels accepted and included.</li>
-  <li><strong>Equality</strong> providing every person the opportunity to enjoy nature.</li>
-  <li><strong>Environment</strong> prioritizing the restoration and stewardship of nature.</li>
-  <li><strong>Nature</strong> fostering a deep appreciation for the natural world.</li>
-  <li><strong>Integrity</strong> behaving ethically and honestly in all we do.</li>
-  <li><strong>Community</strong> cultivating a supportive and connected network.</li>
-  <li><strong>Empowerment</strong> providing tools and resources for neurodivergent individuals to thrive.</li>
-</ul>
+    <h2>Values — BEE NICE</h2>
+    <ul class="as-checklist">
+      <li><strong>Belonging:</strong> Creating a welcoming environment where everyone feels valued and accepted.</li>
+      <li><strong>Enrichment:</strong> Providing opportunities for growth, learning, and development through engaging activities and experiences.</li>
+      <li><strong>Enthusiasm:</strong> We are excited about the work we do.</li>
+      <li><strong>Nature:</strong> Promoting peace and tranquility with the benefits of nature, including trees, animals, plants, creeks, and trails to enhance well-being.</li>
+      <li><strong>Integrity:</strong> Upholding the highest standards of honesty, respect, and dignity in all interactions and practices.</li>
+      <li><strong>Connection — Community:</strong> Fostering meaningful connections within the community to build a supportive network.</li>
+      <li><strong>Connection — Collaboration:</strong> Working together with families, volunteers, and partners to achieve common goals.</li>
+      <li><strong>Excellence:</strong> Continuously striving for the highest quality in services and support for individuals with autism using proven and new methods.</li>
+    </ul>
+  </div>
+  <div class="as-mvv-split__media">' . as_olivia_placeholder('Photo placeholder: mission, vision, and values') . '</div>
+</div>
 
-<figure>' . as_olivia_placeholder('Photo placeholder: replace Pete and Frances image') . '</figure>
-
-<h2>Our story</h2>
+<h2>Our Story</h2>
 <p>Founded in 2020, Autism Sanctuary began as a vision to create a place where individuals with developmental disabilities could connect with nature, build community, and experience meaningful growth.</p>
 <p>The Brewster family saw an opportunity for inclusive, nature-based programming for their high-support-needs son and others like him who lacked access to community opportunities and services. Working with their neighbor, Frances Lee-Vandell, their collective vision led to a living sanctuary that offers support, purpose, and belonging.</p>
 <p>In December 2023, Autism Sanctuary became a Virginia DBHDS-licensed service provider. Since then, we have grown to meet the needs of our community and now offer day programs, residential services, community-based supports, and workplace assistance. In 2025, Autism Sanctuary received the Charlottesville Business Innovation Council Social Impact Award.</p>
-<p>As we began serving families, we continued to identify gaps in services and expand our programs and offerings to meet the diverse needs of individuals and families in multiple ways. We now offer off-site residential and community-based services in addition to our on-site day program.</p>
-<p>We pair passion and commitment with nature to create a therapeutic and active environment—and foster meaningful engagement through nature-based skill-building activities.</p>
+<p>As we began serving families, we continued to identify gaps in services and expand our programs and offerings to meet the diverse needs of individuals and families in multiple ways. We now offer off-site residential and community-based services in addition to our on-site day program—fostering meaningful engagement through nature-based skill-building activities.</p>
 
-<h2>Our home: Edgefield in White Hall, Virginia</h2>
+<h2>Our Home: Edgefield in White Hall, Virginia</h2>
 <figure>' . ($aerial ? '<img src="' . esc_url($aerial) . '" alt="Aerial view of the Edgefield property and surrounding land.">' : as_olivia_placeholder('Photo placeholder: Edgefield aerial')) . '</figure>
 <p>' . esc_html($our_home_p1) . '</p>
-<p>' . esc_html($our_home_p2) . '</p>
+<p class="as-lede--follow">' . esc_html($our_home_p2) . '</p>
 <p><a href="/our-farm/">See the farm &amp; trails</a> · <a href="/programs/">View services</a> · <a href="/contact/">Contact us</a></p>
 ';
 
@@ -308,38 +319,44 @@ $programs_body = '
 <p>Autism Sanctuary is a Virginia DBHDS-licensed provider serving adults with developmental disabilities. Licensed services show up both alongside our farming operations as well as out in the community and in people’s homes, creating a more integrated support structure tailored to each individual’s needs.</p>
 <p>A range of support ratios is provided based on individual support needs.</p>
 
-<h3>Group Day</h3>
-<p>On-site weekday person-centered support in a natural learning environment: therapeutic horticulture, animal care, sensory-informed routines, and skill-building on the farm. A typical day runs Monday through Friday, about 9 AM–3 PM.</p>
+' . as_olivia_service_block(
+	'Group Day',
+	'<p>On-site service running Monday through Friday, 9 AM–3 PM on an 85-acre farm. Individuals build confidence and develop skills through hands-on agricultural experiences, including animal care and gardening in the high tunnel, as well as through nature-based activities and community outings.</p>
 <ul>
   <li>Small-group and side-by-side modeling with trained DSPs</li>
   <li>Trails, gardens, animals, and hands-on farm activities</li>
-</ul>
-
-<h3>Community Coaching (1:1)</h3>
-<p>Off-site, individualized support that helps people build the social and situational skills needed to participate more independently in community settings. Community Coaching does not take place on the farm.</p>
+</ul>',
+	'Photo placeholder: Group Day'
+) . as_olivia_service_block(
+	'Community Coaching (1:1)',
+	'<p>Off-site, individualized support that helps people build the social and situational skills needed to participate more independently in community settings. Community Coaching does not take place on the farm.</p>
 <ul>
   <li>1:1 coaching tailored to each person’s goals</li>
   <li>Practice in real community environments at each person’s pace</li>
-</ul>
-
-<h3>Community Engagement (1:3)</h3>
-<p>Off-site small-group support for meaningful community participation—libraries, local businesses, other farms, nature trails, and shared activities. Community Engagement does not take place on the farm.</p>
+</ul>',
+	'Photo placeholder: Community Coaching'
+) . as_olivia_service_block(
+	'Community Engagement (1:3)',
+	'<p>Off-site small-group support for meaningful community participation—libraries, local businesses, other farms, nature trails, and shared activities. Community Engagement does not take place on the farm.</p>
 <ul>
   <li>1:3 support ratio</li>
   <li>Guided outings that build confidence and connection</li>
-</ul>
-
-<h3>Residential &amp; Home-Based Supports</h3>
-<p>Lifespan support for adults who benefit from stable, individualized residential arrangements where authorized—including Sponsored Residential, In-Home Support, and Supported Living. Person-centered planning aligned with each individual’s goals stands true across these services.</p>
-
-<h3>Workplace Assistance</h3>
-<p>Structured 1:1 support for paid or volunteer community roles when that matches a person’s goals—including task analysis, workplace navigation, and retention supports.</p>
+</ul>',
+	'Photo placeholder: Community Engagement'
+) . as_olivia_service_block(
+	'Residential &amp; Home-Based Supports',
+	'<p>Lifespan support for adults who benefit from stable, individualized residential arrangements where authorized—including Sponsored Residential, In-Home Support, and Supported Living. Person-centered planning aligned with each individual’s goals stands true across these services.</p>',
+	'Photo placeholder: Residential &amp; Home-Based Supports'
+) . as_olivia_service_block(
+	'Workplace Assistance',
+	'<p>Offers vocational support that helps individuals with higher support needs maintain meaningful employment. Staff provide 1:1 on the job support and workplace navigation to support long-term success.</p>
 <ul>
   <li>1:1 support</li>
   <li>Employer partnership</li>
   <li>Focus on long-term success</li>
-</ul>
-
+</ul>',
+	'Photo placeholder: Workplace Assistance'
+) . '
 <h2 id="interest">Explore a program fit</h2>
 <p>Our admissions team works closely with individuals, families, guardians, and case managers to understand each person’s goals, strengths, and needs and identify the supports that are the best fit.</p>
 <p>Use the inquiry form below to start the conversation. For the full multi-step intake still in production, you may also use <a href="https://www.autismsanctuary.org/intake-form/">the current intake form</a>.</p>
@@ -371,6 +388,8 @@ $farm_body = '
 <p>Our cattle move regularly between pastures, enjoying days in the sun and plenty of room to explore. People in our program visit the herd regularly, offering gentle pets, scratches, and snacks while building familiarity and connection. After a long, happy life, our grass-fed cattle are processed into beef made available directly from our farm and through local partners and our farmers market tables.</p>
 <h3>Chickens</h3>
 <p>Chickens roam fields in warmer weather and stay in the fenced garden in winter. Caring for them helps teach empathy—and their eggs appear at farmers market visits.</p>
+<h3>Bees</h3>
+<p>Our hives support pollination across the farm and give people in our program a chance to learn about beekeeping, hive care, and the role pollinators play in healthy land. Honey from our bees is shared at farmers market visits when available—a sweet connection between stewardship, agriculture, and community.</p>
 <h3>High tunnel &amp; gardens</h3>
 <p>Our 30′×72′ high tunnel extends the growing season and anchors garden work, composting, and hands-on horticulture that people can return to week after week.</p>
 <figure>' . ($animals ? '<img src="' . esc_url($animals) . '" alt="Animals and outdoor life on the Autism Sanctuary farm.">' : as_olivia_placeholder('Photo placeholder: farm animals')) . '</figure>
@@ -448,7 +467,7 @@ $people_body = '
     <div>
       <h3>Olivia Bruno</h3>
       <p class="as-person__role">Executive Director</p>
-      <p>Olivia leads Autism Sanctuary’s therapeutic programming and day-to-day operations, shaping a welcoming, nature-based environment where participants feel empowered and included. She has taken on operational and financial responsibilities as the organization scaled from serving a handful of individuals to a growing regional provider.</p>
+      <p>Olivia began her work with Autism Sanctuary as a direct care staff when the organization first began providing services. Since then, she has helped build the DSP team, welcome more individuals into our programs, and expand services. A graduate of UVA School of Education, Olivia now serves as a strategic leader focused on strengthening our services and striving to meet the needs of the developmental disabilities community.</p>
     </div>
   </div>
   <div class="as-person">
@@ -456,7 +475,7 @@ $people_body = '
     <div>
       <h3>Isabelle (Izzy) Kueser</h3>
       <p class="as-person__role">Director of Adult Services</p>
-      <p>Biography coming soon.</p>
+      <p>Izzy leads Autism Sanctuary’s dedicated team of direct care staff and works closely with families to continually strengthen programming and create meaningful experiences for the people we serve. She oversees key operational responsibilities related to service provision, onboarding, and strengthening the systems that support service delivery, helping ensure that our growing reach remains grounded in high-quality support. Her background in Speech Communication Disorders from UVA provides a strong foundation for her thoughtful, person-centered work.</p>
     </div>
   </div>
 </div>
@@ -467,8 +486,8 @@ as_olivia_upsert(
 	'People',
 	as_olivia_banner(
 		'People',
-		'The board and team who steward Autism Sanctuary.',
-		'Governance and day-to-day leadership for our nonprofit care farm.'
+		'Governance and leadership team',
+		'The volunteer board and staff leaders who guide Autism Sanctuary’s mission, programs, and daily operations.'
 	) . as_olivia_prose($people_body)
 );
 
@@ -501,8 +520,8 @@ as_olivia_upsert(
 	'Resources',
 	as_olivia_banner(
 		'Resources &amp; guidance',
-		'Funding, referrals, and getting here—without the jargon storm.',
-		'Informational pathways for families and case managers. Not legal advice.'
+		'Getting started',
+		'Pathways to services, Virginia waivers, and how to reach our team—without the jargon storm.'
 	) . as_olivia_prose($resources_body)
 );
 
@@ -543,9 +562,9 @@ as_olivia_upsert(
 // Donate
 // ---------------------------------------------------------------------------
 $donate_body = '
-<p>Your gift strengthens trails, barns, gardens, sensory spaces, staff development, and the programs that make Autism Sanctuary possible—alongside authorized services and private-pay arrangements where families choose that path.</p>
+<p>Your gift strengthens trails, barns, gardens, activity stations, sensory spaces, staff development, and the programs that make Autism Sanctuary possible—alongside authorized services and private-pay arrangements where families choose that path.</p>
 <div class="as-grid as-grid--3" style="margin:2rem 0">
-  <div class="as-feature"><h3>Care farming infrastructure</h3><p>Trails, barns, gardens, and sensory spaces that make outdoor days possible.</p></div>
+  <div class="as-feature"><h3>Care farming infrastructure</h3><p>Trails, barns, gardens, activity stations, and sensory spaces that make outdoor days possible.</p></div>
   <div class="as-feature"><h3>Participant access</h3><p>Support that helps people with significant needs take part fully in farm and community life.</p></div>
   <div class="as-feature"><h3>Workforce strength</h3><p>Training and retention for DSPs who show up in boots, rain or shine.</p></div>
 </div>
@@ -562,9 +581,9 @@ as_olivia_upsert(
 	'donate',
 	'Donate',
 	as_olivia_banner(
-		'Philanthropy',
-		'Help us keep farm days generous and joyful.',
-		'Give in a way that fits—and tell us how you would like your gift used.'
+		'Support our mission',
+		'Support our mission!',
+		'Your gift strengthens trails, barns, gardens, activity stations, staff development, and the programs that make Autism Sanctuary possible.'
 	) . as_olivia_prose($donate_body)
 );
 
