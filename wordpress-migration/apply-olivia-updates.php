@@ -521,7 +521,7 @@ as_olivia_upsert(
 	as_olivia_banner(
 		'Resources &amp; guidance',
 		'Getting started',
-		'Pathways to services, Virginia waivers, and how to reach our team—without the jargon storm.'
+		'Pathways to services, waiver information, and how to reach our team.'
 	) . as_olivia_prose($resources_body)
 );
 
@@ -562,10 +562,10 @@ as_olivia_upsert(
 // Donate
 // ---------------------------------------------------------------------------
 $donate_body = '
-<p>Your gift strengthens trails, barns, gardens, activity stations, sensory spaces, staff development, and the programs that make Autism Sanctuary possible—alongside authorized services and private-pay arrangements where families choose that path.</p>
+<p>Gifts strengthen programs, people, and places that make our work possible—trails, barns, gardens, activity stations, and staff development—alongside authorized services and private-pay options where families choose that path.</p>
 <div class="as-grid as-grid--3" style="margin:2rem 0">
-  <div class="as-feature"><h3>Care farming infrastructure</h3><p>Trails, barns, gardens, activity stations, and sensory spaces that make outdoor days possible.</p></div>
-  <div class="as-feature"><h3>Participant access</h3><p>Support that helps people with significant needs take part fully in farm and community life.</p></div>
+  <div class="as-feature"><h3>Care farming infrastructure</h3><p>Trails, barns, gardens, and activity stations that make outdoor days possible.</p></div>
+  <div class="as-feature"><h3>Participant access</h3><p>Support that helps people with developmental disabilities grow and live a meaningful life.</p></div>
   <div class="as-feature"><h3>Workforce strength</h3><p>Training and retention for DSPs who show up in boots, rain or shine.</p></div>
 </div>
 <h2>Looking ahead</h2>
@@ -581,9 +581,9 @@ as_olivia_upsert(
 	'donate',
 	'Donate',
 	as_olivia_banner(
-		'Support our mission',
+		'Philanthropy',
 		'Support our mission!',
-		'Your gift strengthens trails, barns, gardens, activity stations, staff development, and the programs that make Autism Sanctuary possible.'
+		'Gifts strengthen programs, people, and places that make our work possible—trails, barns, gardens, activity stations, and staff development—alongside authorized services and private-pay options where families choose that path.'
 	) . as_olivia_prose($donate_body)
 );
 
