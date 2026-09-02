@@ -1431,10 +1431,34 @@ body.home #main-content .container:before {
   margin-bottom: 0;
 }
 
-/* ---------- About (native Divi modules) ---------- */
+/* ---------- About (native Divi 5 Text/Image modules) ---------- */
 
-.as-about-banner h1,
-.et_pb_text.as-about-banner h1 {
+.et_pb_section.as-banner,
+.et_pb_section.as-about-story,
+.et_pb_section.as-about-edgefield,
+.et_pb_section.as-about-mvv {
+  padding: 0 !important;
+  background: transparent !important;
+}
+
+.et_pb_section.as-banner > .et_pb_row {
+  max-width: var(--max-w) !important;
+  width: 100% !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  padding: 4rem 1.25rem 2.5rem !important;
+  box-sizing: border-box !important;
+}
+
+.et_pb_text.as-about-banner,
+.et_pb_text.as-about-banner .et_pb_text_inner {
+  max-width: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.et_pb_text.as-about-banner h1,
+.as-about-banner h1 {
   font-family: var(--font-serif) !important;
   font-size: clamp(2rem, 4vw, 3rem) !important;
   color: var(--forest-deep) !important;
@@ -1444,36 +1468,140 @@ body.home #main-content .container:before {
   padding-bottom: 0 !important;
 }
 
-.as-about-banner .as-lede,
-.et_pb_text.as-about-banner .as-lede {
+.et_pb_text.as-about-banner .as-lede,
+.as-about-banner .as-lede {
   margin-bottom: 0;
 }
 
 .et_pb_section.as-about-mvv > .et_pb_row {
   max-width: var(--wide-w) !important;
+  width: 100% !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  padding-left: 1.25rem !important;
+  padding-right: 1.25rem !important;
+  box-sizing: border-box !important;
 }
 
-.et_pb_text.as-about-mvv-photo .as-img-placeholder {
+.et_pb_section.as-about-mvv .et_pb_text.as-prose,
+.et_pb_section.as-about-mvv .et_pb_text.as-about-mvv-text {
+  max-width: none !important;
+  margin: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+.et_pb_section.as-about-mvv .et_pb_text.as-prose h2:first-child,
+.et_pb_section.as-about-mvv .et_pb_text.as-about-mvv-text h2:first-child {
+  margin-top: 0;
+}
+
+.et_pb_section.as-about-mvv .as-img-placeholder {
   min-height: 18rem;
-}
-
-.et_pb_text.as-prose,
-.et_pb_text.as-about-mvv-text {
-  max-width: none;
 }
 
 .et_pb_section.as-about-story > .et_pb_row,
 .et_pb_section.as-about-edgefield > .et_pb_row {
   max-width: 44rem !important;
+  width: 100% !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  padding-left: 1.25rem !important;
+  padding-right: 1.25rem !important;
+  box-sizing: border-box !important;
+}
+
+.et_pb_section.as-about-story .et_pb_text.as-prose,
+.et_pb_section.as-about-edgefield .et_pb_text.as-prose {
+  max-width: 100% !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  padding-bottom: 0 !important;
+}
+
+.et_pb_section.as-about-story .et_pb_text.as-prose h2:first-child {
+  margin-top: 0;
+}
+
+.et_pb_section.as-about-edgefield .et_pb_text.as-prose:first-of-type h2 {
+  margin-top: 0 !important;
+}
+
+.et_pb_section.as-about-edgefield {
+  padding-bottom: 4rem !important;
+}
+
+.et_pb_section.as-about-story {
+  padding-bottom: 1rem !important;
 }
 
 .et_pb_image.as-about-edgefield-photo {
   margin: 0 0 1.25rem !important;
+  width: 100% !important;
+  max-width: 100% !important;
 }
 
 .et_pb_image.as-about-edgefield-photo img {
   border-radius: var(--radius);
   box-shadow: var(--shadow-soft);
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Reset Divi text-module chrome on About */
+.et_pb_section.as-banner .et_pb_text,
+.et_pb_section.as-about-mvv .et_pb_text,
+.et_pb_section.as-about-story .et_pb_text,
+.et_pb_section.as-about-edgefield .et_pb_text {
+  margin-bottom: 0 !important;
+}
+
+.et_pb_section.as-banner .et_pb_text_inner,
+.et_pb_section.as-about-mvv .et_pb_text_inner,
+.et_pb_section.as-about-story .et_pb_text_inner,
+.et_pb_section.as-about-edgefield .et_pb_text_inner {
+  padding: 0 !important;
+}
+
+/* Typography inside About text modules */
+.et_pb_section.as-banner .et_pb_text_inner h1,
+.et_pb_section.as-about-mvv .et_pb_text_inner h2,
+.et_pb_section.as-about-story .et_pb_text_inner h2,
+.et_pb_section.as-about-edgefield .et_pb_text_inner h2 {
+  font-family: var(--font-serif) !important;
+  color: var(--forest-deep) !important;
+}
+
+.et_pb_section.as-about-mvv .et_pb_text_inner p,
+.et_pb_section.as-about-story .et_pb_text_inner p,
+.et_pb_section.as-about-edgefield .et_pb_text_inner p {
+  color: var(--muted-ink);
+  line-height: 1.65;
+  margin: 0 0 1rem;
+}
+
+.et_pb_section.as-about-mvv .et_pb_text_inner h2,
+.et_pb_section.as-about-story .et_pb_text_inner h2,
+.et_pb_section.as-about-edgefield .et_pb_text_inner h2 {
+  margin: 2rem 0 0.75rem;
+  font-size: clamp(1.5rem, 2.5vw, 2rem);
+}
+
+.et_pb_section.as-about-mvv .et_pb_text_inner ul.as-checklist {
+  margin: 0.75rem 0 0;
+  padding-left: 1.15rem;
+  list-style: disc;
+  color: var(--muted-ink);
+}
+
+.et_pb_section.as-about-mvv .et_pb_text_inner ul.as-checklist li {
+  margin: 0 0 0.45rem;
+  line-height: 1.55;
+}
+
+.et_pb_section.as-about-mvv .et_pb_text_inner ul.as-checklist li::before {
+  content: none !important;
+  display: none !important;
 }
 
 .as-news-list-section .et_pb_row {
