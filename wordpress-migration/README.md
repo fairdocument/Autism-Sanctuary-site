@@ -51,6 +51,7 @@ Useful eval-files:
 - `setup-stripe-donate.php` — Donate form + Stripe feeds
 - `setup-news.php` — Divi News page + Theme Builder posts
 - `convert-pages-to-divi5.php` — wrap marketing HTML as Divi 5 section layouts
+- `convert-plain-html-to-divi.php` — convert builder-off plain HTML pages to Divi Code modules only
 - `fill-excerpts.php` — rebuild post excerpts from Divi content
 - `polish-design.php` — checklist/people markup tweaks
 
