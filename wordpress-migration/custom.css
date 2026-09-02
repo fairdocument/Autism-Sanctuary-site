@@ -1431,6 +1431,51 @@ body.home #main-content .container:before {
   margin-bottom: 0;
 }
 
+/* ---------- About (native Divi modules) ---------- */
+
+.as-about-banner h1,
+.et_pb_text.as-about-banner h1 {
+  font-family: var(--font-serif) !important;
+  font-size: clamp(2rem, 4vw, 3rem) !important;
+  color: var(--forest-deep) !important;
+  max-width: 18ch;
+  margin: 0 0 1rem !important;
+  line-height: 1.15 !important;
+  padding-bottom: 0 !important;
+}
+
+.as-about-banner .as-lede,
+.et_pb_text.as-about-banner .as-lede {
+  margin-bottom: 0;
+}
+
+.et_pb_section.as-about-mvv > .et_pb_row {
+  max-width: var(--wide-w) !important;
+}
+
+.et_pb_text.as-about-mvv-photo .as-img-placeholder {
+  min-height: 18rem;
+}
+
+.et_pb_text.as-prose,
+.et_pb_text.as-about-mvv-text {
+  max-width: none;
+}
+
+.et_pb_section.as-about-story > .et_pb_row,
+.et_pb_section.as-about-edgefield > .et_pb_row {
+  max-width: 44rem !important;
+}
+
+.et_pb_image.as-about-edgefield-photo {
+  margin: 0 0 1.25rem !important;
+}
+
+.et_pb_image.as-about-edgefield-photo img {
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-soft);
+}
+
 .as-news-list-section .et_pb_row {
   width: 100% !important;
 }

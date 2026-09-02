@@ -152,7 +152,7 @@ $gf_inquiry = as_olivia_inquiry_shortcode();
 $gf_donate = as_olivia_donate_shortcode();
 
 $our_home_p1 = 'Autism Sanctuary operates from Edgefield—an extraordinary property and house stewarded by Frances Lee-Vandell. A 1780 home built by William Watkins was dismantled board by board and rebuilt onsite.';
-$our_home_p2 = 'Today, the property features a range of animals, a robust garden, walking trails, and a variety of activity stations. Thank you to Frances’ incredible generosity, this property and land have become the foundation of our programs and have changed the lives of many.';
+$our_home_p2 = 'Today, the property features a range of animals, a robust garden, walking trails, and a variety of activity stations. Thanks to Frances’ incredible generosity, this property and land have become the foundation of our programs and have changed the lives of many.';
 
 // ---------------------------------------------------------------------------
 // Home
