@@ -53,6 +53,7 @@ Useful eval-files:
 - `convert-pages-to-divi5.php` — wrap marketing HTML as Divi 5 section layouts
 - `convert-plain-html-to-divi.php` — convert builder-off plain HTML pages to Divi Code modules only
 - `pilot-about-native-divi.php` — pilot native Divi Text/Image modules on /about/ (fixes copy typos)
+- `convert-pages-native-divi5.php` — convert all other pages from Code HTML to native Divi 5 Text/Image
 - `fill-excerpts.php` — rebuild post excerpts from Divi content
 - `polish-design.php` — checklist/people markup tweaks
 
