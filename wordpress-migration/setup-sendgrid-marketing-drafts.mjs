@@ -153,25 +153,37 @@ const newsletterHtml = shell(
 	`
         <tr>
           <td style="padding:20px 0 0;">
-            <img src="https://www.autismsanctuary.org/wp-content/uploads/2026/09/Header_AutismSanctuary_MR.jpg" alt="Ty Hopkins and Megan McGrath with Russet the cow at Autism Sanctuary" width="600" style="width:100%;max-width:600px;height:auto;display:block;">
+            <img src="https://www.autismsanctuary.org/wp-content/uploads/2026/09/5A42F5DA-06E7-4F20-BA2A-8E10739CAACA_1_105_c.jpeg" alt="Autism Sanctuary pavilion ribbon cutting celebration" width="600" style="width:100%;max-width:600px;height:auto;display:block;">
           </td>
         </tr>
         <tr>
           <td style="padding:24px 40px 10px;">
-            <h1 style="margin:0;font-family:Georgia,serif;font-size:32px;line-height:1.2;color:${C.forest};font-weight:700;">A UVA Today feature — and our thanks to you</h1>
+            <h1 style="margin:0;font-family:Georgia,serif;font-size:32px;line-height:1.2;color:${C.forest};font-weight:700;">Pavilion open, UVA Today, and our thanks</h1>
           </td>
         </tr>
         <tr>
           <td style="padding:0 40px 16px;">
-            <p style="margin:0;font-family:Georgia,serif;font-size:18px;line-height:1.5;color:${C.muted};font-style:italic;">This month the University community spotlighted our farm. We are grateful to every family, friend, donor, and neighbor who made that story possible.</p>
+            <p style="margin:0;font-family:Georgia,serif;font-size:18px;line-height:1.5;color:${C.muted};font-style:italic;">We cut the ribbon on our new outdoor pavilion, the University community spotlighted our farm, and Give Where You Live opens soon — none of it possible without you.</p>
           </td>
         </tr>
         <tr>
           <td style="padding:4px 40px 18px;font-family:Arial,Helvetica,sans-serif;font-size:16px;line-height:1.65;color:${C.ink};">
-            <p style="margin:0 0 18px;">We're so glad to share two pieces of good news from the University of Virginia community this month — a full profile of our farm in <em>UVA Today</em>, and the launch of this fall's <strong>Give Where You Live</strong> campaign.</p>
             <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin:0 0 22px;">
               <tr>
                 <td style="padding:16px 18px;background:${C.cream};border-left:4px solid ${C.green};">
+                  <p style="margin:0 0 6px;font-family:Arial,Helvetica,sans-serif;font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:${C.gold};font-weight:700;">Farm milestone</p>
+                  <p style="margin:0 0 10px;font-family:Georgia,serif;font-size:20px;line-height:1.3;color:${C.forest};font-weight:700;">Pavilion ribbon cutting</p>
+                  <p style="margin:0 0 12px;font-size:15px;">On <strong>August 29</strong>, we celebrated the official opening of our new outdoor pavilion — a shaded home for agriculture programming, gatherings, and everyday farm life on the Edgefield property.</p>
+                  <p style="margin:0 0 12px;font-size:15px;">The pavilion was made possible with generous support from the Virginia Outdoors Foundation’s <a href="https://www.vof.org/protect/grants/go/" style="color:${C.green};font-weight:700;">Get Outdoors Fund</a>. From the first posts and framing to the ribbon cutting, members, staff, volunteers, and partners poured hours into making this space real.</p>
+                  <p style="margin:0 0 14px;font-size:15px;"><a href="https://www.autismsanctuary.org/pavilion-ribbon-cutting/" style="color:${C.green};font-weight:700;">Read the full announcement →</a></p>
+                  <img src="https://www.autismsanctuary.org/wp-content/uploads/2026/09/7AA1036F-DEC7-4FAE-9C70-CE13EE28F508_1_105_c.jpeg" alt="Cutting the ribbon at the pavilion opening" width="520" style="width:100%;max-width:520px;height:auto;display:block;border:0;">
+                </td>
+              </tr>
+            </table>
+            <p style="margin:0 0 18px;">We're also glad to share two pieces of good news from the University of Virginia community this month — a full profile of our farm in <em>UVA Today</em>, and the launch of this fall's <strong>Give Where You Live</strong> campaign.</p>
+            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin:0 0 22px;">
+              <tr>
+                <td style="padding:16px 18px;background:${C.cream};border-left:4px solid ${C.forest};">
                   <p style="margin:0 0 6px;font-family:Arial,Helvetica,sans-serif;font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:${C.gold};font-weight:700;">Featured story</p>
                   <p style="margin:0 0 10px;font-family:Georgia,serif;font-size:20px;line-height:1.3;color:${C.forest};font-weight:700;">Featured in UVA Today</p>
                   <p style="margin:0 0 12px;font-size:15px;">Bryan McKenzie's story, <em>“UVA community makes a place for everyone out on the farm,”</em> shares how Autism Sanctuary grew from a family need into a state-licensed day support program on more than 80 acres in Albemarle County.</p>
@@ -185,7 +197,7 @@ const newsletterHtml = shell(
                   <p style="margin:0 0 6px;font-family:Arial,Helvetica,sans-serif;font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:${C.green};font-weight:700;">With gratitude</p>
                   <p style="margin:0 0 10px;font-family:Georgia,serif;font-size:20px;line-height:1.3;color:${C.forest};font-weight:700;">Thank you for walking with us</p>
                   <p style="margin:0 0 12px;font-size:15px;">Moments like this remind us that Autism Sanctuary did not grow alone. We are deeply grateful to the community, families, friends, donors, volunteers, partners, and neighbors who have believed in this work from the start — and who continue to show up with time, encouragement, expertise, and generosity.</p>
-                  <p style="margin:0;font-size:15px;">Your support has been instrumental to every step of our success. Thank you for walking this path with us.</p>
+                  <p style="margin:0;font-size:15px;">Your support has been instrumental to every step of our success, including the pavilion. Thank you for walking this path with us.</p>
                 </td>
               </tr>
             </table>
@@ -245,23 +257,40 @@ const alertDesign = await upsertDesign(
 	alertHtmlFixed,
 );
 
+const newsletterSubject =
+	"Pavilion open — Featured in UVA Today, with gratitude & Give Where You Live";
+
 const newsletterDesign = await upsertDesign(
 	"AS Trail Guide — UVA Today & gratitude",
-	"Featured in UVA Today — with gratitude, and Give Where You Live",
+	newsletterSubject,
 	newsletterHtml,
 );
 
-// Create / update Single Send draft using the newsletter design HTML.
-const ssName = "DRAFT: Trail Guide — UVA Today thank you";
+// Create / update Single Send draft using the newsletter design.
+const ssName = "DRAFT: Trail Guide — Pavilion, UVA Today & thanks";
+const ssNameLegacy = "DRAFT: Trail Guide — UVA Today thank you";
 const singles = await sg("GET", "/marketing/singlesends?page_size=50");
-let draft = (singles.result || []).find((s) => s.name === ssName && s.status === "draft");
+let draft = (singles.result || []).find(
+	(s) =>
+		s.status === "draft" &&
+		(s.name === ssName || s.name === ssNameLegacy),
+);
 
-const emailConfig = {
+const emailConfigCreate = {
 	generate_plain_content: true,
 	editor: "code",
 	sender_id: SENDER_NEWSLETTER,
 	suppression_group_id: ASM_GROUP,
 	design_id: newsletterDesign.id,
+};
+
+// Updates cannot change design_id; push subject + html directly.
+const emailConfigUpdate = {
+	subject: newsletterSubject,
+	html_content: newsletterHtml,
+	generate_plain_content: true,
+	sender_id: SENDER_NEWSLETTER,
+	suppression_group_id: ASM_GROUP,
 };
 
 const sendTo = {
@@ -276,14 +305,14 @@ if (draft) {
 	draft = await sg("PATCH", `/marketing/singlesends/${draft.id}`, {
 		name: ssName,
 		send_to: sendTo,
-		email_config: emailConfig,
+		email_config: emailConfigUpdate,
 	});
 	console.log(`Updated Single Send draft: ${draft.id}`);
 } else {
 	draft = await sg("POST", "/marketing/singlesends", {
 		name: ssName,
 		send_to: sendTo,
-		email_config: emailConfig,
+		email_config: emailConfigCreate,
 	});
 	console.log(`Created Single Send draft: ${draft.id}`);
 }

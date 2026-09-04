@@ -1,5 +1,5 @@
 {
-	"updated_at": "2026-09-04T17:11:53.835Z",
+	"updated_at": "2026-09-04T20:51:38.536Z",
 	"asm_group_id": 55041,
 	"sender_id": 7495556,
 	"designs": {
@@ -11,12 +11,12 @@
 		"newsletter": {
 			"id": "bfd48017-ac44-486c-8312-2dc874c374fe",
 			"name": "AS Trail Guide — UVA Today & gratitude",
-			"subject": "Featured in UVA Today — with gratitude, and Give Where You Live"
+			"subject": "Pavilion open — Featured in UVA Today, with gratitude & Give Where You Live"
 		}
 	},
 	"single_send_draft": {
 		"id": "b9bee21d-a883-11f1-ba3b-1ea3c01f82b1",
-		"name": "DRAFT: Trail Guide — UVA Today thank you",
+		"name": "DRAFT: Trail Guide — Pavilion, UVA Today & thanks",
 		"status": "draft",
 		"edit_url": "https://mc.sendgrid.com/single-sends/b9bee21d-a883-11f1-ba3b-1ea3c01f82b1/review"
 	},
