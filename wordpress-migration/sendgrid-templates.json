@@ -1,5 +1,5 @@
 {
-	"updated_at": "2026-09-04T22:41:17.574Z",
+	"updated_at": "2026-09-04T22:47:34.915Z",
 	"from": {
 		"alerts": "info@autismsanctuary.org",
 		"newsletters": "newsletters@autismsanctuary.org"
@@ -8,15 +8,20 @@
 		"alert": {
 			"id": "d-23a25506c68d4224bcbfae29f0b66e2e",
 			"name": "AS Alert",
-			"version_id": "41cf53a9-ff7e-4eb4-adce-37f08e610825",
+			"version_id": "a93b090a-b854-48ed-8972-4cdd29ec853e",
 			"subject": "{{subject}}"
 		},
 		"newsletter": {
 			"id": "d-e75934b564a240cfa0abca50ce2bf5f5",
 			"name": "AS Newsletter",
-			"version_id": "c528d04a-3c93-4055-ace0-87421deda450",
+			"version_id": "9d9b39c9-f339-41d9-9726-4d8c6fb66afa",
 			"subject": "{{subject}}"
 		}
+	},
+	"unsubscribe": {
+		"footer_tag": "<%asm_preferences_raw_url%>",
+		"label": "Manage email preferences",
+		"asm_group_id": 55041
 	},
 	"handlebars": {
 		"alert": [
@@ -25,8 +30,7 @@
 			"headline",
 			"body_html",
 			"cta_url",
-			"cta_text",
-			"unsubscribe"
+			"cta_text"
 		],
 		"newsletter": [
 			"subject",
@@ -38,8 +42,11 @@
 			"featured_image_url",
 			"featured_image_alt",
 			"cta_url",
-			"cta_text",
-			"unsubscribe"
+			"cta_text"
 		]
-	}
+	},
+	"notes": [
+		"Footer uses <%asm_preferences_raw_url%> (Manage email preferences) instead of one-click unsubscribe to reduce false unsubscribes from email security scanners.",
+		"When sending via API, include asm.group_id (Trail Guide newsletter = 55041) so the preferences link resolves."
+	]
 }

@@ -178,7 +178,7 @@ function footer({ contactEmail, showUnsubscribe = true }) {
                   <p style="margin:0;">
                     <a href="${C.site}" style="color:${C.green}; text-decoration:underline;">autismsanctuary.org</a>${
 											showUnsubscribe
-												? `&nbsp;·&nbsp;<a href="{{{unsubscribe}}}" style="color:${C.muted}; text-decoration:underline;">Manage subscription</a>`
+												? `&nbsp;·&nbsp;<a href="<%asm_preferences_raw_url%>" style="color:${C.muted}; text-decoration:underline;">Manage email preferences</a>`
 												: ""
 										}
                   </p>
@@ -321,7 +321,7 @@ async function ensureTemplate({ name, versionLabel, subject, html, testData }) {
 
 const alert = await ensureTemplate({
 	name: "AS Alert",
-	versionLabel: "AS Alert with logo",
+	versionLabel: "AS Alert preferences unsubscribe",
 	subject: "{{subject}}",
 	html: alertHtml,
 	testData: {
@@ -338,7 +338,7 @@ const alert = await ensureTemplate({
 
 const newsletter = await ensureTemplate({
 	name: "AS Newsletter",
-	versionLabel: "AS Newsletter with logo",
+	versionLabel: "AS Newsletter preferences unsubscribe",
 	subject: "{{subject}}",
 	html: newsletterHtml,
 	testData: {
@@ -369,6 +369,11 @@ const payload = {
 		alert,
 		newsletter,
 	},
+	unsubscribe: {
+		footer_tag: "<%asm_preferences_raw_url%>",
+		label: "Manage email preferences",
+		asm_group_id: 55041,
+	},
 	handlebars: {
 		alert: [
 			"subject",
@@ -377,7 +382,6 @@ const payload = {
 			"body_html",
 			"cta_url",
 			"cta_text",
-			"unsubscribe",
 		],
 		newsletter: [
 			"subject",
@@ -390,9 +394,12 @@ const payload = {
 			"featured_image_alt",
 			"cta_url",
 			"cta_text",
-			"unsubscribe",
 		],
 	},
+	notes: [
+		"Footer uses <%asm_preferences_raw_url%> (Manage email preferences) instead of one-click unsubscribe to reduce false unsubscribes from email security scanners.",
+		"When sending via API, include asm.group_id (Trail Guide newsletter = 55041) so the preferences link resolves.",
+	],
 };
 
 writeFileSync(OUT, JSON.stringify(payload, null, "\t") + "\n");
