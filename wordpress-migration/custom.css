@@ -2099,6 +2099,34 @@ body.single-post .et_pb_section.as-single-banner .as-single-title .author a {
   margin: 1.25rem 0;
 }
 
+.as-single-content figure.as-article-gallery {
+  margin: 1.5rem 0;
+}
+
+.as-single-content figure.as-article-gallery img {
+  width: 100%;
+  height: auto;
+  display: block;
+  margin: 0;
+}
+
+.as-single-content figure.as-article-logo {
+  margin: 1.5rem 0;
+  padding: 2rem 1.5rem;
+  background: #1e3d2c;
+  border-radius: calc(var(--radius) + 2px);
+  text-align: center;
+}
+
+.as-single-content figure.as-article-logo img {
+  margin: 0 auto;
+  max-width: 16rem;
+  width: 70%;
+  height: auto;
+  display: block;
+  border-radius: 0;
+}
+
 .as-single-back p {
   margin: 0;
   padding: 0 !important;
