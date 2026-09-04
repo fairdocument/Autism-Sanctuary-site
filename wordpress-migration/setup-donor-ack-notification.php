@@ -42,9 +42,9 @@ $ack_body = <<<HTML
     <td align="center">
       <table role="presentation" width="560" cellpadding="0" cellspacing="0" border="0" style="max-width:560px;width:100%;background:#ffffff;border:1px solid #d9d2c4;border-radius:6px;overflow:hidden;">
         <tr>
-          <td align="center" style="background:#1e3d2c;padding:28px 24px 20px;">
-            <img src="{$logo}" width="120" height="114" alt="Autism Sanctuary" style="display:block;width:120px;height:auto;border:0;margin:0 auto 12px;">
-            <p style="margin:0;font-family:Georgia,'Times New Roman',serif;font-size:22px;line-height:1.3;color:#f7f4ec;font-weight:600;">Thank you for your gift</p>
+          <td align="center" style="background:#ffffff;padding:28px 24px 16px;border-bottom:1px solid #d9d2c4;">
+            <img src="{$logo}" width="120" height="114" alt="Autism Sanctuary" style="display:block;width:120px;height:auto;border:0;margin:0 auto 14px;">
+            <p style="margin:0;font-family:Georgia,'Times New Roman',serif;font-size:22px;line-height:1.3;color:#2f5d43;font-weight:600;">Thank you for your gift</p>
           </td>
         </tr>
         <tr>
