@@ -2127,6 +2127,16 @@ body.single-post .et_pb_section.as-single-banner .as-single-title .author a {
   border-radius: 0;
 }
 
+.as-single-content figure.as-article-logo--light {
+  background: #f7f4ec;
+  border: 1px solid rgba(30, 61, 44, 0.12);
+}
+
+.as-single-content figure.as-article-logo--light img {
+  max-width: 14rem;
+  width: 55%;
+}
+
 .as-single-back p {
   margin: 0;
   padding: 0 !important;

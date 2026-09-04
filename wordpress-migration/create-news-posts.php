@@ -16,6 +16,7 @@ $files = [
 	'post-give-where-you-live.json',
 	'post-wahs-western-hemisphere-feature.json',
 	'post-mpo-paratransit-vehicle-funding.json',
+	'post-tour-of-te-meats.json',
 ];
 
 $dir = __DIR__ . '/news-export';
