@@ -2230,3 +2230,39 @@ body.page-id-419 .as-page.as-prose > h2:first-child {
   padding-right: 1.25rem !important;
   box-sizing: border-box !important;
 }
+
+/* Native Programs: service Image + Text stacks */
+.et_pb_section.as-programs-service > .et_pb_row {
+  padding-left: 1.25rem !important;
+  padding-right: 1.25rem !important;
+  box-sizing: border-box !important;
+  border-bottom: 1px solid var(--soft-rule);
+  margin-bottom: 0.5rem;
+}
+
+.et_pb_section.as-programs-service--workplace > .et_pb_row {
+  border-bottom: 0;
+}
+
+.et_pb_image.as-programs-service-photo {
+  margin: 0 0 1.25rem !important;
+}
+
+.et_pb_image.as-programs-service-photo img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 0;
+}
+
+.et_pb_section.as-programs-service .as-programs-service-copy h3 {
+  margin: 0 0 1rem;
+}
+
+.et_pb_section.as-programs-banner .as-programs-heading h1 {
+  margin: 0;
+  color: #ffffff;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-weight: 600;
+  line-height: 1.15;
+}
