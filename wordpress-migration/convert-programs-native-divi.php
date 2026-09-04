@@ -49,8 +49,6 @@ $media = [
 
 $gf = '[gravityform id="1" title="false" description="false" ajax="true"]';
 
-$banner = as_programs_banner_section();
-
 $intro = as_programs_text_section(
 	'as-native-prose as-programs-intro',
 	'0px|0px|1.5rem|0px',
@@ -157,7 +155,7 @@ HTML
 	$text_style
 );
 
-$shortcode = $banner . $intro . $service_sc . $interest;
+$shortcode = $intro . $service_sc . $interest;
 
 $converted = \ET\Builder\Packages\Conversion\Conversion::maybeConvertContent(
 	$shortcode,
@@ -170,6 +168,9 @@ if (!$converted || strpos($converted, '<!-- wp:divi/') === false) {
 	echo "FAIL Divi 5 conversion\n";
 	return;
 }
+
+// Prepend About-style banner blocks (Heading module) after shortcode conversion.
+$converted = trim(as_programs_banner_section()) . "\n\n" . ltrim($converted);
 
 $image_count = substr_count($converted, 'wp:divi/image');
 if ($image_count < 5) {
@@ -258,14 +259,29 @@ function as_programs_text_section($section_class, $padding, $row_max, $text_clas
 	);
 }
 
+/**
+ * Banner is applied as Divi 5 Text + Heading + Text (matching /about/).
+ * Shortcode conversion cannot emit Heading modules reliably; build blocks directly.
+ */
 function as_programs_banner_section() {
-	return '[et_pb_section fb_built="1" _builder_version="4.27.4" _module_preset="default" background_color="#1E3D2C" custom_padding="4rem|0px|2.5rem|0px|false|false" module_class="as-banner as-programs-banner"]'
-		. '[et_pb_row _builder_version="4.27.4" _module_preset="default" max_width="72rem" custom_padding="0px|1.25rem|0px|1.25rem|false|false"]'
-		. '[et_pb_column type="4_4" _builder_version="4.27.4" _module_preset="default"]'
-		. '[et_pb_text _builder_version="4.27.4" _module_preset="default" module_class="as-programs-eyebrow" text_font="Source Sans 3||||||||" text_text_color="#ffffff" text_font_size="16px" custom_margin="||0px||false|false" custom_padding="0px|0px|0px|0px|false|false"]Programs &amp; licensed services[/et_pb_text]'
-		. '[et_pb_text _builder_version="4.27.4" _module_preset="default" module_class="as-programs-heading" header_font="Cormorant Garamond||||||||" header_text_color="#ffffff" header_font_size="2.5rem" text_font="Cormorant Garamond||||||||" text_text_color="#ffffff" custom_margin="||0.5rem||false|false" custom_padding="0px|0px|0px|0px|false|false"]<h1>Licensed support rooted in connection, growth, and belonging.</h1>[/et_pb_text]'
-		. '[et_pb_text _builder_version="4.27.4" _module_preset="default" module_class="as-programs-lede" text_font="Source Sans 3||||||||" text_text_color="#ffffff" text_font_size="16px" custom_margin="||0px||false|false" custom_padding="0px|0px|0px|0px|false|false"]Autism Sanctuary is a Virginia DBHDS-licensed provider serving adults with developmental disabilities—on the farm, in the community, and in people’s homes.[/et_pb_text]'
-		. '[/et_pb_column][/et_pb_row][/et_pb_section]';
+	$heading = 'Licensed support rooted in connection, growth, and belonging.';
+	$eyebrow_json = 'Programs & licensed services\\n';
+	$heading_json = str_replace(['\\', '"'], ['\\\\', '\\"'], $heading);
+	$lede_json = 'Autism Sanctuary is a Virginia DBHDS-licensed provider serving adults with developmental disabilities—on the farm, in the community, and in people’s homes.\\n\\n';
+
+	return <<<BLOCKS
+<!-- wp:divi/placeholder --><!-- wp:divi/section {"module":{"decoration":{"background":{"desktop":{"value":{"color":"\$variable({\u0022type\u0022:\u0022color\u0022,\u0022value\u0022:{\u0022name\u0022:\u0022gcid-22sbvlqwkx\u0022,\u0022settings\u0022:{}}})$"}}},"spacing":{"desktop":{"value":{"padding":{"top":"80px","syncVertical":"off","syncHorizontal":"off","bottom":"40px"}}},"tablet":{"value":{"padding":{"syncVertical":"off","syncHorizontal":"on","left":"15px","right":"15px"}}}}}},"builderVersion":"5.11.1"} -->
+<!-- wp:divi/row {"module":{"advanced":{"columnStructure":{"desktop":{"value":"4_4"}},"flexColumnStructure":{"desktop":{"value":"equal-columns_1"}}},"decoration":{"layout":{"desktop":{"value":{"flexWrap":"nowrap"}}},"sizing":{"desktop":{"value":{"width":"100%","maxWidth":"80rem"}}}}},"builderVersion":"5.11.1"} -->
+<!-- wp:divi/column {"module":{"advanced":{"type":{"desktop":{"value":"4_4"}}},"decoration":{"sizing":{"desktop":{"value":{"flexType":"24_24"}}},"layout":{"desktop":{"value":{"rowGap":"15px"}}}}},"builderVersion":"5.11.1"} -->
+<!-- wp:divi/text {"content":{"innerContent":{"desktop":{"value":"{$eyebrow_json}"}},"decoration":{"bodyFont":{"body":{"font":{"desktop":{"value":{"size":"16px","color":"#ffffff"}}}}}}},"builderVersion":"5.11.1"} /-->
+
+<!-- wp:divi/heading {"module":{"decoration":{"sizing":{"desktop":{"value":{"width":"100%"}},"phone":{"value":{"width":"100%"}}}}},"title":{"innerContent":{"desktop":{"value":"{$heading_json}"}},"decoration":{"font":{"font":{"desktop":{"value":{"color":"#ffffff","size":"40px","weight":"700","weightFineTune":"","variationSettings":{"WGHT":""}}}}}}},"builderVersion":"5.11.1"} /-->
+
+<!-- wp:divi/text {"content":{"innerContent":{"desktop":{"value":"{$lede_json}"}},"decoration":{"bodyFont":{"body":{"font":{"desktop":{"value":{"size":"16px","color":"#ffffff"}}}}}}},"builderVersion":"5.11.1"} /-->
+<!-- /wp:divi/column -->
+<!-- /wp:divi/row -->
+<!-- /wp:divi/section -->
+BLOCKS;
 }
 
 function as_programs_service_section(array $svc, $text_style) {
