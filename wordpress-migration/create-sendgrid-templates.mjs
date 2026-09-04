@@ -38,6 +38,9 @@ const C = {
 	phone: "(434) 207-2118",
 	email: "info@autismsanctuary.org",
 	newsEmail: "newsletters@autismsanctuary.org",
+	/** Hosted on the live WP media library for reliable email embedding */
+	logoUrl:
+		"https://www.autismsanctuary.org/wp-content/uploads/2026/08/autism-sanctuary-logo-300x284.png",
 };
 
 /** Shared email-safe CSS + table shell. */
@@ -98,18 +101,29 @@ function topAccent(color = C.green) {
 
 function brandHeader({ eyebrow, subline }) {
 	return `        <tr>
-          <td class="stack-pad" style="padding:28px 40px 8px; background-color:${C.white};">
-            <p style="margin:0 0 6px; font-family:Georgia, 'Times New Roman', serif; font-size:13px; letter-spacing:0.14em; text-transform:uppercase; color:${C.gold}; font-weight:700;">
-              ${eyebrow}
-            </p>
-            <p style="margin:0; font-family:Georgia, 'Times New Roman', serif; font-size:28px; line-height:1.15; color:${C.forest}; font-weight:700;">
-              Autism Sanctuary
-            </p>
-            ${
-							subline
-								? `<p style="margin:8px 0 0; font-family:Arial, Helvetica, sans-serif; font-size:14px; line-height:1.45; color:${C.muted};">${subline}</p>`
-								: ""
-						}
+          <td class="stack-pad" style="padding:24px 40px 8px; background-color:${C.white};">
+            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+              <tr>
+                <td width="84" valign="middle" style="width:84px; padding:0 18px 0 0;">
+                  <a href="${C.site}" style="text-decoration:none;">
+                    <img src="${C.logoUrl}" width="72" height="68" alt="Autism Sanctuary" style="width:72px; height:auto; display:block; border:0;">
+                  </a>
+                </td>
+                <td valign="middle" style="padding:0;">
+                  <p style="margin:0 0 6px; font-family:Georgia, 'Times New Roman', serif; font-size:13px; letter-spacing:0.14em; text-transform:uppercase; color:${C.gold}; font-weight:700;">
+                    ${eyebrow}
+                  </p>
+                  <p style="margin:0; font-family:Georgia, 'Times New Roman', serif; font-size:26px; line-height:1.15; color:${C.forest}; font-weight:700;">
+                    <a href="${C.site}" style="color:${C.forest}; text-decoration:none;">Autism Sanctuary</a>
+                  </p>
+                  ${
+										subline
+											? `<p style="margin:8px 0 0; font-family:Arial, Helvetica, sans-serif; font-size:14px; line-height:1.45; color:${C.muted};">${subline}</p>`
+											: ""
+									}
+                </td>
+              </tr>
+            </table>
           </td>
         </tr>`;
 }
@@ -148,6 +162,9 @@ function footer({ contactEmail, showUnsubscribe = true }) {
             <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
               <tr>
                 <td class="stack-pad" style="padding:24px 40px 28px; font-family:Arial, Helvetica, sans-serif; font-size:12px; line-height:1.55; color:${C.muted};">
+                  <a href="${C.site}" style="text-decoration:none;">
+                    <img src="${C.logoUrl}" width="48" height="45" alt="Autism Sanctuary" style="width:48px; height:auto; display:block; border:0; margin:0 0 12px;">
+                  </a>
                   <p style="margin:0 0 8px; font-family:Georgia, 'Times New Roman', serif; font-size:15px; color:${C.forest}; font-weight:700;">
                     Autism Sanctuary
                   </p>
@@ -304,7 +321,7 @@ async function ensureTemplate({ name, versionLabel, subject, html, testData }) {
 
 const alert = await ensureTemplate({
 	name: "AS Alert",
-	versionLabel: "AS Alert formatted",
+	versionLabel: "AS Alert with logo",
 	subject: "{{subject}}",
 	html: alertHtml,
 	testData: {
@@ -321,7 +338,7 @@ const alert = await ensureTemplate({
 
 const newsletter = await ensureTemplate({
 	name: "AS Newsletter",
-	versionLabel: "AS Newsletter formatted",
+	versionLabel: "AS Newsletter with logo",
 	subject: "{{subject}}",
 	html: newsletterHtml,
 	testData: {
