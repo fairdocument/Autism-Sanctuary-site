@@ -32,6 +32,17 @@ const bodyHtml = `
   </tr>
 </table>
 
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin:0 0 22px;">
+  <tr>
+    <td style="padding:16px 18px; background-color:#efe9dc; border-left:4px solid #a7c4a0;">
+      <p style="margin:0 0 6px; font-family:Arial, Helvetica, sans-serif; font-size:12px; letter-spacing:0.08em; text-transform:uppercase; color:#2f5d43; font-weight:700;">With gratitude</p>
+      <p style="margin:0 0 10px; font-family:Georgia, 'Times New Roman', serif; font-size:20px; line-height:1.3; color:#1e3d2c; font-weight:700;">Thank you for walking with us</p>
+      <p style="margin:0 0 12px; font-family:Arial, Helvetica, sans-serif; font-size:15px; line-height:1.6; color:#1b1b1b;">Moments like this remind us that Autism Sanctuary did not grow alone. We are deeply grateful to the community, families, friends, donors, volunteers, partners, and neighbors who have believed in this work from the start — and who continue to show up with time, encouragement, expertise, and generosity.</p>
+      <p style="margin:0; font-family:Arial, Helvetica, sans-serif; font-size:15px; line-height:1.6; color:#1b1b1b;">Your support has been instrumental to every step of our success: building a safe and joyful place on the farm, expanding day support, welcoming new members, and dreaming bigger about what comes next. Thank you for walking this path with us.</p>
+    </td>
+  </tr>
+</table>
+
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin:0 0 8px;">
   <tr>
     <td style="padding:16px 18px; background-color:#f7f4ec; border-left:4px solid #c9a646;">
@@ -51,13 +62,13 @@ const personalization = {
 	to: [{ email: to }],
 	dynamic_template_data: {
 		subject:
-			"[DRAFT] Featured in UVA Today — Give Where You Live starts Sept 16",
+			"[DRAFT] Featured in UVA Today — with gratitude, and Give Where You Live",
 		preheader:
-			"Our farm in UVA Today, plus how Hoos can support Autism Sanctuary this fall.",
+			"Thank you to everyone who helped build Autism Sanctuary — plus our UVA Today feature and Give Where You Live.",
 		issue_label: "Trail Guide · September 2026",
-		headline: "A UVA Today feature — and a chance to give where you live",
+		headline: "A UVA Today feature — and our thanks to you",
 		intro:
-			"This month the University community spotlighted our farm, and Give Where You Live opens September 16 for employees who want to support Autism Sanctuary.",
+			"This month the University community spotlighted our farm. We are grateful to every family, friend, donor, and neighbor who made that story possible — and Give Where You Live opens September 16.",
 		body_html: bodyHtml,
 		featured_image_url:
 			"https://www.autismsanctuary.org/wp-content/uploads/2026/09/Header_AutismSanctuary_MR.jpg",
