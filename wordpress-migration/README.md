@@ -23,7 +23,9 @@ Active Autism Sanctuary website: Divi + Gravity Forms on WPMU Unlimited.
 
 Brand CSS is loaded by mu-plugin `wp-content/mu-plugins/as-brand-css.php` from `wordpress-migration/custom.css`.
 
-Google Analytics (GA4) is loaded by mu-plugin `wp-content/mu-plugins/as-google-analytics.php` — same Google tag as live Site Kit (`GT-P8Z4CWCX` → measurement `G-Z2VYQCYE23`). Logged-in users are not tracked. Source of truth in repo: `wordpress-migration/as-google-analytics.php`.
+Google Analytics (GA4): plugin **Site Kit by Google** (`google-site-kit`) plus fallback mu-plugin `wp-content/mu-plugins/as-google-analytics.php` (`GT-P8Z4CWCX` → `G-Z2VYQCYE23`). The mu-plugin stops outputting once Site Kit Analytics is connected with `useSnippet`. Logged-in users are not tracked.
+
+Site Kit OAuth must be finished in WP admin (cannot copy credentials from archive). After Sign in with Google, select existing Analytics property `G-Z2VYQCYE23` and Search Console `sc-domain:autismsanctuary.org`. Optional align script: `wp eval-file wordpress-migration/setup-site-kit.php`.
 
 ## Day-to-day editing
 

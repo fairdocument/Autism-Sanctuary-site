@@ -16,7 +16,7 @@ Autism Sanctuary is a Virginia **501(c)(3)** and **DBHDS-licensed** care farm in
 | Stories | Posts → Add New / Edit |
 | Inquiry / donate forms | Forms (Gravity Forms) |
 | Brand CSS | `wordpress-migration/custom.css` (mu-plugin loads it) |
-| Google Analytics | `wordpress-migration/as-google-analytics.php` (mu-plugin; same GA4 as live) |
+| Google Analytics | Site Kit plugin + `wordpress-migration/as-google-analytics.php` fallback |
 
 SSH: `cursor@nimbusserver.tempurl.host` · WP root: `/home/sites/autismsanctuary2/public_html`
 
