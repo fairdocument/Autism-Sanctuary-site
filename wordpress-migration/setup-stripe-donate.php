@@ -22,6 +22,7 @@ $form = [
 	'title'            => 'Donate',
 	'description'      => '',
 	'labelPlacement'   => 'top_label',
+	'currency'         => 'USD',
 	'button'           => ['type' => 'text', 'text' => 'Give securely'],
 	'enableHoneypot'   => true,
 	'fields'           => [
@@ -97,6 +98,8 @@ $form = [
 			],
 		],
 		[
+			// User-defined price must be a single amount input (input_6).
+			// Do not set inputs 6.1/6.2/6.3 — that makes GF render value="Array".
 			'type'            => 'product',
 			'id'              => 6,
 			'label'           => 'Custom amount',
@@ -104,11 +107,7 @@ $form = [
 			'isRequired'      => true,
 			'disableQuantity' => true,
 			'basePrice'       => '',
-			'inputs'          => [
-				['id' => '6.1', 'label' => 'Name'],
-				['id' => '6.2', 'label' => 'Price'],
-				['id' => '6.3', 'label' => 'Quantity'],
-			],
+			'defaultValue'    => '',
 			'conditionalLogic'=> [
 				'actionType' => 'show',
 				'logicType'  => 'all',
