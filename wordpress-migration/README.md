@@ -52,6 +52,7 @@ Useful eval-files:
 - `apply-olivia-updates.php` — Olivia 8/24 copy + IA (Admissions/Fellowship off, Looking Ahead, People bios)
 - `setup-stripe-donate.php` — Donate form + Stripe feeds
 - `setup-news.php` — Divi News page + Theme Builder posts
+- `fix-news.php` — restore article HTML, featured images, thumbnail news list
 - `convert-pages-to-divi5.php` — wrap marketing HTML as Divi 5 section layouts
 - `convert-plain-html-to-divi.php` — convert builder-off plain HTML pages to Divi Code modules only
 - `pilot-about-native-divi.php` — pilot native Divi Text/Image modules on /about/ (fixes copy typos)
