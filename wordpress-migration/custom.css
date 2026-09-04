@@ -2552,18 +2552,24 @@ body.page-id-409 .et_pb_text {
   max-width: 100% !important;
 }
 
-/* About Mission / Vision / Values — updated page uses as-about-mvv-copy */
+/* About body copy — Mission/Vision/Values, Our Story, Edgefield */
 body.page-id-416 .et_pb_text.as-about-mvv-copy,
 body.page-id-416 .et_pb_text.as-about-mvv-text,
+body.page-id-416 .et_pb_text.as-about-story-copy,
+body.page-id-416 .et_pb_text.as-about-edgefield-body,
 body.page-id-416 .et_pb_text.as-about-mvv-copy .et_pb_text_inner,
-body.page-id-416 .et_pb_text.as-about-mvv-text .et_pb_text_inner {
+body.page-id-416 .et_pb_text.as-about-mvv-text .et_pb_text_inner,
+body.page-id-416 .et_pb_text.as-about-story-copy .et_pb_text_inner,
+body.page-id-416 .et_pb_text.as-about-edgefield-body .et_pb_text_inner {
   max-width: none !important;
   margin: 0 !important;
   padding: 0 !important;
 }
 
 body.page-id-416 .et_pb_text.as-about-mvv-copy .et_pb_text_inner h2,
-body.page-id-416 .et_pb_text.as-about-mvv-text .et_pb_text_inner h2 {
+body.page-id-416 .et_pb_text.as-about-mvv-text .et_pb_text_inner h2,
+body.page-id-416 .et_pb_text.as-about-story-copy .et_pb_text_inner h2,
+body.page-id-416 .et_pb_text.as-about-edgefield-body .et_pb_text_inner h2 {
   font-family: var(--font-serif) !important;
   color: var(--forest-deep) !important;
   font-size: clamp(1.5rem, 2.5vw, 2rem) !important;
@@ -2574,16 +2580,30 @@ body.page-id-416 .et_pb_text.as-about-mvv-text .et_pb_text_inner h2 {
 }
 
 body.page-id-416 .et_pb_text.as-about-mvv-copy .et_pb_text_inner h2:first-child,
-body.page-id-416 .et_pb_text.as-about-mvv-text .et_pb_text_inner h2:first-child {
+body.page-id-416 .et_pb_text.as-about-mvv-text .et_pb_text_inner h2:first-child,
+body.page-id-416 .et_pb_text.as-about-story-copy .et_pb_text_inner h2:first-child,
+body.page-id-416 .et_pb_text.as-about-edgefield-body .et_pb_text_inner h2:first-child {
   margin-top: 0 !important;
 }
 
 body.page-id-416 .et_pb_text.as-about-mvv-copy .et_pb_text_inner p,
-body.page-id-416 .et_pb_text.as-about-mvv-text .et_pb_text_inner p {
+body.page-id-416 .et_pb_text.as-about-mvv-text .et_pb_text_inner p,
+body.page-id-416 .et_pb_text.as-about-story-copy .et_pb_text_inner p,
+body.page-id-416 .et_pb_text.as-about-edgefield-body .et_pb_text_inner p {
   color: var(--muted-ink) !important;
+  font-family: var(--font-sans) !important;
+  font-size: 1rem !important;
+  font-weight: 400 !important;
   line-height: 1.65 !important;
   margin: 0 0 1.15rem !important;
   padding: 0 !important;
+}
+
+body.page-id-416 .et_pb_text.as-about-mvv-copy .et_pb_text_inner p:last-child,
+body.page-id-416 .et_pb_text.as-about-mvv-text .et_pb_text_inner p:last-child,
+body.page-id-416 .et_pb_text.as-about-story-copy .et_pb_text_inner p:last-child,
+body.page-id-416 .et_pb_text.as-about-edgefield-body .et_pb_text_inner p:last-child {
+  margin-bottom: 0 !important;
 }
 
 body.page-id-416 .et_pb_text.as-about-mvv-copy .et_pb_text_inner ul.as-checklist,
