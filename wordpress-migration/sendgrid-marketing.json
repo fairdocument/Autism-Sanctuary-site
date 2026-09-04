@@ -1,5 +1,5 @@
 {
-	"updated_at": "2026-09-04T20:51:38.536Z",
+	"updated_at": "2026-09-04T22:41:16.577Z",
 	"asm_group_id": 55041,
 	"sender_id": 7495556,
 	"designs": {
@@ -15,15 +15,16 @@
 		}
 	},
 	"single_send_draft": {
-		"id": "b9bee21d-a883-11f1-ba3b-1ea3c01f82b1",
+		"id": "bd3ae204-a8b1-11f1-b498-1280de2b1ff1",
 		"name": "DRAFT: Trail Guide — Pavilion, UVA Today & thanks",
 		"status": "draft",
-		"edit_url": "https://mc.sendgrid.com/single-sends/b9bee21d-a883-11f1-ba3b-1ea3c01f82b1/review"
+		"edit_url": "https://mc.sendgrid.com/single-sends/bd3ae204-a8b1-11f1-b498-1280de2b1ff1/review"
 	},
 	"notes": [
-		"Design Library designs are for Marketing Single Sends / Automations.",
+		"Design Library footers use {{{unsubscribe_preferences}}} (Manage email preferences) — not one-click {{{unsubscribe}}} — to reduce false unsubscribes from email security scanners.",
+		"Gmail/Yahoo one-click still works via SendGrid List-Unsubscribe POST headers on Marketing sends.",
+		"ASM group 55041 (Trail Guide newsletter) should remain is_default=false.",
 		"Dynamic Templates (AS Alert / AS Newsletter) remain for transactional API sends.",
-		"Hustle footer signups go to Marketing list: Web signups.",
-		"Review audience in Single Send UI before scheduling — 'all' contacts may exceed 572 unique if lists overlap."
+		"Hustle footer signups go to Marketing list: Web signups."
 	]
 }

@@ -106,7 +106,7 @@ ${bodyInner}
             <p style="margin:0 0 4px;">501(c)(3) nonprofit &amp; Virginia DBHDS-licensed care farm</p>
             <p style="margin:0 0 4px;">${C.address}</p>
             <p style="margin:0 0 12px;"><a href="tel:+14342072118" style="color:${C.green};text-decoration:none;">${C.phone}</a> · <a href="mailto:newsletters@autismsanctuary.org" style="color:${C.green};text-decoration:none;">newsletters@autismsanctuary.org</a></p>
-            <p style="margin:0;"><a href="${C.site}" style="color:${C.green};">autismsanctuary.org</a> · <a href="{{{unsubscribe}}}" style="color:${C.muted};">Unsubscribe</a> · <a href="{{{unsubscribe_preferences}}}" style="color:${C.muted};">Preferences</a></p>
+            <p style="margin:0;"><a href="${C.site}" style="color:${C.green};">autismsanctuary.org</a> · <a href="{{{unsubscribe_preferences}}}" style="color:${C.muted};">Manage email preferences</a></p>
           </td>
         </tr>
       </table>
@@ -301,20 +301,24 @@ const sendTo = {
 	segment_ids: [],
 };
 
-if (draft) {
+if (draft && draft.status === "draft") {
 	draft = await sg("PATCH", `/marketing/singlesends/${draft.id}`, {
 		name: ssName,
 		send_to: sendTo,
 		email_config: emailConfigUpdate,
 	});
 	console.log(`Updated Single Send draft: ${draft.id}`);
-} else {
+} else if (!draft) {
 	draft = await sg("POST", "/marketing/singlesends", {
 		name: ssName,
 		send_to: sendTo,
 		email_config: emailConfigCreate,
 	});
 	console.log(`Created Single Send draft: ${draft.id}`);
+} else {
+	console.log(
+		`Skipping Single Send update — status is "${draft.status}" (already sent). Design Library templates were still updated for future sends.`,
+	);
 }
 
 const payload = {
@@ -325,17 +329,20 @@ const payload = {
 		alert: alertDesign,
 		newsletter: newsletterDesign,
 	},
-	single_send_draft: {
-		id: draft.id,
-		name: ssName,
-		status: draft.status,
-		edit_url: `https://mc.sendgrid.com/single-sends/${draft.id}/review`,
-	},
+	single_send_draft: draft
+		? {
+				id: draft.id,
+				name: draft.name || ssName,
+				status: draft.status,
+				edit_url: `https://mc.sendgrid.com/single-sends/${draft.id}/review`,
+			}
+		: null,
 	notes: [
-		"Design Library designs are for Marketing Single Sends / Automations.",
+		"Design Library footers use {{{unsubscribe_preferences}}} (Manage email preferences) — not one-click {{{unsubscribe}}} — to reduce false unsubscribes from email security scanners.",
+		"Gmail/Yahoo one-click still works via SendGrid List-Unsubscribe POST headers on Marketing sends.",
+		"ASM group 55041 (Trail Guide newsletter) should remain is_default=false.",
 		"Dynamic Templates (AS Alert / AS Newsletter) remain for transactional API sends.",
 		"Hustle footer signups go to Marketing list: Web signups.",
-		"Review audience in Single Send UI before scheduling — 'all' contacts may exceed 572 unique if lists overlap.",
 	],
 };
 

@@ -178,7 +178,7 @@ function footer({ contactEmail, showUnsubscribe = true }) {
                   <p style="margin:0;">
                     <a href="${C.site}" style="color:${C.green}; text-decoration:underline;">autismsanctuary.org</a>${
 											showUnsubscribe
-												? `{{#if unsubscribe}}&nbsp;·&nbsp;<a href="{{{unsubscribe}}}" style="color:${C.muted}; text-decoration:underline;">Unsubscribe</a>{{/if}}`
+												? `&nbsp;·&nbsp;<a href="{{{unsubscribe}}}" style="color:${C.muted}; text-decoration:underline;">Manage subscription</a>`
 												: ""
 										}
                   </p>
