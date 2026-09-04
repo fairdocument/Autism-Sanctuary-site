@@ -12,6 +12,7 @@ const tagline = settings?.tagline || brand.tagline;
 const logoUrl = settings?.logo?.url || "/branding/autism-sanctuary-logo.png";
 const instagram = settings?.social?.instagram || brand.instagram;
 const facebook = settings?.social?.facebook || brand.facebook;
+const linkedin = settings?.social?.linkedin || brand.linkedin;
 
 type Link = { label: string; href: string };
 
@@ -53,6 +54,8 @@ const legal = menuToLinks(legalMenu, footerLinks.legal);
 				<a href={instagram} target="_blank" rel="noopener noreferrer">Instagram</a>
 				·
 				<a href={facebook} target="_blank" rel="noopener noreferrer">Facebook</a>
+				·
+				<a href={linkedin} target="_blank" rel="noopener noreferrer">LinkedIn</a>
 			</p>
 		</div>
 		<nav class="footer-col" aria-label="Explore">

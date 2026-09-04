@@ -6,8 +6,9 @@ export const brand = {
 	phone: "(434) 207-2118",
 	phoneHref: "tel:+14342072118",
 	email: "info@autismsanctuary.org",
-	instagram: "https://www.instagram.com/autismsanctuary",
+	instagram: "https://www.instagram.com/autism.sanctuary/",
 	facebook: "https://www.facebook.com/autismsanctuary",
+	linkedin: "https://www.linkedin.com/company/autismsanctuary",
 };
 
 /**

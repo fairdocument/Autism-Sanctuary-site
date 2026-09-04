@@ -163,9 +163,11 @@ add_action('et_after_main_content', function () {
 					<a href="mailto:info@autismsanctuary.org">info@autismsanctuary.org</a>
 				</p>
 				<p class="as-site-footer__social">
-					<a href="https://www.instagram.com/autismsanctuary" rel="noopener noreferrer" target="_blank">Instagram</a>
+					<a href="https://www.instagram.com/autism.sanctuary/" rel="noopener noreferrer" target="_blank">Instagram</a>
 					<span aria-hidden="true">·</span>
 					<a href="https://www.facebook.com/autismsanctuary" rel="noopener noreferrer" target="_blank">Facebook</a>
+					<span aria-hidden="true">·</span>
+					<a href="https://www.linkedin.com/company/autismsanctuary" rel="noopener noreferrer" target="_blank">LinkedIn</a>
 				</p>
 			</div>
 			<div class="as-site-footer__col as-site-footer__col--newsletter">
