@@ -37,7 +37,7 @@ $ack_body = <<<'HTML'
 
 <p><strong>Gift summary</strong></p>
 <ul>
-<li><strong>Amount:</strong> ${payment_amount}</li>
+<li><strong>Amount:</strong> {payment_amount}</li>
 <li><strong>Frequency:</strong> {Frequency:4}</li>
 <li><strong>Designation:</strong> {Apply my gift to:7}</li>
 <li><strong>Date:</strong> {payment_date}</li>
@@ -68,7 +68,7 @@ $base = [
 	'from'               => 'info@autismsanctuary.org',
 	'fromName'           => 'Autism Sanctuary',
 	'replyTo'            => 'info@autismsanctuary.org',
-	'subject'            => 'Thank you for your gift to Autism Sanctuary — ${payment_amount}',
+	'subject'            => 'Thank you for your gift to Autism Sanctuary — {payment_amount}',
 	'message'            => $ack_body,
 	'disableAutoformat'  => false,
 	'enableAttachments'  => false,
@@ -87,7 +87,7 @@ $wanted = [
 	'donor-ack-subscription' => array_merge($base, [
 		'name'  => 'Donor Acknowledgment (Monthly Gift Started)',
 		'event' => 'create_subscription',
-		'subject' => 'Thank you for your monthly gift to Autism Sanctuary — ${payment_amount}',
+		'subject' => 'Thank you for your monthly gift to Autism Sanctuary — {payment_amount}',
 		'message' => str_replace(
 			'Thank you for your generous gift to Autism Sanctuary.',
 			'Thank you for starting a monthly gift to Autism Sanctuary.',
