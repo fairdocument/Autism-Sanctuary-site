@@ -2271,3 +2271,28 @@ body.page-id-419 .as-page.as-prose > h2:first-child {
 .et_pb_section.as-programs-service .as-programs-service-copy h3 {
   margin: 0 0 1rem;
 }
+
+/* Programs authorization callout (above footer) */
+.et_pb_section.as-programs-auth-callout > .et_pb_row {
+  padding-left: 1.25rem !important;
+  padding-right: 1.25rem !important;
+  box-sizing: border-box !important;
+}
+
+.as-callout--auth,
+.et_pb_text.as-programs-auth-copy .as-callout--auth {
+  margin: 0;
+  padding: 1.15rem 1.35rem;
+  background: rgba(167, 196, 160, 0.22);
+  border: 1px solid var(--soft-rule);
+  border-left: 4px solid var(--sanctuary-green);
+  border-radius: var(--radius);
+}
+
+.as-callout--auth p,
+.et_pb_text.as-programs-auth-copy .as-callout--auth p {
+  margin: 0;
+  color: var(--muted-ink);
+  font-size: 0.98rem;
+  line-height: 1.55;
+}

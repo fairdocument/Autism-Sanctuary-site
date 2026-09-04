@@ -55,7 +55,6 @@ $intro = as_programs_text_section(
 	'44rem',
 	'as-prose',
 	<<<'HTML'
-<p><strong>Authorization and eligibility:</strong> Service availability, funding, and authorization vary by person and payer. Many people access services through Virginia’s Medicaid waiver programs; private-pay arrangements are also available. See <a href="/resources/">Resources</a> or use the interest form below.</p>
 <h2>Licensed service lines</h2>
 <p>Autism Sanctuary is a Virginia DBHDS-licensed provider serving adults with developmental disabilities. Licensed services show up both alongside our farming operations as well as out in the community and in people’s homes, creating a more integrated support structure tailored to each individual’s needs.</p>
 <p>A range of support ratios is provided based on individual support needs.</p>
@@ -141,7 +140,7 @@ foreach ($services as $svc) {
 
 $interest = as_programs_text_section(
 	'as-native-prose as-programs-interest',
-	'1.5rem|0px|4.5rem|0px',
+	'1.5rem|0px|2rem|0px',
 	'44rem',
 	'as-prose',
 	<<<HTML
@@ -155,7 +154,21 @@ HTML
 	$text_style
 );
 
-$shortcode = $intro . $service_sc . $interest;
+$auth_callout = as_programs_text_section(
+	'as-native-prose as-programs-auth-callout',
+	'0px|0px|4.5rem|0px',
+	'44rem',
+	'as-prose as-programs-auth-copy',
+	<<<'HTML'
+<div class="as-callout as-callout--auth">
+<p><strong>Authorization and eligibility:</strong> Service availability, funding, and authorization vary by person and payer. Many people access services through Virginia’s Medicaid waiver programs; private-pay arrangements are also available. See <a href="/resources/">Resources</a> or the interest form above.</p>
+</div>
+HTML
+	,
+	$text_style
+);
+
+$shortcode = $intro . $service_sc . $interest . $auth_callout;
 
 $converted = \ET\Builder\Packages\Conversion\Conversion::maybeConvertContent(
 	$shortcode,
