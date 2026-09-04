@@ -23,6 +23,8 @@ Active Autism Sanctuary website: Divi + Gravity Forms on WPMU Unlimited.
 
 Brand CSS is loaded by mu-plugin `wp-content/mu-plugins/as-brand-css.php` from `wordpress-migration/custom.css`.
 
+Google Analytics (GA4) is loaded by mu-plugin `wp-content/mu-plugins/as-google-analytics.php` — same Google tag as live Site Kit (`GT-P8Z4CWCX` → measurement `G-Z2VYQCYE23`). Logged-in users are not tracked. Source of truth in repo: `wordpress-migration/as-google-analytics.php`.
+
 ## Day-to-day editing
 
 | Task | Where |
