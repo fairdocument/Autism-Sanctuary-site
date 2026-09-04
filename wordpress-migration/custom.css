@@ -738,10 +738,11 @@ body.as-custom-footer #main-footer {
   padding-left: 1.25rem !important;
 }
 
-/* Hide default Divi page titles — banners carry the H1 */
+/* Hide default Divi page titles — banners carry the H1 (not single posts) */
 body.page article > .entry-title,
 body.home article > .entry-title,
-.et_pb_title_container {
+body.page .et_pb_title_container,
+body.home .et_pb_title_container {
   display: none !important;
 }
 
@@ -1985,6 +1986,10 @@ body.single-post .et_pb_section.as-single-banner .as-eyebrow {
   margin: 0 0 0.65rem !important;
 }
 
+body.single-post .et_pb_section.as-single-banner .as-single-title .et_pb_title_container {
+  display: block !important;
+}
+
 body.single-post .et_pb_section.as-single-banner .as-single-title .entry-title,
 body.single-post .et_pb_section.as-single-banner .as-single-title h1 {
   font-family: var(--font-serif) !important;
@@ -2000,7 +2005,9 @@ body.single-post .et_pb_section.as-single-banner .as-single-title h1 {
 body.single-post .et_pb_section.as-single-banner .as-single-title .post-meta,
 body.single-post .et_pb_section.as-single-banner .as-single-title .et_pb_title_meta_container,
 body.single-post .et_pb_section.as-single-banner .as-single-title .et_pb_title_meta_container a,
-body.single-post .et_pb_section.as-single-banner .as-single-title .published {
+body.single-post .et_pb_section.as-single-banner .as-single-title .published,
+body.single-post .et_pb_section.as-single-banner .as-single-title .author,
+body.single-post .et_pb_section.as-single-banner .as-single-title .author a {
   font-family: var(--font-sans) !important;
   font-size: 0.95rem !important;
   color: #f7f4ec !important;
