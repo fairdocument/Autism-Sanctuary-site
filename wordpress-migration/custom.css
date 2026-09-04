@@ -2003,6 +2003,19 @@ body.page-id-419 .et_pb_row {
 
 body.page-id-409 .et_pb_section_0 > .et_pb_row {
   max-width: var(--wide-w) !important;
+  width: 100% !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  padding-left: 1.25rem !important;
+  padding-right: 1.25rem !important;
+  box-sizing: border-box !important;
+}
+
+/* Hero copy inset — match archived as-hero__inner side padding */
+body.page-id-409 .et_pb_section_0 .et_pb_column_0,
+body.page-id-409 .et_pb_section_0 .et_pb_group {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
 }
 
 body.page-id-416 .et_pb_heading,
