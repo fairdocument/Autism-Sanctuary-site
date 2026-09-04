@@ -1,9 +1,8 @@
 <?php
 /**
- * Move Authorization paragraph on /programs/ into a callout above the footer.
- * Prefer restore-programs-auth-callout.php if the page was damaged.
+ * Restore /programs/ from backup, then add auth callout safely (no greedy section deletes).
  *
- * Run: wp eval-file wordpress-migration/move-programs-auth-callout.php
+ * Run: wp eval-file wordpress-migration/restore-programs-auth-callout.php
  */
 
 if (!defined('ABSPATH')) {
@@ -24,17 +23,14 @@ if ($admins) {
 \ET\Builder\Packages\Conversion\Conversion::initialize_shortcode_framework();
 
 $id = 27;
-$content = get_post_field('post_content', $id);
-
-// Guard: never run destructive edits on a truncated page.
-if (strlen($content) < 8000 || strpos($content, 'Group Day') === false) {
-	echo "FAIL page looks truncated; run restore-programs-auth-callout.php instead\n";
+$backup = WP_CONTENT_DIR . '/as-programs-banner-backup-20260904-111616.txt';
+if (!is_readable($backup)) {
+	echo "FAIL missing backup {$backup}\n";
 	return;
 }
 
-$backup = WP_CONTENT_DIR . '/as-programs-auth-backup-' . gmdate('Ymd-His') . '.txt';
-file_put_contents($backup, $content);
-echo "Backup: {$backup}\n";
+$content = file_get_contents($backup);
+echo "Restored from {$backup} (" . strlen($content) . " bytes)\n";
 
 function as_auth_encode_divi($html) {
 	return str_replace(
@@ -58,28 +54,30 @@ HTML;
 
 $needle = 'Authorization and eligibility';
 $pos = strpos($content, $needle);
-if ($pos !== false) {
-	$value_key = '"innerContent":{"desktop":{"value":"';
-	$vstart = strrpos(substr($content, 0, $pos), $value_key);
-	if ($vstart !== false) {
-		$val_begin = $vstart + strlen($value_key);
-		$after = substr($content, $val_begin);
-		if (preg_match('/^(.*?)"\}\}/s', $after, $vm)) {
-			$old_val = $vm[1];
-			if (strpos($old_val, 'Licensed') !== false) {
-				$content = substr($content, 0, $val_begin) . as_auth_encode_divi($intro_html) . substr($content, $val_begin + strlen($old_val));
-				echo "OK stripped Authorization from intro\n";
-			}
-		}
-	}
+if ($pos === false) {
+	echo "FAIL: Authorization not in backup\n";
+	return;
 }
 
-// Remove ONLY a trailing auth callout section (anchored to end) — never match from page start.
-$content = preg_replace(
-	'/<!-- wp:divi\/section(?:\s+\{[^{}]*(?:\{[^{}]*\}[^{]*)*\})? -->\s*<!-- wp:divi\/row[\s\S]*?(?:as-programs-auth-callout|as-programs-auth-copy|as-callout--auth)[\s\S]*?<!-- \/wp:divi\/section -->\s*$/',
-	'',
-	rtrim($content)
-);
+$value_key = '"innerContent":{"desktop":{"value":"';
+$vstart = strrpos(substr($content, 0, $pos), $value_key);
+if ($vstart === false) {
+	echo "FAIL: value start\n";
+	return;
+}
+$val_begin = $vstart + strlen($value_key);
+$after = substr($content, $val_begin);
+if (!preg_match('/^(.*?)"\}\}/s', $after, $vm)) {
+	echo "FAIL: value end\n";
+	return;
+}
+$old_val = $vm[1];
+if (strpos($old_val, 'Licensed') === false) {
+	echo "FAIL: unexpected intro value\n";
+	return;
+}
+$content = substr($content, 0, $val_begin) . as_auth_encode_divi($intro_html) . substr($content, $val_begin + strlen($old_val));
+echo "OK stripped Authorization from intro\n";
 
 $text_style = as_native_text_style();
 $sc = sprintf(
@@ -95,11 +93,6 @@ if (!$converted || strpos($converted, 'wp:divi/') === false) {
 }
 
 $content = rtrim($content) . "\n\n" . trim($converted) . "\n";
-
-if (strlen($content) < 8000 || strpos($content, 'Group Day') === false) {
-	echo "FAIL abort save — content would be truncated\n";
-	return;
-}
 
 wp_update_post([
 	'ID'           => $id,
@@ -118,6 +111,9 @@ if (is_dir($cache)) {
 wp_cache_flush();
 
 $saved = get_post_field('post_content', $id);
-echo 'len=' . strlen($saved) . " auth=" . substr_count($saved, 'Authorization and eligibility') . "\n";
-echo (strpos($saved, 'Group Day') !== false) ? "OK services intact\n" : "FAIL services missing\n";
+echo 'len=' . strlen($saved) . "\n";
+echo 'Group Day=' . (strpos($saved, 'Group Day') !== false ? 'yes' : 'no') . "\n";
+echo 'Explore=' . (strpos($saved, 'Explore a program') !== false ? 'yes' : 'no') . "\n";
+echo 'auth=' . substr_count($saved, 'Authorization and eligibility') . "\n";
+echo 'callout=' . (strpos($saved, 'as-programs-auth-callout') !== false || strpos($saved, 'as-callout') !== false ? 'yes' : 'no') . "\n";
 echo "=== Done ===\n";
