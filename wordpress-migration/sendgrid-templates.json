@@ -1,5 +1,5 @@
 {
-	"updated_at": "2026-09-04T15:28:12.412Z",
+	"updated_at": "2026-09-04T15:59:37.076Z",
 	"from": {
 		"alerts": "info@autismsanctuary.org",
 		"newsletters": "newsletters@autismsanctuary.org"
@@ -8,13 +8,13 @@
 		"alert": {
 			"id": "d-23a25506c68d4224bcbfae29f0b66e2e",
 			"name": "AS Alert",
-			"version_id": "5e889cd9-700a-4716-87c1-95ce7988bd62",
+			"version_id": "a8344d3b-9216-4c38-967b-6530165f4885",
 			"subject": "{{subject}}"
 		},
 		"newsletter": {
 			"id": "d-e75934b564a240cfa0abca50ce2bf5f5",
 			"name": "AS Newsletter",
-			"version_id": "52537d8d-59bb-4d7c-af0b-0f035a396b73",
+			"version_id": "2730462d-770f-4139-afce-23708a9ab5ea",
 			"subject": "{{subject}}"
 		}
 	},
