@@ -19,7 +19,8 @@ Active Autism Sanctuary website: Divi + Gravity Forms on WPMU Unlimited.
 - Retired (draft + 301): Admissions → `/programs/#interest`, Fellowship → `/careers/`
 - Gravity Forms: **Inquiry** (`?intent=` prepopulate), **Donate** (Stripe one-time + monthly)
 - Gravity SMTP → SendGrid (`info@autismsanctuary.org`)
-- SendGrid dynamic templates: **AS Alert** + **AS Newsletter** (see `sendgrid-templates.json`)
+- Hustle Pro footer newsletter → SendGrid Marketing list **Web signups**
+- SendGrid: Dynamic Templates (transactional) + Design Library / Single Sends (marketing)
 - Primary + Footer menus
 - News via Divi Blog module + Theme Builder single-post template
 
@@ -64,11 +65,15 @@ Useful eval-files:
 - `fill-excerpts.php` — rebuild post excerpts from Divi content
 - `polish-design.php` — checklist/people markup tweaks
 - `setup-gravity-smtp-sendgrid.php` — Gravity SMTP primary connector → SendGrid
+- `setup-hustle-newsletter.php` — Hustle Pro embedded signup → Web signups list
 - `create-sendgrid-templates.mjs` — create/refresh AS Alert + AS Newsletter dynamic templates
-- `sendgrid-templates.json` — template IDs + Handlebars fields (no API key)
+- `setup-sendgrid-marketing-drafts.mjs` — Design Library + Single Send draft (Trail Guide)
+- `sendgrid-templates.json` / `sendgrid-marketing.json` — IDs (no API key)
 
 ```bash
 SENDGRID_API_KEY='SG....' node wordpress-migration/create-sendgrid-templates.mjs
+SENDGRID_API_KEY='SG....' node wordpress-migration/setup-sendgrid-marketing-drafts.mjs
+wp eval-file wordpress-migration/setup-hustle-newsletter.php
 ```
 
 ## Before domain cutover

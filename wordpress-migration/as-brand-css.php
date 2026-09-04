@@ -168,6 +168,20 @@ add_action('et_after_main_content', function () {
 					<a href="https://www.facebook.com/autismsanctuary" rel="noopener noreferrer" target="_blank">Facebook</a>
 				</p>
 			</div>
+			<div class="as-site-footer__col as-site-footer__col--newsletter">
+				<p class="as-site-footer__heading">Newsletter</p>
+				<p class="as-site-footer__newsletter-copy">Farm news, program updates, and ways to support Autism Sanctuary.</p>
+				<div class="as-site-footer__newsletter-form">
+					<?php
+					$hustle_id = (int) get_option('as_hustle_newsletter_module_id', 0);
+					if ($hustle_id > 0 && shortcode_exists('wd_hustle')) {
+						echo do_shortcode('[wd_hustle id="' . $hustle_id . '" type="embedded"/]');
+					} else {
+						echo '<p class="as-site-footer__newsletter-fallback"><a href="mailto:newsletters@autismsanctuary.org?subject=Subscribe%20to%20Trail%20Guide">Email us to subscribe</a></p>';
+					}
+					?>
+				</div>
+			</div>
 		</div>
 		<div class="as-site-footer__bottom">
 			<div class="as-site-footer__bottom-inner">

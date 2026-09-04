@@ -586,8 +586,8 @@ body.as-custom-footer #main-footer {
   margin: 0 auto;
   padding: 3.25rem 1.5rem 2.75rem;
   display: grid;
-  gap: 2.25rem 2.5rem;
-  grid-template-columns: 1.4fr repeat(3, minmax(0, 1fr));
+  gap: 2.25rem 2rem;
+  grid-template-columns: 1.35fr repeat(4, minmax(0, 1fr));
   align-items: start;
 }
 
@@ -656,6 +656,86 @@ body.as-custom-footer #main-footer {
 .as-site-footer__social a {
   font-weight: 600;
   font-size: 0.92rem;
+}
+
+.as-site-footer__newsletter-copy {
+  margin: 0 0 0.85rem;
+  font-size: 0.92rem;
+  line-height: 1.5;
+  color: rgba(247, 244, 236, 0.78);
+}
+
+.as-site-footer__newsletter-form .hustle-ui,
+.as-site-footer__newsletter-form .hustle-layout,
+.as-site-footer__newsletter-form .hustle-content,
+.as-site-footer__newsletter-form .hustle-layout-content {
+  background: transparent !important;
+  box-shadow: none !important;
+  border: 0 !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  max-width: none !important;
+}
+
+.as-site-footer__newsletter-form .hustle-layout-body,
+.as-site-footer__newsletter-form .hustle-group-content {
+  padding: 0 !important;
+}
+
+.as-site-footer__newsletter-form .hustle-layout-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: stretch;
+}
+
+.as-site-footer__newsletter-form .hustle-field {
+  flex: 1 1 10rem;
+  margin: 0 !important;
+}
+
+.as-site-footer__newsletter-form input[type="email"],
+.as-site-footer__newsletter-form .hustle-input {
+  width: 100%;
+  min-height: 2.6rem;
+  border: 1px solid rgba(217, 210, 196, 0.55) !important;
+  border-radius: 0.3rem !important;
+  background: rgba(255, 255, 255, 0.96) !important;
+  color: #1b1b1b !important;
+  padding: 0.55rem 0.75rem !important;
+  font-family: var(--font-sans) !important;
+  font-size: 0.92rem !important;
+}
+
+.as-site-footer__newsletter-form .hustle-button-submit,
+.as-site-footer__newsletter-form button[type="submit"] {
+  min-height: 2.6rem;
+  border: 0 !important;
+  border-radius: 0.3rem !important;
+  background: var(--edgefield-gold) !important;
+  color: var(--forest-deep) !important;
+  font-family: var(--font-sans) !important;
+  font-weight: 700 !important;
+  font-size: 0.88rem !important;
+  letter-spacing: 0.02em;
+  padding: 0.55rem 1rem !important;
+  cursor: pointer;
+}
+
+.as-site-footer__newsletter-form .hustle-button-submit:hover,
+.as-site-footer__newsletter-form button[type="submit"]:hover {
+  background: #dbb85a !important;
+}
+
+.as-site-footer__newsletter-form .hustle-success,
+.as-site-footer__newsletter-form .hustle-error-message {
+  color: rgba(247, 244, 236, 0.92) !important;
+  font-size: 0.9rem;
+}
+
+.as-site-footer__newsletter-fallback a {
+  color: var(--edgefield-gold);
+  font-weight: 600;
 }
 
 .as-site-footer__bottom {
