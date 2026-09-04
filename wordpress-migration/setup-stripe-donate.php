@@ -202,11 +202,14 @@ $form = [
 			'toType'   => 'email',
 			'subject'  => 'New donation: {Name:1} — {Total:12}',
 			'message'  => '{all_fields}',
-			'from'     => '{admin_email}',
+			'from'     => 'info@autismsanctuary.org',
 			'fromName' => 'Autism Sanctuary Website',
 			'replyTo'  => '{Email:2}',
+			'cc'       => 'olivia@autismsanctuary.org',
 			'isActive' => true,
 		],
+		// Donor acks are installed by setup-donor-ack-notification.php
+		// (complete_payment + create_subscription) so payment must succeed first.
 	],
 ];
 
