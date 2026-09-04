@@ -1634,6 +1634,26 @@ body.page-id-39 .et_pb_section_1 > .et_pb_row {
   margin-right: auto;
 }
 
+/*
+ * Divi 5 Blog defaults to .et_grid_module (multi-column). Our list layout
+ * needs one post per row — otherwise thumbs + titles crush into ~1-char columns
+ * on mobile.
+ */
+.et_pb_blog.as-news-blog .et_pb_blog_posts,
+.et_pb_blog.as-news-blog .et_grid_module,
+.et_pb_blog.as-news-blog .et_pb_ajax_pagination_container > .et_pb_blog_posts {
+  display: flex !important;
+  flex-direction: column !important;
+  flex-wrap: nowrap !important;
+  align-items: stretch !important;
+  gap: 0 !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  float: none !important;
+  column-count: 1 !important;
+  grid-template-columns: none !important;
+}
+
 .et_pb_blog.as-news-blog article.et_pb_post,
 .et_pb_blog_grid_wrapper .as-news-blog article.et_pb_post {
   list-style: none;
@@ -1646,12 +1666,18 @@ body.page-id-39 .et_pb_section_1 > .et_pb_row {
   column-gap: 1.35rem;
   row-gap: 0.35rem;
   align-items: start;
+  width: 100% !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
+  float: none !important;
+  clear: both !important;
   margin: 0 !important;
   padding: 1.75rem 0 !important;
   border-top: 1px solid var(--soft-rule);
   background: transparent !important;
   box-shadow: none !important;
   border-radius: 0 !important;
+  box-sizing: border-box !important;
 }
 
 .et_pb_blog.as-news-blog article.et_pb_post .entry-featured-image-url,
@@ -1695,18 +1721,28 @@ body.page-id-39 .et_pb_section_1 > .et_pb_row {
 .et_pb_blog.as-news-blog article.et_pb_post .post-meta {
   grid-area: meta;
   order: unset !important;
+  min-width: 0 !important;
+  overflow-wrap: anywhere;
+  word-break: normal;
 }
 
 .et_pb_blog.as-news-blog article.et_pb_post .entry-title,
-.et_pb_blog.as-news-blog article.et_pb_post h2.entry-title {
+.et_pb_blog.as-news-blog article.et_pb_post h2.entry-title,
+.et_pb_blog.as-news-blog article.et_pb_post h3.entry-title {
   grid-area: title;
   order: unset !important;
   display: block !important;
+  min-width: 0 !important;
+  overflow-wrap: anywhere;
+  word-break: normal;
 }
 
 .et_pb_blog.as-news-blog article.et_pb_post .post-content {
   grid-area: excerpt;
   order: unset !important;
+  min-width: 0 !important;
+  overflow-wrap: anywhere;
+  word-break: normal;
 }
 
 .et_pb_blog.as-news-blog article.et_pb_post:last-of-type {
@@ -1963,12 +1999,35 @@ body.page-id-39 .et_pb_section_1 > .et_pb_row {
   margin-top: 0;
 }
 
+.et_pb_image.as-native-image,
+.et_pb_image.as-native-image .et_pb_image_wrap {
+  display: block !important;
+  width: 100% !important;
+  max-width: 100% !important;
+}
+
 .et_pb_image.as-native-image img {
   border-radius: calc(var(--radius) + 2px);
   box-shadow: var(--shadow-soft);
-  width: 100%;
-  height: auto;
+  width: 100% !important;
+  max-width: 100% !important;
+  height: auto !important;
+  aspect-ratio: auto;
+  object-fit: cover;
   display: block;
+}
+
+/* Home split rows — keep media from squashing in Divi flex columns */
+body.page-id-409 .et_pb_image.as-native-image,
+body.page-id-409 .et_pb_image.as-native-image .et_pb_image_wrap,
+body.page-id-409 .et_pb_image.as-native-image img {
+  width: 100% !important;
+  max-width: 100% !important;
+}
+
+body.page-id-409 .et_pb_image.as-native-image img {
+  height: auto !important;
+  object-fit: cover;
 }
 
 .et_pb_blog.as-news-blog .entry-title,
@@ -2433,6 +2492,11 @@ body.page-id-409 .as-home-news-more {
 
 body.page-id-409 .as-home-news-more .as-btn {
   display: inline-flex !important;
+}
+
+/* Home news — stack posts; hide Divi pagination (module already limited to 3) */
+body.page-id-409 .as-home-news-blog .pagination {
+  display: none !important;
 }
 
 body.page-id-409 .et_pb_section_0 > .et_pb_row {

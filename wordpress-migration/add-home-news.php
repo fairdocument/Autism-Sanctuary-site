@@ -111,6 +111,12 @@ $blog_attrs = wp_json_encode([
 			],
 		],
 	],
+	/* fullwidth=on → list layout (not et_grid_module multi-column) */
+	'fullwidth'      => [
+		'advanced' => [
+			'fullwidth' => ['desktop' => ['value' => 'on']],
+		],
+	],
 	'post'           => [
 		'advanced'   => [
 			'number'         => ['desktop' => ['value' => '3']],
@@ -118,6 +124,8 @@ $blog_attrs = wp_json_encode([
 			'excerptContent' => ['desktop' => ['value' => 'off']],
 			'showExcerpt'    => ['desktop' => ['value' => 'on']],
 			'excerptLength'  => ['desktop' => ['value' => '22']],
+			'fullwidth'      => ['desktop' => ['value' => 'on']],
+			'layout'         => ['desktop' => ['value' => 'fullwidth']],
 		],
 		'decoration' => [
 			'border' => [
