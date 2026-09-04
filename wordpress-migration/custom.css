@@ -2026,6 +2026,60 @@ body.page-id-409 .et_pb_text {
   max-width: 100% !important;
 }
 
+/* About Mission / Vision / Values — updated page uses as-about-mvv-copy */
+body.page-id-416 .et_pb_text.as-about-mvv-copy,
+body.page-id-416 .et_pb_text.as-about-mvv-text,
+body.page-id-416 .et_pb_text.as-about-mvv-copy .et_pb_text_inner,
+body.page-id-416 .et_pb_text.as-about-mvv-text .et_pb_text_inner {
+  max-width: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+body.page-id-416 .et_pb_text.as-about-mvv-copy .et_pb_text_inner h2,
+body.page-id-416 .et_pb_text.as-about-mvv-text .et_pb_text_inner h2 {
+  font-family: var(--font-serif) !important;
+  color: var(--forest-deep) !important;
+  font-size: clamp(1.5rem, 2.5vw, 2rem) !important;
+  font-weight: 600 !important;
+  line-height: 1.2 !important;
+  margin: 2rem 0 0.65rem !important;
+  padding: 0 !important;
+}
+
+body.page-id-416 .et_pb_text.as-about-mvv-copy .et_pb_text_inner h2:first-child,
+body.page-id-416 .et_pb_text.as-about-mvv-text .et_pb_text_inner h2:first-child {
+  margin-top: 0 !important;
+}
+
+body.page-id-416 .et_pb_text.as-about-mvv-copy .et_pb_text_inner p,
+body.page-id-416 .et_pb_text.as-about-mvv-text .et_pb_text_inner p {
+  color: var(--muted-ink) !important;
+  line-height: 1.65 !important;
+  margin: 0 0 1.15rem !important;
+  padding: 0 !important;
+}
+
+body.page-id-416 .et_pb_text.as-about-mvv-copy .et_pb_text_inner ul.as-checklist,
+body.page-id-416 .et_pb_text.as-about-mvv-text .et_pb_text_inner ul.as-checklist {
+  margin: 0.35rem 0 0 !important;
+  padding-left: 1.15rem !important;
+  list-style: disc outside !important;
+  color: var(--muted-ink);
+}
+
+body.page-id-416 .et_pb_text.as-about-mvv-copy .et_pb_text_inner ul.as-checklist li,
+body.page-id-416 .et_pb_text.as-about-mvv-text .et_pb_text_inner ul.as-checklist li {
+  margin: 0 0 0.65rem !important;
+  padding: 0 !important;
+  line-height: 1.55 !important;
+}
+
+body.page-id-416 .et_pb_text.as-about-mvv-copy .et_pb_text_inner ul.as-checklist li:last-child,
+body.page-id-416 .et_pb_text.as-about-mvv-text .et_pb_text_inner ul.as-checklist li:last-child {
+  margin-bottom: 0 !important;
+}
+
 body.page-id-419 .as-people {
   margin-top: 0.5rem;
 }
