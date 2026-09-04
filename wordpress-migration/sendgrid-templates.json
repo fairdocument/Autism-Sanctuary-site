@@ -1,0 +1,45 @@
+{
+	"updated_at": "2026-09-04T15:28:12.412Z",
+	"from": {
+		"alerts": "info@autismsanctuary.org",
+		"newsletters": "newsletters@autismsanctuary.org"
+	},
+	"templates": {
+		"alert": {
+			"id": "d-23a25506c68d4224bcbfae29f0b66e2e",
+			"name": "AS Alert",
+			"version_id": "5e889cd9-700a-4716-87c1-95ce7988bd62",
+			"subject": "{{subject}}"
+		},
+		"newsletter": {
+			"id": "d-e75934b564a240cfa0abca50ce2bf5f5",
+			"name": "AS Newsletter",
+			"version_id": "52537d8d-59bb-4d7c-af0b-0f035a396b73",
+			"subject": "{{subject}}"
+		}
+	},
+	"handlebars": {
+		"alert": [
+			"subject",
+			"preheader",
+			"headline",
+			"body_html",
+			"cta_url",
+			"cta_text",
+			"unsubscribe"
+		],
+		"newsletter": [
+			"subject",
+			"preheader",
+			"issue_label",
+			"headline",
+			"intro",
+			"body_html",
+			"featured_image_url",
+			"featured_image_alt",
+			"cta_url",
+			"cta_text",
+			"unsubscribe"
+		]
+	}
+}
