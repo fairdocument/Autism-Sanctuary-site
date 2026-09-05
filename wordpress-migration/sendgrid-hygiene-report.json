@@ -1,0 +1,52 @@
+{
+	"updated_at": "2026-09-05T10:40:00Z",
+	"dry_run": false,
+	"action": "Removed Marketing Contacts present on SendGrid suppression lists",
+	"removed_contacts": 134,
+	"removed_by_reason": {
+		"bounce": 66,
+		"block": 12,
+		"spam": 2,
+		"invalid": 3,
+		"global_unsubscribe": 51
+	},
+	"note_on_counts": "global_unsubscribe set has 54; 3 overlapped with higher-priority bounce/invalid/spam/block reasons",
+	"lists_before": {
+		"Farmers market": 46,
+		"Board Members": 3,
+		"Frances' Contact List": 133,
+		"All Staff": 28,
+		"Parents": 32,
+		"Web signups": 127,
+		"Holiday Party List": 142,
+		"Donors": 32
+	},
+	"lists_after": {
+		"Farmers market": 27,
+		"Board Members": 2,
+		"Frances' Contact List": 104,
+		"All Staff": 27,
+		"Parents": 32,
+		"Web signups": 112,
+		"Holiday Party List": 108,
+		"Donors": 27
+	},
+	"memberships_before": 543,
+	"memberships_after": 439,
+	"verification": {
+		"hard_fail_emails_still_in_contacts": 0,
+		"global_unsubs_still_in_contacts": 0
+	},
+	"suppressions_retained": {
+		"bounces": 66,
+		"blocks": 12,
+		"spam_reports": 2,
+		"invalid_emails": 3,
+		"global_unsubscribes": 54
+	},
+	"notes": [
+		"Suppression databases kept intact so SendGrid still blocks sends to bad addresses.",
+		"Trail Guide ASM intentional opt-outs left alone.",
+		"Re-run: SENDGRID_API_KEY=SG.... node wordpress-migration/sendgrid-list-hygiene.mjs"
+	]
+}

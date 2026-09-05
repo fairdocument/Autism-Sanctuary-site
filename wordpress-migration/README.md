@@ -66,7 +66,8 @@ Useful eval-files:
 - `polish-design.php` — checklist/people markup tweaks
 - `setup-gravity-smtp-sendgrid.php` — Gravity SMTP primary connector → SendGrid
 - `setup-hustle-newsletter.php` — Hustle Pro embedded signup → Web signups list
-- `create-sendgrid-templates.mjs` — create/refresh AS Alert + AS Newsletter dynamic templates
+- `create-sendgrid-templates.mjs
+- `sendgrid-list-hygiene.mjs` — remove bounced/invalid/blocked/spam/globally-unsubscribed contacts from Marketing lists` — create/refresh AS Alert + AS Newsletter dynamic templates
 - `setup-sendgrid-marketing-drafts.mjs` — Design Library + Single Send draft (Trail Guide)
 - `sendgrid-templates.json` / `sendgrid-marketing.json` — IDs (no API key)
 
