@@ -2566,12 +2566,91 @@ body.page-id-532 .as-home-news-intro .as-lede {
 
 body.page-id-409,
 body.page-id-532 .as-home-news-more {
-  margin-top: 0.5rem !important;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
 }
 
 body.page-id-409,
 body.page-id-532 .as-home-news-more .as-btn {
   display: inline-flex !important;
+}
+
+/* Home news: intro full width; stories + “All news” text link side by side */
+body.home .et_pb_section.as-home-news > .et_pb_row > .et_pb_column,
+body.page-id-532 .et_pb_section.as-home-news > .et_pb_row > .et_pb_column {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) auto;
+  grid-template-areas:
+    "intro intro"
+    "blog more";
+  column-gap: 1.75rem;
+  row-gap: 1.25rem;
+  align-items: center;
+}
+
+body.home .as-home-news-intro,
+body.page-id-532 .as-home-news-intro {
+  grid-area: intro;
+}
+
+body.home .as-home-news-blog,
+body.page-id-532 .as-home-news-blog {
+  grid-area: blog;
+  min-width: 0;
+}
+
+body.home .as-home-news-more,
+body.page-id-532 .as-home-news-more {
+  grid-area: more;
+  align-self: center;
+  justify-self: end;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+body.home .as-home-news-more .et_pb_code_inner,
+body.page-id-532 .as-home-news-more .et_pb_code_inner,
+body.home .as-home-news-more p,
+body.page-id-532 .as-home-news-more p {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+body.home .as-home-news-link,
+body.page-id-532 .as-home-news-link {
+  display: inline-block;
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--sanctuary-green);
+  text-decoration: none;
+  white-space: nowrap;
+  border-bottom: 1px solid transparent;
+  text-underline-offset: 0.18em;
+}
+
+body.home .as-home-news-link:hover,
+body.page-id-532 .as-home-news-link:hover {
+  color: var(--forest-deep);
+  border-bottom-color: var(--edgefield-gold);
+  text-decoration: none;
+}
+
+@media (max-width: 720px) {
+  body.home .et_pb_section.as-home-news > .et_pb_row > .et_pb_column,
+  body.page-id-532 .et_pb_section.as-home-news > .et_pb_row > .et_pb_column {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "intro"
+      "blog"
+      "more";
+    row-gap: 1rem;
+  }
+
+  body.home .as-home-news-more,
+  body.page-id-532 .as-home-news-more {
+    justify-self: start;
+  }
 }
 
 /* Home news — stack posts; hide Divi pagination (module already limited to 3) */
