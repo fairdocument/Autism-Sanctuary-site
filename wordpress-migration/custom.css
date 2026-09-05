@@ -562,18 +562,27 @@ body .gform_wrapper.gform_legacy_markup_wrapper {
 /* -------------------------------------------------------------------------
    Site footer — classic multi-column layout (custom markup in as-brand-css.php)
    ------------------------------------------------------------------------- */
-body.as-custom-footer #main-footer {
+body.as-custom-footer #main-footer,
+body.as-custom-footer #et-footer-nav,
+body.as-custom-footer #footer-bottom {
   display: none !important;
 }
 
 .as-site-footer {
   background: var(--forest-deep);
-  color: rgba(247, 244, 236, 0.88);
+  color: rgba(247, 244, 236, 0.96);
   margin-top: 0;
 }
 
+.as-site-footer p,
+.as-site-footer li,
+.as-site-footer span,
+.as-site-footer .as-site-footer__col {
+  color: rgba(247, 244, 236, 0.96);
+}
+
 .as-site-footer a {
-  color: rgba(247, 244, 236, 0.92);
+  color: #f7f4ec;
   text-decoration: none;
 }
 
@@ -604,14 +613,14 @@ body.as-custom-footer #main-footer {
   margin: 0 0 0.85rem;
   max-width: 22rem;
   line-height: 1.55;
-  color: rgba(247, 244, 236, 0.78);
+  color: rgba(247, 244, 236, 0.92);
   font-size: 0.98rem;
 }
 
 .as-site-footer__meta {
   margin: 0;
   font-size: 0.85rem;
-  color: rgba(247, 244, 236, 0.62);
+  color: rgba(247, 244, 236, 0.86);
 }
 
 .as-site-footer__heading {
@@ -642,7 +651,7 @@ body.as-custom-footer #main-footer {
   margin: 0 0 0.85rem;
   font-size: 0.95rem;
   line-height: 1.55;
-  color: rgba(247, 244, 236, 0.82);
+  color: rgba(247, 244, 236, 0.94);
 }
 
 .as-site-footer__social {
@@ -659,57 +668,95 @@ body.as-custom-footer #main-footer {
 }
 
 .as-site-footer__newsletter-copy {
-  margin: 0 0 0.85rem;
+  margin: 0 0 0.75rem;
   font-size: 0.92rem;
   line-height: 1.5;
-  color: rgba(247, 244, 236, 0.78);
+  color: rgba(247, 244, 236, 0.92);
 }
 
+.as-site-footer__col--newsletter {
+  min-width: 0;
+}
+
+.as-site-footer__col--newsletter .as-site-footer__heading {
+  margin-bottom: 0.55rem;
+}
+
+.as-site-footer__newsletter-form {
+  margin-top: 0.15rem;
+  width: 100%;
+}
+
+/* Collapse Hustle chrome so the field + button sit tight under the copy */
 .as-site-footer__newsletter-form .hustle-ui,
+.as-site-footer__newsletter-form .hustle-inline-content,
+.as-site-footer__newsletter-form .hustle-optin,
 .as-site-footer__newsletter-form .hustle-layout,
+.as-site-footer__newsletter-form .hustle-main-wrapper,
+.as-site-footer__newsletter-form .hustle-layout-body,
+.as-site-footer__newsletter-form .hustle-layout-content,
 .as-site-footer__newsletter-form .hustle-content,
-.as-site-footer__newsletter-form .hustle-layout-content {
+.as-site-footer__newsletter-form .hustle-form,
+.as-site-footer__newsletter-form .hustle-layout-form {
   background: transparent !important;
   box-shadow: none !important;
   border: 0 !important;
   padding: 0 !important;
   margin: 0 !important;
   max-width: none !important;
+  width: 100% !important;
+  opacity: 1 !important;
 }
 
-.as-site-footer__newsletter-form .hustle-layout-body,
-.as-site-footer__newsletter-form .hustle-group-content {
+.as-site-footer__newsletter-form .hustle-form-fields,
+.as-site-footer__newsletter-form .hustle-layout-form {
+  display: flex !important;
+  flex-wrap: wrap;
+  align-items: stretch;
+  gap: 0.5rem;
+  width: 100%;
+  margin: 0 !important;
   padding: 0 !important;
 }
 
-.as-site-footer__newsletter-form .hustle-layout-form {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  align-items: stretch;
-}
-
 .as-site-footer__newsletter-form .hustle-field {
-  flex: 1 1 10rem;
+  flex: 1 1 9.5rem;
   margin: 0 !important;
+  padding: 0 !important;
+  min-width: 0;
+  position: relative;
 }
 
-.as-site-footer__newsletter-form input[type="email"],
-.as-site-footer__newsletter-form .hustle-input {
-  width: 100%;
-  min-height: 2.6rem;
-  border: 1px solid rgba(217, 210, 196, 0.55) !important;
-  border-radius: 0.3rem !important;
-  background: rgba(255, 255, 255, 0.96) !important;
-  color: #1b1b1b !important;
-  padding: 0.55rem 0.75rem !important;
+.as-site-footer__newsletter-form .hustle-input-label {
+  pointer-events: none;
+  color: #6b726c !important;
   font-family: var(--font-sans) !important;
   font-size: 0.92rem !important;
 }
 
+.as-site-footer__newsletter-form .hustle-input-label .hustle-icon-email {
+  margin-right: 0.35rem;
+}
+
+.as-site-footer__newsletter-form input[type="email"],
+.as-site-footer__newsletter-form .hustle-input {
+  width: 100% !important;
+  min-height: 2.55rem !important;
+  border: 1px solid rgba(217, 210, 196, 0.55) !important;
+  border-radius: 0.3rem !important;
+  background: rgba(255, 255, 255, 0.96) !important;
+  color: #1b1b1b !important;
+  padding: 0.5rem 0.75rem !important;
+  font-family: var(--font-sans) !important;
+  font-size: 0.92rem !important;
+  box-shadow: none !important;
+}
+
 .as-site-footer__newsletter-form .hustle-button-submit,
 .as-site-footer__newsletter-form button[type="submit"] {
-  min-height: 2.6rem;
+  flex: 0 0 auto;
+  align-self: stretch;
+  min-height: 2.55rem !important;
   border: 0 !important;
   border-radius: 0.3rem !important;
   background: var(--edgefield-gold) !important;
@@ -718,8 +765,10 @@ body.as-custom-footer #main-footer {
   font-weight: 700 !important;
   font-size: 0.88rem !important;
   letter-spacing: 0.02em;
-  padding: 0.55rem 1rem !important;
+  padding: 0.5rem 1rem !important;
+  margin: 0 !important;
   cursor: pointer;
+  white-space: nowrap;
 }
 
 .as-site-footer__newsletter-form .hustle-button-submit:hover,
@@ -727,15 +776,35 @@ body.as-custom-footer #main-footer {
   background: #dbb85a !important;
 }
 
-.as-site-footer__newsletter-form .hustle-success,
-.as-site-footer__newsletter-form .hustle-error-message {
-  color: rgba(247, 244, 236, 0.92) !important;
-  font-size: 0.9rem;
+.as-site-footer__newsletter-form .hustle-error-message,
+.as-site-footer__newsletter-form .hustle-success {
+  margin: 0.55rem 0 0 !important;
+  padding: 0 !important;
+  color: rgba(247, 244, 236, 0.94) !important;
+  font-size: 0.88rem !important;
+  line-height: 1.4;
+}
+
+.as-site-footer__newsletter-fallback {
+  margin: 0.35rem 0 0;
 }
 
 .as-site-footer__newsletter-fallback a {
   color: var(--edgefield-gold);
   font-weight: 600;
+}
+
+@media (max-width: 1100px) {
+  .as-site-footer__newsletter-form .hustle-form-fields,
+  .as-site-footer__newsletter-form .hustle-layout-form {
+    flex-direction: column;
+    gap: 0.45rem;
+  }
+
+  .as-site-footer__newsletter-form .hustle-button-submit,
+  .as-site-footer__newsletter-form button[type="submit"] {
+    width: 100%;
+  }
 }
 
 .as-site-footer__bottom {
@@ -752,7 +821,7 @@ body.as-custom-footer #main-footer {
 .as-site-footer__bottom p {
   margin: 0;
   font-size: 0.85rem;
-  color: rgba(247, 244, 236, 0.58);
+  color: rgba(247, 244, 236, 0.88);
 }
 
 @media (max-width: 960px) {
@@ -2905,13 +2974,22 @@ body.page-id-532 [class*="et_pb_animation"] {
   transform: none !important;
 }
 
-/* Clearer section rhythm: alternate breathing room, less equal visual weight */
-body.page-id-532 .et_builder_inner_content > .et_pb_section {
-  padding-top: clamp(3.25rem, 6vw, 5.25rem) !important;
-  padding-bottom: clamp(3.25rem, 6vw, 5.25rem) !important;
+/* Tighter section rhythm — Divi also carries ~60px padding; override both */
+body.page-id-532 .et_builder_inner_content > .et_pb_section,
+body.page-id-532 .et_pb_section {
+  padding-top: clamp(1.75rem, 3.2vw, 2.5rem) !important;
+  padding-bottom: clamp(1.75rem, 3.2vw, 2.5rem) !important;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
 }
 
-body.page-id-532 .et_builder_inner_content > .et_pb_section.et_pb_section_0 {
+body.page-id-532 .et_builder_inner_content > .et_pb_section.et_pb_section_0,
+body.page-id-532 .et_pb_section.et_pb_section_0 {
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+body.page-id-532 .et_pb_section > .et_pb_row {
   padding-top: 0 !important;
   padding-bottom: 0 !important;
 }
@@ -2976,10 +3054,10 @@ body.page-id-532 .as-service-grid {
   margin-top: 2.25rem !important;
 }
 
-/* CTA band: calmer, less zoom-y presence */
+/* CTA band: still a bit more air than body sections, but not huge */
 body.page-id-532 .et_pb_section.as-section--forest {
-  padding-top: clamp(3.5rem, 7vw, 5.5rem) !important;
-  padding-bottom: clamp(3.5rem, 7vw, 5.5rem) !important;
+  padding-top: clamp(2.25rem, 4vw, 3.25rem) !important;
+  padding-bottom: clamp(2.25rem, 4vw, 3.25rem) !important;
 }
 
 body.page-id-532 .et_pb_section.as-section--forest h2 {
@@ -3005,14 +3083,15 @@ body.page-id-532 {
 }
 
 @media (max-width: 980px) {
-  body.page-id-532 .et_builder_inner_content > .et_pb_section {
-    padding-top: 2.75rem !important;
-    padding-bottom: 2.75rem !important;
+  body.page-id-532 .et_builder_inner_content > .et_pb_section,
+  body.page-id-532 .et_pb_section {
+    padding-top: 1.5rem !important;
+    padding-bottom: 1.5rem !important;
   }
 
   body.page-id-532 .et_pb_image.as-native-image {
-    margin-top: 0.5rem !important;
-    margin-bottom: 0.5rem !important;
+    margin-top: 0.35rem !important;
+    margin-bottom: 0.35rem !important;
   }
 }
 
