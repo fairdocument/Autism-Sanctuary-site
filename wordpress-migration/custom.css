@@ -2602,9 +2602,11 @@ body.page-id-532 .as-home-news-blog {
 body.home .as-home-news-more,
 body.page-id-532 .as-home-news-more {
   grid-area: more;
-  justify-self: start;
+  justify-self: stretch;
+  width: 100%;
   margin: 0.25rem 0 0 !important;
   padding: 0 !important;
+  text-align: right !important;
 }
 
 body.home .as-home-news-more .et_pb_code_inner,
@@ -2613,6 +2615,7 @@ body.home .as-home-news-more p,
 body.page-id-532 .as-home-news-more p {
   margin: 0 !important;
   padding: 0 !important;
+  text-align: right !important;
 }
 
 body.home .as-home-news-link,
