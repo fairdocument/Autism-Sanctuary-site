@@ -3058,10 +3058,28 @@ body.page-id-532 .as-service-grid {
 body.page-id-532 .et_pb_section.as-section--forest {
   padding-top: clamp(2.25rem, 4vw, 3.25rem) !important;
   padding-bottom: clamp(2.25rem, 4vw, 3.25rem) !important;
+  text-align: center !important;
+}
+
+body.page-id-532 .et_pb_section.as-section--forest .et_pb_text,
+body.page-id-532 .et_pb_section.as-section--forest .et_pb_text_inner,
+body.page-id-532 .et_pb_section.as-section--forest .et_pb_column,
+body.page-id-532 .et_pb_section.as-section--forest .et_pb_row {
+  text-align: center !important;
 }
 
 body.page-id-532 .et_pb_section.as-section--forest h2 {
   max-width: 18ch;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  text-align: center !important;
+}
+
+body.page-id-532 .et_pb_section.as-section--forest .as-actions {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  flex-wrap: wrap !important;
   margin-left: auto !important;
   margin-right: auto !important;
 }
