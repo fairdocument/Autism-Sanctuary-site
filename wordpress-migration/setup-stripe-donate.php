@@ -123,13 +123,13 @@ $form = [
 		[
 			'type'       => 'select',
 			'id'         => 7,
-			'label'      => 'Apply my gift to',
+			'label'      => 'Please use my donation towards',
 			'isRequired' => true,
 			'choices'    => [
 				['text' => 'Where needed most', 'value' => 'where-needed'],
-				['text' => 'Day program', 'value' => 'day-program'],
-				['text' => 'Residential', 'value' => 'residential'],
-				['text' => 'Agriculture and land', 'value' => 'agriculture'],
+				['text' => 'Day program developments and needs', 'value' => 'day-program'],
+				['text' => 'Residential initiatives (group home, supported living)', 'value' => 'residential'],
+				['text' => 'Agriculture and land management (livestock, high tunnel/produce, equipment)', 'value' => 'agriculture'],
 			],
 		],
 		[
@@ -161,6 +161,107 @@ $form = [
 			],
 		],
 		[
+			'type'             => 'select',
+			'id'               => 15,
+			'label'            => 'Please send notice of this donation to',
+			'isRequired'       => true,
+			'choices'          => [
+				['text' => 'My email address', 'value' => 'donor_email'],
+				['text' => 'My mailing address', 'value' => 'donor_mail'],
+				['text' => "Honoree's address", 'value' => 'honoree_mail'],
+				['text' => 'Another address', 'value' => 'other_mail'],
+			],
+			'conditionalLogic' => [
+				'actionType' => 'show',
+				'logicType'  => 'all',
+				'rules'      => [
+					['fieldId' => '8', 'operator' => 'is', 'value' => 'yes'],
+				],
+			],
+		],
+		[
+			'type'             => 'select',
+			'id'               => 20,
+			'label'            => 'Please send notice of this donation to',
+			'isRequired'       => true,
+			'choices'          => [
+				['text' => 'My email address', 'value' => 'donor_email'],
+				['text' => 'My mailing address', 'value' => 'donor_mail'],
+			],
+			'conditionalLogic' => [
+				'actionType' => 'show',
+				'logicType'  => 'all',
+				'rules'      => [
+					['fieldId' => '8', 'operator' => 'isnot', 'value' => 'yes'],
+				],
+			],
+		],
+		[
+			'type'             => 'address',
+			'id'               => 16,
+			'label'            => "Honoree's address",
+			'isRequired'       => true,
+			'addressType'      => 'us',
+			'inputs'           => [
+				['id' => '16.1', 'label' => 'Street Address'],
+				['id' => '16.2', 'label' => 'Address Line 2'],
+				['id' => '16.3', 'label' => 'City'],
+				['id' => '16.4', 'label' => 'State'],
+				['id' => '16.5', 'label' => 'ZIP Code'],
+				['id' => '16.6', 'label' => 'Country', 'isHidden' => true],
+			],
+			'conditionalLogic' => [
+				'actionType' => 'show',
+				'logicType'  => 'all',
+				'rules'      => [
+					['fieldId' => '15', 'operator' => 'is', 'value' => 'honoree_mail'],
+				],
+			],
+		],
+		[
+			'type'             => 'name',
+			'id'               => 17,
+			'label'            => 'Recipient name',
+			'isRequired'       => true,
+			'nameFormat'       => 'extended',
+			'inputs'           => [
+				['id' => '17.2', 'label' => 'Prefix', 'isHidden' => true],
+				['id' => '17.3', 'label' => 'First'],
+				['id' => '17.4', 'label' => 'Middle', 'isHidden' => true],
+				['id' => '17.6', 'label' => 'Last'],
+				['id' => '17.8', 'label' => 'Suffix', 'isHidden' => true],
+			],
+			'conditionalLogic' => [
+				'actionType' => 'show',
+				'logicType'  => 'all',
+				'rules'      => [
+					['fieldId' => '15', 'operator' => 'is', 'value' => 'other_mail'],
+				],
+			],
+		],
+		[
+			'type'             => 'address',
+			'id'               => 18,
+			'label'            => 'Recipient address',
+			'isRequired'       => true,
+			'addressType'      => 'us',
+			'inputs'           => [
+				['id' => '18.1', 'label' => 'Street Address'],
+				['id' => '18.2', 'label' => 'Address Line 2'],
+				['id' => '18.3', 'label' => 'City'],
+				['id' => '18.4', 'label' => 'State'],
+				['id' => '18.5', 'label' => 'ZIP Code'],
+				['id' => '18.6', 'label' => 'Country', 'isHidden' => true],
+			],
+			'conditionalLogic' => [
+				'actionType' => 'show',
+				'logicType'  => 'all',
+				'rules'      => [
+					['fieldId' => '15', 'operator' => 'is', 'value' => 'other_mail'],
+				],
+			],
+		],
+		[
 			'type'       => 'textarea',
 			'id'         => 10,
 			'label'      => 'Message (optional)',
@@ -178,9 +279,31 @@ $form = [
 			],
 		],
 		[
+			'type'        => 'address',
+			'id'          => 14,
+			'label'       => 'Your mailing address',
+			'isRequired'  => true,
+			'addressType' => 'us',
+			'description' => 'Used for our records and paper acknowledgments.',
+			'inputs'      => [
+				['id' => '14.1', 'label' => 'Street Address'],
+				['id' => '14.2', 'label' => 'Address Line 2'],
+				['id' => '14.3', 'label' => 'City'],
+				['id' => '14.4', 'label' => 'State'],
+				['id' => '14.5', 'label' => 'ZIP Code'],
+				['id' => '14.6', 'label' => 'Country', 'isHidden' => true],
+			],
+		],
+		[
 			'type'  => 'total',
 			'id'    => 12,
 			'label' => 'Total',
+		],
+		[
+			'type'    => 'html',
+			'id'      => 19,
+			'label'   => 'Tax note',
+			'content' => '<p class="as-donate-tax-note">Autism Sanctuary is a Virginia 501(c)(3) nonprofit (EIN 84-4794206). Card payments are processed securely by Stripe. You will receive a receipt for tax substantiation.</p>',
 		],
 	],
 	'confirmations' => [

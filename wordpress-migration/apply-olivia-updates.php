@@ -575,6 +575,17 @@ $donate_body = '
   <li><strong>Workplace opportunities under development</strong> expanding vocational pathways for the people we support.</li>
 </ul>
 <figure>' . as_olivia_placeholder('Photo placeholder: giving impact') . '</figure>
+<div class="as-give-by-mail">
+<h2>Give by mail</h2>
+<p>Prefer to send a check? Mail it to:</p>
+<address>
+<strong>Autism Sanctuary</strong><br />
+2860 Pea Ridge Road<br />
+Charlottesville, VA 22901
+</address>
+<p><a href="https://maps.google.com/?q=2860+Pea+Ridge+Road,+Charlottesville,+VA+22901" rel="noopener noreferrer" target="_blank">Get directions</a></p>
+<p>Please make checks payable to Autism Sanctuary. We are a Virginia 501(c)(3) nonprofit (EIN 84-4794206). Gifts are tax-deductible to the extent allowed by law.</p>
+</div>
 ' . ($gf_donate ? $gf_donate : '<p>Share your gift preference by emailing <a href="mailto:info@autismsanctuary.org">info@autismsanctuary.org</a> or calling <a href="tel:+14342072118">(434) 207-2118</a>.</p>');
 
 as_olivia_upsert(

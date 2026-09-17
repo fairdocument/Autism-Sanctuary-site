@@ -328,6 +328,37 @@ function as_ensure_inquiry_form() {
 				],
 			],
 			[
+				'type'        => 'select',
+				'id'          => 6,
+				'label'       => 'How did you hear about us',
+				'isRequired'  => false,
+				'placeholder' => 'Select one',
+				'choices'     => [
+					['text' => 'Friend or family', 'value' => 'friend-family'],
+					['text' => 'Another family or participant', 'value' => 'another-family'],
+					['text' => 'Support coordinator or CSB', 'value' => 'support-coordinator'],
+					['text' => 'Healthcare or service provider', 'value' => 'provider'],
+					['text' => 'Social media', 'value' => 'social-media'],
+					['text' => 'Search engine', 'value' => 'search'],
+					['text' => 'Event or farmers market', 'value' => 'event'],
+					['text' => 'News or media', 'value' => 'news'],
+					['text' => 'Other', 'value' => 'other'],
+				],
+			],
+			[
+				'type'             => 'text',
+				'id'               => 7,
+				'label'            => 'Please tell us more',
+				'isRequired'       => false,
+				'conditionalLogic' => [
+					'actionType' => 'show',
+					'logicType'  => 'all',
+					'rules'      => [
+						['fieldId' => '6', 'operator' => 'is', 'value' => 'other'],
+					],
+				],
+			],
+			[
 				'type'       => 'textarea',
 				'id'         => 5,
 				'label'      => 'Message',
