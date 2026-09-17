@@ -568,7 +568,20 @@ body.as-custom-footer #footer-bottom {
   display: none !important;
 }
 
+#main-content::after,
+.entry-content::after,
+.et_builder_inner_content::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
 .as-site-footer {
+  clear: both !important;
+  display: block !important;
+  position: relative !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
   background: var(--forest-deep);
   color: rgba(247, 244, 236, 0.96);
   margin-top: 0;
@@ -2550,10 +2563,9 @@ body.et_pb_pagebuilder_layout .et_builder_inner_content {
 
 /* ---------- Home / About / People (page IDs 409 / 416 / 419) ---------- */
 
-body.page-id-409,
+body.page-id-409 .et_pb_row,
 body.page-id-532 .et_pb_row,
-body.page-id-416 .et_pb_row,
-body.page-id-419 .et_pb_row {
+body.page-id-416 .et_pb_row {
   max-width: var(--wide-w) !important;
   width: 100% !important;
   margin-left: auto !important;
@@ -2720,12 +2732,11 @@ body.page-id-532 .et_pb_section_0 .et_pb_button_module_wrapper .et_pb_button {
 }
 
 body.page-id-416 .et_pb_heading,
-body.page-id-419 .et_pb_heading,
-body.page-id-409,
+body.page-id-409 .et_pb_heading,
 body.page-id-532 .et_pb_heading,
 body.page-id-27 .et_pb_heading,
 body.page-id-28 .et_pb_heading,
-body.page-id-409,
+body.page-id-409 .et_pb_text,
 body.page-id-532 .et_pb_text {
   width: 100% !important;
   max-width: 100% !important;
@@ -3315,5 +3326,772 @@ body.page-id-28 .et_pb_image.as-farm-photo img {
   font-size: 0.92rem;
   line-height: 1.5;
   color: var(--muted-ink);
+}
+
+
+
+/* ==========================================================================
+   NATIVE DIVI 5 PILOT & MIGRATION ENHANCEMENTS (CHILD THEME SYNC)
+   ========================================================================== */
+
+/* ==========================================================================
+   PAGE 690: /people-revised/ Native Divi Team Member Styling
+   Visually matches the live /people/ page with zero leakage to live pages.
+   ========================================================================== */
+
+:is(.page-id-690, .page-id-419) .native-banner,
+:is(.page-id-690, .page-id-419) .as-banner {
+  background-color: #2F5D43 !important;
+}
+
+:is(.page-id-690, .page-id-419) .native-banner > .et_pb_row,
+:is(.page-id-690, .page-id-419) .as-banner > .et_pb_row {
+  display: flex !important;
+  flex-direction: column !important;
+  max-width: 80rem !important;
+  width: 100% !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  padding-left: 1.25rem !important;
+  padding-right: 1.25rem !important;
+  box-sizing: border-box !important;
+}
+
+:is(.page-id-690, .page-id-419) .native-banner > .et_pb_row > .et_pb_column,
+:is(.page-id-690, .page-id-419) .as-banner > .et_pb_row > .et_pb_column {
+  width: 100% !important;
+  max-width: 100% !important;
+  float: none !important;
+  display: block !important;
+}
+
+:is(.page-id-690, .page-id-419) .native-banner h1,
+:is(.page-id-690, .page-id-419) .native-banner .et_pb_heading h1,
+:is(.page-id-690, .page-id-419) .native-banner .et_pb_module_header,
+:is(.page-id-690, .page-id-419) .as-banner h1,
+:is(.page-id-690, .page-id-419) .as-banner .et_pb_heading h1,
+:is(.page-id-690, .page-id-419) .as-banner .et_pb_module_header {
+  font-family: var(--font-serif, "Cormorant Garamond", Georgia, serif) !important;
+  font-size: clamp(2rem, 3.5vw, 2.5rem) !important;
+  font-weight: 700 !important;
+  color: #FFFFFF !important;
+  line-height: 1.2 !important;
+  margin: 0 0 15px 0 !important;
+}
+
+:is(.page-id-690, .page-id-419) .native-people-section,
+:is(.page-id-690, .page-id-419) .as-people-section {
+  background-color: #F5F2E8 !important;
+}
+
+:is(.page-id-690, .page-id-419) .native-people-section > .et_pb_row,
+:is(.page-id-690, .page-id-419) .as-people-section > .et_pb_row {
+  display: flex !important;
+  flex-direction: column !important;
+  max-width: 44rem !important;
+  width: 100% !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  padding-left: 1.25rem !important;
+  padding-right: 1.25rem !important;
+  box-sizing: border-box !important;
+}
+
+:is(.page-id-690, .page-id-419) .native-people-section > .et_pb_row > .et_pb_column,
+:is(.page-id-690, .page-id-419) .as-people-section > .et_pb_row > .et_pb_column {
+  width: 100% !important;
+  max-width: 100% !important;
+  float: none !important;
+  display: block !important;
+}
+
+:is(.page-id-690, .page-id-419) .native-people-section .et_pb_heading h2,
+:is(.page-id-690, .page-id-419) .native-people-section .et_pb_heading .et_pb_module_header,
+:is(.page-id-690, .page-id-419) .as-people-section .et_pb_heading h2,
+:is(.page-id-690, .page-id-419) .as-people-section .et_pb_heading .et_pb_module_header {
+  font-family: var(--font-serif, "Cormorant Garamond", Georgia, serif) !important;
+  font-size: clamp(1.5rem, 2.5vw, 2rem) !important;
+  font-weight: 600 !important;
+  color: var(--forest-deep, #1E3D2C) !important;
+  margin: 0 0 0.75rem 0 !important;
+}
+
+:is(.page-id-690, .page-id-419) .native-person-member,
+:is(.page-id-690, .page-id-419) .as-person-member {
+  display: flex !important;
+  flex-direction: row !important;
+  gap: 1.25rem 1.5rem !important;
+  align-items: flex-start !important;
+  padding: 1.5rem 0 !important;
+  border-top: 1px solid var(--soft-rule, #D9D2C4) !important;
+  margin-bottom: 0 !important;
+  background: transparent !important;
+}
+
+:is(.page-id-690, .page-id-419) .native-person-member:last-child,
+:is(.page-id-690, .page-id-419) .as-person-member:last-child {
+  border-bottom: 1px solid var(--soft-rule, #D9D2C4) !important;
+}
+
+:is(.page-id-690, .page-id-419) .native-person-member .et_pb_team_member_image,
+:is(.page-id-690, .page-id-419) .as-person-member .et_pb_team_member_image {
+  flex: 0 0 7.5rem !important;
+  width: 7.5rem !important;
+  max-width: 7.5rem !important;
+  height: 7.5rem !important;
+  max-height: 7.5rem !important;
+  aspect-ratio: 1 !important;
+  margin: 0 !important;
+  border-radius: 8px !important;
+  overflow: hidden !important;
+  background: linear-gradient(145deg, rgba(47, 93, 67, 0.18), rgba(196, 162, 88, 0.22)) !important;
+  border: 1px solid rgba(47, 93, 67, 0.1) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+:is(.page-id-690, .page-id-419) .native-person-member .et_pb_team_member_image img,
+:is(.page-id-690, .page-id-419) .as-person-member .et_pb_team_member_image img {
+  width: 7.5rem !important;
+  max-width: 7.5rem !important;
+  height: 7.5rem !important;
+  max-height: 7.5rem !important;
+  object-fit: cover !important;
+  border-radius: 8px !important;
+  display: block !important;
+}
+
+:is(.page-id-690, .page-id-419) .native-person-member .et_pb_team_member_description,
+:is(.page-id-690, .page-id-419) .as-person-member .et_pb_team_member_description {
+  flex: 1 1 0 !important;
+  min-width: 0 !important;
+  width: auto !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+:is(.page-id-690, .page-id-419) .native-person-member .et_pb_module_header,
+:is(.page-id-690, .page-id-419) .as-person-member .et_pb_module_header {
+  font-family: var(--font-serif, "Cormorant Garamond", Georgia, serif) !important;
+  font-size: 1.45rem !important;
+  font-weight: 600 !important;
+  color: var(--forest-deep, #1E3D2C) !important;
+  margin: 0 0 0.25rem 0 !important;
+  line-height: 1.25 !important;
+}
+
+:is(.page-id-690, .page-id-419) .native-person-member .et_pb_member_position,
+:is(.page-id-690, .page-id-419) .native-person-member p.et_pb_member_position,
+:is(.page-id-690, .page-id-419) .as-person-member .et_pb_member_position,
+:is(.page-id-690, .page-id-419) .as-person-member p.et_pb_member_position {
+  font-family: var(--font-sans, "Source Sans 3", sans-serif) !important;
+  color: var(--sanctuary-green, #2F5D43) !important;
+  font-size: 0.95rem !important;
+  font-weight: 600 !important;
+  opacity: 1 !important;
+  margin: 0 0 0.65rem 0 !important;
+}
+
+:is(.page-id-690, .page-id-419) .native-person-member .et_pb_team_member_description_content p,
+:is(.page-id-690, .page-id-419) .native-person-member .et_pb_team_member_description p,
+:is(.page-id-690, .page-id-419) .as-person-member .et_pb_team_member_description_content p,
+:is(.page-id-690, .page-id-419) .as-person-member .et_pb_team_member_description p {
+  font-family: var(--font-sans, "Source Sans 3", sans-serif) !important;
+  color: var(--muted-ink, #4A534C) !important;
+  font-size: 1rem !important;
+  line-height: 1.6 !important;
+  max-width: 36rem !important;
+  margin: 0 !important;
+}
+
+@media (max-width: 900px) {
+  :is(.page-id-690, .page-id-419) .native-person-member .et_pb_team_member_image,
+  :is(.page-id-690, .page-id-419) .native-person-member .et_pb_team_member_image img,
+  :is(.page-id-690, .page-id-419) .as-person-member .et_pb_team_member_image,
+  :is(.page-id-690, .page-id-419) .as-person-member .et_pb_team_member_image img {
+    flex: 0 0 5.5rem !important;
+    width: 5.5rem !important;
+    max-width: 5.5rem !important;
+    height: 5.5rem !important;
+    max-height: 5.5rem !important;
+  }
+}
+
+/* ==========================================================================
+   PAGE 691: /contact-revised/ Native Divi Contact Page Styling
+   Visually matches the live /contact/ page with zero leakage to live pages.
+   ========================================================================== */
+
+:is(.page-id-691, .page-id-36) .native-banner,
+:is(.page-id-691, .page-id-36) .as-banner {
+  background-color: #2F5D43 !important;
+}
+
+:is(.page-id-691, .page-id-36) .native-banner > .et_pb_row,
+:is(.page-id-691, .page-id-36) .as-banner > .et_pb_row {
+  max-width: 80rem !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  padding-left: 1.25rem !important;
+  padding-right: 1.25rem !important;
+  box-sizing: border-box !important;
+}
+
+:is(.page-id-691, .page-id-36) .native-banner h1,
+:is(.page-id-691, .page-id-36) .native-banner .et_pb_heading h1,
+:is(.page-id-691, .page-id-36) .native-banner .et_pb_module_header,
+:is(.page-id-691, .page-id-36) .as-banner h1,
+:is(.page-id-691, .page-id-36) .as-banner .et_pb_heading h1,
+:is(.page-id-691, .page-id-36) .as-banner .et_pb_module_header {
+  font-family: var(--font-serif, "Cormorant Garamond", Georgia, serif) !important;
+  font-size: clamp(2rem, 3.5vw, 2.5rem) !important;
+  font-weight: 700 !important;
+  color: #FFFFFF !important;
+  line-height: 1.2 !important;
+  margin: 0 0 15px 0 !important;
+}
+
+:is(.page-id-691, .page-id-36) .native-contact-section,
+:is(.page-id-691, .page-id-36) .as-contact-section {
+  background-color: #F5F2E8 !important;
+}
+
+:is(.page-id-691, .page-id-36) .native-contact-section > .et_pb_row,
+:is(.page-id-691, .page-id-36) .as-contact-section > .et_pb_row {
+  max-width: 80rem !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  padding-left: 1.25rem !important;
+  padding-right: 1.25rem !important;
+  box-sizing: border-box !important;
+  display: flex !important;
+  flex-direction: row !important;
+  gap: 3.5rem !important;
+  align-items: flex-start !important;
+}
+
+:is(.page-id-691, .page-id-36) .native-contact-section > .et_pb_row > .et_pb_column:first-child,
+:is(.page-id-691, .page-id-36) .as-contact-section > .et_pb_row > .et_pb_column:first-child {
+  flex: 0 0 45% !important;
+  max-width: 45% !important;
+  width: 45% !important;
+}
+
+:is(.page-id-691, .page-id-36) .native-contact-section > .et_pb_row > .et_pb_column:last-child,
+:is(.page-id-691, .page-id-36) .as-contact-section > .et_pb_row > .et_pb_column:last-child {
+  flex: 0 0 calc(55% - 3.5rem) !important;
+  max-width: calc(55% - 3.5rem) !important;
+  width: calc(55% - 3.5rem) !important;
+}
+
+@media (max-width: 850px) {
+  :is(.page-id-691, .page-id-36) .native-contact-section > .et_pb_row,
+  :is(.page-id-691, .page-id-36) .as-contact-section > .et_pb_row {
+    flex-direction: column !important;
+    gap: 2.5rem !important;
+  }
+  :is(.page-id-691, .page-id-36) .native-contact-section > .et_pb_row > .et_pb_column:first-child,
+  :is(.page-id-691, .page-id-36) .native-contact-section > .et_pb_row > .et_pb_column:last-child,
+  :is(.page-id-691, .page-id-36) .as-contact-section > .et_pb_row > .et_pb_column:first-child,
+  :is(.page-id-691, .page-id-36) .as-contact-section > .et_pb_row > .et_pb_column:last-child {
+    flex: 1 1 100% !important;
+    max-width: 100% !important;
+    width: 100% !important;
+  }
+}
+
+:is(.page-id-691, .page-id-36) .native-contact-section .et_pb_heading h2,
+:is(.page-id-691, .page-id-36) .native-contact-section .et_pb_heading .et_pb_module_header,
+:is(.page-id-691, .page-id-36) .as-contact-section .et_pb_heading h2,
+:is(.page-id-691, .page-id-36) .as-contact-section .et_pb_heading .et_pb_module_header {
+  font-family: var(--font-serif, "Cormorant Garamond", Georgia, serif) !important;
+  font-size: clamp(1.8rem, 2.5vw, 2.25rem) !important;
+  font-weight: 400 !important;
+  color: var(--forest-deep, #1E3D2C) !important;
+  margin: 0 0 1.25rem 0 !important;
+}
+
+:is(.page-id-691, .page-id-36) .native-contact-info p,
+:is(.page-id-691, .page-id-36) .as-contact-info p {
+  font-family: var(--font-sans, "Source Sans 3", sans-serif) !important;
+  font-size: 1.05rem !important;
+  line-height: 1.6 !important;
+  color: var(--muted-ink, #4A534C) !important;
+  margin: 0 0 1.25rem 0 !important;
+}
+
+:is(.page-id-691, .page-id-36) .native-contact-info strong,
+:is(.page-id-691, .page-id-36) .as-contact-info strong {
+  color: var(--charcoal-ink, #1B1B1B) !important;
+  font-weight: 700 !important;
+}
+
+:is(.page-id-691, .page-id-36) .native-contact-info a,
+:is(.page-id-691, .page-id-36) .as-contact-info a {
+  color: var(--sanctuary-green, #2F5D43) !important;
+  text-decoration: underline !important;
+  font-weight: 500 !important;
+}
+
+:is(.page-id-691, .page-id-36) .native-contact-social a,
+:is(.page-id-691, .page-id-36) .as-contact-social a {
+  color: var(--sanctuary-green, #2F5D43) !important;
+  text-decoration: underline !important;
+  font-weight: 500 !important;
+}
+
+:is(.page-id-691, .page-id-36) .native-contact-section .et_pb_image,
+:is(.page-id-691, .page-id-36) .as-contact-section .et_pb_image {
+  margin-top: 1.5rem !important;
+  border-radius: 12px !important;
+  overflow: hidden !important;
+}
+
+:is(.page-id-691, .page-id-36) .native-contact-section .et_pb_image img,
+:is(.page-id-691, .page-id-36) .as-contact-section .et_pb_image img {
+  border-radius: 12px !important;
+  width: 100% !important;
+  height: auto !important;
+  display: block !important;
+}
+
+:is(.page-id-691, .page-id-36) .native-contact-form .gform_wrapper,
+:is(.page-id-691, .page-id-36) .as-contact-form-module .gform_wrapper {
+  margin: 0 !important;
+  width: 100% !important;
+  max-width: 100% !important;
+}
+
+/* ==========================================================================
+   PAGE 692: /home-revised/ 100% Native Divi Visual Match for live Home (532)
+   ========================================================================== */
+
+/* Full-page canvas and background matching live 532 */
+body.page-id-692 {
+  background:
+    radial-gradient(ellipse 100% 70% at 8% -8%, rgba(167, 196, 160, 0.18), transparent 55%),
+    linear-gradient(180deg, #fbfaf6 0%, var(--stone-cream) 45%, #f3efe4 100%) !important;
+}
+
+body.page-id-692 .et_pb_row {
+  max-width: var(--wide-w, 80rem) !important;
+  width: 100% !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  padding-left: 1.25rem !important;
+  padding-right: 1.25rem !important;
+  box-sizing: border-box !important;
+}
+
+body.page-id-692 .et_builder_inner_content > .et_pb_section,
+body.page-id-692 .et_pb_section {
+  padding-top: clamp(1.75rem, 3.2vw, 2.5rem) !important;
+  padding-bottom: clamp(1.75rem, 3.2vw, 2.5rem) !important;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+/* SECTION 0: HERO */
+body.page-id-692 .et_pb_section_0 {
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+  position: relative !important;
+}
+
+body.page-id-692 .et_pb_section_0::before {
+  content: "" !important;
+  position: absolute !important;
+  inset: 0 !important;
+  background:
+    linear-gradient(
+        90deg,
+        rgba(16, 48, 36, 0.70) 0%,
+        rgba(16, 48, 36, 0.40) 35%,
+        rgba(16, 48, 36, 0.10) 70%
+    ),
+    linear-gradient(
+        180deg,
+        rgba(0,0,0,0.15),
+        transparent 40%
+    ) !important;
+  z-index: 1 !important;
+}
+
+body.page-id-692 .et_pb_section_0 .et_pb_row {
+  position: relative !important;
+  z-index: 2 !important;
+}
+
+body.page-id-692 .et_pb_section_0 .as-eyebrow,
+body.page-id-692 .et_pb_section_0 .et_pb_text:first-child p {
+  color: #C28B38 !important;
+  font-size: 0.85rem !important;
+  letter-spacing: 0.08em !important;
+  font-weight: 600 !important;
+  margin-bottom: 0.5rem !important;
+}
+
+body.page-id-692 .et_pb_section_0 h1,
+body.page-id-692 .et_pb_section_0 .et_pb_heading_0 h1 {
+  color: #ffffff !important;
+  font-family: var(--font-serif, "Cormorant Garamond", Georgia, serif) !important;
+  font-size: clamp(2.5rem, 5vw, 5rem) !important;
+  font-weight: 700 !important;
+  line-height: 1.05 !important;
+  margin-bottom: 0.5rem !important;
+}
+
+body.page-id-692 .et_pb_section_0 h2,
+body.page-id-692 .et_pb_section_0 .et_pb_heading_1 h2 {
+  color: #ffffff !important;
+  font-family: var(--font-serif, "Cormorant Garamond", Georgia, serif) !important;
+  font-size: clamp(1.5rem, 2.5vw, 2.2rem) !important;
+  font-weight: 500 !important;
+  line-height: 1.2 !important;
+  margin-bottom: 1rem !important;
+}
+
+body.page-id-692 .et_pb_section_0 .et_pb_text_1 p,
+body.page-id-692 .et_pb_section_0 .et_pb_text:last-of-type p {
+  color: #ffffff !important;
+  font-size: 1.05rem !important;
+  line-height: 1.55 !important;
+  max-width: 48ch !important;
+}
+
+body.page-id-692 .et_pb_section_0 .et_pb_row_nested > .et_pb_column,
+body.page-id-692 .et_pb_section_0 .et_pb_column_1 {
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: wrap !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  gap: 0.75rem !important;
+  width: auto !important;
+  max-width: 100% !important;
+}
+
+body.page-id-692 .et_pb_section_0 .et_pb_button_module_wrapper {
+  display: inline-flex !important;
+  width: auto !important;
+  max-width: none !important;
+  flex: 0 0 auto !important;
+  margin-top: 1rem !important;
+}
+
+body.page-id-692 .et_pb_section_0 .et_pb_button_0 {
+  background-color: #C28B38 !important;
+  color: #fff3f3 !important;
+  font-size: 17px !important;
+  font-weight: 400 !important;
+  border-radius: 4px !important;
+  border: none !important;
+  padding: 9px 40px 9px 24px !important;
+  display: inline-block !important;
+  text-decoration: none !important;
+}
+body.page-id-692 .et_pb_section_0 .et_pb_button_0::after {
+  content: "\2197" !important;
+  margin-left: 0.4em !important;
+}
+
+body.page-id-692 .et_pb_section_0 .et_pb_button_1 {
+  background-color: #1E3D2C !important;
+  color: #fff3f3 !important;
+  font-size: 17px !important;
+  font-weight: 400 !important;
+  border-radius: 4px !important;
+  border: none !important;
+  padding: 9px 40px 9px 24px !important;
+  display: inline-block !important;
+  text-decoration: none !important;
+}
+body.page-id-692 .et_pb_section_0 .et_pb_button_1::after {
+  content: "\2197" !important;
+  margin-left: 0.4em !important;
+}
+
+/* GENERAL TYPOGRAPHY & ELEMENTS ON 692 */
+body.page-id-692 .as-eyebrow {
+  letter-spacing: 0.12em !important;
+  font-size: 0.72rem !important;
+  margin-bottom: 0.65rem !important;
+  color: var(--sanctuary-green, #2F5D43) !important;
+  text-transform: uppercase !important;
+  font-weight: 600 !important;
+}
+
+body.page-id-692 .et_pb_heading h2,
+body.page-id-692 .et_pb_heading .et_pb_module_header {
+  font-family: var(--font-serif, "Cormorant Garamond", Georgia, serif) !important;
+  font-size: clamp(1.85rem, 3.2vw, 2.55rem) !important;
+  line-height: 1.12 !important;
+  max-width: 22ch;
+  margin-bottom: 0.85rem !important;
+  color: var(--forest-deep, #1E3D2C) !important;
+}
+
+body.page-id-692 .as-lede {
+  font-size: 1.08rem !important;
+  line-height: 1.6 !important;
+  max-width: 38rem;
+  color: var(--muted-ink, #4A534C) !important;
+}
+
+body.page-id-692 .as-native-image,
+body.page-id-692 .as-native-image .et_pb_image_wrap {
+  border-radius: calc(var(--radius, 12px) + 4px) !important;
+  overflow: hidden !important;
+  box-shadow: 0 18px 40px rgba(30, 61, 44, 0.14) !important;
+}
+
+body.page-id-692 .as-native-image img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  aspect-ratio: 4 / 3;
+}
+
+/* SECTION 2: SERVICE CARDS */
+body.page-id-692 .as-services-section .as-native-service-card {
+  background: #FFFFFF !important;
+  border: 1px solid rgba(36, 92, 66, 0.12) !important;
+  border-radius: 8px !important;
+  padding: 1.5rem 1.25rem !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03) !important;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease !important;
+  height: 100% !important;
+}
+body.page-id-692 .as-services-section .as-native-service-card:hover {
+  transform: translateY(-3px) !important;
+  box-shadow: 0 8px 20px rgba(30, 61, 44, 0.08) !important;
+  border-color: var(--gold, #C28B38) !important;
+}
+body.page-id-692 .as-services-section .as-native-service-card .et_pb_module_header {
+  font-family: var(--font-serif, "Cormorant Garamond", Georgia, serif) !important;
+  font-size: 1.35rem !important;
+  color: var(--forest-deep, #1E3D2C) !important;
+  margin-bottom: 0.5rem !important;
+  font-weight: 600 !important;
+}
+body.page-id-692 .as-services-section .as-native-service-card .et_pb_blurb_content p {
+  font-family: var(--font-sans, "Source Sans 3", sans-serif) !important;
+  color: var(--muted-ink, #4A534C) !important;
+  font-size: 0.95rem !important;
+  line-height: 1.55 !important;
+  margin: 0 !important;
+}
+
+/* BUTTONS ACROSS 692 */
+body.page-id-692 .as-btn--primary.et_pb_button,
+body.page-id-692 .as-btn-primary.et_pb_button,
+body.page-id-692 a.as-btn-primary {
+  background-color: var(--sanctuary-green, #2F5D43) !important;
+  color: #ffffff !important;
+  border: 1.5px solid var(--sanctuary-green, #2F5D43) !important;
+  border-radius: 6px !important;
+  font-family: var(--font-sans, "Source Sans 3", sans-serif) !important;
+  font-weight: 600 !important;
+  font-size: 1rem !important;
+  padding: 0.75rem 1.5rem !important;
+  display: inline-block !important;
+  text-decoration: none !important;
+  transition: background-color 0.2s ease, transform 0.2s ease !important;
+}
+body.page-id-692 .as-btn--primary.et_pb_button:hover,
+body.page-id-692 .as-btn-primary.et_pb_button:hover,
+body.page-id-692 a.as-btn-primary:hover {
+  background-color: var(--forest-deep, #1E3D2C) !important;
+  border-color: var(--forest-deep, #1E3D2C) !important;
+  color: #ffffff !important;
+}
+
+body.page-id-692 .as-btn--ghost.et_pb_button,
+body.page-id-692 .as-btn-ghost.et_pb_button,
+body.page-id-692 a.as-btn-ghost {
+  background-color: transparent !important;
+  color: var(--sanctuary-green, #2F5D43) !important;
+  border: 1.5px solid var(--sanctuary-green, #2F5D43) !important;
+  border-radius: 6px !important;
+  font-family: var(--font-sans, "Source Sans 3", sans-serif) !important;
+  font-weight: 600 !important;
+  font-size: 1rem !important;
+  padding: 0.75rem 1.5rem !important;
+  display: inline-block !important;
+  text-decoration: none !important;
+  transition: background-color 0.2s ease, color 0.2s ease !important;
+}
+body.page-id-692 .as-btn--ghost.et_pb_button:hover,
+body.page-id-692 .as-btn-ghost.et_pb_button:hover,
+body.page-id-692 a.as-btn-ghost:hover {
+  background-color: rgba(47, 93, 67, 0.08) !important;
+  color: var(--forest-deep, #1E3D2C) !important;
+}
+
+/* SECTION 6: GET IN TOUCH */
+body.page-id-692 .et_pb_section.as-section--forest {
+  background-color: var(--forest-deep, #1E3D2C) !important;
+  padding-top: clamp(2.25rem, 4vw, 3.25rem) !important;
+  padding-bottom: clamp(2.25rem, 4vw, 3.25rem) !important;
+  text-align: center !important;
+}
+body.page-id-692 .et_pb_section.as-section--forest h1,
+body.page-id-692 .et_pb_section.as-section--forest h2,
+body.page-id-692 .et_pb_section.as-section--forest .et_pb_module_header {
+  color: #ffffff !important;
+  font-family: var(--font-serif, "Cormorant Garamond", Georgia, serif) !important;
+  font-size: clamp(2rem, 3.5vw, 2.75rem) !important;
+  margin-bottom: 1.5rem !important;
+}
+body.page-id-692 .et_pb_section.as-section--forest .et_pb_row_nested > .et_pb_column,
+body.page-id-692 .et_pb_section.as-section--forest .et_pb_row:last-child {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  gap: 1rem !important;
+}
+body.page-id-692 .et_pb_section.as-section--forest .as-btn--primary.et_pb_button {
+  background-color: var(--edgefield-gold, #C28B38) !important;
+  color: var(--forest-deep, #1E3D2C) !important;
+  border-color: transparent !important;
+}
+body.page-id-692 .et_pb_section.as-section--forest .as-btn--ghost.et_pb_button {
+  background-color: var(--stone-cream, #F5F2E8) !important;
+  color: var(--forest-deep, #1E3D2C) !important;
+  border-color: transparent !important;
+}
+
+/* ==========================================================================
+   PAGE 692 (HOME REVISED) ROW & COLUMN GRID LAYOUTS
+   ========================================================================== */
+
+/* 2-Column Split Rows: Approach (Sec 1), Our Home (Sec 3), Looking Ahead (Sec 4) */
+body.page-id-692 :is(.as-approach-section, .as-home-farm-section, .as-looking-ahead-section) > .et_pb_row {
+  display: flex !important;
+  flex-direction: row !important;
+  gap: 3.5rem !important;
+  align-items: center !important;
+  max-width: 80rem !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  padding-left: 1.25rem !important;
+  padding-right: 1.25rem !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+body.page-id-692 :is(.as-approach-section, .as-home-farm-section, .as-looking-ahead-section) > .et_pb_row > .et_pb_column {
+  flex: 1 1 50% !important;
+  max-width: 50% !important;
+  width: 50% !important;
+  box-sizing: border-box !important;
+}
+
+/* Our Home Section (Sec 3) button row alignment */
+body.page-id-692 .as-home-farm-section .et_pb_column:first-child {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: flex-start !important;
+}
+
+body.page-id-692 .as-home-farm-section .et_pb_button {
+  display: inline-flex !important;
+  margin-right: 0.75rem !important;
+  margin-bottom: 0.5rem !important;
+}
+
+/* Services Section (Sec 2) Rows */
+body.page-id-692 .as-services-section > .et_pb_row:nth-child(1) {
+  display: flex !important;
+  flex-direction: row !important;
+  justify-content: space-between !important;
+  align-items: flex-end !important;
+  max-width: 80rem !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  padding-left: 1.25rem !important;
+  padding-right: 1.25rem !important;
+  margin-bottom: 2rem !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+body.page-id-692 .as-services-section > .et_pb_row:nth-child(1) > .et_pb_column:first-child {
+  flex: 0 0 65% !important;
+  max-width: 65% !important;
+}
+
+body.page-id-692 .as-services-section > .et_pb_row:nth-child(1) > .et_pb_column:last-child {
+  flex: 0 0 auto !important;
+  margin-bottom: 1rem !important;
+}
+
+/* Services Row 2 (3 columns) */
+body.page-id-692 .as-services-section > .et_pb_row:nth-child(2) {
+  display: flex !important;
+  flex-direction: row !important;
+  gap: 1.5rem !important;
+  max-width: 80rem !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  padding-left: 1.25rem !important;
+  padding-right: 1.25rem !important;
+  margin-bottom: 1.5rem !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+body.page-id-692 .as-services-section > .et_pb_row:nth-child(2) > .et_pb_column {
+  flex: 1 1 calc(33.333% - 1rem) !important;
+  max-width: calc(33.333% - 1rem) !important;
+  display: flex !important;
+}
+
+/* Services Row 3 (2 columns) */
+body.page-id-692 .as-services-section > .et_pb_row:nth-child(3) {
+  display: flex !important;
+  flex-direction: row !important;
+  gap: 1.5rem !important;
+  max-width: 80rem !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  padding-left: 1.25rem !important;
+  padding-right: 1.25rem !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+body.page-id-692 .as-services-section > .et_pb_row:nth-child(3) > .et_pb_column {
+  flex: 1 1 calc(50% - 0.75rem) !important;
+  max-width: calc(50% - 0.75rem) !important;
+  display: flex !important;
+}
+
+/* Mobile & Tablet Responsive rules */
+@media (max-width: 850px) {
+  body.page-id-692 :is(.as-approach-section, .as-home-farm-section, .as-looking-ahead-section) > .et_pb_row {
+    flex-direction: column !important;
+    gap: 2rem !important;
+  }
+
+  body.page-id-692 :is(.as-approach-section, .as-home-farm-section, .as-looking-ahead-section) > .et_pb_row > .et_pb_column {
+    flex: 1 1 100% !important;
+    max-width: 100% !important;
+    width: 100% !important;
+  }
+
+  body.page-id-692 .as-services-section > .et_pb_row:nth-child(1),
+  body.page-id-692 .as-services-section > .et_pb_row:nth-child(2),
+  body.page-id-692 .as-services-section > .et_pb_row:nth-child(3) {
+    flex-direction: column !important;
+    gap: 1.25rem !important;
+  }
+
+  body.page-id-692 .as-services-section > .et_pb_row > .et_pb_column {
+    flex: 1 1 100% !important;
+    max-width: 100% !important;
+    width: 100% !important;
+  }
 }
 

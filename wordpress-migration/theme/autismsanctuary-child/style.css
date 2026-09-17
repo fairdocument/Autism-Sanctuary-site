@@ -1,0 +1,428 @@
+/*
+Theme Name: Autism Sanctuary Child
+Theme URI: https://autismsanctuary.org/
+Description: Divi Child Theme for Autism Sanctuary.
+Author: Autism Sanctuary
+Author URI: https://autismsanctuary.org/
+Template: Divi
+Version: 1.0.0
+Text Domain: autismsanctuary-child
+*/
+
+/* ==========================================================================
+   PAGE 690: /people-revised/ Native Divi Team Member Styling
+   Visually matches the live /people/ page with zero leakage to live pages.
+   ========================================================================== */
+
+:is(.page-id-690, .page-id-419) .native-banner,
+:is(.page-id-690, .page-id-419) .as-banner {
+  background-color: #2F5D43 !important;
+}
+
+:is(.page-id-690, .page-id-419) .native-banner > .et_pb_row,
+:is(.page-id-690, .page-id-419) .as-banner > .et_pb_row {
+  display: flex !important;
+  flex-direction: column !important;
+  max-width: 80rem !important;
+  width: 100% !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  padding-left: 1.25rem !important;
+  padding-right: 1.25rem !important;
+  box-sizing: border-box !important;
+}
+
+:is(.page-id-690, .page-id-419) .native-banner > .et_pb_row > .et_pb_column,
+:is(.page-id-690, .page-id-419) .as-banner > .et_pb_row > .et_pb_column {
+  width: 100% !important;
+  max-width: 100% !important;
+  float: none !important;
+  display: block !important;
+}
+
+:is(.page-id-690, .page-id-419) .native-banner h1,
+:is(.page-id-690, .page-id-419) .native-banner .et_pb_heading h1,
+:is(.page-id-690, .page-id-419) .native-banner .et_pb_module_header,
+:is(.page-id-690, .page-id-419) .as-banner h1,
+:is(.page-id-690, .page-id-419) .as-banner .et_pb_heading h1,
+:is(.page-id-690, .page-id-419) .as-banner .et_pb_module_header {
+  font-family: var(--font-serif, "Cormorant Garamond", Georgia, serif) !important;
+  font-size: clamp(2rem, 3.5vw, 2.5rem) !important;
+  font-weight: 700 !important;
+  color: #FFFFFF !important;
+  line-height: 1.2 !important;
+  margin: 0 0 15px 0 !important;
+}
+
+:is(.page-id-690, .page-id-419) .native-people-section,
+:is(.page-id-690, .page-id-419) .as-people-section {
+  background-color: #F5F2E8 !important;
+}
+
+:is(.page-id-690, .page-id-419) .native-people-section > .et_pb_row,
+:is(.page-id-690, .page-id-419) .as-people-section > .et_pb_row {
+  display: flex !important;
+  flex-direction: column !important;
+  max-width: 44rem !important;
+  width: 100% !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  padding-left: 1.25rem !important;
+  padding-right: 1.25rem !important;
+  box-sizing: border-box !important;
+}
+
+:is(.page-id-690, .page-id-419) .native-people-section > .et_pb_row > .et_pb_column,
+:is(.page-id-690, .page-id-419) .as-people-section > .et_pb_row > .et_pb_column {
+  width: 100% !important;
+  max-width: 100% !important;
+  float: none !important;
+  display: block !important;
+}
+
+:is(.page-id-690, .page-id-419) .native-people-section .et_pb_heading h2,
+:is(.page-id-690, .page-id-419) .native-people-section .et_pb_heading .et_pb_module_header,
+:is(.page-id-690, .page-id-419) .as-people-section .et_pb_heading h2,
+:is(.page-id-690, .page-id-419) .as-people-section .et_pb_heading .et_pb_module_header {
+  font-family: var(--font-serif, "Cormorant Garamond", Georgia, serif) !important;
+  font-size: clamp(1.5rem, 2.5vw, 2rem) !important;
+  font-weight: 600 !important;
+  color: var(--forest-deep, #1E3D2C) !important;
+  margin: 0 0 0.75rem 0 !important;
+}
+
+:is(.page-id-690, .page-id-419) .native-person-member,
+:is(.page-id-690, .page-id-419) .as-person-member {
+  display: flex !important;
+  flex-direction: row !important;
+  gap: 1.25rem 1.5rem !important;
+  align-items: flex-start !important;
+  padding: 1.5rem 0 !important;
+  border-top: 1px solid var(--soft-rule, #D9D2C4) !important;
+  margin-bottom: 0 !important;
+  background: transparent !important;
+}
+
+:is(.page-id-690, .page-id-419) .native-person-member:last-child,
+:is(.page-id-690, .page-id-419) .as-person-member:last-child {
+  border-bottom: 1px solid var(--soft-rule, #D9D2C4) !important;
+}
+
+:is(.page-id-690, .page-id-419) .native-person-member .et_pb_team_member_image,
+:is(.page-id-690, .page-id-419) .as-person-member .et_pb_team_member_image {
+  flex: 0 0 7.5rem !important;
+  width: 7.5rem !important;
+  max-width: 7.5rem !important;
+  height: 7.5rem !important;
+  max-height: 7.5rem !important;
+  aspect-ratio: 1 !important;
+  margin: 0 !important;
+  border-radius: 8px !important;
+  overflow: hidden !important;
+  background: linear-gradient(145deg, rgba(47, 93, 67, 0.18), rgba(196, 162, 88, 0.22)) !important;
+  border: 1px solid rgba(47, 93, 67, 0.1) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+:is(.page-id-690, .page-id-419) .native-person-member .et_pb_team_member_image img,
+:is(.page-id-690, .page-id-419) .as-person-member .et_pb_team_member_image img {
+  width: 7.5rem !important;
+  max-width: 7.5rem !important;
+  height: 7.5rem !important;
+  max-height: 7.5rem !important;
+  object-fit: cover !important;
+  border-radius: 8px !important;
+  display: block !important;
+}
+
+:is(.page-id-690, .page-id-419) .native-person-member .et_pb_team_member_description,
+:is(.page-id-690, .page-id-419) .as-person-member .et_pb_team_member_description {
+  flex: 1 1 0 !important;
+  min-width: 0 !important;
+  width: auto !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+:is(.page-id-690, .page-id-419) .native-person-member .et_pb_module_header,
+:is(.page-id-690, .page-id-419) .as-person-member .et_pb_module_header {
+  font-family: var(--font-serif, "Cormorant Garamond", Georgia, serif) !important;
+  font-size: 1.45rem !important;
+  font-weight: 600 !important;
+  color: var(--forest-deep, #1E3D2C) !important;
+  margin: 0 0 0.25rem 0 !important;
+  line-height: 1.25 !important;
+}
+
+:is(.page-id-690, .page-id-419) .native-person-member .et_pb_member_position,
+:is(.page-id-690, .page-id-419) .native-person-member p.et_pb_member_position,
+:is(.page-id-690, .page-id-419) .as-person-member .et_pb_member_position,
+:is(.page-id-690, .page-id-419) .as-person-member p.et_pb_member_position {
+  font-family: var(--font-sans, "Source Sans 3", sans-serif) !important;
+  color: var(--sanctuary-green, #2F5D43) !important;
+  font-size: 0.95rem !important;
+  font-weight: 600 !important;
+  opacity: 1 !important;
+  margin: 0 0 0.65rem 0 !important;
+}
+
+:is(.page-id-690, .page-id-419) .native-person-member .et_pb_team_member_description_content p,
+:is(.page-id-690, .page-id-419) .native-person-member .et_pb_team_member_description p,
+:is(.page-id-690, .page-id-419) .as-person-member .et_pb_team_member_description_content p,
+:is(.page-id-690, .page-id-419) .as-person-member .et_pb_team_member_description p {
+  font-family: var(--font-sans, "Source Sans 3", sans-serif) !important;
+  color: var(--muted-ink, #4A534C) !important;
+  font-size: 1rem !important;
+  line-height: 1.6 !important;
+  max-width: 36rem !important;
+  margin: 0 !important;
+}
+
+@media (max-width: 900px) {
+  :is(.page-id-690, .page-id-419) .native-person-member .et_pb_team_member_image,
+  :is(.page-id-690, .page-id-419) .native-person-member .et_pb_team_member_image img,
+  :is(.page-id-690, .page-id-419) .as-person-member .et_pb_team_member_image,
+  :is(.page-id-690, .page-id-419) .as-person-member .et_pb_team_member_image img {
+    flex: 0 0 5.5rem !important;
+    width: 5.5rem !important;
+    max-width: 5.5rem !important;
+    height: 5.5rem !important;
+    max-height: 5.5rem !important;
+  }
+}
+
+/* ==========================================================================
+   PAGE 691: /contact-revised/ Native Divi Contact Page Styling
+   Visually matches the live /contact/ page with zero leakage to live pages.
+   ========================================================================== */
+
+:is(.page-id-691, .page-id-36) .native-banner,
+:is(.page-id-691, .page-id-36) .as-banner {
+  background-color: #2F5D43 !important;
+}
+
+:is(.page-id-691, .page-id-36) .native-banner > .et_pb_row,
+:is(.page-id-691, .page-id-36) .as-banner > .et_pb_row {
+  max-width: 80rem !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  padding-left: 1.25rem !important;
+  padding-right: 1.25rem !important;
+  box-sizing: border-box !important;
+}
+
+:is(.page-id-691, .page-id-36) .native-banner h1,
+:is(.page-id-691, .page-id-36) .native-banner .et_pb_heading h1,
+:is(.page-id-691, .page-id-36) .native-banner .et_pb_module_header,
+:is(.page-id-691, .page-id-36) .as-banner h1,
+:is(.page-id-691, .page-id-36) .as-banner .et_pb_heading h1,
+:is(.page-id-691, .page-id-36) .as-banner .et_pb_module_header {
+  font-family: var(--font-serif, "Cormorant Garamond", Georgia, serif) !important;
+  font-size: clamp(2rem, 3.5vw, 2.5rem) !important;
+  font-weight: 700 !important;
+  color: #FFFFFF !important;
+  line-height: 1.2 !important;
+  margin: 0 0 15px 0 !important;
+}
+
+:is(.page-id-691, .page-id-36) .native-contact-section,
+:is(.page-id-691, .page-id-36) .as-contact-section {
+  background-color: #F5F2E8 !important;
+}
+
+:is(.page-id-691, .page-id-36) .native-contact-section > .et_pb_row,
+:is(.page-id-691, .page-id-36) .as-contact-section > .et_pb_row {
+  max-width: 80rem !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  padding-left: 1.25rem !important;
+  padding-right: 1.25rem !important;
+  box-sizing: border-box !important;
+  display: flex !important;
+  flex-direction: row !important;
+  gap: 3.5rem !important;
+  align-items: flex-start !important;
+}
+
+:is(.page-id-691, .page-id-36) .native-contact-section > .et_pb_row > .et_pb_column:first-child,
+:is(.page-id-691, .page-id-36) .as-contact-section > .et_pb_row > .et_pb_column:first-child {
+  flex: 0 0 45% !important;
+  max-width: 45% !important;
+  width: 45% !important;
+}
+
+:is(.page-id-691, .page-id-36) .native-contact-section > .et_pb_row > .et_pb_column:last-child,
+:is(.page-id-691, .page-id-36) .as-contact-section > .et_pb_row > .et_pb_column:last-child {
+  flex: 0 0 calc(55% - 3.5rem) !important;
+  max-width: calc(55% - 3.5rem) !important;
+  width: calc(55% - 3.5rem) !important;
+}
+
+@media (max-width: 850px) {
+  :is(.page-id-691, .page-id-36) .native-contact-section > .et_pb_row,
+  :is(.page-id-691, .page-id-36) .as-contact-section > .et_pb_row {
+    flex-direction: column !important;
+    gap: 2.5rem !important;
+  }
+  :is(.page-id-691, .page-id-36) .native-contact-section > .et_pb_row > .et_pb_column:first-child,
+  :is(.page-id-691, .page-id-36) .native-contact-section > .et_pb_row > .et_pb_column:last-child,
+  :is(.page-id-691, .page-id-36) .as-contact-section > .et_pb_row > .et_pb_column:first-child,
+  :is(.page-id-691, .page-id-36) .as-contact-section > .et_pb_row > .et_pb_column:last-child {
+    flex: 1 1 100% !important;
+    max-width: 100% !important;
+    width: 100% !important;
+  }
+}
+
+:is(.page-id-691, .page-id-36) .native-contact-section .et_pb_heading h2,
+:is(.page-id-691, .page-id-36) .native-contact-section .et_pb_heading .et_pb_module_header,
+:is(.page-id-691, .page-id-36) .as-contact-section .et_pb_heading h2,
+:is(.page-id-691, .page-id-36) .as-contact-section .et_pb_heading .et_pb_module_header {
+  font-family: var(--font-serif, "Cormorant Garamond", Georgia, serif) !important;
+  font-size: clamp(1.8rem, 2.5vw, 2.25rem) !important;
+  font-weight: 400 !important;
+  color: var(--forest-deep, #1E3D2C) !important;
+  margin: 0 0 1.25rem 0 !important;
+}
+
+:is(.page-id-691, .page-id-36) .native-contact-info p,
+:is(.page-id-691, .page-id-36) .as-contact-info p {
+  font-family: var(--font-sans, "Source Sans 3", sans-serif) !important;
+  font-size: 1.05rem !important;
+  line-height: 1.6 !important;
+  color: var(--muted-ink, #4A534C) !important;
+  margin: 0 0 1.25rem 0 !important;
+}
+
+:is(.page-id-691, .page-id-36) .native-contact-info strong,
+:is(.page-id-691, .page-id-36) .as-contact-info strong {
+  color: var(--charcoal-ink, #1B1B1B) !important;
+  font-weight: 700 !important;
+}
+
+:is(.page-id-691, .page-id-36) .native-contact-info a,
+:is(.page-id-691, .page-id-36) .as-contact-info a {
+  color: var(--sanctuary-green, #2F5D43) !important;
+  text-decoration: underline !important;
+  font-weight: 500 !important;
+}
+
+:is(.page-id-691, .page-id-36) .native-contact-social a,
+:is(.page-id-691, .page-id-36) .as-contact-social a {
+  color: var(--sanctuary-green, #2F5D43) !important;
+  text-decoration: underline !important;
+  font-weight: 500 !important;
+}
+
+:is(.page-id-691, .page-id-36) .native-contact-section .et_pb_image,
+:is(.page-id-691, .page-id-36) .as-contact-section .et_pb_image {
+  margin-top: 1.5rem !important;
+  border-radius: 12px !important;
+  overflow: hidden !important;
+}
+
+:is(.page-id-691, .page-id-36) .native-contact-section .et_pb_image img,
+:is(.page-id-691, .page-id-36) .as-contact-section .et_pb_image img {
+  border-radius: 12px !important;
+  width: 100% !important;
+  height: auto !important;
+  display: block !important;
+}
+
+:is(.page-id-691, .page-id-36) .native-contact-form .gform_wrapper,
+:is(.page-id-691, .page-id-36) .as-contact-form-module .gform_wrapper {
+  margin: 0 !important;
+  width: 100% !important;
+  max-width: 100% !important;
+}
+
+/* ==========================================================================
+   PAGE 692: /home-revised/ Native Divi Service Card & Button Styling
+   Strictly scoped to avoid any interference with the live homepage (532).
+   ========================================================================== */
+
+body.page-id-692 .as-hero h1,
+body.page-id-692 .as-hero .et_pb_module_header {
+  color: var(--forest-deep, #1E3D2C) !important;
+  max-width: 48ch !important;
+}
+
+body.page-id-692 .as-native-service-card {
+  background: #FFFFFF !important;
+  border: 1px solid var(--soft-rule, #E5DFD3) !important;
+  border-radius: 12px !important;
+  padding: 1.75rem 1.5rem !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03) !important;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease !important;
+  height: 100% !important;
+}
+
+body.page-id-692 .as-native-service-card:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 8px 24px rgba(30, 61, 44, 0.08) !important;
+  border-color: var(--gold, #C28B38) !important;
+}
+
+body.page-id-692 .as-native-service-card .et_pb_module_header {
+  font-family: var(--font-serif, "Cormorant Garamond", Georgia, serif) !important;
+  font-size: 1.4rem !important;
+  color: var(--forest-deep, #1E3D2C) !important;
+  margin-bottom: 0.75rem !important;
+}
+
+body.page-id-692 .as-native-service-card .et_pb_blurb_content p {
+  font-family: var(--font-sans, "Source Sans 3", sans-serif) !important;
+  color: var(--muted-ink, #4A534C) !important;
+  font-size: 0.95rem !important;
+  line-height: 1.55 !important;
+  margin: 0 !important;
+}
+
+body.page-id-692 a.as-btn-primary,
+body.page-id-692 .as-btn-primary.et_pb_button,
+body.page-id-692 .as-btn-primary .et_pb_button {
+  background-color: var(--forest-deep, #1E3D2C) !important;
+  color: var(--cream, #F7F4EE) !important;
+  border: 1.5px solid var(--forest-deep, #1E3D2C) !important;
+  border-radius: 6px !important;
+  font-family: var(--font-sans, "Source Sans 3", sans-serif) !important;
+  font-weight: 600 !important;
+  font-size: 1rem !important;
+  padding: 0.75rem 1.5rem !important;
+  display: inline-block !important;
+  text-decoration: none !important;
+  transition: background-color 0.2s ease, transform 0.2s ease !important;
+}
+
+body.page-id-692 a.as-btn-primary:hover,
+body.page-id-692 .as-btn-primary.et_pb_button:hover,
+body.page-id-692 .as-btn-primary .et_pb_button:hover {
+  background-color: var(--forest-dark, #162E21) !important;
+  border-color: var(--forest-dark, #162E21) !important;
+  color: var(--cream, #F7F4EE) !important;
+}
+
+body.page-id-692 a.as-btn-ghost,
+body.page-id-692 .as-btn-ghost.et_pb_button,
+body.page-id-692 .as-btn-ghost .et_pb_button {
+  background-color: transparent !important;
+  color: var(--forest-deep, #1E3D2C) !important;
+  border: 1.5px solid var(--forest-deep, #1E3D2C) !important;
+  border-radius: 6px !important;
+  font-family: var(--font-sans, "Source Sans 3", sans-serif) !important;
+  font-weight: 600 !important;
+  font-size: 1rem !important;
+  padding: 0.75rem 1.5rem !important;
+  display: inline-block !important;
+  text-decoration: none !important;
+  transition: background-color 0.2s ease, color 0.2s ease !important;
+}
+
+body.page-id-692 a.as-btn-ghost:hover,
+body.page-id-692 .as-btn-ghost.et_pb_button:hover,
+body.page-id-692 .as-btn-ghost .et_pb_button:hover {
+  background-color: var(--forest-deep, #1E3D2C) !important;
+  color: var(--cream, #F7F4EE) !important;
+}

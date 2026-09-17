@@ -18,3 +18,7 @@ emdash-site/.claude/
 uploaded_images_videos/
 more_images_videos/
 references/*.mov
+
+# Temporary migration dumps & debug files
+wordpress-migration/*.txt
+wordpress-migration/*.html
