@@ -13,3 +13,8 @@ emdash-site/.env.*
 .DS_Store
 **/.DS_Store
 emdash-site/.claude/
+
+# Large local media libraries & raw video assets (>100MB)
+uploaded_images_videos/
+more_images_videos/
+references/*.mov
