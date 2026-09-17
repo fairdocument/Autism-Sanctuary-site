@@ -56,6 +56,11 @@ Useful eval-files:
 - `migrate.php` — initial page/media/menu seed
 - `apply-olivia-updates.php` — Olivia 8/24 copy + IA (Admissions/Fellowship off, Looking Ahead, People bios)
 - `setup-stripe-donate.php` — Donate form + Stripe feeds
+- `improve-donate-page.php` — mailing address, give-by-mail, honor notices, EIN note
+- `fix-donate-notice-logic.php` — notice-to logic (honor vs not) + mailing address under card details
+- `add-contact-hear-about.php` — Inquiry form “How did you hear about us”
+- `create-29news-post.php` — 29News feature post + image sideloading
+- `create-uva-today-post.php` — UVA Today feature post + image sideloading
 - `setup-news.php` — Divi News page + Theme Builder posts
 - `fix-news.php` — restore article HTML, featured images, thumbnail news list
 - `convert-pages-to-divi5.php` — wrap marketing HTML as Divi 5 section layouts

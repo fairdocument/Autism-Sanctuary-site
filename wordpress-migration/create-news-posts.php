@@ -13,6 +13,7 @@ require_once ABSPATH . 'wp-admin/includes/media.php';
 require_once ABSPATH . 'wp-admin/includes/image.php';
 
 $files = [
+	'post-featured-on-29news.json',
 	'post-give-where-you-live.json',
 	'post-wahs-western-hemisphere-feature.json',
 	'post-mpo-paratransit-vehicle-funding.json',
