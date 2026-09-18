@@ -87,13 +87,19 @@ h1, h2, h3, h4, h5, h6,
 .et_pb_section_0.et_flex_section .et_pb_heading .et_pb_module_header,
 .et_pb_section_0.et_flex_section .et_pb_heading h1,
 body.page-id-27 .et_pb_section_0 .et_pb_heading .et_pb_module_header,
+body.page-id-1181 .et_pb_section_0 .et_pb_heading .et_pb_module_header,
 body.page-id-27 .et_pb_section_0 .et_pb_heading h1,
+body.page-id-1181 .et_pb_section_0 .et_pb_heading h1,
 body.page-id-39 .et_pb_section_0 .et_pb_heading .et_pb_module_header,
 body.page-id-39 .et_pb_section_0 .et_pb_heading h1,
 body.page-id-416 .et_pb_section_0 .et_pb_heading .et_pb_module_header,
+body.page-id-1179 .et_pb_section_0 .et_pb_heading .et_pb_module_header,
 body.page-id-416 .et_pb_section_0 .et_pb_heading h1,
+body.page-id-1179 .et_pb_section_0 .et_pb_heading h1,
 body.page-id-28 .et_pb_section_1 .et_pb_heading .et_pb_module_header,
-body.page-id-28 .et_pb_section_1 .et_pb_heading h1 {
+body.page-id-1180 .et_pb_section_1 .et_pb_heading .et_pb_module_header,
+body.page-id-28 .et_pb_section_1 .et_pb_heading h1,
+body.page-id-1180 .et_pb_section_1 .et_pb_heading h1 {
   color: #ffffff !important;
   font-size: clamp(2rem, 4vw, 2.5rem) !important;
   font-weight: 700 !important;
@@ -2570,7 +2576,8 @@ body.et_pb_pagebuilder_layout .et_builder_inner_content {
 body.page-id-409 .et_pb_row,
 body.page-id-532 .et_pb_row,
 body.page-id-692 .et_pb_row,
-body.page-id-416 .et_pb_row {
+body.page-id-416 .et_pb_row,
+body.page-id-1179 .et_pb_row {
   max-width: var(--wide-w) !important;
   width: 100% !important;
   margin-left: auto !important;
@@ -2759,11 +2766,14 @@ body.page-id-692 .et_pb_section_0 .et_pb_button_module_wrapper .et_pb_button {
 }
 
 body.page-id-416 .et_pb_heading,
+body.page-id-1179 .et_pb_heading,
 body.page-id-409 .et_pb_heading,
 body.page-id-532 .et_pb_heading,
 body.page-id-692 .et_pb_heading,
 body.page-id-27 .et_pb_heading,
+body.page-id-1181 .et_pb_heading,
 body.page-id-28 .et_pb_heading,
+body.page-id-1180 .et_pb_heading,
 body.page-id-409 .et_pb_text,
 body.page-id-532 .et_pb_text,
 body.page-id-692 .et_pb_text {
@@ -2773,22 +2783,34 @@ body.page-id-692 .et_pb_text {
 
 /* About body copy — Mission/Vision/Values, Our Story, Edgefield */
 body.page-id-416 .et_pb_text.as-about-mvv-copy,
+body.page-id-1179 .et_pb_text.as-about-mvv-copy,
 body.page-id-416 .et_pb_text.as-about-mvv-text,
+body.page-id-1179 .et_pb_text.as-about-mvv-text,
 body.page-id-416 .et_pb_text.as-about-story-copy,
+body.page-id-1179 .et_pb_text.as-about-story-copy,
 body.page-id-416 .et_pb_text.as-about-edgefield-body,
+body.page-id-1179 .et_pb_text.as-about-edgefield-body,
 body.page-id-416 .et_pb_text.as-about-mvv-copy .et_pb_text_inner,
+body.page-id-1179 .et_pb_text.as-about-mvv-copy .et_pb_text_inner,
 body.page-id-416 .et_pb_text.as-about-mvv-text .et_pb_text_inner,
+body.page-id-1179 .et_pb_text.as-about-mvv-text .et_pb_text_inner,
 body.page-id-416 .et_pb_text.as-about-story-copy .et_pb_text_inner,
-body.page-id-416 .et_pb_text.as-about-edgefield-body .et_pb_text_inner {
+body.page-id-1179 .et_pb_text.as-about-story-copy .et_pb_text_inner,
+body.page-id-416 .et_pb_text.as-about-edgefield-body .et_pb_text_inner,
+body.page-id-1179 .et_pb_text.as-about-edgefield-body .et_pb_text_inner {
   max-width: none !important;
   margin: 0 !important;
   padding: 0 !important;
 }
 
 body.page-id-416 .et_pb_text.as-about-mvv-copy .et_pb_text_inner h2,
+body.page-id-1179 .et_pb_text.as-about-mvv-copy .et_pb_text_inner h2,
 body.page-id-416 .et_pb_text.as-about-mvv-text .et_pb_text_inner h2,
+body.page-id-1179 .et_pb_text.as-about-mvv-text .et_pb_text_inner h2,
 body.page-id-416 .et_pb_text.as-about-story-copy .et_pb_text_inner h2,
-body.page-id-416 .et_pb_text.as-about-edgefield-body .et_pb_text_inner h2 {
+body.page-id-1179 .et_pb_text.as-about-story-copy .et_pb_text_inner h2,
+body.page-id-416 .et_pb_text.as-about-edgefield-body .et_pb_text_inner h2,
+body.page-id-1179 .et_pb_text.as-about-edgefield-body .et_pb_text_inner h2 {
   font-family: var(--font-serif) !important;
   color: var(--forest-deep) !important;
   font-size: clamp(1.5rem, 2.5vw, 2rem) !important;
@@ -2799,16 +2821,24 @@ body.page-id-416 .et_pb_text.as-about-edgefield-body .et_pb_text_inner h2 {
 }
 
 body.page-id-416 .et_pb_text.as-about-mvv-copy .et_pb_text_inner h2:first-child,
+body.page-id-1179 .et_pb_text.as-about-mvv-copy .et_pb_text_inner h2:first-child,
 body.page-id-416 .et_pb_text.as-about-mvv-text .et_pb_text_inner h2:first-child,
+body.page-id-1179 .et_pb_text.as-about-mvv-text .et_pb_text_inner h2:first-child,
 body.page-id-416 .et_pb_text.as-about-story-copy .et_pb_text_inner h2:first-child,
-body.page-id-416 .et_pb_text.as-about-edgefield-body .et_pb_text_inner h2:first-child {
+body.page-id-1179 .et_pb_text.as-about-story-copy .et_pb_text_inner h2:first-child,
+body.page-id-416 .et_pb_text.as-about-edgefield-body .et_pb_text_inner h2:first-child,
+body.page-id-1179 .et_pb_text.as-about-edgefield-body .et_pb_text_inner h2:first-child {
   margin-top: 0 !important;
 }
 
 body.page-id-416 .et_pb_text.as-about-mvv-copy .et_pb_text_inner p,
+body.page-id-1179 .et_pb_text.as-about-mvv-copy .et_pb_text_inner p,
 body.page-id-416 .et_pb_text.as-about-mvv-text .et_pb_text_inner p,
+body.page-id-1179 .et_pb_text.as-about-mvv-text .et_pb_text_inner p,
 body.page-id-416 .et_pb_text.as-about-story-copy .et_pb_text_inner p,
-body.page-id-416 .et_pb_text.as-about-edgefield-body .et_pb_text_inner p {
+body.page-id-1179 .et_pb_text.as-about-story-copy .et_pb_text_inner p,
+body.page-id-416 .et_pb_text.as-about-edgefield-body .et_pb_text_inner p,
+body.page-id-1179 .et_pb_text.as-about-edgefield-body .et_pb_text_inner p {
   color: var(--muted-ink) !important;
   font-family: var(--font-sans) !important;
   font-size: 1rem !important;
@@ -2819,14 +2849,20 @@ body.page-id-416 .et_pb_text.as-about-edgefield-body .et_pb_text_inner p {
 }
 
 body.page-id-416 .et_pb_text.as-about-mvv-copy .et_pb_text_inner p:last-child,
+body.page-id-1179 .et_pb_text.as-about-mvv-copy .et_pb_text_inner p:last-child,
 body.page-id-416 .et_pb_text.as-about-mvv-text .et_pb_text_inner p:last-child,
+body.page-id-1179 .et_pb_text.as-about-mvv-text .et_pb_text_inner p:last-child,
 body.page-id-416 .et_pb_text.as-about-story-copy .et_pb_text_inner p:last-child,
-body.page-id-416 .et_pb_text.as-about-edgefield-body .et_pb_text_inner p:last-child {
+body.page-id-1179 .et_pb_text.as-about-story-copy .et_pb_text_inner p:last-child,
+body.page-id-416 .et_pb_text.as-about-edgefield-body .et_pb_text_inner p:last-child,
+body.page-id-1179 .et_pb_text.as-about-edgefield-body .et_pb_text_inner p:last-child {
   margin-bottom: 0 !important;
 }
 
 body.page-id-416 .et_pb_text.as-about-mvv-copy .et_pb_text_inner ul.as-checklist,
-body.page-id-416 .et_pb_text.as-about-mvv-text .et_pb_text_inner ul.as-checklist {
+body.page-id-1179 .et_pb_text.as-about-mvv-copy .et_pb_text_inner ul.as-checklist,
+body.page-id-416 .et_pb_text.as-about-mvv-text .et_pb_text_inner ul.as-checklist,
+body.page-id-1179 .et_pb_text.as-about-mvv-text .et_pb_text_inner ul.as-checklist {
   margin: 0.35rem 0 0 !important;
   padding-left: 1.15rem !important;
   list-style: disc outside !important;
@@ -2834,14 +2870,18 @@ body.page-id-416 .et_pb_text.as-about-mvv-text .et_pb_text_inner ul.as-checklist
 }
 
 body.page-id-416 .et_pb_text.as-about-mvv-copy .et_pb_text_inner ul.as-checklist li,
-body.page-id-416 .et_pb_text.as-about-mvv-text .et_pb_text_inner ul.as-checklist li {
+body.page-id-1179 .et_pb_text.as-about-mvv-copy .et_pb_text_inner ul.as-checklist li,
+body.page-id-416 .et_pb_text.as-about-mvv-text .et_pb_text_inner ul.as-checklist li,
+body.page-id-1179 .et_pb_text.as-about-mvv-text .et_pb_text_inner ul.as-checklist li {
   margin: 0 0 0.65rem !important;
   padding: 0 !important;
   line-height: 1.55 !important;
 }
 
 body.page-id-416 .et_pb_text.as-about-mvv-copy .et_pb_text_inner ul.as-checklist li:last-child,
-body.page-id-416 .et_pb_text.as-about-mvv-text .et_pb_text_inner ul.as-checklist li:last-child {
+body.page-id-1179 .et_pb_text.as-about-mvv-copy .et_pb_text_inner ul.as-checklist li:last-child,
+body.page-id-416 .et_pb_text.as-about-mvv-text .et_pb_text_inner ul.as-checklist li:last-child,
+body.page-id-1179 .et_pb_text.as-about-mvv-text .et_pb_text_inner ul.as-checklist li:last-child {
   margin-bottom: 0 !important;
 }
 
@@ -2956,11 +2996,13 @@ body.page-id-419 .as-page.as-prose > h2:first-child {
 }
 
 /* Programs page — About-like banner + split service rows */
-body.page-id-27 .et_pb_section_0.et_flex_section {
+body.page-id-27 .et_pb_section_0.et_flex_section,
+body.page-id-1181 .et_pb_section_0.et_flex_section {
   background-color: var(--forest-deep, #1e3d2c) !important;
 }
 
-body.page-id-27 .et_pb_section_0.et_flex_section > .et_pb_row {
+body.page-id-27 .et_pb_section_0.et_flex_section > .et_pb_row,
+body.page-id-1181 .et_pb_section_0.et_flex_section > .et_pb_row {
   max-width: var(--wide-w) !important;
   width: 100% !important;
   margin-left: auto !important;
@@ -2971,13 +3013,18 @@ body.page-id-27 .et_pb_section_0.et_flex_section > .et_pb_row {
 }
 
 body.page-id-27 .et_pb_section_0 .et_pb_text .et_pb_text_inner,
-body.page-id-27 .et_pb_section_0 .et_pb_text .et_pb_text_inner p {
+body.page-id-1181 .et_pb_section_0 .et_pb_text .et_pb_text_inner,
+body.page-id-27 .et_pb_section_0 .et_pb_text .et_pb_text_inner p,
+body.page-id-1181 .et_pb_section_0 .et_pb_text .et_pb_text_inner p {
   color: #ffffff !important;
 }
 
 body.page-id-27 .et_pb_section.as-programs-auth-callout > .et_pb_row,
+body.page-id-1181 .et_pb_section.as-programs-auth-callout > .et_pb_row,
 body.page-id-27 .et_pb_section.as-programs-intro > .et_pb_row,
-body.page-id-27 .et_pb_section.as-programs-interest > .et_pb_row {
+body.page-id-1181 .et_pb_section.as-programs-intro > .et_pb_row,
+body.page-id-27 .et_pb_section.as-programs-interest > .et_pb_row,
+body.page-id-1181 .et_pb_section.as-programs-interest > .et_pb_row {
   max-width: 44rem !important;
   width: 100% !important;
   margin-left: auto !important;
@@ -2988,7 +3035,8 @@ body.page-id-27 .et_pb_section.as-programs-interest > .et_pb_row {
 }
 
 /* Force 2-column service layout (Divi block rows often stack without this) */
-body.page-id-27 .et_pb_section.as-programs-service > .et_pb_row {
+body.page-id-27 .et_pb_section.as-programs-service > .et_pb_row,
+body.page-id-1181 .et_pb_section.as-programs-service > .et_pb_row {
   display: grid !important;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) !important;
   gap: 2.5rem !important;
@@ -3001,7 +3049,8 @@ body.page-id-27 .et_pb_section.as-programs-service > .et_pb_row {
   box-sizing: border-box !important;
 }
 
-body.page-id-27 .et_pb_section.as-programs-service > .et_pb_row > .et_pb_column {
+body.page-id-27 .et_pb_section.as-programs-service > .et_pb_row > .et_pb_column,
+body.page-id-1181 .et_pb_section.as-programs-service > .et_pb_row > .et_pb_column {
   float: none !important;
   width: auto !important;
   max-width: none !important;
@@ -3009,18 +3058,22 @@ body.page-id-27 .et_pb_section.as-programs-service > .et_pb_row > .et_pb_column 
   padding: 0 !important;
 }
 
-body.page-id-27 .et_pb_section.as-programs-service {
+body.page-id-27 .et_pb_section.as-programs-service,
+body.page-id-1181 .et_pb_section.as-programs-service {
   border-bottom: 1px solid var(--soft-rule);
   padding-top: 0.5rem !important;
   padding-bottom: 0.5rem !important;
 }
 
 body.page-id-27 .et_pb_section.as-programs-interest,
-body.page-id-27 .et_pb_section.as-programs-auth-callout {
+body.page-id-1181 .et_pb_section.as-programs-interest,
+body.page-id-27 .et_pb_section.as-programs-auth-callout,
+body.page-id-1181 .et_pb_section.as-programs-auth-callout {
   border-bottom: 0;
 }
 
-body.page-id-27 .et_pb_image.as-programs-service-photo {
+body.page-id-27 .et_pb_image.as-programs-service-photo,
+body.page-id-1181 .et_pb_image.as-programs-service-photo {
   display: block !important;
   margin: 0 !important;
   text-align: center !important;
@@ -3028,12 +3081,14 @@ body.page-id-27 .et_pb_image.as-programs-service-photo {
   max-width: 100% !important;
 }
 
-body.page-id-27 .et_pb_image.as-programs-service-photo .et_pb_image_wrap {
+body.page-id-27 .et_pb_image.as-programs-service-photo .et_pb_image_wrap,
+body.page-id-1181 .et_pb_image.as-programs-service-photo .et_pb_image_wrap {
   display: block !important;
   width: 100% !important;
 }
 
-body.page-id-27 .et_pb_image.as-programs-service-photo img {
+body.page-id-27 .et_pb_image.as-programs-service-photo img,
+body.page-id-1181 .et_pb_image.as-programs-service-photo img {
   display: block;
   width: 100% !important;
   max-width: 100%;
@@ -3044,7 +3099,8 @@ body.page-id-27 .et_pb_image.as-programs-service-photo img {
   border-radius: 0;
 }
 
-body.page-id-27 .et_pb_section.as-programs-service .as-programs-service-copy h3 {
+body.page-id-27 .et_pb_section.as-programs-service .as-programs-service-copy h3,
+body.page-id-1181 .et_pb_section.as-programs-service .as-programs-service-copy h3 {
   margin: 0 0 0.85rem;
   font-family: var(--font-serif) !important;
   color: var(--forest-deep) !important;
@@ -3053,17 +3109,23 @@ body.page-id-27 .et_pb_section.as-programs-service .as-programs-service-copy h3 
 }
 
 body.page-id-27 .et_pb_section.as-programs-service .as-programs-service-copy,
-body.page-id-27 .et_pb_section.as-programs-service .as-programs-service-copy .et_pb_text_inner {
+body.page-id-1181 .et_pb_section.as-programs-service .as-programs-service-copy,
+body.page-id-27 .et_pb_section.as-programs-service .as-programs-service-copy .et_pb_text_inner,
+body.page-id-1181 .et_pb_section.as-programs-service .as-programs-service-copy .et_pb_text_inner {
   max-width: none !important;
 }
 
 body.page-id-27 .et_pb_section.as-programs-intro .as-programs-intro-copy h2:first-child,
-body.page-id-27 .et_pb_section.as-programs-interest .as-programs-interest-copy h2:first-child {
+body.page-id-1181 .et_pb_section.as-programs-intro .as-programs-intro-copy h2:first-child,
+body.page-id-27 .et_pb_section.as-programs-interest .as-programs-interest-copy h2:first-child,
+body.page-id-1181 .et_pb_section.as-programs-interest .as-programs-interest-copy h2:first-child {
   margin-top: 0;
 }
 
 body.page-id-27 .as-callout--auth,
-body.page-id-27 .et_pb_text.as-programs-auth-copy .as-callout--auth {
+body.page-id-1181 .as-callout--auth,
+body.page-id-27 .et_pb_text.as-programs-auth-copy .as-callout--auth,
+body.page-id-1181 .et_pb_text.as-programs-auth-copy .as-callout--auth {
   margin: 0;
   padding: 1.15rem 1.35rem;
   background: rgba(167, 196, 160, 0.22);
@@ -3073,7 +3135,9 @@ body.page-id-27 .et_pb_text.as-programs-auth-copy .as-callout--auth {
 }
 
 body.page-id-27 .as-callout--auth p,
-body.page-id-27 .et_pb_text.as-programs-auth-copy .as-callout--auth p {
+body.page-id-1181 .as-callout--auth p,
+body.page-id-27 .et_pb_text.as-programs-auth-copy .as-callout--auth p,
+body.page-id-1181 .et_pb_text.as-programs-auth-copy .as-callout--auth p {
   margin: 0;
   color: var(--muted-ink);
   font-size: 0.98rem;
@@ -3081,7 +3145,8 @@ body.page-id-27 .et_pb_text.as-programs-auth-copy .as-callout--auth p {
 }
 
 @media (max-width: 980px) {
-  body.page-id-27 .et_pb_section.as-programs-service > .et_pb_row {
+  body.page-id-27 .et_pb_section.as-programs-service > .et_pb_row,
+  body.page-id-1181 .et_pb_section.as-programs-service > .et_pb_row {
     grid-template-columns: 1fr !important;
     gap: 1.25rem !important;
     padding-top: 1.5rem !important;
@@ -3287,15 +3352,18 @@ body.page-id-692 * {
 }
 
 /* ---------- Our farm native Divi (page 28) ---------- */
-body.page-id-28 .et_pb_section.as-banner > .et_pb_row {
+body.page-id-28 .et_pb_section.as-banner > .et_pb_row,
+body.page-id-1180 .et_pb_section.as-banner > .et_pb_row {
   max-width: 72rem !important;
 }
 
-body.page-id-28 .as-farm-banner .as-eyebrow {
+body.page-id-28 .as-farm-banner .as-eyebrow,
+body.page-id-1180 .as-farm-banner .as-eyebrow {
   color: var(--edgefield-gold) !important;
 }
 
-body.page-id-28 .as-farm-banner h1 {
+body.page-id-28 .as-farm-banner h1,
+body.page-id-1180 .as-farm-banner h1 {
   font-family: var(--font-serif) !important;
   color: #fff !important;
   font-size: clamp(2rem, 4vw, 2.5rem) !important;
@@ -3305,48 +3373,58 @@ body.page-id-28 .as-farm-banner h1 {
   max-width: 20ch;
 }
 
-body.page-id-28 .as-farm-banner .as-lede {
+body.page-id-28 .as-farm-banner .as-lede,
+body.page-id-1180 .as-farm-banner .as-lede {
   color: rgba(247, 244, 236, 0.92) !important;
   max-width: 40rem;
 }
 
-body.page-id-28 .et_pb_section.as-banner {
+body.page-id-28 .et_pb_section.as-banner,
+body.page-id-1180 .et_pb_section.as-banner {
   background: linear-gradient(145deg, var(--forest-deep), var(--sanctuary-green)) !important;
   color: #fff !important;
 }
 
-body.page-id-28 .as-farm-copy h2 {
+body.page-id-28 .as-farm-copy h2,
+body.page-id-1180 .as-farm-copy h2 {
   font-family: var(--font-serif) !important;
   color: var(--forest-deep) !important;
   font-size: clamp(1.5rem, 2.5vw, 2rem) !important;
   margin: 0 0 0.85rem !important;
 }
 
-body.page-id-28 .as-farm-copy h3 {
+body.page-id-28 .as-farm-copy h3,
+body.page-id-1180 .as-farm-copy h3 {
   font-family: var(--font-serif) !important;
   color: var(--forest-deep) !important;
   font-size: 1.25rem !important;
   margin: 1.35rem 0 0.45rem !important;
 }
 
-body.page-id-28 .as-farm-copy p {
+body.page-id-28 .as-farm-copy p,
+body.page-id-1180 .as-farm-copy p {
   color: var(--muted-ink) !important;
   margin: 0 0 1rem !important;
   line-height: 1.65 !important;
 }
 
 body.page-id-28 .et_pb_image.as-farm-photo,
-body.page-id-28 .et_pb_image.as-native-image {
+body.page-id-1180 .et_pb_image.as-farm-photo,
+body.page-id-28 .et_pb_image.as-native-image,
+body.page-id-1180 .et_pb_image.as-native-image {
   margin: 0.75rem 0 1.5rem !important;
 }
 
 body.page-id-28 .et_pb_image.as-farm-photo .et_pb_image_wrap,
-body.page-id-28 .et_pb_image.as-farm-photo img {
+body.page-id-1180 .et_pb_image.as-farm-photo .et_pb_image_wrap,
+body.page-id-28 .et_pb_image.as-farm-photo img,
+body.page-id-1180 .et_pb_image.as-farm-photo img {
   border-radius: calc(var(--radius) + 4px) !important;
   overflow: hidden !important;
 }
 
-body.page-id-28 .et_pb_image.as-farm-photo img {
+body.page-id-28 .et_pb_image.as-farm-photo img,
+body.page-id-1180 .et_pb_image.as-farm-photo img {
   width: 100% !important;
   height: auto !important;
   object-fit: cover !important;
