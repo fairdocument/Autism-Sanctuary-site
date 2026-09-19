@@ -194,8 +194,159 @@ foreach ($gallery_items as $item) {
 $gallery_ids_str = implode(',', $gallery_ids);
 echo "Gallery IDs (" . count($gallery_ids) . " photos): {$gallery_ids_str}\n";
 
-// Replace placeholder in content
-$content = str_replace('{gallery_ids}', $gallery_ids_str, $data['content']);
+// Build native Divi 5 blocks for text and gallery
+$text_attrs = [
+	'module' => [
+		'decoration' => [
+			'layout' => [
+				'desktop' => [
+					'value' => [
+						'display' => 'block',
+					],
+				],
+			],
+		],
+	],
+	'content' => [
+		'innerContent' => [
+			'desktop' => [
+				'value' => $data['content'],
+			],
+		],
+	],
+	'builderVersion' => '5.0.0-public-beta.1',
+];
+
+$gallery_attrs = [
+	'module' => [
+		'advanced' => [
+			'fullwidth' => [
+				'desktop' => [
+					'value' => 'off',
+				],
+			],
+			'postsNumber' => [
+				'desktop' => [
+					'value' => '20',
+				],
+			],
+			'showTitleAndCaption' => [
+				'desktop' => [
+					'value' => 'off',
+				],
+			],
+			'showPagination' => [
+				'desktop' => [
+					'value' => 'off',
+				],
+			],
+		],
+	],
+	'image' => [
+		'advanced' => [
+			'galleryIds' => [
+				'desktop' => [
+					'value' => $gallery_ids,
+				],
+			],
+			'galleryOrderby' => [
+				'desktop' => [
+					'value' => 'default',
+				],
+			],
+		],
+	],
+	'galleryGrid' => [
+		'decoration' => [
+			'layout' => [
+				'desktop' => [
+					'value' => [
+						'display' => 'grid',
+						'gridColumnCount' => '3',
+					],
+				],
+			],
+		],
+	],
+	'builderVersion' => '5.0.0-public-beta.1',
+];
+
+$sec_attrs = [
+	'module' => [
+		'meta' => [
+			'adminLabel' => [
+				'desktop' => [
+					'value' => 'section',
+				],
+			],
+		],
+		'decoration' => [
+			'layout' => [
+				'desktop' => [
+					'value' => [
+						'display' => 'block',
+					],
+				],
+			],
+		],
+	],
+	'builderVersion' => '5.0.0-public-alpha.18.2',
+];
+
+$row_attrs = [
+	'module' => [
+		'meta' => [
+			'adminLabel' => [
+				'desktop' => [
+					'value' => 'row',
+				],
+			],
+		],
+		'decoration' => [
+			'layout' => [
+				'desktop' => [
+					'value' => [
+						'display' => 'block',
+					],
+				],
+			],
+		],
+	],
+	'builderVersion' => '5.0.0-public-alpha.18.2',
+];
+
+$col_attrs = [
+	'module' => [
+		'advanced' => [
+			'type' => [
+				'desktop' => [
+					'value' => '4_4',
+				],
+			],
+		],
+		'decoration' => [
+			'layout' => [
+				'desktop' => [
+					'value' => [
+						'display' => 'block',
+					],
+				],
+			],
+		],
+	],
+	'builderVersion' => '5.0.0-public-alpha.18.2',
+];
+
+$content = "<!-- wp:divi/placeholder -->"
+	. "<!-- wp:divi/section " . json_encode($sec_attrs) . " -->\n"
+	. "<!-- wp:divi/row " . json_encode($row_attrs) . " -->\n"
+	. "<!-- wp:divi/column " . json_encode($col_attrs) . " -->\n"
+	. "<!-- wp:divi/text " . json_encode($text_attrs) . " /-->\n"
+	. "<!-- wp:divi/gallery " . json_encode($gallery_attrs) . " /-->\n"
+	. "<!-- /wp:divi/column -->\n"
+	. "<!-- /wp:divi/row -->\n"
+	. "<!-- /wp:divi/section -->"
+	. "<!-- /wp:divi/placeholder -->";
 
 $args = [
 	'post_title'    => $data['title'],
@@ -222,9 +373,8 @@ if (is_wp_error($id)) {
 	return;
 }
 
-// Ensure Divi Theme Builder single-post template handles layout
-delete_post_meta($id, '_et_pb_use_builder');
-delete_post_meta($id, '_et_builder_version');
+update_post_meta($id, '_et_pb_use_builder', 'on');
+update_post_meta($id, '_et_pb_use_divi_5', 'on');
 update_post_meta($id, '_et_pb_page_layout', 'et_no_sidebar');
 update_post_meta($id, '_et_pb_side_nav', 'off');
 update_post_meta($id, '_et_pb_show_title', 'on');
